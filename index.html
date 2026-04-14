@@ -1,0 +1,2166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monstarlab Design Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+  <style>
+    /* ─── Reset ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── Monstarlab Design System Tokens ────────────────────────── */
+    :root {
+      /* Layout */
+      --nav-h: 68px;
+      --sidebar-w: 270px;
+      --transition: 160ms ease;
+
+      /* Brand */
+      --deep-blue-800: #000F1E;
+      --deep-blue-600: #0D1E35;
+      --deep-blue-500: #1A2C47;
+      --yellow-500: #FFFF00;
+      --yellow-600: #E6E600;
+      --white: #FFFFFF;
+
+      /* Greys */
+      --grey-100: #F7F7F6;
+      --grey-200: #EFF0F0;
+      --grey-300: #DAD9D6;
+      --grey-400: #CACAC8;
+      --grey-500: #B7B8B9;
+      --grey-600: #939598;
+      --grey-700: #6E7073;
+      --grey-800: #464A4D;
+      --grey-900: #2A2D30;
+
+      /* Blue */
+      --blue-600: #234474;
+      --blue-800: #1A2D45;
+
+      /* Semantic — Dark Mode */
+      --background: #000F1E;
+      --foreground: #FFFFFF;
+      --muted-foreground: #939598;
+      --border: #1A2C47;
+
+      /* Dark surfaces */
+      --surface-1: #0D1E35;
+      --surface-2: #1A2C47;
+      --surface-hover: #243656;
+
+      /* Typography */
+      --font-primary: 'DM Sans', sans-serif;
+
+      /* Radii */
+      --radius-s: 4px;
+      --radius-m: 8px;
+      --radius-l: 12px;
+      --radius-pill: 999px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-primary);
+      color: var(--foreground);
+      background: var(--background);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── Top Nav ────────────────────────────────────────────────── */
+    .topnav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--background);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      gap: 0;
+      z-index: 100;
+    }
+
+    .topnav__hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin-right: 4px;
+      color: var(--white);
+      border-radius: var(--radius-s);
+      flex-shrink: 0;
+    }
+    .topnav__hamburger:hover { background: var(--surface-2); }
+    .topnav__hamburger svg { display: block; }
+
+    .topnav__logo {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      text-decoration: none;
+      color: var(--white);
+      flex-shrink: 0;
+      margin-right: 32px;
+    }
+    .topnav__logo svg { height: 13px; width: auto; display: block; flex-shrink: 0; }
+    .topnav__logo-divider {
+      width: 1px;
+      height: 18px;
+      background: var(--grey-700);
+      margin: 0 12px;
+      flex-shrink: 0;
+    }
+    .topnav__logo-hub {
+      font-family: var(--font-primary);
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--grey-500);
+      white-space: nowrap;
+    }
+
+
+    .topnav__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: auto;
+    }
+
+    .topnav__search-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .topnav__search-wrap svg {
+      position: absolute;
+      left: 11px;
+      color: var(--grey-600);
+      pointer-events: none;
+      flex-shrink: 0;
+    }
+    .topnav__search-input {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-s);
+      padding: 0 12px 0 32px;
+      font-size: 14px;
+      font-family: var(--font-primary);
+      color: var(--white);
+      width: 190px;
+      height: 44px;
+      outline: none;
+      transition: border-color var(--transition), width var(--transition);
+    }
+    .topnav__search-input::placeholder { color: var(--grey-600); }
+    .topnav__search-input:focus {
+      border-color: var(--grey-600);
+      width: 230px;
+    }
+    @media (max-width: 768px) { .topnav__search-wrap { display: none; } }
+
+    .topnav__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow-500);
+      color: var(--deep-blue-800);
+      font-size: 14px;
+      font-weight: 500;
+      font-family: var(--font-primary);
+      padding: 0 24px;
+      height: 44px;
+      border-radius: var(--radius-s);
+      text-decoration: none;
+      white-space: nowrap;
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .topnav__cta:hover {
+      background: var(--yellow-600);
+      transform: translateY(-1px);
+    }
+    .topnav__cta:active { transform: translateY(0); }
+    @media (max-width: 480px) { .topnav__cta span { display: none; } }
+
+    /* ─── Layout Shell ───────────────────────────────────────────── */
+    .shell {
+      display: flex;
+      padding-top: var(--nav-h);
+      min-height: 100vh;
+    }
+
+    /* ─── Sidebar — Dark nav theme ───────────────────────────────── */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      bottom: 0;
+      background: var(--background);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      overflow-x: hidden;
+      z-index: 50;
+      transition: transform var(--transition);
+    }
+
+    .sidebar::-webkit-scrollbar { width: 0; }
+    .sidebar__inner { padding: 16px 0 48px; }
+
+    /* Section groups */
+    .nav-group { margin-bottom: 2px; }
+
+    .nav-group__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition);
+      gap: 8px;
+      border-radius: var(--radius-s);
+      margin: 0 8px;
+    }
+    .nav-group__header:hover { background: var(--surface-2); }
+
+    .nav-group__title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .nav-group__chevron {
+      color: var(--grey-600);
+      transition: transform 200ms ease;
+      flex-shrink: 0;
+    }
+    .nav-group.open .nav-group__chevron { transform: rotate(180deg); }
+
+    .nav-group__items {
+      display: none;
+      flex-direction: column;
+      padding: 2px 0 6px;
+    }
+    .nav-group.open .nav-group__items { display: flex; }
+
+    /* Nav links — dark theme */
+    .nav-link {
+      display: block;
+      padding: 8px 16px 8px 28px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--grey-500);
+      transition: color var(--transition), background var(--transition);
+      border-left: 2px solid transparent;
+      line-height: 1.4;
+      margin: 0 8px;
+      border-radius: var(--radius-s);
+    }
+    .nav-link:hover {
+      color: var(--white);
+      background: var(--surface-2);
+    }
+    .nav-link.active {
+      color: var(--white);
+      font-weight: 500;
+      background: var(--blue-600);
+      border-left-color: var(--yellow-500);
+    }
+
+    /* External link variant */
+    .nav-link--external {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-link--external svg {
+      flex-shrink: 0;
+      color: var(--grey-700);
+      transition: color var(--transition);
+    }
+    .nav-link--external:hover svg { color: var(--grey-400); }
+
+    .nav-link--top {
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--white);
+      border-left: none;
+      margin: 0 8px;
+      border-radius: var(--radius-s);
+    }
+    .nav-link--top:hover { background: var(--surface-2); }
+    .nav-link--top.active {
+      color: var(--white);
+      background: var(--blue-600);
+      border-left: none;
+    }
+
+    .nav-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 8px 16px;
+    }
+
+    /* ─── Main Content ───────────────────────────────────────────── */
+    .main {
+      flex: 1;
+      margin-left: var(--sidebar-w);
+      min-width: 0;
+      background: var(--background);
+    }
+
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px 80px;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--grey-600);
+      margin-bottom: 32px;
+    }
+    .breadcrumb a {
+      color: var(--grey-400);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .breadcrumb a:hover { color: var(--white); text-decoration: underline; }
+    .breadcrumb__sep { color: var(--grey-700); }
+
+    /* Page header */
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header__eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-600);
+      margin-bottom: 12px;
+    }
+    .page-header__title {
+      font-family: var(--font-primary);
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .page-header__desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted-foreground);
+      max-width: 580px;
+    }
+
+    /* Placeholder content blocks */
+    .placeholder-section { margin-bottom: 48px; }
+    .placeholder-section h2 {
+      font-family: var(--font-primary);
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+    .placeholder-block {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 24px;
+      color: var(--muted-foreground);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .placeholder-block p { margin-bottom: 8px; }
+    .placeholder-block p:last-child { margin-bottom: 0; }
+
+    /* ─── Design Request Form ────────────────────────────────────── */
+    .form-wrap { max-width: 100%; }
+
+    .form-sla {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(255,255,0,.06);
+      border: 1px solid rgba(255,255,0,.18);
+      border-radius: var(--radius-m);
+      padding: 14px 16px;
+      margin-bottom: 40px;
+      font-size: 13px;
+      color: var(--grey-500);
+      line-height: 1.6;
+    }
+    .form-sla__icon { font-size: 15px; flex-shrink: 0; }
+    .form-sla strong { color: var(--yellow-500); }
+
+    .form-section { margin-bottom: 48px; }
+    .form-section__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section__num {
+      width: 24px; height: 24px;
+      background: var(--surface-2);
+      border-radius: var(--radius-s);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--grey-500);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .form-section__title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .form-section__subtitle {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      margin-top: 2px;
+    }
+
+    .form-row { margin-bottom: 20px; }
+    .form-row--2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 640px) { .form-row--2col { grid-template-columns: 1fr; } }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--foreground);
+      margin-bottom: 6px;
+    }
+    .form-label span {
+      color: var(--yellow-500);
+      margin-left: 2px;
+    }
+    .form-hint {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      color: var(--foreground);
+      font-family: var(--font-primary);
+      font-size: 14px;
+      padding: 10px 14px;
+      transition: border-color 0.15s, background 0.15s;
+      box-sizing: border-box;
+      outline: none;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--grey-700); }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--yellow-500);
+      background: var(--surface-2);
+    }
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 4L6 7.5L9.5 4' stroke='%236E7073' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-select option { background: var(--deep-blue-600); color: var(--foreground); }
+    .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+    .form-priority-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    @media (max-width: 640px) { .form-priority-grid { grid-template-columns: 1fr; } }
+    .form-priority-option { display: none; }
+    .form-priority-label {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-m);
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      background: var(--surface-1);
+    }
+    .form-priority-label:hover { border-color: var(--grey-600); background: var(--surface-2); }
+    .form-priority-option:checked + .form-priority-label { border-color: var(--yellow-500); background: rgba(255,255,0,.06); }
+    .form-priority-label__title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--foreground);
+    }
+    .form-priority-label__desc {
+      font-size: 11px;
+      color: var(--muted-foreground);
+      line-height: 1.4;
+    }
+    .p1 .form-priority-label__title { color: #f87171; }
+    .p2 .form-priority-label__title { color: #fbbf24; }
+    .p3 .form-priority-label__title { color: #4ade80; }
+    .p4 .form-priority-label__title { color: var(--grey-500); }
+
+    .form-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 8px;
+    }
+    .form-submit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--yellow-500);
+      color: var(--deep-blue-800);
+      font-family: var(--font-primary);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 0 24px;
+      height: 44px;
+      border-radius: var(--radius-s);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .form-submit:hover { background: var(--yellow-600); transform: translateY(-1px); }
+    .form-submit:active { transform: translateY(0); }
+    .form-submit svg { flex-shrink: 0; }
+    .form-note {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      line-height: 1.5;
+    }
+
+    /* Handoff page components */
+    .handoff-section { margin-bottom: 56px; }
+    .handoff-section h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .handoff-section .section-intro {
+      font-size: 14px;
+      color: var(--muted-foreground);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+    .handoff-section h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--foreground);
+      margin: 24px 0 12px;
+    }
+
+    /* Code / token block */
+    .code-block {
+      background: var(--deep-blue-800);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 16px 20px;
+      font-family: 'DM Mono', 'Courier New', monospace;
+      font-size: 13px;
+      color: var(--yellow-500);
+      letter-spacing: 0.3px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+    }
+    .code-block span { color: var(--grey-500); font-size: 12px; display: block; margin-top: 4px; }
+
+    /* Handoff table */
+    .handoff-table-wrap { overflow-x: auto; margin-bottom: 24px; }
+    .handoff-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .handoff-table th {
+      text-align: left;
+      padding: 10px 14px;
+      background: var(--surface-2);
+      color: var(--grey-500);
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--border);
+    }
+    .handoff-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--foreground);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    .handoff-table tr:last-child td { border-bottom: none; }
+    .handoff-table tr:hover td { background: var(--surface-hover); }
+    .handoff-table td code {
+      background: var(--surface-2);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-family: 'DM Mono', 'Courier New', monospace;
+      color: var(--yellow-500);
+    }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; margin: 0 0 16px; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      color: var(--foreground);
+      line-height: 1.55;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      background: var(--surface-2);
+    }
+    .checklist-group { margin-bottom: 24px; }
+    .checklist-group__label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--grey-500);
+      margin-bottom: 8px;
+    }
+
+    /* Status badges */
+    .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+    .status-badge--blocked  { background: rgba(239,68,68,.12);  border-color: rgba(239,68,68,.3);  color: #f87171; }
+    .status-badge--review   { background: rgba(234,179,8,.12);  border-color: rgba(234,179,8,.3);  color: #fbbf24; }
+    .status-badge--ready    { background: rgba(34,197,94,.12);  border-color: rgba(34,197,94,.3);  color: #4ade80; }
+    .status-badge--indev    { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.3); color: #60a5fa; }
+    .status-badge--archived { background: rgba(113,113,122,.12);border-color: rgba(113,113,122,.3);color: #a1a1aa; }
+
+    /* Tip box */
+    .tip-box {
+      display: flex;
+      gap: 12px;
+      background: rgba(255,255,0,.06);
+      border: 1px solid rgba(255,255,0,.18);
+      border-radius: var(--radius-m);
+      padding: 14px 16px;
+      margin: 16px 0 24px;
+      font-size: 13px;
+      color: var(--grey-500);
+      line-height: 1.6;
+    }
+    .tip-box__icon { flex-shrink: 0; font-size: 14px; margin-top: 1px; }
+    .tip-box strong { color: var(--yellow-500); }
+
+    /* Image placeholder */
+    .img-placeholder {
+      background: var(--surface-1);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-m);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--muted-foreground);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+    .img-placeholder__icon { font-size: 28px; opacity: .5; }
+    .img-placeholder__label { font-weight: 500; color: var(--foreground); font-size: 13px; }
+
+    /* Two-column grid for handoff sections */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+
+    /* Sidebar section submenu */
+    .nav-sublinks {
+      display: none;
+      margin: 2px 0 6px 28px;
+      padding-left: 0;
+      border-left: 1px solid var(--border);
+    }
+    .nav-sublinks.visible { display: block; }
+    .nav-sublink {
+      display: block;
+      font-size: 12px;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      padding: 5px 8px 5px 20px;
+      border-radius: var(--radius-s);
+      line-height: 1.4;
+      transition: color 0.15s, background 0.15s;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .nav-sublink:hover { color: var(--foreground); background: var(--surface-hover); }
+    .nav-sublink.toc-active { color: var(--yellow-500); font-weight: 500; }
+    .info-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 20px;
+    }
+    .info-card__label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--grey-500); margin-bottom: 8px; }
+    .info-card__value { font-size: 14px; color: var(--foreground); line-height: 1.55; }
+
+    /* Home dashboard cards */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 24px;
+      cursor: pointer;
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition), background var(--transition);
+      text-decoration: none;
+      display: block;
+    }
+    .card:hover {
+      background: var(--surface-2);
+      border-color: var(--surface-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    }
+    .card__icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .card__title {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .card__desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--muted-foreground);
+      line-height: 1.5;
+    }
+
+    /* TOC hint */
+    .toc-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--grey-600);
+      margin-top: 48px;
+      padding: 8px 16px;
+      background: var(--surface-1);
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border);
+    }
+
+    /* ─── Sidebar overlay (mobile) ───────────────────────────────── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 40;
+    }
+
+    /* ─── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .topnav__hamburger { display: flex; }
+
+      .sidebar {
+        transform: translateX(-100%);
+        z-index: 60;
+      }
+      .sidebar.open { transform: translateX(0); }
+
+      .sidebar-overlay.open { display: block; }
+
+      .main { margin-left: 0; }
+
+      .content { padding: 36px 24px 60px; }
+
+      .page-header__title { font-size: 36px; }
+      .page-header__desc { font-size: 16px; }
+    }
+
+    @media (max-width: 480px) {
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Top Nav ──────────────────────────────────────────────────── -->
+<nav class="topnav">
+  <button class="topnav__hamburger" id="hamburger" aria-label="Toggle navigation">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+      <rect x="2" y="4.5" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+      <rect x="2" y="8.25" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+      <rect x="2" y="12" width="14" height="1.5" rx="0.75" fill="currentColor"/>
+    </svg>
+  </button>
+
+  <a href="#" class="topnav__logo" data-page="home">
+    <svg height="17" viewBox="0 0 293 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Monstarlab">
+      <rect x="258.656" y="26.713" width="6.70191" height="6.67794" fill="white"/>
+      <rect x="285.465" y="26.713" width="6.70179" height="6.67794" fill="white"/>
+      <rect x="285.465" width="6.70179" height="6.67794" fill="white"/>
+      <rect x="258.656" width="6.70191" height="6.67794" fill="white"/>
+      <path d="M0 33.3105H5.63533V13.8477C5.63533 12.7056 5.49206 8.18487 5.4443 5.2821H5.53981C6.49495 8.47039 7.68888 12.5628 8.21421 14.1808L14.3749 33.3105H20.7743L26.9827 14.2759C27.508 12.658 28.5587 9.08901 29.6571 5.2821H29.7526C29.6571 8.18487 29.5616 12.5628 29.5616 13.7525V33.3105H35.1969V0H25.9798L20.5355 17.1787C19.5326 20.4622 18.3387 24.745 17.6701 27.267H17.6223C17.0015 24.745 15.9986 21.2711 14.7092 17.1311L9.26486 0H0V33.3105Z" fill="white"/>
+      <path d="M52.0007 33.8816C59.3552 33.8816 64.131 28.885 64.131 21.4139C64.131 14.2283 59.4985 8.94625 52.0007 8.94625C44.4073 8.94625 39.7749 14.1808 39.7749 21.4139C39.7749 29.1705 44.3595 33.8816 52.0007 33.8816ZM52.0007 29.7415C47.5115 29.7415 45.84 27.0767 45.84 21.4139C45.84 15.7511 47.5593 13.0863 52.0007 13.0863C56.3465 13.0863 58.0658 15.7511 58.0658 21.4139C58.0658 27.0767 56.3943 29.7415 52.0007 29.7415Z" fill="white"/>
+      <path d="M87.8289 11.3732C86.2051 9.70764 84.2471 8.94625 81.1429 8.94625C77.7044 8.94625 75.1255 10.2311 73.9316 13.1339V9.51729H68.2962V33.3105H73.9793V20.2718C73.9793 14.5139 77.0835 13.3718 79.1849 13.3718C80.5698 13.3718 81.716 13.467 82.7666 14.5139C84.0083 15.6559 84.1038 17.1787 84.1038 19.3677V33.3105H89.8347V18.9394C89.8347 16.0842 89.6914 13.2766 87.8289 11.3732Z" fill="white"/>
+      <path d="M104.18 33.8816C109.433 33.8816 114.448 32.1209 114.448 26.3629C114.448 20.7477 109.338 19.7484 104.849 18.7491C101.792 18.0829 99.5954 17.5118 99.5954 15.6559C99.5954 13.8001 101.553 12.9911 103.655 12.9911C106.663 12.9911 108.478 14.4187 108.621 17.3691L113.827 16.5125C113.302 10.8497 108.86 8.94625 103.655 8.94625C98.879 8.94625 94.2466 10.9925 94.2466 16.0842C94.2466 20.8905 98.3059 22.2229 102.556 23.3174C106.138 24.2215 109.099 24.6022 109.099 26.696C109.099 28.6946 107.428 29.8367 104.228 29.8367C101.076 29.8367 98.9268 28.2188 98.879 25.1256L93.578 25.7443C93.769 31.4546 98.5925 33.8816 104.18 33.8816Z" fill="white"/>
+      <path d="M127.115 33.5485C128.356 33.5485 129.55 33.4057 130.267 33.2629L130.171 28.3615C129.359 28.5043 128.547 28.5995 127.974 28.5995C126.255 28.5995 125.491 28.2664 125.491 26.8388V14.038H130.362V9.51729H125.491V2.90277H119.903V9.51729H116.465V14.038H119.903V27.3146C119.903 31.7878 122.578 33.5485 127.115 33.5485Z" fill="white"/>
+      <path d="M141.342 33.8816C145.306 33.8816 147.885 32.2636 149.126 29.9319C149.126 31.4071 149.27 32.4064 149.461 33.3105H155.096V33.1202C154.619 31.9781 154.284 30.5981 154.284 29.0277V16.798C154.284 11.6111 150.798 8.94625 144.685 8.94625C141.342 8.94625 138.715 9.56488 136.901 10.8021C135.086 12.0394 134.083 14.038 133.94 16.8456L139.48 17.5594C139.527 14.3235 141.056 13.1339 144.303 13.1339C146.309 13.1339 147.503 13.5621 148.124 14.4187C148.792 15.3704 148.84 16.4649 148.84 18.0353L141.724 19.3677C137.378 20.1767 133.08 21.6042 133.08 26.7436C133.08 31.5498 136.948 33.8816 141.342 33.8816ZM142.584 29.6464C140.53 29.6464 138.906 28.6946 138.906 26.696C138.906 24.5546 140.387 23.7932 142.632 23.3174L148.84 21.9849V24.1739C148.84 27.6477 146.595 29.6464 142.584 29.6464Z" fill="white"/>
+      <path d="M172.774 8.94625C168.81 9.08901 165.992 10.8973 165.133 13.8001V9.51729H159.497V33.3105H165.18V22.4132C165.18 15.8463 167.998 14.038 172.487 14.038C172.917 14.038 173.347 14.038 173.681 14.0856L173.824 8.94625H172.774Z" fill="white"/>
+      <path d="M176.841 33.3105H182.524V0H176.841V33.3105Z" fill="white"/>
+      <path d="M195.192 33.8816C199.156 33.8816 201.735 32.2636 202.976 29.9319C202.976 31.4071 203.12 32.4064 203.311 33.3105H208.946V33.1202C208.468 31.9781 208.134 30.5981 208.134 29.0277V16.798C208.134 11.6111 204.648 8.94625 198.535 8.94625C195.192 8.94625 192.565 9.56488 190.75 10.8021C188.936 12.0394 187.933 14.038 187.79 16.8456L193.329 17.5594C193.377 14.3235 194.905 13.1339 198.153 13.1339C200.159 13.1339 201.352 13.5621 201.973 14.4187C202.642 15.3704 202.69 16.4649 202.69 18.0353L195.574 19.3677C191.228 20.1767 186.93 21.6042 186.93 26.7436C186.93 31.5498 190.798 33.8816 195.192 33.8816ZM196.434 29.6464C194.38 29.6464 192.756 28.6946 192.756 26.696C192.756 24.5546 194.237 23.7932 196.481 23.3174L202.69 21.9849V24.1739C202.69 27.6477 200.445 29.6464 196.434 29.6464Z" fill="white"/>
+      <path d="M226.289 8.89867C223.233 8.89867 220.606 10.1835 219.03 12.4677V0H213.347V33.3105H219.03V30.0271C220.415 32.3112 223.042 33.8816 226.146 33.8816C232.498 33.8816 236.939 29.1229 236.939 21.4139C236.939 13.8952 232.593 8.89867 226.289 8.89867ZM224.809 29.7415C220.845 29.7415 218.887 26.8388 218.887 21.4615C218.887 16.7028 220.176 13.0863 224.761 13.0863C229.25 13.0863 230.778 15.9415 230.778 21.4139C230.778 26.8388 229.298 29.7415 224.809 29.7415Z" fill="white"/>
+    </svg>
+    <span class="topnav__logo-divider"></span>
+    <span class="topnav__logo-hub">Design Hub</span>
+  </a>
+
+  <div class="topnav__actions">
+    <div class="topnav__search-wrap">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <circle cx="5.5" cy="5.5" r="4" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M9 9L13 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <input class="topnav__search-input" type="search" placeholder="Search" id="sidebarSearch" autocomplete="off" />
+    </div>
+    <a href="#" class="topnav__cta" data-page="working-request">
+      <span>Submit a Request</span>
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</nav>
+
+<!-- ─── Sidebar overlay ──────────────────────────────────────────── -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="shell">
+
+  <!-- ─── Sidebar ───────────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar__inner">
+
+      <!-- 1. About Us -->
+      <div class="nav-group" data-group="about">
+        <div class="nav-group__header">
+          <span class="nav-group__title">About Us</span>
+          <svg class="nav-group__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4L6 7.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="nav-group__items">
+          <a href="#" class="nav-link" data-page="about-philosophy">Philosophy &amp; Principles</a>
+          <a href="#" class="nav-link" data-page="about-team">Meet the Team</a>
+          <a href="#" class="nav-link" data-page="about-onboarding">Onboarding</a>
+        </div>
+      </div>
+
+      <!-- 2. Working with Us -->
+      <div class="nav-group" data-group="working">
+        <div class="nav-group__header">
+          <span class="nav-group__title">Working with Us</span>
+          <svg class="nav-group__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4L6 7.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="nav-group__items">
+          <a href="#" class="nav-link" data-page="working-request">Submit a Design Request</a>
+          <a href="#" class="nav-link" data-page="working-handoff">The Handoff Process</a>
+          <div class="nav-sublinks" id="handoff-subnav">
+            <a class="nav-sublink" href="#s-nomenclature">File Nomenclature</a>
+            <a class="nav-sublink" href="#s-dod">Definition of Done</a>
+            <a class="nav-sublink" href="#s-access">Access &amp; Permissions</a>
+            <a class="nav-sublink" href="#s-specs">Technical Specs</a>
+            <a class="nav-sublink" href="#s-interactions">Interactions &amp; Logic</a>
+            <a class="nav-sublink" href="#s-hygiene">Figma File Hygiene</a>
+            <a class="nav-sublink" href="#s-comms">Communication Norms</a>
+          </div>
+          <a href="#" class="nav-link" data-page="working-comms">Communication &amp; Slack</a>
+        </div>
+      </div>
+
+      <!-- 3. Design System -->
+      <div class="nav-group" data-group="design">
+        <div class="nav-group__header">
+          <span class="nav-group__title">Design System</span>
+          <svg class="nav-group__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4L6 7.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="nav-group__items">
+          <a href="#" class="nav-link" data-page="design-system-brand">Brand &amp; Assets</a>
+          <a href="#" class="nav-link" data-page="design-system-components">Components &amp; UI</a>
+          <a href="#" class="nav-link" data-page="design-system-voice">Voice, Tone &amp; UX Writing</a>
+          <a href="#" class="nav-link" data-page="design-system-a11y">Accessibility (a11y)</a>
+          <a href="#" class="nav-link" data-page="design-system-governance">Governance &amp; Contribution</a>
+        </div>
+      </div>
+
+      <!-- 4. Process & Playbook -->
+      <div class="nav-group" data-group="process">
+        <div class="nav-group__header">
+          <span class="nav-group__title">Process &amp; Playbook</span>
+          <svg class="nav-group__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4L6 7.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="nav-group__items">
+          <a href="#" class="nav-link" data-page="process-research">Research &amp; Discovery</a>
+          <a href="#" class="nav-link" data-page="process-metrics">Metrics &amp; Quality Assurance</a>
+          <a href="#" class="nav-link" data-page="process-ai">AI Usage Guidelines</a>
+          <a href="#" class="nav-link" data-page="process-tools">Our Tool Stack</a>
+        </div>
+      </div>
+
+      <!-- 5. Templates & Resources -->
+      <div class="nav-group" data-group="templates">
+        <div class="nav-group__header">
+          <span class="nav-group__title">Templates &amp; Resources</span>
+          <svg class="nav-group__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2.5 4L6 7.5L9.5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="nav-group__items">
+          <a href="https://docs.google.com/document/d/1uDvCU4PIwLEremJysNo4-cmcTr7fTBfT/edit" class="nav-link nav-link--external" target="_blank" rel="noopener noreferrer">
+            <span>UX Design Brief Template</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://docs.google.com/document/d/1w_feDcgRV6ss5A9w4ZhbQyhqGknRknW84USlTgUptcg/edit?tab=t.0" class="nav-link nav-link--external" target="_blank" rel="noopener noreferrer">
+            <span>Research Plan Template</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="nav-link nav-link--external" target="_blank" rel="noopener noreferrer">
+            <span>Research Readout Template</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://docs.google.com/presentation/d/19ktgizyNruwu2LzcsmSxx9VXYsHOJXQnf7jTDAUgxi4/edit?slide=id.g2ae228b710a_0_0#slide=id.g2ae228b710a_0_0" class="nav-link nav-link--external" target="_blank" rel="noopener noreferrer">
+            <span>Presentation Template</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://www.figma.com/design/NmXwRJ3G5eAJZylt1lLPP7/Monstarlab-%E2%80%93-Brand-Guidelines-2024---Use?node-id=0-1&p=f&t=JM6AuRpWcJQWBQwb-0" class="nav-link nav-link--external" target="_blank" rel="noopener noreferrer">
+            <span>Brand Guidelines</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5.5M10 2V6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- ─── Main ──────────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- HOME ─────────────────────────────────────────────────────── -->
+    <div class="page active" data-page="home">
+      <div class="content">
+        <div class="page-header">
+          <h1 class="page-header__title" style="font-size:64px; line-height:1.05; letter-spacing:-1px;">Monstarlab Design Hub</h1>
+          <p class="page-header__desc" style="font-size:20px; color: var(--grey-400); max-width: 640px; margin-top: 20px;">Build world-class, borderless customer experiences with Monstarlab's design foundations.</p>
+        </div>
+
+        <div class="placeholder-section">
+          <h2>Quick Links</h2>
+          <div class="card-grid">
+            <a href="#" class="card" data-page="working-request">
+              <div class="card__icon">📥</div>
+              <div class="card__title">Submit a Request</div>
+              <div class="card__desc">Kick off a new design project or get support.</div>
+            </a>
+            <a href="#" class="card" data-page="design-system-brand">
+              <div class="card__icon">🎨</div>
+              <div class="card__title">Design System</div>
+              <div class="card__desc">Brand, components, tokens, and guidelines.</div>
+            </a>
+            <a href="#" class="card" data-page="working-handoff">
+              <div class="card__icon">🤝</div>
+              <div class="card__title">Handoff Process</div>
+              <div class="card__desc">How we move from Figma to production.</div>
+            </a>
+            <a href="#" class="card" data-page="templates-briefs">
+              <div class="card__icon">📄</div>
+              <div class="card__title">Templates</div>
+              <div class="card__desc">Ready-to-use briefs, scripts, and reports.</div>
+            </a>
+            <a href="#" class="card" data-page="process-ai">
+              <div class="card__icon">🤖</div>
+              <div class="card__title">AI Guidelines</div>
+              <div class="card__desc">How we use AI tools safely and effectively.</div>
+            </a>
+            <a href="#" class="card" data-page="about-onboarding">
+              <div class="card__icon">🚀</div>
+              <div class="card__title">Onboarding</div>
+              <div class="card__desc">30-60-90 day checklist for new hires.</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="placeholder-section">
+          <h2>Recent Updates</h2>
+          <div class="placeholder-block">
+            <p>Content coming soon — this section will display a changelog of recent Design System updates and team announcements.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT: Philosophy ────────────────────────────────────────── -->
+    <div class="page" data-page="about-philosophy">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          About Us
+          <span class="breadcrumb__sep">›</span>
+          Philosophy &amp; Principles
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">About Us</div>
+          <h1 class="page-header__title">Philosophy &amp; Principles</h1>
+          <p class="page-header__desc">The mission, vision, and core design tenets that guide everything we create.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — mission and vision of the design team, and core design tenets (e.g., "User First," "Accessible by Default").</p></div>
+      </div>
+    </div>
+
+    <!-- ABOUT: Team ─────────────────────────────────────────────── -->
+    <div class="page" data-page="about-team">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          About Us
+          <span class="breadcrumb__sep">›</span>
+          Meet the Team
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">About Us</div>
+          <h1 class="page-header__title">Meet the Team</h1>
+          <p class="page-header__desc">Our team structure, org chart, and designer profiles with areas of ownership.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — team structure, org chart, and profiles for leads and designers including their primary areas of ownership.</p></div>
+      </div>
+    </div>
+
+    <!-- ABOUT: Onboarding ───────────────────────────────────────── -->
+    <div class="page" data-page="about-onboarding">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          About Us
+          <span class="breadcrumb__sep">›</span>
+          Onboarding
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">About Us</div>
+          <h1 class="page-header__title">Onboarding</h1>
+          <p class="page-header__desc">Everything a new design hire needs to hit the ground running.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — 30-60-90 day checklist for new design hires, IT setup checklist, and software access guide.</p></div>
+      </div>
+    </div>
+
+    <!-- ABOUT: Career ───────────────────────────────────────────── -->
+    <div class="page" data-page="about-career">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          About Us
+          <span class="breadcrumb__sep">›</span>
+          Career &amp; Growth Matrix
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">About Us</div>
+          <h1 class="page-header__title">Career &amp; Growth Matrix</h1>
+          <p class="page-header__desc">Role definitions, competency maps, and expectations for promotion.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — role definitions (Junior, Mid, Lead, Principal) and competency map with expectations for promotion.</p></div>
+      </div>
+    </div>
+
+    <!-- WORKING: Request ────────────────────────────────────────── -->
+    <div class="page" data-page="working-request">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Working with Us
+          <span class="breadcrumb__sep">›</span>
+          Submit a Design Request
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Working with Us</div>
+          <h1 class="page-header__title">Submit a Design Request</h1>
+          <p class="page-header__desc">How to kick off a design project — forms, intake links, SLAs, and turnaround times.</p>
+        </div>
+        <div class="form-wrap">
+
+          <form id="design-request-form" onsubmit="handleFormSubmit(event)">
+
+            <!-- Section 1: The Essentials -->
+            <div class="form-section">
+              <div class="form-section__header">
+                <div class="form-section__num">1</div>
+                <div>
+                  <div class="form-section__title">The Essentials</div>
+                  <div class="form-section__subtitle">Who is requesting this, and what is it?</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="project-title">Project Title <span>*</span></label>
+                <div class="form-hint">A short, memorable name you'll use to refer to this project.</div>
+                <input class="form-input" type="text" id="project-title" name="project-title" placeholder="e.g. Q3 Campaign Landing Page" required />
+              </div>
+
+              <div class="form-row form-row--2col">
+                <div>
+                  <label class="form-label" for="requester-name">Requester Name <span>*</span></label>
+                  <input class="form-input" type="text" id="requester-name" name="requester-name" placeholder="Full name" required />
+                </div>
+                <div>
+                  <label class="form-label" for="requester-dept">Department <span>*</span></label>
+                  <select class="form-select" id="requester-dept" name="requester-dept" required>
+                    <option value="" disabled selected>Select department</option>
+                    <option>Product</option>
+                    <option>Marketing</option>
+                    <option>Sales</option>
+                    <option>Engineering</option>
+                    <option>HR &amp; Talent</option>
+                    <option>Client Services</option>
+                    <option>Operations</option>
+                    <option>Executive</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="project-type">Project Type <span>*</span></label>
+                <select class="form-select" id="project-type" name="project-type" required>
+                  <option value="" disabled selected>Select project type</option>
+                  <option>New Feature Design (UI/UX)</option>
+                  <option>Marketing / Social Media Assets</option>
+                  <option>Sales Deck / Presentation</option>
+                  <option>Brand / Identity (Logo, Iconography)</option>
+                  <option>Print (Business cards, Swag, Signage)</option>
+                  <option>Maintenance (Fixing an existing design)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Section 2: Strategic Context -->
+            <div class="form-section">
+              <div class="form-section__header">
+                <div class="form-section__num">2</div>
+                <div>
+                  <div class="form-section__title">Strategic Context</div>
+                  <div class="form-section__subtitle">If you can't answer these, the request isn't ready.</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="problem-statement">Problem Statement <span>*</span></label>
+                <div class="form-hint">What problem are we solving with this design? Be specific.</div>
+                <textarea class="form-textarea" id="problem-statement" name="problem-statement" placeholder="e.g. Our onboarding drop-off rate is 42% at step 3. Users are confused by the permission request screen." required></textarea>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="target-audience">Target Audience <span>*</span></label>
+                <div class="form-hint">Who is the end user or viewer of this design?</div>
+                <input class="form-input" type="text" id="target-audience" name="target-audience" placeholder="e.g. Enterprise IT decision-makers, 35–55 years old" required />
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="desired-action">Desired Action <span>*</span></label>
+                <div class="form-hint">What should the user do or feel after seeing this?</div>
+                <input class="form-input" type="text" id="desired-action" name="desired-action" placeholder="e.g. Click 'Start free trial', understand our Q3 goals" required />
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="success-metrics">Success Metrics</label>
+                <div class="form-hint">How will we know this design worked?</div>
+                <input class="form-input" type="text" id="success-metrics" name="success-metrics" placeholder="e.g. Conversion rate increase, NPS improvement, internal engagement" />
+              </div>
+            </div>
+
+            <!-- Section 3: Technical Requirements -->
+            <div class="form-section">
+              <div class="form-section__header">
+                <div class="form-section__num">3</div>
+                <div>
+                  <div class="form-section__title">Technical Requirements</div>
+                  <div class="form-section__subtitle">Specs, assets, and references.</div>
+                </div>
+              </div>
+
+              <div class="form-row form-row--2col">
+                <div>
+                  <label class="form-label" for="dimensions">Dimensions / Specs</label>
+                  <input class="form-input" type="text" id="dimensions" name="dimensions" placeholder="e.g. 1080×1080px, A4, Mobile" />
+                </div>
+                <div>
+                  <label class="form-label" for="platform">Platform / Medium</label>
+                  <input class="form-input" type="text" id="platform" name="platform" placeholder="e.g. Instagram, Confluence, iOS App" />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="copy-assets">Copy &amp; Assets <span>*</span></label>
+                <div class="form-hint">Link to a folder containing final copy, images, and logo variants. Design will not begin until all assets are confirmed final.</div>
+                <input class="form-input" type="url" id="copy-assets" name="copy-assets" placeholder="https://drive.google.com/..." />
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="references">References &amp; Inspiration</label>
+                <div class="form-hint">Links to mood boards, competitor examples, or anything that shows what "good" looks like for this request.</div>
+                <textarea class="form-textarea" id="references" name="references" placeholder="https://..." style="min-height:70px;"></textarea>
+              </div>
+            </div>
+
+            <!-- Section 4: Logistics & Timeline -->
+            <div class="form-section">
+              <div class="form-section__header">
+                <div class="form-section__num">4</div>
+                <div>
+                  <div class="form-section__title">Logistics &amp; Timeline</div>
+                  <div class="form-section__subtitle">Priority, delivery date, and approvers.</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label">Priority Level <span>*</span></label>
+                <div class="form-hint">P1 requires Head of Department or CEO approval before submission.</div>
+                <div class="form-priority-grid">
+                  <div class="p1">
+                    <input class="form-priority-option" type="radio" name="priority" id="p1" value="P1" />
+                    <label class="form-priority-label" for="p1">
+                      <span class="form-priority-label__title">P1 — Critical</span>
+                      <span class="form-priority-label__desc">Business blocker. Requires C-level or Head of Dept approval.</span>
+                    </label>
+                  </div>
+                  <div class="p2">
+                    <input class="form-priority-option" type="radio" name="priority" id="p2" value="P2" />
+                    <label class="form-priority-label" for="p2">
+                      <span class="form-priority-label__title">P2 — High</span>
+                      <span class="form-priority-label__desc">Important for an upcoming launch or deadline. Min 48h.</span>
+                    </label>
+                  </div>
+                  <div class="p3">
+                    <input class="form-priority-option" type="radio" name="priority" id="p3" value="P3" />
+                    <label class="form-priority-label" for="p3">
+                      <span class="form-priority-label__title">P3 — Standard</span>
+                      <span class="form-priority-label__desc">Business as usual. Standard 5 business day turnaround.</span>
+                    </label>
+                  </div>
+                  <div class="p4">
+                    <input class="form-priority-option" type="radio" name="priority" id="p4" value="P4" />
+                    <label class="form-priority-label" for="p4">
+                      <span class="form-priority-label__title">P4 — Low</span>
+                      <span class="form-priority-label__desc">Nice to have. Will be scheduled as capacity allows.</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row form-row--2col">
+                <div>
+                  <label class="form-label" for="delivery-date">Desired Delivery Date <span>*</span></label>
+                  <input class="form-input" type="date" id="delivery-date" name="delivery-date" required />
+                </div>
+                <div>
+                  <label class="form-label" for="approver">Stakeholder / Final Approver <span>*</span></label>
+                  <input class="form-input" type="text" id="approver" name="approver" placeholder="Name of person with final 'Yes'" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <label class="form-label" for="additional-context">Additional Context</label>
+                <div class="form-hint">Anything else the design team should know before starting?</div>
+                <textarea class="form-textarea" id="additional-context" name="additional-context" placeholder="Dependencies, constraints, related Jira tickets, prior work..."></textarea>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="form-submit">
+                Submit Request
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="form-note">Fields marked <span style="color:var(--yellow-500)">*</span> are required. Incomplete submissions will be returned without action.</p>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKING: Handoff ────────────────────────────────────────── -->
+    <div class="page" data-page="working-handoff">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Working with Us
+          <span class="breadcrumb__sep">›</span>
+          The Handoff Process
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Working with Us</div>
+          <h1 class="page-header__title">The Handoff Process</h1>
+          <p class="page-header__desc">Standard operating procedures for moving designs from Figma to production — eliminating ambiguity between design intent and the final built product.</p>
+        </div>
+
+        <!-- 01 | File Nomenclature -->
+        <div class="handoff-section" id="s-nomenclature">
+          <h2>File Nomenclature &amp; Organisation</h2>
+          <p class="section-intro">A clean, predictable file structure is the foundation of an effective handoff. When engineers open a file, they should instantly understand its purpose, state, and contents — without asking anyone.</p>
+
+          <h3>Naming Convention</h3>
+          <div class="code-block">
+            [PROJECT-CODE]_[FEATURE]_[TYPE]_v[VERSION]_[STATUS]
+            <span>e.g. SHR_LoyaltyFlow_UI_v3_HANDOFF.fig &nbsp;·&nbsp; USH_Checkout_UX_v1_REVIEW.fig</span>
+          </div>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Token</th><th>Description</th><th>Example Values</th></tr></thead>
+              <tbody>
+                <tr><td><code>[PROJECT-CODE]</code></td><td>2–4 letter client/project abbreviation</td><td>SHR, USH, MLI</td></tr>
+                <tr><td><code>[FEATURE]</code></td><td>Feature or module name, PascalCase</td><td>LoyaltyFlow, Checkout, Onboarding</td></tr>
+                <tr><td><code>[TYPE]</code></td><td>File type descriptor</td><td>UX, UI, Prototype, Assets</td></tr>
+                <tr><td><code>[VERSION]</code></td><td>Numeric version, zero-padded</td><td>v1, v2, v12</td></tr>
+                <tr><td><code>[STATUS]</code></td><td>Current lifecycle state</td><td>WIP, REVIEW, FINAL, HANDOFF</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Figma File Page Structure</h3>
+          <p class="section-intro">Every production Figma file must follow this four-page structure in exact order.</p>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder__icon">🖼</div>
+            <div class="img-placeholder__label">Figma File Page Structure Diagram</div>
+            <div>Visualisation of the 4-page structure: Cover · Sandbox · Review · Ready for Dev</div>
+          </div>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Page</th><th>Purpose</th><th>Who Can Edit</th></tr></thead>
+              <tbody>
+                <tr><td>00 | Cover 🏠</td><td>File metadata, version log, owner, and quick-navigation map</td><td>Designer</td></tr>
+                <tr><td>01 | Sandbox 🧪</td><td>Exploratory work, rejected concepts, and scratchpad experiments</td><td>Designer only</td></tr>
+                <tr><td>02 | Review 🔍</td><td>Designs under active review — may be incomplete or in flux</td><td>Designer + PM</td></tr>
+                <tr><td>03 | Ready for Dev ✅</td><td>Completed, annotated, DoD-passed screens only</td><td>Read-only for Eng</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Layer &amp; Frame Naming</h3>
+          <p class="section-intro">Auto-generated names like "Frame 47" or "Rectangle 12" are not permitted in the Ready for Dev page.</p>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Element Type</th><th>Convention</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>Screen / Frame</td><td><code>[ScreenName]/[State]</code></td><td>PaymentConfirmation/Success</td></tr>
+                <tr><td>Component</td><td><code>[ComponentName]/[Variant]</code></td><td>Button/Primary-Hover</td></tr>
+                <tr><td>Group</td><td><code>[Purpose]-group</code></td><td>nav-icons-group</td></tr>
+                <tr><td>Text layer</td><td>Describe the content role</td><td>CTA-Label, Error-Message</td></tr>
+                <tr><td>Icon</td><td><code>icon/[name]</code></td><td>icon/chevron-right</td></tr>
+                <tr><td>Image placeholder</td><td><code>img/[description]</code></td><td>img/hero-product</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-box__icon">★</div>
+            <div><strong>Pro Tip:</strong> Use Figma's built-in layer search (Cmd/Ctrl + F) to audit for unnamed frames before moving anything to Ready for Dev. A zero-tolerance policy on "Frame 47" directly affects how engineers read the Inspect panel.</div>
+          </div>
+        </div>
+
+        <!-- 02 | Definition of Done -->
+        <div class="handoff-section" id="s-dod">
+          <h2>Definition of Done (DoD)</h2>
+          <p class="section-intro">A design is not done when it looks finished. It is done when it meets every criterion on this checklist. Nothing moves to the Ready for Dev page without passing this gate.</p>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder__icon">🖼</div>
+            <div class="img-placeholder__label">DoD Checklist — Figma Template</div>
+            <div>Screenshot of the DoD checklist component as it appears pasted on a Figma frame</div>
+          </div>
+
+          <div class="checklist-group">
+            <div class="checklist-group__label">A — Coverage &amp; Completeness</div>
+            <ul class="checklist">
+              <li>All primary user flows are fully designed, end-to-end</li>
+              <li>All interactive states present: Default, Hover, Focus, Active, Disabled, Loading</li>
+              <li>All form states covered: Empty, Filled, Validation Error, Success</li>
+              <li>Empty states designed for all data-dependent views</li>
+              <li>Error states designed with specific, actionable copy</li>
+              <li>Responsive variants present for all defined breakpoints (Mobile, Tablet, Desktop)</li>
+              <li>Edge cases documented: long text strings, missing images, maximum data sets</li>
+            </ul>
+          </div>
+
+          <div class="checklist-group">
+            <div class="checklist-group__label">B — Design System Compliance</div>
+            <ul class="checklist">
+              <li>All components are instances from the approved ML Design System library — no detached overrides</li>
+              <li>All colour values map to defined design tokens (no direct hex values on layers)</li>
+              <li>All typography uses defined text styles</li>
+              <li>All spacing follows the defined grid and spacing scale</li>
+              <li>All icons are from the approved icon library at the correct weight</li>
+            </ul>
+          </div>
+
+          <div class="checklist-group">
+            <div class="checklist-group__label">C — Accessibility</div>
+            <ul class="checklist">
+              <li>Colour contrast meets WCAG AA (4.5:1 for normal text, 3:1 for large text and UI components)</li>
+              <li>All interactive elements have visible focus states designed</li>
+              <li>Touch targets meet minimum size requirements (44×44px minimum)</li>
+              <li>All images have alt text or a note indicating decorative intent</li>
+              <li>Reading order is logical and verified via layer panel top-to-bottom review</li>
+              <li>No information is conveyed by colour alone — icons, labels, or patterns supplement</li>
+            </ul>
+          </div>
+
+          <div class="checklist-group">
+            <div class="checklist-group__label">D — File Hygiene</div>
+            <ul class="checklist">
+              <li>All layers in the ready-for-dev page are named per Section 01 conventions</li>
+              <li>Auto Layout applied to all frames used as developer reference</li>
+              <li>No hidden layers in the ready-for-dev page</li>
+              <li>All exported assets included in the designated Exports frame</li>
+              <li>No broken component links in the file</li>
+            </ul>
+          </div>
+
+          <div class="checklist-group">
+            <div class="checklist-group__label">E — Annotation &amp; Documentation</div>
+            <ul class="checklist">
+              <li>All non-obvious interactions annotated with the Annotation component</li>
+              <li>Transition timings and easing curves specified for animated elements</li>
+              <li>Any bespoke or non-standard CSS properties called out explicitly</li>
+              <li>A flow description note added at the top of each flow group</li>
+            </ul>
+          </div>
+
+          <h3>Handoff Status Labels</h3>
+          <div class="status-row">
+            <span class="status-badge status-badge--blocked">🔴 BLOCKED</span>
+            <span class="status-badge status-badge--review">🟡 IN REVIEW</span>
+            <span class="status-badge status-badge--ready">🟢 READY FOR DEV</span>
+            <span class="status-badge status-badge--indev">🔵 IN DEV</span>
+            <span class="status-badge status-badge--archived">⚫ ARCHIVED</span>
+          </div>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Label</th><th>Meaning</th><th>Next Action</th></tr></thead>
+              <tbody>
+                <tr><td>🔴 BLOCKED</td><td>Waiting on content, assets, or a decision</td><td>Tag blocker in Jira ticket</td></tr>
+                <tr><td>🟡 IN REVIEW</td><td>Design is complete — awaiting stakeholder or PM approval</td><td>PM to approve or comment</td></tr>
+                <tr><td>🟢 READY FOR DEV</td><td>All DoD criteria met — engineers may begin implementation</td><td>Engineer to accept in Jira</td></tr>
+                <tr><td>🔵 IN DEV</td><td>Engineer has accepted and implementation is underway</td><td>Designer to monitor QA</td></tr>
+                <tr><td>⚫ ARCHIVED</td><td>Superseded by a newer version — do not implement</td><td>No action needed</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-box__icon">★</div>
+            <div><strong>Pro Tip:</strong> Run the DoD check as a structured async review with a second designer or the PM — not a solo checklist tick. It takes 15 minutes and consistently catches missing edge cases you've become blind to after hours on the same screens.</div>
+          </div>
+        </div>
+
+        <!-- 03 | Access & Permissions -->
+        <div class="handoff-section" id="s-access">
+          <h2>Access &amp; Permissions</h2>
+          <p class="section-intro">Access to design files must be purposeful and auditable. Every stakeholder should have exactly the access they need — no more.</p>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Role</th><th>Figma Permission</th><th>Scope</th><th>Granted By</th></tr></thead>
+              <tbody>
+                <tr><td>Design Lead</td><td>Owner</td><td>All files in the project</td><td>Design Ops Lead</td></tr>
+                <tr><td>Designer (active)</td><td>Can Edit</td><td>Assigned project files only</td><td>Design Lead</td></tr>
+                <tr><td>Designer (reviewing)</td><td>Can Comment</td><td>Files under active review</td><td>Design Lead</td></tr>
+                <tr><td>PM / Stakeholder</td><td>Can Comment</td><td>Review &amp; Ready for Dev pages</td><td>Design Lead</td></tr>
+                <tr><td>Engineer</td><td>Can View</td><td>Ready for Dev page only</td><td>Design Lead</td></tr>
+                <tr><td>External Partner</td><td>View-only link</td><td>Specific shared frames only</td><td>Design Ops Lead</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="two-col">
+            <div class="info-card">
+              <div class="info-card__label">Source of Truth (SoT) Files</div>
+              <div class="info-card__value">The single approved, versioned file for a project. Only one SoT file exists per project. Always indicated by <strong>HANDOFF</strong> or <strong>FINAL</strong> in the filename status token.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Work In Progress (WIP) Files</div>
+              <div class="info-card__value">Exploratory or in-flight files. Never linked from Jira or shared with clients. Prefixed with WIP in the filename and stored in a separate team project folder.</div>
+            </div>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-box__icon">★</div>
+            <div><strong>External Partner Protocol:</strong> Never grant edit access to external partners. Share only the specific frames needed via a view-only link. Revoke access within 48 hours of the review session ending. Log all external shares in the project's Notion page.</div>
+          </div>
+        </div>
+
+        <!-- 04 | Technical Specs & Annotations -->
+        <div class="handoff-section" id="s-specs">
+          <h2>Technical Specs &amp; Annotations</h2>
+          <p class="section-intro">Specs bridge the gap between design intent and implementation. Every value an engineer needs must be annotated — if it isn't documented, it doesn't exist.</p>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder__icon">🖼</div>
+            <div class="img-placeholder__label">Annotation Example — Spacing &amp; Typography Redlines</div>
+            <div>Screenshot showing a Figma frame with spacing tokens, type styles, and colour tokens annotated</div>
+          </div>
+
+          <h3>Tokens to Annotate</h3>
+          <div class="two-col">
+            <div class="info-card">
+              <div class="info-card__label">Spacing Tokens</div>
+              <div class="info-card__value">Use the ML spacing scale (4, 8, 12, 16, 24, 32, 48, 64px). Never annotate arbitrary pixel values — always map to the nearest token and note if a deviation is intentional.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Typography Tokens</div>
+              <div class="info-card__value">Annotate with the text style name (e.g. <code>body-md-regular</code>), not raw values. If a custom size is required, flag it explicitly with a reason.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Colour Tokens</div>
+              <div class="info-card__value">Always reference token names (e.g. <code>surface/primary</code>, <code>text/secondary</code>), not hex values. Direct hex values in annotations indicate a token gap that must be resolved before handoff.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Redlines</div>
+              <div class="info-card__value">Use the ML Annotation component for redlines. Call out padding, margin, gap, and border-radius values explicitly. Annotate the component's responsive behaviour at each breakpoint.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 | Interactions & Logic -->
+        <div class="handoff-section" id="s-interactions">
+          <h2>Interactions &amp; Logic</h2>
+          <p class="section-intro">Interactions are the hardest part of a design to communicate in a static file. Every non-obvious behaviour must be annotated — assume the engineer has not seen the prototype.</p>
+
+          <h3>Required State Coverage</h3>
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>State Type</th><th>Required States</th></tr></thead>
+              <tbody>
+                <tr><td>Interactive elements</td><td>Default, Hover, Focus, Active, Disabled, Loading</td></tr>
+                <tr><td>Form fields</td><td>Empty, Filled, Focus, Validation Error, Success, Disabled</td></tr>
+                <tr><td>Data-dependent views</td><td>Loading/Skeleton, Zero data / Empty state, Error / Offline, Populated</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="img-placeholder">
+            <div class="img-placeholder__icon">🖼</div>
+            <div class="img-placeholder__label">State Diagram — Hover, Focus &amp; Error Examples</div>
+            <div>Side-by-side comparison of all interactive states for a button and form field component</div>
+          </div>
+
+          <h3>Transition Timing Tokens</h3>
+          <p class="section-intro">All animated transitions must be documented using these standard tokens. Format annotations as: <code>transition: [property] [duration]ms [easing-token]</code></p>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Token</th><th>Duration</th><th>Easing</th><th>Use Case</th></tr></thead>
+              <tbody>
+                <tr><td><code>transition-instant</code></td><td>0ms</td><td>—</td><td>Focus ring appearance, state changes where animation would feel janky</td></tr>
+                <tr><td><code>transition-fast</code></td><td>100ms</td><td>ease-out</td><td>Micro-interactions: hover highlights, button presses, icon state changes</td></tr>
+                <tr><td><code>transition-base</code></td><td>200ms</td><td>ease-in-out</td><td>Standard UI transitions: colour fades, opacity changes, panel reveals</td></tr>
+                <tr><td><code>transition-moderate</code></td><td>300ms</td><td>ease-in-out</td><td>Modal open/close, dropdown appear, tab panel switch</td></tr>
+                <tr><td><code>transition-slow</code></td><td>500ms</td><td>ease-in-out</td><td>Page-level transitions, onboarding flows, complex reveals</td></tr>
+                <tr><td><code>transition-enter</code></td><td>400ms</td><td>cubic-bezier(0.22, 1, 0.36, 1)</td><td>Elements entering the viewport — slight spring feel</td></tr>
+                <tr><td><code>transition-exit</code></td><td>250ms</td><td>ease-in</td><td>Elements leaving the viewport — faster exit maintains perceived snappiness</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="tip-box">
+            <div class="tip-box__icon">★</div>
+            <div><strong>Pro Tip:</strong> When in doubt, be faster. User research consistently shows transitions above 400ms feel sluggish on standard UI elements. Reserve longer durations for motion that communicates meaning — not decoration.</div>
+          </div>
+        </div>
+
+        <!-- 06 | Figma File Hygiene -->
+        <div class="handoff-section" id="s-hygiene">
+          <h2>Figma File Hygiene</h2>
+          <p class="section-intro">The structural quality of a Figma file directly determines how efficiently an engineer can inspect, understand, and implement a design. A clean file is a professional act of respect for the people who build what you design.</p>
+
+          <h3>Auto Layout Rules</h3>
+          <p class="section-intro">Auto Layout is mandatory for all frames intended for developer handoff. It communicates the intended responsive behaviour of a component, not just its static appearance.</p>
+
+          <div class="two-col">
+            <div class="info-card">
+              <div class="info-card__label">Hug Contents</div>
+              <div class="info-card__value">This element should wrap its content — no fixed width/height in the component. Maps to <code>width: fit-content</code>.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Fill Container</div>
+              <div class="info-card__value">This element should be 100% of its parent. Maps to <code>width: 100%</code> or <code>flex: 1</code>.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Fixed</div>
+              <div class="info-card__value">This element has a defined dimension that does not change with content. Maps to an explicit <code>width</code> or <code>height</code> value.</div>
+            </div>
+            <div class="info-card">
+              <div class="info-card__label">Gap Values</div>
+              <div class="info-card__value">Must reference a spacing token. Padding must be set uniformly or with explicit horizontal/vertical overrides — never set by eye.</div>
+            </div>
+          </div>
+
+          <h3>Component &amp; Variant Rules</h3>
+          <ul class="checklist">
+            <li>Use the ML Design System library for all standard UI elements — buttons, inputs, badges, modals, navigation</li>
+            <li>If a required component doesn't exist, raise a DS request in <code>#design-system</code> before designing a local version</li>
+            <li>Never detach a component to make a visual change — use variant overrides or nested component swaps</li>
+            <li>Variant property names: Title Case, no spaces (e.g. Size, State, Type). Values: lowercase with hyphens (e.g. default, hover, error)</li>
+            <li>Use Figma's Component Property panel — not frame name hacks — for variant values</li>
+          </ul>
+
+          <h3>Inspect-Friendly Practices</h3>
+          <ul class="checklist">
+            <li>Turn off "Clip content" on frames that expand with content unless <code>overflow: hidden</code> is intentional</li>
+            <li>Mark all placeholder images as "Fill" with a note specifying the intended aspect ratio and minimum size</li>
+            <li>Remove all unnecessary prototype connections from the ready-for-dev page</li>
+            <li>Add a component description in the Figma component panel for every DS component</li>
+            <li>Zero hidden layers in the ready-for-dev page — hiding is not the same as deleting</li>
+          </ul>
+
+          <div class="tip-box">
+            <div class="tip-box__icon">★</div>
+            <div><strong>Pro Tip:</strong> Once per sprint, run a quick "Engineer's Review" — open the Inspect panel and try to read your own file as if you're the engineer seeing it for the first time. You'll find annotation gaps, missing states, and ambiguous layout relationships that are invisible from the design view.</div>
+          </div>
+        </div>
+
+        <!-- 07 | Communication Norms -->
+        <div class="handoff-section" id="s-comms">
+          <h2>Communication Norms</h2>
+          <p class="section-intro">A technically perfect handoff document is only half the equation. A predictable, low-friction communication protocol ensures questions are answered quickly, decisions are documented, and problems are escalated appropriately.</p>
+
+          <h3>Where Conversations Happen</h3>
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Communication Type</th><th>Primary Channel</th><th>Secondary / Escalation</th></tr></thead>
+              <tbody>
+                <tr><td>Design questions on a specific frame</td><td>Figma comment on the relevant frame</td><td>Tag engineer in Jira if no response in 24h</td></tr>
+                <tr><td>General handoff questions (non-frame-specific)</td><td>Jira ticket comment on the relevant story</td><td><code>#[project-code]-design</code> Slack channel</td></tr>
+                <tr><td>Urgent blockers (blocking a sprint)</td><td><code>#[project-code]-design</code> Slack (tag lead)</td><td>Direct Slack message to Design Lead</td></tr>
+                <tr><td>Scope changes that affect design</td><td>Jira ticket — create a linked task</td><td>Sprint planning meeting agenda item</td></tr>
+                <tr><td>Design System questions / requests</td><td><code>#design-system</code> Slack channel</td><td>Design System weekly sync</td></tr>
+                <tr><td>Client-facing design review feedback</td><td>Figma comment (shared link view)</td><td>PM consolidates into Jira ticket</td></tr>
+                <tr><td>Design Debt</td><td>Jira ticket tagged <code>design-debt</code></td><td>Design Debt triage — bi-weekly</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Figma Comment Protocol</h3>
+          <p class="section-intro">Start every comment with one of these tags, then @mention the relevant person and include enough context that someone reading it three months later will understand it.</p>
+          <div class="status-row">
+            <span class="status-badge status-badge--review">[QUESTION]</span>
+            <span class="status-badge status-badge--ready">[DECISION]</span>
+            <span class="status-badge status-badge--indev">[NOTE]</span>
+            <span class="status-badge status-badge--blocked">[BUG]</span>
+            <span class="status-badge status-badge--archived">[BLOCKED]</span>
+          </div>
+          <ul class="checklist">
+            <li>Resolve comments only when the issue is fully addressed — not when you've replied</li>
+            <li>All comments on a ready-for-dev frame must be resolved before engineers begin implementation</li>
+            <li>Do not use Figma comments for social conversation — use Slack for that</li>
+            <li>Comment threads older than two weeks with no resolution must be escalated to the PM</li>
+          </ul>
+
+          <h3>Handling Design Debt</h3>
+          <p class="section-intro">Design debt is any design decision that is knowingly incomplete, inconsistent, or non-ideal — shipped because of time, scope, or technical constraints. It must be acknowledged, documented, and scheduled — not ignored.</p>
+
+          <div class="handoff-table-wrap">
+            <table class="handoff-table">
+              <thead><tr><th>Priority</th><th>Definition</th><th>Target Resolution</th></tr></thead>
+              <tbody>
+                <tr><td><span class="status-badge status-badge--blocked" style="font-size:11px;padding:3px 8px;">P1 — Critical</span></td><td>Accessibility failure or user-facing error state with no resolution path</td><td>Within current sprint</td></tr>
+                <tr><td><span class="status-badge status-badge--review" style="font-size:11px;padding:3px 8px;">P2 — High</span></td><td>Missing key user flow state or significant inconsistency visible to end users</td><td>Within next two sprints</td></tr>
+                <tr><td><span class="status-badge status-badge--archived" style="font-size:11px;padding:3px 8px;">P3 — Low</span></td><td>Cosmetic inconsistency, token deviation, or incomplete annotation</td><td>Quarterly DS review</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="section-intro" style="margin-bottom:0;">Debt protocol: <strong style="color:var(--foreground)">Identify</strong> → log a Jira ticket with the <code>design-debt</code> label → <strong style="color:var(--foreground)">Annotate</strong> the Figma frame with a link to the ticket → <strong style="color:var(--foreground)">Triage</strong> bi-weekly with the Design Lead and PM → <strong style="color:var(--foreground)">Resolve</strong> and update the Cover page version history.</p>
+
+          <div class="tip-box" style="margin-top:16px;">
+            <div class="tip-box__icon">★</div>
+            <div><strong>Pro Tip:</strong> Never let debt accumulate beyond 15 open tickets without a triage session. When design debt exceeds this threshold, it becomes invisible to the team — no one knows which debt is blocking, which is cosmetic, and which has already been informally resolved. Visibility is discipline.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- WORKING: Comms ──────────────────────────────────────────── -->
+    <div class="page" data-page="working-comms">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Working with Us
+          <span class="breadcrumb__sep">›</span>
+          Communication &amp; Slack
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Working with Us</div>
+          <h1 class="page-header__title">Communication &amp; Slack</h1>
+          <p class="page-header__desc">Channels, response times, and meeting rituals.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — directory of Slack channels (#design-system-help, #design-critique), expected response times, and meeting rituals (standups, retros).</p></div>
+      </div>
+    </div>
+
+    <!-- DESIGN: Brand ───────────────────────────────────────────── -->
+    <div class="page" data-page="design-system-brand">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Design System
+          <span class="breadcrumb__sep">›</span>
+          Brand &amp; Assets
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Brand &amp; Assets</h1>
+          <p class="page-header__desc">Downloadable logos, typography files, brand color palettes, and presentation templates.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — downloadable logos, typography files, brand color palettes, and presentation templates (Google Slides/Keynote).</p></div>
+      </div>
+    </div>
+
+    <!-- DESIGN: Components ──────────────────────────────────────── -->
+    <div class="page" data-page="design-system-components">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Design System
+          <span class="breadcrumb__sep">›</span>
+          Components &amp; UI
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Components &amp; UI</h1>
+          <p class="page-header__desc">Core UI elements, usage guidelines, and links to Figma libraries and code repositories.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — core UI elements (Buttons, Inputs, Modals), usage guidelines (when to use X vs. Y), links to Figma libraries and active code repositories.</p></div>
+      </div>
+    </div>
+
+    <!-- DESIGN: Voice ───────────────────────────────────────────── -->
+    <div class="page" data-page="design-system-voice">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Design System
+          <span class="breadcrumb__sep">›</span>
+          Voice, Tone &amp; UX Writing
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Voice, Tone &amp; UX Writing</h1>
+          <p class="page-header__desc">Product personality, grammar rules, capitalization standards, and standard error messages.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — product personality guidelines, grammar and capitalization rules, and standard error messages.</p></div>
+      </div>
+    </div>
+
+    <!-- DESIGN: Accessibility ───────────────────────────────────── -->
+    <div class="page" data-page="design-system-a11y">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Design System
+          <span class="breadcrumb__sep">›</span>
+          Accessibility
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Accessibility (a11y)</h1>
+          <p class="page-header__desc">WCAG compliance standards, color contrast rules, and screen reader best practices.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — WCAG compliance standards, color contrast rules, and screen reader best practices.</p></div>
+      </div>
+    </div>
+
+    <!-- DESIGN: Governance ──────────────────────────────────────── -->
+    <div class="page" data-page="design-system-governance">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Design System
+          <span class="breadcrumb__sep">›</span>
+          Governance &amp; Contribution
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Governance &amp; Contribution</h1>
+          <p class="page-header__desc">How to propose new components and report bugs in the design system.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — how to propose a new component and how to report a bug in the design system.</p></div>
+      </div>
+    </div>
+
+    <!-- PROCESS: Research ───────────────────────────────────────── -->
+    <div class="page" data-page="process-research">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Process &amp; Playbook
+          <span class="breadcrumb__sep">›</span>
+          Research &amp; Discovery
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Process &amp; Playbook</div>
+          <h1 class="page-header__title">Research &amp; Discovery</h1>
+          <p class="page-header__desc">Guidelines for generative and evaluative research, user recruitment, and usability testing.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — guidelines for generative and evaluative research, how to recruit users, and how to run usability tests.</p></div>
+      </div>
+    </div>
+
+    <!-- PROCESS: Metrics ────────────────────────────────────────── -->
+    <div class="page" data-page="process-metrics">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Process &amp; Playbook
+          <span class="breadcrumb__sep">›</span>
+          Metrics &amp; Quality Assurance
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Process &amp; Playbook</div>
+          <h1 class="page-header__title">Metrics &amp; Quality Assurance</h1>
+          <p class="page-header__desc">Design review checklists and how we measure success.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — design review checklists (pre-launch QA), and how we measure success (NPS, Task Completion, OKRs).</p></div>
+      </div>
+    </div>
+
+    <!-- PROCESS: AI ─────────────────────────────────────────────── -->
+    <div class="page" data-page="process-ai">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Process &amp; Playbook
+          <span class="breadcrumb__sep">›</span>
+          AI Usage Guidelines
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Process &amp; Playbook</div>
+          <h1 class="page-header__title">AI Usage Guidelines</h1>
+          <p class="page-header__desc">Secure and effective use of AI tools, and prompting best practices for design and coding.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — secure and effective use of Claude, Gemini, and Copilot, and prompting best practices for design generation and coding (Vercel/GitHub).</p></div>
+      </div>
+    </div>
+
+    <!-- PROCESS: Tools ──────────────────────────────────────────── -->
+    <div class="page" data-page="process-tools">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Process &amp; Playbook
+          <span class="breadcrumb__sep">›</span>
+          Our Tool Stack
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Process &amp; Playbook</div>
+          <h1 class="page-header__title">Our Tool Stack</h1>
+          <p class="page-header__desc">Links and tutorials for every tool the design team uses.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — links and tutorials for Figma, Jira, Google Workspace, and more.</p></div>
+      </div>
+    </div>
+
+    <!-- TEMPLATES: UX Brief ─────────────────────────────────────── -->
+    <div class="page" data-page="templates-ux-brief">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Templates &amp; Resources
+          <span class="breadcrumb__sep">›</span>
+          UX Design Brief Template
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Templates &amp; Resources</div>
+          <h1 class="page-header__title">UX Design Brief Template</h1>
+          <p class="page-header__desc">A standardized brief template for kicking off new UX design projects and features.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — UX design brief template for kicking off new features and projects.</p></div>
+      </div>
+    </div>
+
+    <!-- TEMPLATES: Research Plan ────────────────────────────────── -->
+    <div class="page" data-page="templates-research-plan">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Templates &amp; Resources
+          <span class="breadcrumb__sep">›</span>
+          Research Plan Template
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Templates &amp; Resources</div>
+          <h1 class="page-header__title">Research Plan Template</h1>
+          <p class="page-header__desc">A structured template for planning generative and evaluative research studies.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — research plan template including objectives, methodology, participants, and timeline.</p></div>
+      </div>
+    </div>
+
+    <!-- TEMPLATES: Research Readout ─────────────────────────────── -->
+    <div class="page" data-page="templates-readout">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Templates &amp; Resources
+          <span class="breadcrumb__sep">›</span>
+          Research Readout Template
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Templates &amp; Resources</div>
+          <h1 class="page-header__title">Research Readout Template</h1>
+          <p class="page-header__desc">A ready-to-use template for presenting research findings, insights, and recommendations.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — research readout template for synthesizing and communicating study findings to stakeholders.</p></div>
+      </div>
+    </div>
+
+    <!-- TEMPLATES: Presentation ─────────────────────────────────── -->
+    <div class="page" data-page="templates-presentation">
+      <div class="content">
+        <div class="breadcrumb">
+          <a href="#" data-page="home">Monstarlab Design Hub</a>
+          <span class="breadcrumb__sep">›</span>
+          Templates &amp; Resources
+          <span class="breadcrumb__sep">›</span>
+          Presentation Template
+        </div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Templates &amp; Resources</div>
+          <h1 class="page-header__title">Presentation Template</h1>
+          <p class="page-header__desc">Branded Monstarlab presentation templates for client and internal deliverables.</p>
+        </div>
+        <div class="placeholder-block"><p>Content coming soon — branded presentation templates for client-facing and internal design deliverables.</p></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  /* ─── Navigation ───────────────────────────────────────────────── */
+  function navigate(pageId) {
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Show target
+    const target = document.querySelector(`.page[data-page="${pageId}"]`);
+    if (target) target.classList.add('active');
+
+    // Update sidebar active link
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active');
+      // Auto-open parent group
+      const group = activeLink.closest('.nav-group');
+      if (group && !group.classList.contains('open')) {
+        group.classList.add('open');
+      }
+    }
+
+    // Show/hide handoff section submenu
+    const handoffSubnav = document.getElementById('handoff-subnav');
+    if (handoffSubnav) handoffSubnav.classList.toggle('visible', pageId === 'working-handoff');
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    // Close sidebar on mobile
+    if (window.innerWidth <= 768) closeSidebar();
+  }
+
+  // Delegate all [data-page] clicks
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-page]');
+    if (!el) return;
+    e.preventDefault();
+    navigate(el.dataset.page);
+  });
+
+  /* ─── Sidebar accordion ─────────────────────────────────────────── */
+  document.querySelectorAll('.nav-group__header').forEach(header => {
+    header.addEventListener('click', () => {
+      header.closest('.nav-group').classList.toggle('open');
+    });
+  });
+
+  /* ─── Mobile sidebar ────────────────────────────────────────────── */
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const hamburger = document.getElementById('hamburger');
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('open');
+  });
+
+  overlay.addEventListener('click', closeSidebar);
+
+  /* ─── Design Request Form ───────────────────────────────────────── */
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Request Submitted';
+    btn.style.background = 'var(--surface-2)';
+    btn.style.color = 'var(--grey-500)';
+    btn.disabled = true;
+    e.target.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(el => el.disabled = true);
+  }
+
+  /* ─── Handoff section scroll spy ───────────────────────────────── */
+  (function() {
+    const sections = document.querySelectorAll('.handoff-section[id]');
+    const subLinks = document.querySelectorAll('#handoff-subnav .nav-sublink');
+    if (!sections.length || !subLinks.length) return;
+
+    function setActive(id) {
+      subLinks.forEach(link => {
+        link.classList.toggle('toc-active', link.getAttribute('href') === '#' + id);
+      });
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+    sections.forEach(s => observer.observe(s));
+  })();
+
+  /* ─── Sidebar search filter ─────────────────────────────────────── */
+  document.getElementById('sidebarSearch').addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const text = link.textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      link.style.display = match ? '' : 'none';
+    });
+    // Open all groups when searching, close when cleared
+    document.querySelectorAll('.nav-group').forEach(g => {
+      if (q) g.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
