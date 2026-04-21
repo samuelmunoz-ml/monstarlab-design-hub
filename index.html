@@ -942,13 +942,49 @@
       color: var(--yellow-500);
     }
 
-    /* Checklist */
-    .checklist { list-style: none; padding: 0; margin: 0 0 16px; }
+    /* Checklist carousel */
+    .checklist-carousel {
+      position: relative;
+      margin-bottom: 36px;
+    }
+    .checklist-carousel__track-wrap {
+      overflow: hidden;
+      border-radius: var(--radius-m);
+    }
+    .checklist-carousel__track {
+      display: flex;
+      transition: transform 320ms cubic-bezier(0.4,0,0.2,1);
+    }
+    .checklist-card {
+      flex: 0 0 100%;
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 28px 32px 24px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    .checklist-card__label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--yellow-500);
+      margin-bottom: 20px;
+    }
+    .checklist-card__title {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--foreground);
+      margin-bottom: 20px;
+    }
+    .checklist { list-style: none; padding: 0; margin: 0; flex: 1; }
     .checklist li {
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      padding: 8px 0;
+      gap: 12px;
+      padding: 10px 0;
       border-bottom: 1px solid var(--border);
       font-size: 14px;
       color: var(--foreground);
@@ -958,22 +994,57 @@
     .checklist li::before {
       content: '';
       flex-shrink: 0;
-      width: 16px;
-      height: 16px;
-      margin-top: 2px;
-      border: 1.5px solid var(--border);
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      border: 1.5px solid var(--blue-600);
       border-radius: 4px;
       background: var(--surface-2);
     }
-    .checklist-group { margin-bottom: 24px; }
-    .checklist-group__label {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--grey-500);
-      margin-bottom: 8px;
+
+    /* Carousel nav */
+    .checklist-carousel__nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 16px;
     }
+    .checklist-carousel__dots {
+      display: flex;
+      gap: 8px;
+    }
+    .checklist-carousel__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 200ms, width 200ms;
+    }
+    .checklist-carousel__dot.active {
+      background: var(--yellow-500);
+      width: 24px;
+      border-color: var(--yellow-500);
+    }
+    .checklist-carousel__btns { display: flex; gap: 8px; }
+    .checklist-carousel__btn {
+      width: 36px; height: 36px;
+      border-radius: var(--radius-s);
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      color: var(--foreground);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .checklist-carousel__btn:hover { background: var(--surface-2); border-color: var(--grey-600); }
+    .checklist-carousel__btn:disabled { opacity: 0.35; cursor: default; }
+    .checklist-carousel__counter {
+      font-size: 13px; color: var(--muted-foreground);
+    }
+
+    .checklist-group { display: none; } /* legacy, hidden */
 
     /* Status badges */
     .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
@@ -1762,61 +1833,93 @@
             <div>Screenshot of the DoD checklist component as it appears pasted on a Figma frame</div>
           </div>
 
-          <div class="checklist-group">
-            <div class="checklist-group__label">A — Coverage &amp; Completeness</div>
-            <ul class="checklist">
-              <li>All primary user flows are fully designed, end-to-end</li>
-              <li>All interactive states present: Default, Hover, Focus, Active, Disabled, Loading</li>
-              <li>All form states covered: Empty, Filled, Validation Error, Success</li>
-              <li>Empty states designed for all data-dependent views</li>
-              <li>Error states designed with specific, actionable copy</li>
-              <li>Responsive variants present for all defined breakpoints (Mobile, Tablet, Desktop)</li>
-              <li>Edge cases documented: long text strings, missing images, maximum data sets</li>
-            </ul>
-          </div>
+          <div class="checklist-carousel" id="dod-carousel">
+            <div class="checklist-carousel__track-wrap">
+              <div class="checklist-carousel__track">
 
-          <div class="checklist-group">
-            <div class="checklist-group__label">B — Design System Compliance</div>
-            <ul class="checklist">
-              <li>All components are instances from the approved ML Design System library — no detached overrides</li>
-              <li>All colour values map to defined design tokens (no direct hex values on layers)</li>
-              <li>All typography uses defined text styles</li>
-              <li>All spacing follows the defined grid and spacing scale</li>
-              <li>All icons are from the approved icon library at the correct weight</li>
-            </ul>
-          </div>
+                <!-- A -->
+                <div class="checklist-card">
+                  <div class="checklist-card__label">A — 7 items</div>
+                  <div class="checklist-card__title">Coverage &amp; Completeness</div>
+                  <ul class="checklist">
+                    <li>All primary user flows are fully designed, end-to-end</li>
+                    <li>All interactive states present: Default, Hover, Focus, Active, Disabled, Loading</li>
+                    <li>All form states covered: Empty, Filled, Validation Error, Success</li>
+                    <li>Empty states designed for all data-dependent views</li>
+                    <li>Error states designed with specific, actionable copy</li>
+                    <li>Responsive variants present for all defined breakpoints (Mobile, Tablet, Desktop)</li>
+                    <li>Edge cases documented: long text strings, missing images, maximum data sets</li>
+                  </ul>
+                </div>
 
-          <div class="checklist-group">
-            <div class="checklist-group__label">C — Accessibility</div>
-            <ul class="checklist">
-              <li>Colour contrast meets WCAG AA (4.5:1 for normal text, 3:1 for large text and UI components)</li>
-              <li>All interactive elements have visible focus states designed</li>
-              <li>Touch targets meet minimum size requirements (44×44px minimum)</li>
-              <li>All images have alt text or a note indicating decorative intent</li>
-              <li>Reading order is logical and verified via layer panel top-to-bottom review</li>
-              <li>No information is conveyed by colour alone — icons, labels, or patterns supplement</li>
-            </ul>
-          </div>
+                <!-- B -->
+                <div class="checklist-card">
+                  <div class="checklist-card__label">B — 5 items</div>
+                  <div class="checklist-card__title">Design System Compliance</div>
+                  <ul class="checklist">
+                    <li>All components are instances from the approved ML Design System library — no detached overrides</li>
+                    <li>All colour values map to defined design tokens (no direct hex values on layers)</li>
+                    <li>All typography uses defined text styles</li>
+                    <li>All spacing follows the defined grid and spacing scale</li>
+                    <li>All icons are from the approved icon library at the correct weight</li>
+                  </ul>
+                </div>
 
-          <div class="checklist-group">
-            <div class="checklist-group__label">D — File Hygiene</div>
-            <ul class="checklist">
-              <li>All layers in the ready-for-dev page are named per Section 01 conventions</li>
-              <li>Auto Layout applied to all frames used as developer reference</li>
-              <li>No hidden layers in the ready-for-dev page</li>
-              <li>All exported assets included in the designated Exports frame</li>
-              <li>No broken component links in the file</li>
-            </ul>
-          </div>
+                <!-- C -->
+                <div class="checklist-card">
+                  <div class="checklist-card__label">C — 6 items</div>
+                  <div class="checklist-card__title">Accessibility</div>
+                  <ul class="checklist">
+                    <li>Colour contrast meets WCAG AA (4.5:1 for normal text, 3:1 for large text and UI components)</li>
+                    <li>All interactive elements have visible focus states designed</li>
+                    <li>Touch targets meet minimum size requirements (44×44px minimum)</li>
+                    <li>All images have alt text or a note indicating decorative intent</li>
+                    <li>Reading order is logical and verified via layer panel top-to-bottom review</li>
+                    <li>No information is conveyed by colour alone — icons, labels, or patterns supplement</li>
+                  </ul>
+                </div>
 
-          <div class="checklist-group">
-            <div class="checklist-group__label">E — Annotation &amp; Documentation</div>
-            <ul class="checklist">
-              <li>All non-obvious interactions annotated with the Annotation component</li>
-              <li>Transition timings and easing curves specified for animated elements</li>
-              <li>Any bespoke or non-standard CSS properties called out explicitly</li>
-              <li>A flow description note added at the top of each flow group</li>
-            </ul>
+                <!-- D -->
+                <div class="checklist-card">
+                  <div class="checklist-card__label">D — 5 items</div>
+                  <div class="checklist-card__title">File Hygiene</div>
+                  <ul class="checklist">
+                    <li>All layers in the ready-for-dev page are named per Section 01 conventions</li>
+                    <li>Auto Layout applied to all frames used as developer reference</li>
+                    <li>No hidden layers in the ready-for-dev page</li>
+                    <li>All exported assets included in the designated Exports frame</li>
+                    <li>No broken component links in the file</li>
+                  </ul>
+                </div>
+
+                <!-- E -->
+                <div class="checklist-card">
+                  <div class="checklist-card__label">E — 4 items</div>
+                  <div class="checklist-card__title">Annotation &amp; Documentation</div>
+                  <ul class="checklist">
+                    <li>All non-obvious interactions annotated with the Annotation component</li>
+                    <li>Transition timings and easing curves specified for animated elements</li>
+                    <li>Any bespoke or non-standard CSS properties called out explicitly</li>
+                    <li>A flow description note added at the top of each flow group</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+            <div class="checklist-carousel__nav">
+              <div class="checklist-carousel__dots" id="dod-dots"></div>
+              <div style="display:flex;align-items:center;gap:16px;">
+                <span class="checklist-carousel__counter" id="dod-counter">1 / 5</span>
+                <div class="checklist-carousel__btns">
+                  <button type="button" class="checklist-carousel__btn" id="dod-prev" aria-label="Previous">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <button type="button" class="checklist-carousel__btn" id="dod-next" aria-label="Next">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <h3>Handoff Status Labels</h3>
@@ -3358,6 +3461,52 @@
   });
 
   overlay.addEventListener('click', closeSidebar);
+
+  /* ─── DoD Checklist Carousel ───────────────────────────────────── */
+  (function() {
+    const carousel = document.getElementById('dod-carousel');
+    if (!carousel) return;
+    const track = carousel.querySelector('.checklist-carousel__track');
+    const cards = carousel.querySelectorAll('.checklist-card');
+    const dotsEl = document.getElementById('dod-dots');
+    const counter = document.getElementById('dod-counter');
+    const prevBtn = document.getElementById('dod-prev');
+    const nextBtn = document.getElementById('dod-next');
+    const total = cards.length;
+    let current = 0;
+
+    // Build dots
+    cards.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'checklist-carousel__dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(d);
+    });
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(total - 1, idx));
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsEl.querySelectorAll('.checklist-carousel__dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+      counter.textContent = (current + 1) + ' / ' + total;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    // Keyboard arrow support
+    carousel.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    goTo(0);
+  })();
 
   /* ─── Design Request Form ───────────────────────────────────────── */
   function handleFormSubmit(e) {
