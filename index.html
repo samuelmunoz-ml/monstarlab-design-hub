@@ -2620,256 +2620,259 @@
         <div class="page-header">
           <div class="page-header__eyebrow">Design System</div>
           <h1 class="page-header__title">Brand &amp; Assets</h1>
-          <p class="page-header__desc">Downloadable logos, typography files, brand color palettes, and presentation templates.</p>
+          <p class="page-header__desc">Claude.ai design tokens — colors, typography, spacing, and radii sourced directly from the live interface.</p>
         </div>
-        <!-- LOGO ─────────────────────────── -->
+        <div class="ds-callout">
+          <span class="ds-callout-icon">⚡</span>
+          <span>These tokens are extracted directly from <strong>claude.ai's live CSS</strong> (globals.css, v1.0.0). Always reference semantic tokens — never hardcode raw values. All tokens support both light and dark mode.</span>
+        </div>
+
+        <!-- OVERVIEW ───────────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Logo</h2>
-          <p class="ds-section-desc">The Monstarlab wordmark is the cornerstone of our identity. Always use the approved files — never recreate or modify it.</p>
-          <div class="ds-callout">
-            <span class="ds-callout-icon">📎</span>
-            <span>Download the full logo package from the <strong>Brand Guidelines Figma file</strong> or request the asset bundle from the Design team. Files are available in SVG, PNG (2× and 3×), and PDF formats.</span>
-          </div>
-          <div class="ds-token-table" style="margin-bottom:16px;">
-            <table style="width:100%; border-collapse:collapse;">
-              <thead>
-                <tr>
-                  <th class="ds-token-table th" style="background:var(--surface-1);text-align:left;padding:10px 16px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--muted-foreground);border-bottom:1px solid var(--border);">Variant</th>
-                  <th style="background:var(--surface-1);text-align:left;padding:10px 16px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--muted-foreground);border-bottom:1px solid var(--border);">Usage</th>
-                  <th style="background:var(--surface-1);text-align:left;padding:10px 16px;font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:1px;color:var(--muted-foreground);border-bottom:1px solid var(--border);">Minimum Size</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px;">Wordmark — White</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted-foreground);">On dark backgrounds (primary use)</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted-foreground);">120px wide</td></tr>
-                <tr><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px;">Wordmark — Deep Blue</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted-foreground);">On white / light backgrounds</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted-foreground);">120px wide</td></tr>
-                <tr><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:14px;">Brandmark (squares)</td><td style="padding:12px 16px;border-bottom:1px solid var(--border);font-size:13px;color:var(--muted-foreground);">App icons, favicons, social avatars</td><td style="padding:12px 16px;font-size:13px;color:var(--muted-foreground);">32×32px</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ds-info-box">
-            <strong>Clear space rule:</strong> Always maintain a minimum clear space equal to the height of the "M" in the wordmark on all four sides. Never place the logo on a busy or low-contrast background.
+          <h2 class="ds-section-title">Token Architecture</h2>
+          <p class="ds-section-desc">Claude.ai's design system is built on CSS custom properties. Every color, radius, and spacing value maps to a semantic token. The system fully supports light and dark mode out of the box.</p>
+          <div class="ds-two-col">
+            <div class="ds-component-card">
+              <div class="ds-component-card__name" style="margin-bottom:8px;">🎨 Semantic tokens</div>
+              <p class="ds-component-card__desc">All colors are expressed as semantic roles (<code>--background</code>, <code>--foreground</code>, <code>--muted</code>) — not raw values. Components reference roles, so both modes work automatically.</p>
+            </div>
+            <div class="ds-component-card">
+              <div class="ds-component-card__name" style="margin-bottom:8px;">🌗 Dual-mode by default</div>
+              <p class="ds-component-card__desc">Every semantic token has a light value in <code>:root</code> and a dark value in <code>.dark</code>. Toggle the <code>dark</code> class on the root element to switch.</p>
+            </div>
           </div>
         </div>
 
         <hr class="ds-divider">
 
-        <!-- COLOR SYSTEM ────────────────── -->
+        <!-- COLORS ─────────────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Color System</h2>
-          <p class="ds-section-desc">Every color used in Monstarlab products must come from these scales. Reference tokens — never hardcode hex values.</p>
+          <p class="ds-section-desc">All colors come from CSS custom properties. Never hardcode hex values — use the semantic tokens below.</p>
 
-          <div class="ds-color-row">
-            <div class="ds-color-row-label">Deep Blue — Primary Brand</div>
-            <div class="ds-color-strip">
-              <div class="ds-color-step" style="background:#E6E8EB"><span>100</span></div>
-              <div class="ds-color-step" style="background:#B3B9C2"><span>200</span></div>
-              <div class="ds-color-step" style="background:#808A99"><span>300</span></div>
-              <div class="ds-color-step" style="background:#4D5B70"><span>400</span></div>
-              <div class="ds-color-step" style="background:#1A2C47"><span>500</span></div>
-              <div class="ds-color-step" style="background:#0D1E35"><span>600</span></div>
-              <div class="ds-color-step" style="background:#0A1729"><span>700</span></div>
-              <div class="ds-color-step" style="background:#000F1E"><span>800 ★</span></div>
-              <div class="ds-color-step" style="background:#000A14"><span>900</span></div>
-            </div>
-          </div>
-
-          <div class="ds-color-row">
-            <div class="ds-color-row-label">Yellow — Brand Accent</div>
-            <div class="ds-color-strip">
-              <div class="ds-color-step" style="background:#FFFDE6"><span style="color:#000;opacity:.6;">100</span></div>
-              <div class="ds-color-step" style="background:#FFFACC"><span style="color:#000;opacity:.6;">200</span></div>
-              <div class="ds-color-step" style="background:#FFF599"><span style="color:#000;opacity:.6;">300</span></div>
-              <div class="ds-color-step" style="background:#FFEE66"><span style="color:#000;opacity:.6;">400</span></div>
-              <div class="ds-color-step" style="background:#FFFF00"><span style="color:#000;opacity:.7;">500 ★</span></div>
-              <div class="ds-color-step" style="background:#E6E600"><span style="color:#000;opacity:.6;">600</span></div>
-              <div class="ds-color-step" style="background:#B3B300"><span>700</span></div>
-              <div class="ds-color-step" style="background:#808000"><span>800</span></div>
-              <div class="ds-color-step" style="background:#4D4D00"><span>900</span></div>
-            </div>
-          </div>
-
-          <div class="ds-color-row">
-            <div class="ds-color-row-label">Grey — Neutral</div>
-            <div class="ds-color-strip">
-              <div class="ds-color-step" style="background:#F7F7F6"><span style="color:#000;opacity:.5;">100</span></div>
-              <div class="ds-color-step" style="background:#EFF0F0"><span style="color:#000;opacity:.5;">200</span></div>
-              <div class="ds-color-step" style="background:#DAD9D6"><span style="color:#000;opacity:.5;">300</span></div>
-              <div class="ds-color-step" style="background:#CACAC8"><span style="color:#000;opacity:.5;">400</span></div>
-              <div class="ds-color-step" style="background:#B7B8B9"><span>500</span></div>
-              <div class="ds-color-step" style="background:#939598"><span>600</span></div>
-              <div class="ds-color-step" style="background:#6E7073"><span>700</span></div>
-              <div class="ds-color-step" style="background:#464A4D"><span>800</span></div>
-              <div class="ds-color-step" style="background:#2A2D30"><span>900</span></div>
-            </div>
-          </div>
-
-          <div class="ds-color-row">
-            <div class="ds-color-row-label">Blue</div>
-            <div class="ds-color-strip">
-              <div class="ds-color-step" style="background:#E8ECF1"><span style="color:#000;opacity:.5;">100</span></div>
-              <div class="ds-color-step" style="background:#C2CCDA"><span style="color:#000;opacity:.5;">200</span></div>
-              <div class="ds-color-step" style="background:#8A9DB8"><span>300</span></div>
-              <div class="ds-color-step" style="background:#506E95"><span>400</span></div>
-              <div class="ds-color-step" style="background:#304A6F"><span>500</span></div>
-              <div class="ds-color-step" style="background:#234474"><span>600 ★</span></div>
-              <div class="ds-color-step" style="background:#324251"><span>700</span></div>
-              <div class="ds-color-step" style="background:#1A2D45"><span>800</span></div>
-              <div class="ds-color-step" style="background:#0F1C2E"><span>900</span></div>
-            </div>
-          </div>
-
-          <div class="ds-color-row">
-            <div class="ds-color-row-label">Light Blue</div>
-            <div class="ds-color-strip">
-              <div class="ds-color-step" style="background:#E6F4FA"><span style="color:#000;opacity:.5;">100</span></div>
-              <div class="ds-color-step" style="background:#B8E1F2"><span style="color:#000;opacity:.5;">200</span></div>
-              <div class="ds-color-step" style="background:#7CC7C5"><span>300</span></div>
-              <div class="ds-color-step" style="background:#44B6D1"><span>400</span></div>
-              <div class="ds-color-step" style="background:#1FA2D1"><span>500</span></div>
-              <div class="ds-color-step" style="background:#1889B2"><span>600</span></div>
-              <div class="ds-color-step" style="background:#126F92"><span>700</span></div>
-              <div class="ds-color-step" style="background:#0C5673"><span>800</span></div>
-              <div class="ds-color-step" style="background:#073D54"><span>900</span></div>
-            </div>
-          </div>
-
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:28px 0 12px;">Semantic Tokens</h3>
-          <div class="ds-color-semantic">
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 16px;">Light Mode Tokens</h3>
+          <div class="ds-color-semantic" style="margin-bottom:32px;">
             <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#FFFFFF;border-bottom:1px solid var(--border);"></div>
+              <div class="ds-color-token__swatch" style="background:#ffffff;border-bottom:1px solid var(--border);"></div>
               <div class="ds-color-token__info">
                 <div class="ds-color-token__name">--background</div>
-                <div class="ds-color-token__hex">#FFFFFF · Page backgrounds</div>
+                <div class="ds-color-token__hex">#FFFFFF · Page &amp; container bg</div>
               </div>
             </div>
             <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#000F1E;"></div>
+              <div class="ds-color-token__swatch" style="background:#1a1a1a;"></div>
               <div class="ds-color-token__info">
                 <div class="ds-color-token__name">--foreground</div>
-                <div class="ds-color-token__hex">#000F1E · Primary text</div>
+                <div class="ds-color-token__hex">#1A1A1A · Primary text</div>
               </div>
             </div>
             <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#464A4D;"></div>
+              <div class="ds-color-token__swatch" style="background:#030213;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--primary</div>
+                <div class="ds-color-token__hex">#030213 · Brand / CTAs</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#ffffff;border-bottom:1px solid var(--border);"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--primary-foreground</div>
+                <div class="ds-color-token__hex">#FFFFFF · Text on primary</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#eff0f9;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--secondary</div>
+                <div class="ds-color-token__hex">#EFF0F9 · Secondary surfaces</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#ececf0;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--muted</div>
+                <div class="ds-color-token__hex">#ECECF0 · Muted bg</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#717182;"></div>
               <div class="ds-color-token__info">
                 <div class="ds-color-token__name">--muted-foreground</div>
-                <div class="ds-color-token__hex">#464A4D · Secondary text</div>
+                <div class="ds-color-token__hex">#717182 · Secondary text</div>
               </div>
             </div>
             <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#DAD9D6;"></div>
+              <div class="ds-color-token__swatch" style="background:#e9ebef;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--accent</div>
+                <div class="ds-color-token__hex">#E9EBEF · Hover / accent bg</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#f3f3f5;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--input-background</div>
+                <div class="ds-color-token__hex">#F3F3F5 · Input fill</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#e6e6e6;"></div>
               <div class="ds-color-token__info">
                 <div class="ds-color-token__name">--border</div>
-                <div class="ds-color-token__hex">#DAD9D6 · Borders, dividers</div>
+                <div class="ds-color-token__hex">rgba(0,0,0,0.1) · Dividers</div>
               </div>
             </div>
             <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#FFFF00;"></div>
+              <div class="ds-color-token__swatch" style="background:#d4183d;"></div>
               <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--yellow-500</div>
-                <div class="ds-color-token__hex">#FFFF00 · Brand accent</div>
+                <div class="ds-color-token__name">--destructive</div>
+                <div class="ds-color-token__hex">#D4183D · Error / danger</div>
               </div>
             </div>
             <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#000F1E;border:1px solid #1A2C47;"></div>
+              <div class="ds-color-token__swatch" style="background:#cbced4;"></div>
               <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--deep-blue-800</div>
-                <div class="ds-color-token__hex">#000F1E · Buttons, dark bg</div>
+                <div class="ds-color-token__name">--switch-background</div>
+                <div class="ds-color-token__hex">#CBCED4 · Toggle off-state</div>
               </div>
             </div>
           </div>
 
-          <div class="ds-info-box">
-            <strong>Rules:</strong> Never use more than 3 color families per screen. Yellow 500 fails WCAG contrast on white — never use it for text. System status colors (green, red, amber) are reserved for feedback states only.
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 16px;">Dark Mode Tokens</h3>
+          <div class="ds-color-semantic">
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#1a1a1a;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--background</div>
+                <div class="ds-color-token__hex">oklch(0.145 0 0) ≈ #1A1A1A</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#fafafa;border-bottom:1px solid #333;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--foreground</div>
+                <div class="ds-color-token__hex">oklch(0.985 0 0) ≈ #FAFAFA</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#383838;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--secondary / --muted</div>
+                <div class="ds-color-token__hex">oklch(0.269 0 0) ≈ #383838</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#aaaaaa;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--muted-foreground</div>
+                <div class="ds-color-token__hex">oklch(0.708 0 0) ≈ #AAAAAA</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#282828;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--sidebar</div>
+                <div class="ds-color-token__hex">oklch(0.205 0 0) ≈ #282828</div>
+              </div>
+            </div>
+            <div class="ds-color-token">
+              <div class="ds-color-token__swatch" style="background:#8b2020;"></div>
+              <div class="ds-color-token__info">
+                <div class="ds-color-token__name">--destructive</div>
+                <div class="ds-color-token__hex">oklch(0.396 0.141 25.7)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-info-box" style="margin-top:24px;">
+            <strong>Implementation:</strong> Apply <code>dark</code> class to root element. All tokens resolve automatically — no conditional logic needed in components.
+            <br><code style="display:block;margin-top:6px;font-size:12px;">document.documentElement.classList.toggle('dark')</code>
           </div>
         </div>
 
         <hr class="ds-divider">
 
-        <!-- TYPOGRAPHY ──────────────────── -->
+        <!-- TYPOGRAPHY ──────────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Typography</h2>
-          <p class="ds-section-desc">DM Sans is the single typeface for all Monstarlab product UI. Helvetica Neue is reserved for editorial contexts only.</p>
+          <p class="ds-section-desc">Base font size is 16px. Only two weights are used across the entire system. HTML elements are styled automatically — don't override with utility classes unless specifically needed.</p>
 
           <div class="ds-type-specimen">
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H1</div><div class="ds-type-meta-spec">Bold 700 · 48px</div></div>
-              <div class="ds-type-sample" style="font-size:48px;font-weight:700;line-height:1.2;">Page Title</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">H1</div><div class="ds-type-meta-spec">Medium 500 · --text-2xl (24px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:24px;font-weight:500;line-height:1.5;">Page title</div>
             </div>
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H2</div><div class="ds-type-meta-spec">Bold 700 · 36px</div></div>
-              <div class="ds-type-sample" style="font-size:36px;font-weight:700;line-height:1.2;">Section Title</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">H2</div><div class="ds-type-meta-spec">Medium 500 · --text-xl (20px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:20px;font-weight:500;line-height:1.5;">Section heading</div>
             </div>
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H3</div><div class="ds-type-meta-spec">Medium 500 · 28px</div></div>
-              <div class="ds-type-sample" style="font-size:28px;font-weight:500;line-height:1.3;">Subsection Title</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">H3</div><div class="ds-type-meta-spec">Medium 500 · --text-lg (18px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:18px;font-weight:500;line-height:1.5;">Subsection heading</div>
             </div>
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H4</div><div class="ds-type-meta-spec">Medium 500 · 22px</div></div>
-              <div class="ds-type-sample" style="font-size:22px;font-weight:500;line-height:1.3;">Card Title or Group Header</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">H4</div><div class="ds-type-meta-spec">Medium 500 · --text-base (16px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:16px;font-weight:500;line-height:1.5;">Card title or field label</div>
             </div>
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H5</div><div class="ds-type-meta-spec">Medium 500 · 18px</div></div>
-              <div class="ds-type-sample" style="font-size:18px;font-weight:500;line-height:1.4;">Small Section Header</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">Body / p</div><div class="ds-type-meta-spec">Normal 400 · --text-base (16px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Primary reading text for paragraphs and descriptions.</div>
             </div>
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">Body 1</div><div class="ds-type-meta-spec">Regular 400 · 16px</div></div>
-              <div class="ds-type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Primary body text used for main reading content in paragraphs and descriptions.</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">Button / Label</div><div class="ds-type-meta-spec">Medium 500 · --text-base (16px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:16px;font-weight:500;line-height:1.5;">Submit form</div>
             </div>
             <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">Body 2</div><div class="ds-type-meta-spec">Regular 400 · 14px</div></div>
-              <div class="ds-type-sample" style="font-size:14px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Secondary text, descriptions, labels, nav items, and button labels.</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">Body 3</div><div class="ds-type-meta-spec">Regular 400 · 12px</div></div>
-              <div class="ds-type-sample" style="font-size:12px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Captions, helper text, badges, metadata, tags.</div>
+              <div class="ds-type-meta"><div class="ds-type-meta-label">Input</div><div class="ds-type-meta-spec">Normal 400 · --text-base (16px) · lh 1.5</div></div>
+              <div class="ds-type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Enter your email address</div>
             </div>
           </div>
-
           <div class="ds-info-box" style="margin-top:16px;">
-            <strong>Weights:</strong> Bold (700), Medium (500), SemiBold (600 — card titles &amp; avatars only), Regular (400). <strong>Line heights:</strong> Body 1.5–1.6 · Headings 1.2–1.3. <strong>Uppercase labels:</strong> use 2px letter-spacing.
+            <strong>Rule:</strong> Do not override base typography with Tailwind <code>text-*</code> classes unless a specific size is needed for a one-off context. HTML elements receive automatic styling when no <code>text-*</code> class is present on any ancestor.
           </div>
         </div>
 
         <hr class="ds-divider">
 
-        <!-- SPACING & RADII ──────────────── -->
+        <!-- SPACING & RADII ──────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Spacing &amp; Radii</h2>
-          <p class="ds-section-desc">All spacing must come from the 8-step scale. Never use arbitrary values.</p>
+          <p class="ds-section-desc">Spacing follows an 8-step scale. Use the Tailwind spacing utility classes — never arbitrary pixel values.</p>
 
-          <table class="ds-token-table" style="margin-bottom:24px;">
-            <thead><tr>
-              <th>Token</th><th>Value</th><th>Visual</th><th>Common Use</th>
-            </tr></thead>
+          <table class="ds-token-table" style="margin-bottom:32px;">
+            <thead><tr><th>Token / Class</th><th>Value</th><th>Visual</th><th>Typical use</th></tr></thead>
             <tbody>
-              <tr><td><span class="ds-token-name">spacing-1</span></td><td style="color:var(--muted-foreground);font-size:13px;">4px</td><td><span class="ds-spacing-bar" style="width:4px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Icon gaps, micro padding</td></tr>
-              <tr><td><span class="ds-token-name">spacing-2</span></td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-spacing-bar" style="width:6px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badge padding, tight clusters</td></tr>
-              <tr><td><span class="ds-token-name">spacing-3</span></td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-spacing-bar" style="width:8px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Tight sibling gap</td></tr>
-              <tr><td><span class="ds-token-name">spacing-4</span></td><td style="color:var(--muted-foreground);font-size:13px;">12px</td><td><span class="ds-spacing-bar" style="width:12px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Inline group gaps</td></tr>
-              <tr><td><span class="ds-token-name">spacing-5</span></td><td style="color:var(--muted-foreground);font-size:13px;">16px</td><td><span class="ds-spacing-bar" style="width:16px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Default gap, component padding</td></tr>
-              <tr><td><span class="ds-token-name">spacing-6</span></td><td style="color:var(--muted-foreground);font-size:13px;">24px</td><td><span class="ds-spacing-bar" style="width:24px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card padding, comfortable gap</td></tr>
-              <tr><td><span class="ds-token-name">spacing-7</span></td><td style="color:var(--muted-foreground);font-size:13px;">32px</td><td><span class="ds-spacing-bar" style="width:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Section gap</td></tr>
-              <tr><td><span class="ds-token-name">spacing-8</span></td><td style="color:var(--muted-foreground);font-size:13px;">48px</td><td><span class="ds-spacing-bar" style="width:48px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Major section spacing</td></tr>
+              <tr><td><span class="ds-token-name">space-y-1 / p-0.5</span></td><td style="color:var(--muted-foreground);font-size:13px;">2px</td><td><span class="ds-spacing-bar" style="width:2px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Tight icon-label gap</td></tr>
+              <tr><td><span class="ds-token-name">space-y-1 / p-1</span></td><td style="color:var(--muted-foreground);font-size:13px;">4px</td><td><span class="ds-spacing-bar" style="width:4px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badge padding, micro gaps</td></tr>
+              <tr><td><span class="ds-token-name">space-y-1.5 / p-1.5</span></td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-spacing-bar" style="width:6px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Sibling cluster gap</td></tr>
+              <tr><td><span class="ds-token-name">space-y-2 / p-2</span></td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-spacing-bar" style="width:8px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Form field stacking (<code>fields: space-y-2</code>)</td></tr>
+              <tr><td><span class="ds-token-name">space-y-3 / p-3</span></td><td style="color:var(--muted-foreground);font-size:13px;">12px</td><td><span class="ds-spacing-bar" style="width:12px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Compact component padding</td></tr>
+              <tr><td><span class="ds-token-name">space-y-4 / p-4</span></td><td style="color:var(--muted-foreground);font-size:13px;">16px</td><td><span class="ds-spacing-bar" style="width:16px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Default element gap (<code>elements: space-y-4</code>)</td></tr>
+              <tr><td><span class="ds-token-name">space-y-5 / p-5</span></td><td style="color:var(--muted-foreground);font-size:13px;">20px</td><td><span class="ds-spacing-bar" style="width:20px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card content padding</td></tr>
+              <tr><td><span class="ds-token-name">space-y-6 / p-6</span></td><td style="color:var(--muted-foreground);font-size:13px;">24px</td><td><span class="ds-spacing-bar" style="width:24px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card interior, form sections (<code>forms: space-y-6</code>)</td></tr>
             </tbody>
           </table>
 
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:24px 0 12px;">Border Radii</h3>
+          <div class="ds-info-box" style="margin-bottom:24px;">
+            <strong>Section patterns:</strong> <code>sections: space-y-8</code> · <code>forms: space-y-6</code> · <code>fields: space-y-2</code> · <code>elements: space-y-4</code>
+          </div>
+
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 12px;">Border Radii</h3>
           <table class="ds-token-table">
-            <thead><tr>
-              <th>Token</th><th>Value</th><th>Preview</th><th>Use</th>
-            </tr></thead>
+            <thead><tr><th>Token</th><th>CSS value</th><th>px</th><th>Preview</th><th>Use</th></tr></thead>
             <tbody>
-              <tr><td><span class="ds-token-name">--radius-none</span></td><td style="color:var(--muted-foreground);font-size:13px;">0px</td><td><span class="ds-radius-preview" style="border-radius:0;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Tables, full-bleed sections</td></tr>
-              <tr><td><span class="ds-token-name">--radius-s</span></td><td style="color:var(--muted-foreground);font-size:13px;">4px</td><td><span class="ds-radius-preview" style="border-radius:4px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Buttons, inputs, tags, tooltips</td></tr>
-              <tr><td><span class="ds-token-name">--radius-m</span></td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-radius-preview" style="border-radius:8px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Cards, popovers, disclosures</td></tr>
-              <tr><td><span class="ds-token-name">--radius-l</span></td><td style="color:var(--muted-foreground);font-size:13px;">12px</td><td><span class="ds-radius-preview" style="border-radius:12px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Modals, panels, dark nav</td></tr>
-              <tr><td><span class="ds-token-name">--radius-pill</span></td><td style="color:var(--muted-foreground);font-size:13px;">999px</td><td><span class="ds-radius-preview" style="border-radius:999px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badges, avatars, toggles</td></tr>
+              <tr><td><span class="ds-token-name">--radius-sm / rounded-sm</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">calc(0.625rem - 4px)</td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-radius-preview" style="border-radius:6px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badges, tags, small chips</td></tr>
+              <tr><td><span class="ds-token-name">--radius-md / rounded-md</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">calc(0.625rem - 2px)</td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-radius-preview" style="border-radius:8px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Inputs, buttons</td></tr>
+              <tr><td><span class="ds-token-name">--radius / rounded-lg</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">0.625rem</td><td style="color:var(--muted-foreground);font-size:13px;">10px</td><td><span class="ds-radius-preview" style="border-radius:10px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Cards, popovers, modals</td></tr>
+              <tr><td><span class="ds-token-name">--radius-xl / rounded-xl</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">calc(0.625rem + 4px)</td><td style="color:var(--muted-foreground);font-size:13px;">14px</td><td><span class="ds-radius-preview" style="border-radius:14px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Large panels, sheets</td></tr>
             </tbody>
           </table>
         </div>
+
+        <!-- end of brand page body -->
       </div>
     </div>
+
 
     <!-- DESIGN: Components ──────────────────────────────────────── -->
     <div class="page" data-page="design-system-components">
@@ -2884,45 +2887,45 @@
         <div class="page-header">
           <div class="page-header__eyebrow">Design System</div>
           <h1 class="page-header__title">Components &amp; UI</h1>
-          <p class="page-header__desc">Core UI elements, usage guidelines, and links to Figma libraries and code repositories.</p>
+          <p class="page-header__desc">Core UI elements sourced from Claude.ai's component system — usage guidelines, token usage, and composition patterns.</p>
         </div>
         <div class="ds-callout">
-          <span class="ds-callout-icon">📚</span>
-          <span>All components live in the <strong>ML Design System Pencil file</strong> (<code>ML_DS.lib.pen</code>) and the shared Figma library. Every component below has a reference ID you can use when instantiating it in design tools.</span>
+          <span class="ds-callout-icon">📐</span>
+          <span>All components follow the <strong>Claude.ai design token system</strong>. Use CSS custom properties — never hardcode hex values. Icons are always <strong>Lucide React</strong> at <code>h-4 w-4</code> (16px).</span>
         </div>
 
         <!-- BUTTONS ──────────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Buttons</h2>
-          <p class="ds-section-desc">Four variants cover every interaction priority. Each variant has Default, Hover, and Disabled states.</p>
+          <p class="ds-section-desc">Four variants for every interaction level. All buttons use <code>--radius-md</code> (8px), Medium 500 weight, and support sm / default / lg / icon sizes.</p>
           <div class="ds-btn-grid">
             <div style="text-align:center">
-              <div class="ds-btn ds-btn-primary">Primary</div>
-              <div class="ds-btn-label">Deep Blue bg · White text</div>
-            </div>
-            <div style="text-align:center">
-              <div class="ds-btn ds-btn-secondary">Secondary</div>
-              <div class="ds-btn-label">Yellow 500 bg · Deep Blue text</div>
+              <div class="ds-btn ds-btn-primary">Default</div>
+              <div class="ds-btn-label"><code>--primary</code> bg · <code>--primary-foreground</code> text</div>
             </div>
             <div style="text-align:center">
               <div class="ds-btn ds-btn-outline">Outline</div>
-              <div class="ds-btn-label">Transparent bg · Deep Blue border</div>
+              <div class="ds-btn-label">Transparent bg · <code>--border/30</code> · <code>--foreground</code> text</div>
             </div>
             <div style="text-align:center">
               <div class="ds-btn ds-btn-ghost">Ghost</div>
-              <div class="ds-btn-label">Transparent · Grey text</div>
+              <div class="ds-btn-label">Transparent · <code>--accent</code> hover · no border</div>
+            </div>
+            <div style="text-align:center">
+              <div class="ds-btn" style="background:var(--destructive,#d4183d);color:#fff;border-radius:8px;padding:0 16px;height:36px;display:inline-flex;align-items:center;font-size:14px;font-weight:500;">Destructive</div>
+              <div class="ds-btn-label"><code>--destructive</code> bg · white text</div>
             </div>
           </div>
-          <table class="ds-token-table">
-            <thead><tr><th>Variant</th><th>When to use</th><th>Hover</th><th>Height / Padding</th></tr></thead>
+          <table class="ds-token-table" style="margin-top:16px;">
+            <thead><tr><th>Variant</th><th>When to use</th><th>Key tokens</th><th>Size (h × px)</th></tr></thead>
             <tbody>
-              <tr><td><strong>Primary</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Main CTA, form submit</td><td style="font-size:13px;color:var(--muted-foreground);">Deep Blue 600</td><td style="font-size:13px;color:var(--muted-foreground);">44px · 0/24px</td></tr>
-              <tr><td><strong>Secondary</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Brand-accented secondary action</td><td style="font-size:13px;color:var(--muted-foreground);">Yellow 600</td><td style="font-size:13px;color:var(--muted-foreground);">44px · 0/24px</td></tr>
-              <tr><td><strong>Outline</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Tertiary action, "Cancel"</td><td style="font-size:13px;color:var(--muted-foreground);">Grey 100 bg</td><td style="font-size:13px;color:var(--muted-foreground);">44px · 0/24px</td></tr>
-              <tr><td><strong>Ghost</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Inline action, "Skip"</td><td style="font-size:13px;color:var(--muted-foreground);">Grey 100 bg</td><td style="font-size:13px;color:var(--muted-foreground);">44px · 0/24px</td></tr>
+              <tr><td><strong>Default</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Primary CTA, form submit</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--primary / --primary-foreground</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
+              <tr><td><strong>Outline</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Secondary action, Cancel</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">border-border/30 · --foreground</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
+              <tr><td><strong>Ghost</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Tertiary inline action, Skip</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--accent hover · no border</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
+              <tr><td><strong>Destructive</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Irreversible delete actions</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--destructive · white</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
             </tbody>
           </table>
-          <div class="ds-info-box" style="margin-top:16px;">All buttons: radius 4px · DM Sans 14px Medium · Optional leading Lucide icon (18px) · Disabled = 50% opacity</div>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Sizes:</strong> <code>sm</code> = 32px · <code>default</code> = 36px · <code>lg</code> = 40px · <code>icon</code> = 36×36px square. Radius: <code>--radius-md</code> (8px). Disabled = 50% opacity + <code>pointer-events:none</code>.</div>
         </div>
 
         <hr class="ds-divider">
@@ -2930,33 +2933,20 @@
         <!-- INPUTS ───────────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Input Fields</h2>
-          <p class="ds-section-desc">Four input types, each with Default, Error, and Disabled states.</p>
+          <p class="ds-section-desc">All inputs use <code>--input-background</code> fill, <code>border-border/30</code>, <code>--radius-md</code> (8px), and must always appear inside a <code>space-y-2</code> label + input wrapper.</p>
           <div class="ds-component-grid">
             <div class="ds-component-card">
               <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Text Field</span>
+                <span class="ds-component-card__name">Text Input</span>
                 <span class="ds-component-card__badge">3 states</span>
               </div>
-              <p class="ds-component-card__desc">Single-line free text input. Use for names, emails, search queries.</p>
+              <p class="ds-component-card__desc">Single-line input for names, emails, search. Label always above in <code>space-y-2</code>.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">42px</span></li>
-                <li><span class="ds-spec-key">Width</span><span class="ds-spec-val">320px (default)</span></li>
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 14px</span></li>
-                <li><span class="ds-spec-key">Label</span><span class="ds-spec-val">13px Medium</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">4px</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Number Field</span>
-                <span class="ds-component-card__badge">3 states</span>
-              </div>
-              <p class="ds-component-card__desc">Numeric input with increment/decrement controls. Use for quantities, budgets, counts.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">42px</span></li>
-                <li><span class="ds-spec-key">Width</span><span class="ds-spec-val">320px</span></li>
-                <li><span class="ds-spec-key">Controls</span><span class="ds-spec-val">+/- inline</span></li>
-                <li><span class="ds-spec-key">Label</span><span class="ds-spec-val">13px Medium</span></li>
+                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">36px</span></li>
+                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 12px</span></li>
+                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">border-border/30</span></li>
+                <li><span class="ds-spec-key">Bg</span><span class="ds-spec-val">--input-background</span></li>
+                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-md (8px)</span></li>
               </ul>
             </div>
             <div class="ds-component-card">
@@ -2964,75 +2954,93 @@
                 <span class="ds-component-card__name">Text Area</span>
                 <span class="ds-component-card__badge">3 states</span>
               </div>
-              <p class="ds-component-card__desc">Multi-line text. Use for descriptions, comments, free-form notes.</p>
+              <p class="ds-component-card__desc">Multi-line text for descriptions, notes, prompts. Min-height 80px, resize vertical.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">100px</span></li>
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">10px 14px</span></li>
-                <li><span class="ds-spec-key">Helper</span><span class="ds-spec-val">12px Regular Grey 600</span></li>
+                <li><span class="ds-spec-key">Min-height</span><span class="ds-spec-val">80px</span></li>
+                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">8px 12px</span></li>
+                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-md (8px)</span></li>
+                <li><span class="ds-spec-key">Resize</span><span class="ds-spec-val">vertical only</span></li>
+              </ul>
+            </div>
+            <div class="ds-component-card">
+              <div class="ds-component-card__head">
+                <span class="ds-component-card__name">Select / Dropdown</span>
+                <span class="ds-component-card__badge">3 states</span>
+              </div>
+              <p class="ds-component-card__desc">Triggered via trigger + popover pattern. Never a native <code>&lt;select&gt;</code> in product UI.</p>
+              <ul class="ds-component-card__specs">
+                <li><span class="ds-spec-key">Trigger</span><span class="ds-spec-val">Same as text input</span></li>
+                <li><span class="ds-spec-key">Popover</span><span class="ds-spec-val">--card · shadow-md</span></li>
+                <li><span class="ds-spec-key">Item</span><span class="ds-spec-val">--accent hover · 8px px</span></li>
               </ul>
             </div>
             <div class="ds-component-card">
               <div class="ds-component-card__head">
                 <span class="ds-component-card__name">Error State</span>
-                <span class="ds-component-card__badge">All types</span>
+                <span class="ds-component-card__badge">All inputs</span>
               </div>
-              <p class="ds-component-card__desc">Applied to any input type when validation fails.</p>
+              <p class="ds-component-card__desc">Applied when validation fails. Never rely on color alone — include icon + text.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">1px system-red-500</span></li>
-                <li><span class="ds-spec-key">Helper</span><span class="ds-spec-val">12px Regular red</span></li>
-                <li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">circle-x Lucide</span></li>
+                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">--destructive</span></li>
+                <li><span class="ds-spec-key">Message</span><span class="ds-spec-val">14px · --destructive</span></li>
+                <li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">circle-x Lucide 16px</span></li>
               </ul>
             </div>
           </div>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Required pattern:</strong> Always wrap label + input in <code>space-y-2</code>. Group related fields in <code>space-y-6</code>. Focus ring: <code>ring-2 ring-ring ring-offset-2</code>.</div>
         </div>
 
         <hr class="ds-divider">
 
         <!-- CARDS ────────────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Cards</h2>
-          <p class="ds-section-desc">Four card variants for different content contexts. All share the same base layout: header + content + optional actions.</p>
+          <h2 class="ds-section-title">Card</h2>
+          <p class="ds-section-desc">Cards use <code>border-border/30 shadow-sm</code> with <code>--radius</code> (10px). Structure is always CardHeader + CardContent — never collapse into a flat <code>&lt;div&gt;</code>.</p>
           <div class="ds-component-grid">
             <div class="ds-component-card">
               <div class="ds-component-card__head">
                 <span class="ds-component-card__name">Default Card</span>
               </div>
-              <p class="ds-component-card__desc">Standard card with header, content slot, and optional action row. General purpose.</p>
+              <p class="ds-component-card__desc">Standard card: CardHeader with border-b + CardContent. Use for forms, info panels, settings sections.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Width</span><span class="ds-spec-val">400px</span></li>
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">24px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">8px</span></li>
-                <li><span class="ds-spec-key">Title</span><span class="ds-spec-val">18px SemiBold</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Card with Image</span>
-              </div>
-              <p class="ds-component-card__desc">180px image area above the standard card content. Use for media-rich content.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Image</span><span class="ds-spec-val">180px height</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">8px top only</span></li>
+                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius (10px)</span></li>
+                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">border-border/30</span></li>
+                <li><span class="ds-spec-key">Shadow</span><span class="ds-spec-val">shadow-sm</span></li>
+                <li><span class="ds-spec-key">Content</span><span class="ds-spec-val">p-6</span></li>
+                <li><span class="ds-spec-key">Header</span><span class="ds-spec-val">border-b border-border/30</span></li>
               </ul>
             </div>
             <div class="ds-component-card">
               <div class="ds-component-card__head">
                 <span class="ds-component-card__name">Card with Actions</span>
               </div>
-              <p class="ds-component-card__desc">Confirmation-style card with Cancel + Confirm buttons. Use for destructive or consequential actions.</p>
+              <p class="ds-component-card__desc">Adds CardFooter with <code>justify-end gap-2</code>. Use for confirmation flows and form submission.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Actions</span><span class="ds-spec-val">Outline + Primary</span></li>
-                <li><span class="ds-spec-key">Layout</span><span class="ds-spec-val">Right-aligned</span></li>
+                <li><span class="ds-spec-key">Footer</span><span class="ds-spec-val">justify-end · gap-2</span></li>
+                <li><span class="ds-spec-key">Actions</span><span class="ds-spec-val">Ghost + Default</span></li>
+                <li><span class="ds-spec-key">Border-top</span><span class="ds-spec-val">border-border/30</span></li>
               </ul>
             </div>
-            <div class="ds-component-card" style="border-left:3px solid #234474;">
+            <div class="ds-component-card">
               <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Highlighted Card</span>
+                <span class="ds-component-card__name">Flat Card (no header)</span>
               </div>
-              <p class="ds-component-card__desc">4px left accent bar in Blue 600. Use to surface featured, important, or pinned content.</p>
+              <p class="ds-component-card__desc">CardContent-only variant. Use for compact data blocks, metric tiles, or quick summaries.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Accent</span><span class="ds-spec-val">4px Blue 600</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">8px (all corners)</span></li>
+                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">p-6 (24px)</span></li>
+                <li><span class="ds-spec-key">No</span><span class="ds-spec-val">border-b divider</span></li>
+                <li><span class="ds-spec-key">Space</span><span class="ds-spec-val">space-y-4 inside</span></li>
+              </ul>
+            </div>
+            <div class="ds-component-card">
+              <div class="ds-component-card__head">
+                <span class="ds-component-card__name">Interactive Card</span>
+              </div>
+              <p class="ds-component-card__desc">Clickable card. Adds <code>cursor-pointer hover:bg-accent transition-colors</code>. Use for nav cards and selection grids.</p>
+              <ul class="ds-component-card__specs">
+                <li><span class="ds-spec-key">Hover</span><span class="ds-spec-val">--accent background</span></li>
+                <li><span class="ds-spec-key">Cursor</span><span class="ds-spec-val">pointer</span></li>
+                <li><span class="ds-spec-key">Focus</span><span class="ds-spec-val">ring-2 ring-ring</span></li>
               </ul>
             </div>
           </div>
@@ -3042,25 +3050,24 @@
 
         <!-- FEEDBACK ─────────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Feedback Components</h2>
-          <p class="ds-section-desc">Badges, tags, and alerts communicate state. Color is semantic — never use status colors for decoration.</p>
+          <h2 class="ds-section-title">Feedback &amp; Status</h2>
+          <p class="ds-section-desc">Badges, alerts, and state indicators. Color is semantic — never use status colors for decoration.</p>
 
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin-bottom:12px;">Badges</h3>
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin-bottom:12px;">Badge</h3>
           <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
-            <span style="height:28px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:#EFF0F0;color:#000F1E;">Default</span>
-            <span style="height:28px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:#E8F5E9;color:#2E7D32;">Success</span>
-            <span style="height:28px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:#FFF3E0;color:#E65100;">Warning</span>
-            <span style="height:28px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:#FFEBEE;color:#C62828;">Error</span>
-            <span style="height:28px;padding:0 12px;border-radius:999px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:#000F1E;color:#fff;">Brand</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--muted,#ececf0);color:var(--foreground);">Default</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--secondary,#EFF0F9);color:var(--foreground);">Secondary</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;border:1px solid var(--border);color:var(--muted-foreground);">Outline</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--destructive,#d4183d);color:#fff;">Destructive</span>
           </div>
+          <div class="ds-info-box" style="margin-bottom:20px;"><strong>Badge spec:</strong> <code>--radius-sm</code> (6px) · 22px height · 8px px padding · 12px Medium text · 4 semantic variants only.</div>
 
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin-bottom:12px;">Alerts</h3>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
-            <div style="background:#E8F5E9;border:1px solid #C8E6C9;border-radius:4px;padding:12px 16px;font-size:13px;color:#2E7D32;display:flex;gap:10px;align-items:flex-start;">✓&nbsp;&nbsp;<span><strong>Success</strong> — Use to confirm a completed action or successful state.</span></div>
-            <div style="background:#FFF3E0;border:1px solid #FFE0B2;border-radius:4px;padding:12px 16px;font-size:13px;color:#E65100;display:flex;gap:10px;align-items:flex-start;">⚠&nbsp;&nbsp;<span><strong>Warning</strong> — Use for non-blocking concerns that require attention.</span></div>
-            <div style="background:#FFEBEE;border:1px solid #FFCDD2;border-radius:4px;padding:12px 16px;font-size:13px;color:#C62828;display:flex;gap:10px;align-items:flex-start;">✕&nbsp;&nbsp;<span><strong>Error</strong> — Use to surface failures and show how to recover.</span></div>
-            <div style="background:#E3F2FD;border:1px solid #BBDEFB;border-radius:4px;padding:12px 16px;font-size:13px;color:#1565C0;display:flex;gap:10px;align-items:flex-start;">ℹ&nbsp;&nbsp;<span><strong>Info</strong> — Use for neutral, supplementary information.</span></div>
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin-bottom:12px;">Alert</h3>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="background:var(--muted,#ececf0);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--foreground);display:flex;gap:10px;align-items:flex-start;">ℹ&nbsp;<span><strong>Default</strong> — Neutral informational alert. Use <code>--muted</code> background with <code>--border</code>.</span></div>
+            <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;font-size:14px;color:#b91c1c;display:flex;gap:10px;align-items:flex-start;">⚠&nbsp;<span><strong>Destructive</strong> — Error or critical failure. Use <code>--destructive</code> foreground on light destructive background.</span></div>
           </div>
+          <div class="ds-info-box" style="margin-top:12px;">Alerts always include icon + title + optional description. Radius: <code>--radius</code> (10px). Never use alert colors for non-alert purposes.</div>
         </div>
 
         <hr class="ds-divider">
@@ -3068,52 +3075,66 @@
         <!-- FORM CONTROLS ─────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Form Controls</h2>
-          <p class="ds-section-desc">Checkboxes, radio buttons, and toggles. All have checked/unchecked and label variants.</p>
+          <p class="ds-section-desc">Checkboxes, radios, and switches. All states use <code>--primary</code> for active/checked color and follow the <code>space-y-2</code> label pattern.</p>
           <div class="ds-component-grid">
             <div class="ds-component-card">
               <div class="ds-component-card__head"><span class="ds-component-card__name">Checkbox</span><span class="ds-component-card__badge">2 states</span></div>
-              <p class="ds-component-card__desc">Multi-select. Use when users can select 0–n options independently.</p>
+              <p class="ds-component-card__desc">Multi-select. Use when 0–n options can be chosen independently.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Size</span><span class="ds-spec-val">20×20px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">4px</span></li>
-                <li><span class="ds-spec-key">Checked</span><span class="ds-spec-val">Blue 600 bg + check</span></li>
+                <li><span class="ds-spec-key">Size</span><span class="ds-spec-val">16×16px</span></li>
+                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-sm (6px)</span></li>
+                <li><span class="ds-spec-key">Checked</span><span class="ds-spec-val">--primary bg + check</span></li>
+                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">--primary when checked</span></li>
               </ul>
             </div>
             <div class="ds-component-card">
-              <div class="ds-component-card__head"><span class="ds-component-card__name">Radio Button</span><span class="ds-component-card__badge">2 states</span></div>
-              <p class="ds-component-card__desc">Single-select. Use when only one option from a group can be chosen.</p>
+              <div class="ds-component-card__head"><span class="ds-component-card__name">Radio</span><span class="ds-component-card__badge">2 states</span></div>
+              <p class="ds-component-card__desc">Single-select. Use when exactly one option from a group can be chosen.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Size</span><span class="ds-spec-val">20×20px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">999px (pill)</span></li>
-                <li><span class="ds-spec-key">Selected</span><span class="ds-spec-val">Blue 600 dot</span></li>
+                <li><span class="ds-spec-key">Size</span><span class="ds-spec-val">16×16px</span></li>
+                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">full (circle)</span></li>
+                <li><span class="ds-spec-key">Selected</span><span class="ds-spec-val">--primary filled dot</span></li>
               </ul>
             </div>
             <div class="ds-component-card">
-              <div class="ds-component-card__head"><span class="ds-component-card__name">Toggle</span><span class="ds-component-card__badge">On / Off</span></div>
-              <p class="ds-component-card__desc">Boolean on/off. Use for settings that take effect immediately without a save action.</p>
+              <div class="ds-component-card__head"><span class="ds-component-card__name">Switch</span><span class="ds-component-card__badge">On / Off</span></div>
+              <p class="ds-component-card__desc">Boolean toggle. Use for settings that apply immediately — no Save needed.</p>
               <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Track</span><span class="ds-spec-val">44×24px, pill</span></li>
-                <li><span class="ds-spec-key">On bg</span><span class="ds-spec-val">Blue 600</span></li>
-                <li><span class="ds-spec-key">Off bg</span><span class="ds-spec-val">Grey 300</span></li>
+                <li><span class="ds-spec-key">Track</span><span class="ds-spec-val">36×20px · pill</span></li>
+                <li><span class="ds-spec-key">On</span><span class="ds-spec-val">--primary bg</span></li>
+                <li><span class="ds-spec-key">Off</span><span class="ds-spec-val">--switch-background</span></li>
+                <li><span class="ds-spec-key">Thumb</span><span class="ds-spec-val">white · shadow-sm</span></li>
               </ul>
             </div>
           </div>
+          <div class="ds-info-box" style="margin-top:16px;">All form controls: visible label always required (<code>space-y-2</code> wrapper). Focus: <code>ring-2 ring-ring ring-offset-2</code>. Disabled = 50% opacity.</div>
         </div>
 
         <hr class="ds-divider">
 
         <!-- NAVIGATION ───────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Navigation</h2>
-          <p class="ds-section-desc">Two nav themes — Light and Dark. Nav items use Material Symbols Rounded icons (not Lucide). All other components use Lucide.</p>
+          <h2 class="ds-section-title">Navigation &amp; Sidebar</h2>
+          <p class="ds-section-desc">Sidebar uses <code>--sidebar</code> background token. Nav items are 40px tall, <code>--radius</code> (10px), and use Lucide icons at 16px.</p>
           <div class="ds-two-col">
             <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">Light Theme Nav</div>
-              <p class="ds-component-card__desc">Transparent default · Grey 100 hover · Grey 200 selected (Medium weight). 240×40px items, 6px radius.</p>
+              <div class="ds-component-card__name" style="margin-bottom:8px;">Sidebar Nav Item</div>
+              <p class="ds-component-card__desc">Default: transparent · Hover: <code>--accent</code> bg · Active/selected: <code>--accent</code> with medium weight. Icon + label pair always <code>gap-2</code>.</p>
+              <ul class="ds-component-card__specs" style="margin-top:8px;">
+                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">40px</span></li>
+                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 12px</span></li>
+                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius (10px)</span></li>
+                <li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">Lucide 16px</span></li>
+              </ul>
             </div>
-            <div class="ds-component-card" style="background:var(--deep-blue-800);border-color:#1A2C47;">
-              <div class="ds-component-card__name" style="margin-bottom:8px;color:#fff;">Dark Theme Nav</div>
-              <p class="ds-component-card__desc" style="color:#939598;">Deep Blue 800 bg · Deep Blue 600 hover · Blue 600 selected (Medium weight). Container: 12px radius, 24px padding.</p>
+            <div class="ds-component-card" style="background:var(--surface-1,#1e1e1e);border-color:var(--border);">
+              <div class="ds-component-card__name" style="margin-bottom:8px;color:var(--foreground);">Sidebar Container</div>
+              <p class="ds-component-card__desc" style="color:var(--muted-foreground);">Background: <code>--sidebar</code> token (slightly darker than <code>--background</code>). Width: 240px. Contains grouped nav sections with section labels in uppercase 11px.</p>
+              <ul class="ds-component-card__specs" style="margin-top:8px;">
+                <li><span class="ds-spec-key">Bg</span><span class="ds-spec-val">--sidebar token</span></li>
+                <li><span class="ds-spec-key">Width</span><span class="ds-spec-val">240px</span></li>
+                <li><span class="ds-spec-key">Label</span><span class="ds-spec-val">11px · ALL CAPS · --muted-foreground</span></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -3333,7 +3354,7 @@
         </div>
         <div class="ds-callout">
           <span class="ds-callout-icon">♿</span>
-          <span>Monstarlab targets <strong>WCAG 2.1 Level AA</strong> as the minimum standard for all product work. Accessibility is a design requirement, not a post-launch audit.</span>
+          <span>The design system targets <strong>WCAG 2.1 Level AA</strong> as the minimum standard for all product work. Accessibility is a design requirement, not a post-launch audit. All token-pair contrast values are verified against Claude.ai's extracted hex equivalents.</span>
         </div>
 
         <!-- WCAG STANDARD ────────────────── -->
@@ -3388,58 +3409,58 @@
         <!-- COLOR CONTRAST ───────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Color Contrast</h2>
-          <p class="ds-section-desc">WCAG AA requires 4.5:1 for normal text and 3:1 for large text (&gt;18px Bold or &gt;24px Regular) and UI components.</p>
+          <p class="ds-section-desc">WCAG AA requires 4.5:1 for normal text and 3:1 for large text (&gt;18px Bold or &gt;24px Regular) and UI components. All ratios below use Claude.ai token hex equivalents.</p>
           <table class="ds-contrast-table">
             <thead>
-              <tr><th>Foreground</th><th>Background</th><th>Ratio</th><th>Normal text</th><th>Large text / UI</th></tr>
+              <tr><th>Foreground token</th><th>Background token</th><th>Ratio</th><th>Normal text</th><th>Large / UI</th></tr>
             </thead>
             <tbody>
               <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #DAD9D6;color:#000;">A</div> White</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#000F1E;color:#fff;">·</div> Deep Blue 800</div></td>
-                <td style="font-weight:500;">18.1:1</td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">A</div> --foreground (#1A1A1A)</div></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #e6e6e6;color:#000;">·</div> --background (#FFF)</div></td>
+                <td style="font-weight:500;">17.0:1</td>
                 <td><span class="ds-pass-badge">PASS</span></td>
                 <td><span class="ds-pass-badge">PASS</span></td>
               </tr>
               <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#000F1E;color:#fff;">A</div> Deep Blue 800</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #DAD9D6;color:#000;">·</div> White</div></td>
-                <td style="font-weight:500;">18.1:1</td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#717182;color:#fff;">A</div> --muted-foreground (#717182)</div></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #e6e6e6;color:#000;">·</div> --background (#FFF)</div></td>
+                <td style="font-weight:500;">4.6:1</td>
                 <td><span class="ds-pass-badge">PASS</span></td>
                 <td><span class="ds-pass-badge">PASS</span></td>
               </tr>
               <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#464A4D;color:#fff;">A</div> Grey 800</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #DAD9D6;color:#000;">·</div> White</div></td>
-                <td style="font-weight:500;">7.2:1</td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">A</div> --foreground (#1A1A1A)</div></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#ececf0;color:#000;">·</div> --muted (#ECECF0)</div></td>
+                <td style="font-weight:500;">14.5:1</td>
                 <td><span class="ds-pass-badge">PASS</span></td>
                 <td><span class="ds-pass-badge">PASS</span></td>
               </tr>
               <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFF00;color:#000;">A</div> Yellow 500</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #DAD9D6;color:#000;">·</div> White</div></td>
-                <td style="font-weight:500;">1.07:1</td>
-                <td><span class="ds-fail-badge">FAIL</span></td>
-                <td><span class="ds-fail-badge">FAIL</span></td>
-              </tr>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#000F1E;color:#fff;">A</div> Deep Blue 800</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFF00;">·</div> Yellow 500</div></td>
-                <td style="font-weight:500;">16.9:1</td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FAFAFA;color:#000;border:1px solid #ccc;">A</div> --primary-foreground (#FAFAFA)</div></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#030213;color:#fff;">·</div> --primary (#030213)</div></td>
+                <td style="font-weight:500;">19.9:1</td>
                 <td><span class="ds-pass-badge">PASS</span></td>
                 <td><span class="ds-pass-badge">PASS</span></td>
               </tr>
               <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#939598;color:#fff;">A</div> Grey 600</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #DAD9D6;color:#000;">·</div> White</div></td>
-                <td style="font-weight:500;">2.8:1</td>
-                <td><span class="ds-fail-badge">FAIL</span></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FAFAFA;color:#000;border:1px solid #ccc;">A</div> dark --foreground (#FAFAFA)</div></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">·</div> dark --background (#1A1A1A)</div></td>
+                <td style="font-weight:500;">17.0:1</td>
+                <td><span class="ds-pass-badge">PASS</span></td>
+                <td><span class="ds-pass-badge">PASS</span></td>
+              </tr>
+              <tr>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#AAAAAA;color:#000;">A</div> dark --muted-fg (#AAAAAA)</div></td>
+                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">·</div> dark --background (#1A1A1A)</div></td>
+                <td style="font-weight:500;">5.1:1</td>
+                <td><span class="ds-pass-badge">PASS</span></td>
                 <td><span class="ds-pass-badge">PASS</span></td>
               </tr>
             </tbody>
           </table>
           <div class="ds-info-box">
-            <strong>Key rule:</strong> Never use Yellow 500 for text on white or light backgrounds — it fails all contrast ratios. Use it only for large decorative elements, button fills (with Deep Blue text), or dark-background accents.
+            <strong>Key rule:</strong> Never use <code>--muted</code> or <code>--accent</code> as text color directly — they are background-only tokens. Always pair text with <code>--foreground</code> or <code>--muted-foreground</code> against their respective backgrounds.
           </div>
         </div>
 
@@ -3453,7 +3474,7 @@
             <thead><tr><th>Requirement</th><th>Rule</th><th>Applies to</th></tr></thead>
             <tbody>
               <tr><td style="font-weight:500;">Touch target size</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 44×44px</td><td style="font-size:13px;color:var(--muted-foreground);">All buttons, links, form controls</td></tr>
-              <tr><td style="font-weight:500;">Focus indicator</td><td style="font-size:13px;color:var(--muted-foreground);">2px solid Blue 600 outline, 2px offset</td><td style="font-size:13px;color:var(--muted-foreground);">All focusable elements</td></tr>
+              <tr><td style="font-weight:500;">Focus indicator</td><td style="font-size:13px;color:var(--muted-foreground);"><code>ring-2 ring-ring ring-offset-2</code> — 2px outline, 2px offset</td><td style="font-size:13px;color:var(--muted-foreground);">All focusable elements</td></tr>
               <tr><td style="font-weight:500;">Keyboard access</td><td style="font-size:13px;color:var(--muted-foreground);">Tab / Shift+Tab, Enter/Space to activate</td><td style="font-size:13px;color:var(--muted-foreground);">All interactive UI</td></tr>
               <tr><td style="font-weight:500;">Disabled state</td><td style="font-size:13px;color:var(--muted-foreground);">50% opacity + aria-disabled="true"</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, inputs</td></tr>
               <tr><td style="font-weight:500;">Error identification</td><td style="font-size:13px;color:var(--muted-foreground);">Color + icon + text — never color alone</td><td style="font-size:13px;color:var(--muted-foreground);">Form inputs, alerts</td></tr>
@@ -3519,16 +3540,16 @@
         <!-- OWNERSHIP ────────────────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Design System Ownership</h2>
-          <p class="ds-section-desc">The design system is a shared product with clear stewardship. Everyone can contribute — but changes are reviewed before they ship.</p>
+          <p class="ds-section-desc">The design system is a shared product built on Claude.ai's token architecture. Everyone can contribute — but changes are reviewed before they ship.</p>
           <div class="ds-two-col">
             <div class="ds-component-card">
               <div class="ds-component-card__name" style="margin-bottom:8px;">🎯 Core Team</div>
-              <p class="ds-component-card__desc">The DS core team owns the token layer, component library, and release process. They approve all breaking changes and set standards.</p>
+              <p class="ds-component-card__desc">The DS core team owns the token layer (<code>globals.css</code>), component library, and release process. They approve all breaking changes and set standards.</p>
               <p style="font-size:12px;color:var(--muted-foreground);margin-top:8px;">Reach them on <strong>#design-system-help</strong> on Slack.</p>
             </div>
             <div class="ds-component-card">
               <div class="ds-component-card__name" style="margin-bottom:8px;">🤝 Contributors</div>
-              <p class="ds-component-card__desc">All designers and engineers are encouraged to propose new components, flag inconsistencies, and contribute improvements through the process below.</p>
+              <p class="ds-component-card__desc">All designers and engineers are encouraged to propose new components, flag token inconsistencies, and contribute improvements through the process below.</p>
             </div>
           </div>
         </div>
@@ -3544,7 +3565,7 @@
               <div class="ds-step-num">1</div>
               <div class="ds-step-content">
                 <div class="ds-step-title">Search the library first</div>
-                <div class="ds-step-desc">Check the Pencil library (<code>ML_DS.lib.pen</code>) and Figma component panel. Many requirements are already covered by composing existing components. Avoid creating duplicates.</div>
+                <div class="ds-step-desc">Check the Figma component library and the token documentation. Many requirements are already covered by composing existing components with the right token variants. Avoid creating duplicates.</div>
               </div>
             </li>
             <li>
@@ -3572,7 +3593,7 @@
               <div class="ds-step-num">5</div>
               <div class="ds-step-content">
                 <div class="ds-step-title">Build, document, and publish</div>
-                <div class="ds-step-desc">The DS team adds the component to the Pencil library and Figma library, writes usage guidelines, and includes it in the next release. You'll be credited as the contributor.</div>
+                <div class="ds-step-desc">The DS team adds the component to the Figma library, documents its token usage and states, and includes it in the next release. You'll be credited as the contributor.</div>
               </div>
             </li>
           </ul>
@@ -3637,18 +3658,19 @@
         <!-- NAMING CONVENTIONS ───────────── -->
         <div class="ds-section">
           <h2 class="ds-section-title">Naming Conventions</h2>
-          <p class="ds-section-desc">Consistent naming keeps the library searchable and the codebase clean.</p>
+          <p class="ds-section-desc">Consistent naming keeps the token system searchable and the codebase clean. All tokens follow the Claude.ai semantic naming pattern.</p>
           <table class="ds-token-table">
             <thead><tr><th>Type</th><th>Convention</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td style="font-weight:500;">Color tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--{scale}-{step}</td><td style="font-size:13px;font-family:monospace;color:var(--yellow-500);">--deep-blue-800</td></tr>
-              <tr><td style="font-weight:500;">Semantic tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--{role}</td><td style="font-size:13px;font-family:monospace;color:var(--yellow-500);">--foreground, --border</td></tr>
-              <tr><td style="font-weight:500;">Spacing tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--spacing-{n}</td><td style="font-size:13px;font-family:monospace;color:var(--yellow-500);">--spacing-5 (16px)</td></tr>
-              <tr><td style="font-weight:500;">Radius tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--radius-{size}</td><td style="font-size:13px;font-family:monospace;color:var(--yellow-500);">--radius-m (8px)</td></tr>
-              <tr><td style="font-weight:500;">Component variants</td><td style="font-size:13px;color:var(--muted-foreground);">Noun + qualifier</td><td style="font-size:13px;color:var(--muted-foreground);">Button/Primary, Card/Highlighted</td></tr>
-              <tr><td style="font-weight:500;">Component states</td><td style="font-size:13px;color:var(--muted-foreground);">Variant + state suffix</td><td style="font-size:13px;color:var(--muted-foreground);">Button/Primary/Hover</td></tr>
+              <tr><td style="font-weight:500;">Semantic color tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--{role}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--foreground, --primary, --muted-foreground</td></tr>
+              <tr><td style="font-weight:500;">Foreground pairs</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--{role}-foreground</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--primary-foreground, --secondary-foreground</td></tr>
+              <tr><td style="font-weight:500;">Radius tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--radius[-{size}]</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--radius (10px), --radius-sm (6px), --radius-md (8px), --radius-xl (14px)</td></tr>
+              <tr><td style="font-weight:500;">Spacing (Tailwind)</td><td style="font-size:13px;color:var(--muted-foreground);">Tailwind scale, no custom vars</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">p-6 (24px), space-y-4 (16px), gap-2 (8px)</td></tr>
+              <tr><td style="font-weight:500;">Component variants</td><td style="font-size:13px;color:var(--muted-foreground);">lowercase kebab</td><td style="font-size:12px;color:var(--muted-foreground);">default, outline, ghost, destructive</td></tr>
+              <tr><td style="font-weight:500;">Component sizes</td><td style="font-size:13px;color:var(--muted-foreground);">sm / default / lg / icon</td><td style="font-size:12px;color:var(--muted-foreground);">Button size="sm", Badge size="default"</td></tr>
             </tbody>
           </table>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Source of truth:</strong> All token definitions live in <code>globals.css</code> — the light-mode values under <code>:root</code> and dark-mode values under <code>.dark</code>. Never add raw hex values to components.</div>
         </div>
       </div>
     </div>
