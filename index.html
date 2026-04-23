@@ -1241,6 +1241,8 @@
     }
     .nav-sublink:hover { color: var(--foreground); background: var(--surface-hover); }
     .nav-sublink.toc-active { color: var(--yellow-500); font-weight: 500; }
+    .nav-sublink.active { color: var(--white); font-weight: 500; background: rgba(255,255,255,0.08); }
+    .nav-link.active-parent { color: var(--white); font-weight: 500; background: var(--surface-2); border-left-color: var(--yellow-500); }
     .info-card {
       background: var(--surface-1);
       border: 1px solid var(--border);
@@ -1446,11 +1448,25 @@
           </svg>
         </div>
         <div class="nav-group__items">
-          <a href="#" class="nav-link" data-page="design-system-brand">Brand &amp; Assets</a>
-          <a href="#" class="nav-link" data-page="design-system-components">Components &amp; UI</a>
-          <a href="#" class="nav-link" data-page="design-system-voice">Voice, Tone &amp; UX Writing</a>
-          <a href="#" class="nav-link" data-page="design-system-a11y">Accessibility (a11y)</a>
-          <a href="#" class="nav-link" data-page="design-system-governance">Governance &amp; Contribution</a>
+          <a href="#" class="nav-link" data-page="ds-foundations-colors" id="nav-foundations">Foundations</a>
+          <div class="nav-sublinks" id="ds-foundations-subnav">
+            <a class="nav-sublink" href="#" data-page="ds-foundations-colors">Colors</a>
+            <a class="nav-sublink" href="#" data-page="ds-foundations-typography">Typography</a>
+            <a class="nav-sublink" href="#" data-page="ds-foundations-spacing">Spacing &amp; Layout</a>
+            <a class="nav-sublink" href="#" data-page="ds-foundations-content">Content</a>
+            <a class="nav-sublink" href="#" data-page="ds-foundations-dataviz">Data Visualization</a>
+          </div>
+          <a href="#" class="nav-link" data-page="ds-tokens">Tokens</a>
+          <a href="#" class="nav-link" data-page="ds-components-button" id="nav-components">Components</a>
+          <div class="nav-sublinks" id="ds-components-subnav">
+            <a class="nav-sublink" href="#" data-page="ds-components-button">Button</a>
+            <a class="nav-sublink" href="#" data-page="ds-components-input">Input</a>
+            <a class="nav-sublink" href="#" data-page="ds-components-card">Card</a>
+            <a class="nav-sublink" href="#" data-page="ds-components-badge">Badge &amp; Status</a>
+            <a class="nav-sublink" href="#" data-page="ds-components-form">Form Controls</a>
+            <a class="nav-sublink" href="#" data-page="ds-components-nav">Navigation</a>
+          </div>
+          <a href="#" class="nav-link" data-page="ds-accessibility">Accessibility</a>
         </div>
       </div>
 
@@ -1524,7 +1540,7 @@
               <div class="card__title">Submit a Request</div>
               <div class="card__desc">Kick off a new design project or get support.</div>
             </a>
-            <a href="#" class="card" data-page="design-system-brand">
+            <a href="#" class="card" data-page="ds-foundations-colors">
               <div class="card__icon">🎨</div>
               <div class="card__title">Design System</div>
               <div class="card__desc">Brand, components, tokens, and guidelines.</div>
@@ -2607,1073 +2623,677 @@
       </div>
     </div>
 
-    <!-- DESIGN: Brand ───────────────────────────────────────────── -->
-    <div class="page" data-page="design-system-brand">
+    <!-- DS: Foundations — Colors ──────────────────────────────────── -->
+    <div class="page" data-page="ds-foundations-colors">
       <div class="content">
-        <div class="breadcrumb">
-          <a href="#" data-page="home">Monstarlab Design Hub</a>
-          <span class="breadcrumb__sep">›</span>
-          Design System
-          <span class="breadcrumb__sep">›</span>
-          Brand &amp; Assets
-        </div>
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Foundations</div>
         <div class="page-header">
-          <div class="page-header__eyebrow">Design System</div>
-          <h1 class="page-header__title">Brand &amp; Assets</h1>
-          <p class="page-header__desc">Claude.ai design tokens — colors, typography, spacing, and radii sourced directly from the live interface.</p>
+          <div class="page-header__eyebrow">Foundations</div>
+          <h1 class="page-header__title">Colors</h1>
+          <p class="page-header__desc">Semantic color tokens from the Claude.ai design system. Always reference tokens — never hardcode hex values.</p>
         </div>
-        <div class="ds-callout">
-          <span class="ds-callout-icon">⚡</span>
-          <span>These tokens are extracted directly from <strong>claude.ai's live CSS</strong> (globals.css, v1.0.0). Always reference semantic tokens — never hardcode raw values. All tokens support both light and dark mode.</span>
-        </div>
-
-        <!-- OVERVIEW ───────────────────────── -->
+        <div class="ds-callout"><span class="ds-callout-icon">⚡</span><span>Tokens extracted from <strong>claude.ai globals.css v1.0.0</strong>. Every color supports light and dark mode via <code>:root</code> and <code>.dark</code>. Toggle dark mode: <code>document.documentElement.classList.toggle('dark')</code></span></div>
         <div class="ds-section">
-          <h2 class="ds-section-title">Token Architecture</h2>
-          <p class="ds-section-desc">Claude.ai's design system is built on CSS custom properties. Every color, radius, and spacing value maps to a semantic token. The system fully supports light and dark mode out of the box.</p>
-          <div class="ds-two-col">
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">🎨 Semantic tokens</div>
-              <p class="ds-component-card__desc">All colors are expressed as semantic roles (<code>--background</code>, <code>--foreground</code>, <code>--muted</code>) — not raw values. Components reference roles, so both modes work automatically.</p>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">🌗 Dual-mode by default</div>
-              <p class="ds-component-card__desc">Every semantic token has a light value in <code>:root</code> and a dark value in <code>.dark</code>. Toggle the <code>dark</code> class on the root element to switch.</p>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- COLORS ─────────────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Color System</h2>
-          <p class="ds-section-desc">All colors come from CSS custom properties. Never hardcode hex values — use the semantic tokens below.</p>
-
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 16px;">Light Mode Tokens</h3>
+          <h2 class="ds-section-title">Light Mode</h2>
+          <p class="ds-section-desc">Twelve semantic tokens cover every surface, text, and interaction role in light mode.</p>
           <div class="ds-color-semantic" style="margin-bottom:32px;">
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#ffffff;border-bottom:1px solid var(--border);"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--background</div>
-                <div class="ds-color-token__hex">#FFFFFF · Page &amp; container bg</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#1a1a1a;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--foreground</div>
-                <div class="ds-color-token__hex">#1A1A1A · Primary text</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#030213;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--primary</div>
-                <div class="ds-color-token__hex">#030213 · Brand / CTAs</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#ffffff;border-bottom:1px solid var(--border);"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--primary-foreground</div>
-                <div class="ds-color-token__hex">#FFFFFF · Text on primary</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#eff0f9;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--secondary</div>
-                <div class="ds-color-token__hex">#EFF0F9 · Secondary surfaces</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#ececf0;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--muted</div>
-                <div class="ds-color-token__hex">#ECECF0 · Muted bg</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#717182;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--muted-foreground</div>
-                <div class="ds-color-token__hex">#717182 · Secondary text</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#e9ebef;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--accent</div>
-                <div class="ds-color-token__hex">#E9EBEF · Hover / accent bg</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#f3f3f5;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--input-background</div>
-                <div class="ds-color-token__hex">#F3F3F5 · Input fill</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#e6e6e6;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--border</div>
-                <div class="ds-color-token__hex">rgba(0,0,0,0.1) · Dividers</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#d4183d;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--destructive</div>
-                <div class="ds-color-token__hex">#D4183D · Error / danger</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#cbced4;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--switch-background</div>
-                <div class="ds-color-token__hex">#CBCED4 · Toggle off-state</div>
-              </div>
-            </div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#ffffff;border-bottom:1px solid var(--border);"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--background</div><div class="ds-color-token__hex">#FFFFFF · Page &amp; container bg</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#1a1a1a;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--foreground</div><div class="ds-color-token__hex">#1A1A1A · Primary text</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#030213;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--primary</div><div class="ds-color-token__hex">#030213 · Brand / CTAs</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#ffffff;border-bottom:1px solid var(--border);"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--primary-foreground</div><div class="ds-color-token__hex">#FFFFFF · Text on primary</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#eff0f9;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--secondary</div><div class="ds-color-token__hex">#EFF0F9 · Secondary surfaces</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#ececf0;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--muted</div><div class="ds-color-token__hex">#ECECF0 · Muted backgrounds</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#717182;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--muted-foreground</div><div class="ds-color-token__hex">#717182 · Secondary text</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#e9ebef;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--accent</div><div class="ds-color-token__hex">#E9EBEF · Hover / accent bg</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#f3f3f5;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--input-background</div><div class="ds-color-token__hex">#F3F3F5 · Input fill</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#e6e6e6;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--border</div><div class="ds-color-token__hex">rgba(0,0,0,0.1) · Dividers</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#d4183d;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--destructive</div><div class="ds-color-token__hex">#D4183D · Error / danger</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#cbced4;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--switch-background</div><div class="ds-color-token__hex">#CBCED4 · Toggle off-state</div></div></div>
           </div>
-
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 16px;">Dark Mode Tokens</h3>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Dark Mode</h2>
+          <p class="ds-section-desc">Dark mode values applied under <code>.dark</code> on the root element. All components resolve automatically — no conditional logic needed.</p>
           <div class="ds-color-semantic">
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#1a1a1a;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--background</div>
-                <div class="ds-color-token__hex">oklch(0.145 0 0) ≈ #1A1A1A</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#fafafa;border-bottom:1px solid #333;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--foreground</div>
-                <div class="ds-color-token__hex">oklch(0.985 0 0) ≈ #FAFAFA</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#383838;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--secondary / --muted</div>
-                <div class="ds-color-token__hex">oklch(0.269 0 0) ≈ #383838</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#aaaaaa;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--muted-foreground</div>
-                <div class="ds-color-token__hex">oklch(0.708 0 0) ≈ #AAAAAA</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#282828;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--sidebar</div>
-                <div class="ds-color-token__hex">oklch(0.205 0 0) ≈ #282828</div>
-              </div>
-            </div>
-            <div class="ds-color-token">
-              <div class="ds-color-token__swatch" style="background:#8b2020;"></div>
-              <div class="ds-color-token__info">
-                <div class="ds-color-token__name">--destructive</div>
-                <div class="ds-color-token__hex">oklch(0.396 0.141 25.7)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="ds-info-box" style="margin-top:24px;">
-            <strong>Implementation:</strong> Apply <code>dark</code> class to root element. All tokens resolve automatically — no conditional logic needed in components.
-            <br><code style="display:block;margin-top:6px;font-size:12px;">document.documentElement.classList.toggle('dark')</code>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#1a1a1a;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--background</div><div class="ds-color-token__hex">oklch(0.145 0 0) ≈ #1A1A1A</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#fafafa;border-bottom:1px solid #333;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--foreground</div><div class="ds-color-token__hex">oklch(0.985 0 0) ≈ #FAFAFA</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#383838;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--secondary / --muted</div><div class="ds-color-token__hex">oklch(0.269 0 0) ≈ #383838</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#aaaaaa;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--muted-foreground</div><div class="ds-color-token__hex">oklch(0.708 0 0) ≈ #AAAAAA</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#282828;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--sidebar</div><div class="ds-color-token__hex">oklch(0.205 0 0) ≈ #282828</div></div></div>
+            <div class="ds-color-token"><div class="ds-color-token__swatch" style="background:#8b2020;"></div><div class="ds-color-token__info"><div class="ds-color-token__name">--destructive</div><div class="ds-color-token__hex">oklch(0.396 0.141 25.7)</div></div></div>
           </div>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- TYPOGRAPHY ──────────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Typography</h2>
-          <p class="ds-section-desc">Base font size is 16px. Only two weights are used across the entire system. HTML elements are styled automatically — don't override with utility classes unless specifically needed.</p>
-
-          <div class="ds-type-specimen">
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H1</div><div class="ds-type-meta-spec">Medium 500 · --text-2xl (24px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:24px;font-weight:500;line-height:1.5;">Page title</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H2</div><div class="ds-type-meta-spec">Medium 500 · --text-xl (20px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:20px;font-weight:500;line-height:1.5;">Section heading</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H3</div><div class="ds-type-meta-spec">Medium 500 · --text-lg (18px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:18px;font-weight:500;line-height:1.5;">Subsection heading</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">H4</div><div class="ds-type-meta-spec">Medium 500 · --text-base (16px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:16px;font-weight:500;line-height:1.5;">Card title or field label</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">Body / p</div><div class="ds-type-meta-spec">Normal 400 · --text-base (16px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Primary reading text for paragraphs and descriptions.</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">Button / Label</div><div class="ds-type-meta-spec">Medium 500 · --text-base (16px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:16px;font-weight:500;line-height:1.5;">Submit form</div>
-            </div>
-            <div class="ds-type-row">
-              <div class="ds-type-meta"><div class="ds-type-meta-label">Input</div><div class="ds-type-meta-spec">Normal 400 · --text-base (16px) · lh 1.5</div></div>
-              <div class="ds-type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Enter your email address</div>
-            </div>
-          </div>
-          <div class="ds-info-box" style="margin-top:16px;">
-            <strong>Rule:</strong> Do not override base typography with Tailwind <code>text-*</code> classes unless a specific size is needed for a one-off context. HTML elements receive automatic styling when no <code>text-*</code> class is present on any ancestor.
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- SPACING & RADII ──────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Spacing &amp; Radii</h2>
-          <p class="ds-section-desc">Spacing follows an 8-step scale. Use the Tailwind spacing utility classes — never arbitrary pixel values.</p>
-
-          <table class="ds-token-table" style="margin-bottom:32px;">
-            <thead><tr><th>Token / Class</th><th>Value</th><th>Visual</th><th>Typical use</th></tr></thead>
-            <tbody>
-              <tr><td><span class="ds-token-name">space-y-1 / p-0.5</span></td><td style="color:var(--muted-foreground);font-size:13px;">2px</td><td><span class="ds-spacing-bar" style="width:2px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Tight icon-label gap</td></tr>
-              <tr><td><span class="ds-token-name">space-y-1 / p-1</span></td><td style="color:var(--muted-foreground);font-size:13px;">4px</td><td><span class="ds-spacing-bar" style="width:4px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badge padding, micro gaps</td></tr>
-              <tr><td><span class="ds-token-name">space-y-1.5 / p-1.5</span></td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-spacing-bar" style="width:6px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Sibling cluster gap</td></tr>
-              <tr><td><span class="ds-token-name">space-y-2 / p-2</span></td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-spacing-bar" style="width:8px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Form field stacking (<code>fields: space-y-2</code>)</td></tr>
-              <tr><td><span class="ds-token-name">space-y-3 / p-3</span></td><td style="color:var(--muted-foreground);font-size:13px;">12px</td><td><span class="ds-spacing-bar" style="width:12px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Compact component padding</td></tr>
-              <tr><td><span class="ds-token-name">space-y-4 / p-4</span></td><td style="color:var(--muted-foreground);font-size:13px;">16px</td><td><span class="ds-spacing-bar" style="width:16px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Default element gap (<code>elements: space-y-4</code>)</td></tr>
-              <tr><td><span class="ds-token-name">space-y-5 / p-5</span></td><td style="color:var(--muted-foreground);font-size:13px;">20px</td><td><span class="ds-spacing-bar" style="width:20px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card content padding</td></tr>
-              <tr><td><span class="ds-token-name">space-y-6 / p-6</span></td><td style="color:var(--muted-foreground);font-size:13px;">24px</td><td><span class="ds-spacing-bar" style="width:24px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card interior, form sections (<code>forms: space-y-6</code>)</td></tr>
-            </tbody>
-          </table>
-
-          <div class="ds-info-box" style="margin-bottom:24px;">
-            <strong>Section patterns:</strong> <code>sections: space-y-8</code> · <code>forms: space-y-6</code> · <code>fields: space-y-2</code> · <code>elements: space-y-4</code>
-          </div>
-
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 12px;">Border Radii</h3>
+          <h2 class="ds-section-title">Usage rules</h2>
           <table class="ds-token-table">
-            <thead><tr><th>Token</th><th>CSS value</th><th>px</th><th>Preview</th><th>Use</th></tr></thead>
+            <thead><tr><th>Token</th><th>Use for</th><th>Never use for</th></tr></thead>
             <tbody>
-              <tr><td><span class="ds-token-name">--radius-sm / rounded-sm</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">calc(0.625rem - 4px)</td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-radius-preview" style="border-radius:6px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badges, tags, small chips</td></tr>
-              <tr><td><span class="ds-token-name">--radius-md / rounded-md</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">calc(0.625rem - 2px)</td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-radius-preview" style="border-radius:8px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Inputs, buttons</td></tr>
-              <tr><td><span class="ds-token-name">--radius / rounded-lg</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">0.625rem</td><td style="color:var(--muted-foreground);font-size:13px;">10px</td><td><span class="ds-radius-preview" style="border-radius:10px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Cards, popovers, modals</td></tr>
-              <tr><td><span class="ds-token-name">--radius-xl / rounded-xl</span></td><td style="color:var(--muted-foreground);font-size:12px;font-family:monospace;">calc(0.625rem + 4px)</td><td style="color:var(--muted-foreground);font-size:13px;">14px</td><td><span class="ds-radius-preview" style="border-radius:14px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Large panels, sheets</td></tr>
+              <tr><td><span class="ds-token-name">--foreground</span></td><td style="font-size:13px;color:var(--muted-foreground);">Primary headings, body text, icons</td><td style="font-size:13px;color:var(--muted-foreground);">Backgrounds</td></tr>
+              <tr><td><span class="ds-token-name">--muted-foreground</span></td><td style="font-size:13px;color:var(--muted-foreground);">Secondary text, placeholders, captions</td><td style="font-size:13px;color:var(--muted-foreground);">Primary headings</td></tr>
+              <tr><td><span class="ds-token-name">--muted</span></td><td style="font-size:13px;color:var(--muted-foreground);">Tag/badge fills, disabled inputs, muted surfaces</td><td style="font-size:13px;color:var(--muted-foreground);">Text color</td></tr>
+              <tr><td><span class="ds-token-name">--accent</span></td><td style="font-size:13px;color:var(--muted-foreground);">Hover states, selected item backgrounds</td><td style="font-size:13px;color:var(--muted-foreground);">Text color, border</td></tr>
+              <tr><td><span class="ds-token-name">--border</span></td><td style="font-size:13px;color:var(--muted-foreground);">Dividers, input outlines, card borders</td><td style="font-size:13px;color:var(--muted-foreground);">Text, backgrounds</td></tr>
+              <tr><td><span class="ds-token-name">--destructive</span></td><td style="font-size:13px;color:var(--muted-foreground);">Error text, destructive button bg, alert border</td><td style="font-size:13px;color:var(--muted-foreground);">Decorative color</td></tr>
             </tbody>
           </table>
-        </div>
-
-        <!-- end of brand page body -->
-      </div>
-    </div>
-
-
-    <!-- DESIGN: Components ──────────────────────────────────────── -->
-    <div class="page" data-page="design-system-components">
-      <div class="content">
-        <div class="breadcrumb">
-          <a href="#" data-page="home">Monstarlab Design Hub</a>
-          <span class="breadcrumb__sep">›</span>
-          Design System
-          <span class="breadcrumb__sep">›</span>
-          Components &amp; UI
-        </div>
-        <div class="page-header">
-          <div class="page-header__eyebrow">Design System</div>
-          <h1 class="page-header__title">Components &amp; UI</h1>
-          <p class="page-header__desc">Core UI elements sourced from Claude.ai's component system — usage guidelines, token usage, and composition patterns.</p>
-        </div>
-        <div class="ds-callout">
-          <span class="ds-callout-icon">📐</span>
-          <span>All components follow the <strong>Claude.ai design token system</strong>. Use CSS custom properties — never hardcode hex values. Icons are always <strong>Lucide React</strong> at <code>h-4 w-4</code> (16px).</span>
-        </div>
-
-        <!-- BUTTONS ──────────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Buttons</h2>
-          <p class="ds-section-desc">Four variants for every interaction level. All buttons use <code>--radius-md</code> (8px), Medium 500 weight, and support sm / default / lg / icon sizes.</p>
-          <div class="ds-btn-grid">
-            <div style="text-align:center">
-              <div class="ds-btn ds-btn-primary">Default</div>
-              <div class="ds-btn-label"><code>--primary</code> bg · <code>--primary-foreground</code> text</div>
-            </div>
-            <div style="text-align:center">
-              <div class="ds-btn ds-btn-outline">Outline</div>
-              <div class="ds-btn-label">Transparent bg · <code>--border/30</code> · <code>--foreground</code> text</div>
-            </div>
-            <div style="text-align:center">
-              <div class="ds-btn ds-btn-ghost">Ghost</div>
-              <div class="ds-btn-label">Transparent · <code>--accent</code> hover · no border</div>
-            </div>
-            <div style="text-align:center">
-              <div class="ds-btn" style="background:var(--destructive,#d4183d);color:#fff;border-radius:8px;padding:0 16px;height:36px;display:inline-flex;align-items:center;font-size:14px;font-weight:500;">Destructive</div>
-              <div class="ds-btn-label"><code>--destructive</code> bg · white text</div>
-            </div>
-          </div>
-          <table class="ds-token-table" style="margin-top:16px;">
-            <thead><tr><th>Variant</th><th>When to use</th><th>Key tokens</th><th>Size (h × px)</th></tr></thead>
-            <tbody>
-              <tr><td><strong>Default</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Primary CTA, form submit</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--primary / --primary-foreground</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
-              <tr><td><strong>Outline</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Secondary action, Cancel</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">border-border/30 · --foreground</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
-              <tr><td><strong>Ghost</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Tertiary inline action, Skip</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--accent hover · no border</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
-              <tr><td><strong>Destructive</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Irreversible delete actions</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--destructive · white</td><td style="font-size:13px;color:var(--muted-foreground);">36px · 0/16px</td></tr>
-            </tbody>
-          </table>
-          <div class="ds-info-box" style="margin-top:16px;"><strong>Sizes:</strong> <code>sm</code> = 32px · <code>default</code> = 36px · <code>lg</code> = 40px · <code>icon</code> = 36×36px square. Radius: <code>--radius-md</code> (8px). Disabled = 50% opacity + <code>pointer-events:none</code>.</div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- INPUTS ───────────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Input Fields</h2>
-          <p class="ds-section-desc">All inputs use <code>--input-background</code> fill, <code>border-border/30</code>, <code>--radius-md</code> (8px), and must always appear inside a <code>space-y-2</code> label + input wrapper.</p>
-          <div class="ds-component-grid">
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Text Input</span>
-                <span class="ds-component-card__badge">3 states</span>
-              </div>
-              <p class="ds-component-card__desc">Single-line input for names, emails, search. Label always above in <code>space-y-2</code>.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">36px</span></li>
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 12px</span></li>
-                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">border-border/30</span></li>
-                <li><span class="ds-spec-key">Bg</span><span class="ds-spec-val">--input-background</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-md (8px)</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Text Area</span>
-                <span class="ds-component-card__badge">3 states</span>
-              </div>
-              <p class="ds-component-card__desc">Multi-line text for descriptions, notes, prompts. Min-height 80px, resize vertical.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Min-height</span><span class="ds-spec-val">80px</span></li>
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">8px 12px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-md (8px)</span></li>
-                <li><span class="ds-spec-key">Resize</span><span class="ds-spec-val">vertical only</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Select / Dropdown</span>
-                <span class="ds-component-card__badge">3 states</span>
-              </div>
-              <p class="ds-component-card__desc">Triggered via trigger + popover pattern. Never a native <code>&lt;select&gt;</code> in product UI.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Trigger</span><span class="ds-spec-val">Same as text input</span></li>
-                <li><span class="ds-spec-key">Popover</span><span class="ds-spec-val">--card · shadow-md</span></li>
-                <li><span class="ds-spec-key">Item</span><span class="ds-spec-val">--accent hover · 8px px</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Error State</span>
-                <span class="ds-component-card__badge">All inputs</span>
-              </div>
-              <p class="ds-component-card__desc">Applied when validation fails. Never rely on color alone — include icon + text.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">--destructive</span></li>
-                <li><span class="ds-spec-key">Message</span><span class="ds-spec-val">14px · --destructive</span></li>
-                <li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">circle-x Lucide 16px</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="ds-info-box" style="margin-top:16px;"><strong>Required pattern:</strong> Always wrap label + input in <code>space-y-2</code>. Group related fields in <code>space-y-6</code>. Focus ring: <code>ring-2 ring-ring ring-offset-2</code>.</div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- CARDS ────────────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Card</h2>
-          <p class="ds-section-desc">Cards use <code>border-border/30 shadow-sm</code> with <code>--radius</code> (10px). Structure is always CardHeader + CardContent — never collapse into a flat <code>&lt;div&gt;</code>.</p>
-          <div class="ds-component-grid">
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Default Card</span>
-              </div>
-              <p class="ds-component-card__desc">Standard card: CardHeader with border-b + CardContent. Use for forms, info panels, settings sections.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius (10px)</span></li>
-                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">border-border/30</span></li>
-                <li><span class="ds-spec-key">Shadow</span><span class="ds-spec-val">shadow-sm</span></li>
-                <li><span class="ds-spec-key">Content</span><span class="ds-spec-val">p-6</span></li>
-                <li><span class="ds-spec-key">Header</span><span class="ds-spec-val">border-b border-border/30</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Card with Actions</span>
-              </div>
-              <p class="ds-component-card__desc">Adds CardFooter with <code>justify-end gap-2</code>. Use for confirmation flows and form submission.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Footer</span><span class="ds-spec-val">justify-end · gap-2</span></li>
-                <li><span class="ds-spec-key">Actions</span><span class="ds-spec-val">Ghost + Default</span></li>
-                <li><span class="ds-spec-key">Border-top</span><span class="ds-spec-val">border-border/30</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Flat Card (no header)</span>
-              </div>
-              <p class="ds-component-card__desc">CardContent-only variant. Use for compact data blocks, metric tiles, or quick summaries.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">p-6 (24px)</span></li>
-                <li><span class="ds-spec-key">No</span><span class="ds-spec-val">border-b divider</span></li>
-                <li><span class="ds-spec-key">Space</span><span class="ds-spec-val">space-y-4 inside</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head">
-                <span class="ds-component-card__name">Interactive Card</span>
-              </div>
-              <p class="ds-component-card__desc">Clickable card. Adds <code>cursor-pointer hover:bg-accent transition-colors</code>. Use for nav cards and selection grids.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Hover</span><span class="ds-spec-val">--accent background</span></li>
-                <li><span class="ds-spec-key">Cursor</span><span class="ds-spec-val">pointer</span></li>
-                <li><span class="ds-spec-key">Focus</span><span class="ds-spec-val">ring-2 ring-ring</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- FEEDBACK ─────────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Feedback &amp; Status</h2>
-          <p class="ds-section-desc">Badges, alerts, and state indicators. Color is semantic — never use status colors for decoration.</p>
-
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin-bottom:12px;">Badge</h3>
-          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
-            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--muted,#ececf0);color:var(--foreground);">Default</span>
-            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--secondary,#EFF0F9);color:var(--foreground);">Secondary</span>
-            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;border:1px solid var(--border);color:var(--muted-foreground);">Outline</span>
-            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--destructive,#d4183d);color:#fff;">Destructive</span>
-          </div>
-          <div class="ds-info-box" style="margin-bottom:20px;"><strong>Badge spec:</strong> <code>--radius-sm</code> (6px) · 22px height · 8px px padding · 12px Medium text · 4 semantic variants only.</div>
-
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin-bottom:12px;">Alert</h3>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <div style="background:var(--muted,#ececf0);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--foreground);display:flex;gap:10px;align-items:flex-start;">ℹ&nbsp;<span><strong>Default</strong> — Neutral informational alert. Use <code>--muted</code> background with <code>--border</code>.</span></div>
-            <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;font-size:14px;color:#b91c1c;display:flex;gap:10px;align-items:flex-start;">⚠&nbsp;<span><strong>Destructive</strong> — Error or critical failure. Use <code>--destructive</code> foreground on light destructive background.</span></div>
-          </div>
-          <div class="ds-info-box" style="margin-top:12px;">Alerts always include icon + title + optional description. Radius: <code>--radius</code> (10px). Never use alert colors for non-alert purposes.</div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- FORM CONTROLS ─────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Form Controls</h2>
-          <p class="ds-section-desc">Checkboxes, radios, and switches. All states use <code>--primary</code> for active/checked color and follow the <code>space-y-2</code> label pattern.</p>
-          <div class="ds-component-grid">
-            <div class="ds-component-card">
-              <div class="ds-component-card__head"><span class="ds-component-card__name">Checkbox</span><span class="ds-component-card__badge">2 states</span></div>
-              <p class="ds-component-card__desc">Multi-select. Use when 0–n options can be chosen independently.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Size</span><span class="ds-spec-val">16×16px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-sm (6px)</span></li>
-                <li><span class="ds-spec-key">Checked</span><span class="ds-spec-val">--primary bg + check</span></li>
-                <li><span class="ds-spec-key">Border</span><span class="ds-spec-val">--primary when checked</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head"><span class="ds-component-card__name">Radio</span><span class="ds-component-card__badge">2 states</span></div>
-              <p class="ds-component-card__desc">Single-select. Use when exactly one option from a group can be chosen.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Size</span><span class="ds-spec-val">16×16px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">full (circle)</span></li>
-                <li><span class="ds-spec-key">Selected</span><span class="ds-spec-val">--primary filled dot</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__head"><span class="ds-component-card__name">Switch</span><span class="ds-component-card__badge">On / Off</span></div>
-              <p class="ds-component-card__desc">Boolean toggle. Use for settings that apply immediately — no Save needed.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Track</span><span class="ds-spec-val">36×20px · pill</span></li>
-                <li><span class="ds-spec-key">On</span><span class="ds-spec-val">--primary bg</span></li>
-                <li><span class="ds-spec-key">Off</span><span class="ds-spec-val">--switch-background</span></li>
-                <li><span class="ds-spec-key">Thumb</span><span class="ds-spec-val">white · shadow-sm</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="ds-info-box" style="margin-top:16px;">All form controls: visible label always required (<code>space-y-2</code> wrapper). Focus: <code>ring-2 ring-ring ring-offset-2</code>. Disabled = 50% opacity.</div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- NAVIGATION ───────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Navigation &amp; Sidebar</h2>
-          <p class="ds-section-desc">Sidebar uses <code>--sidebar</code> background token. Nav items are 40px tall, <code>--radius</code> (10px), and use Lucide icons at 16px.</p>
-          <div class="ds-two-col">
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">Sidebar Nav Item</div>
-              <p class="ds-component-card__desc">Default: transparent · Hover: <code>--accent</code> bg · Active/selected: <code>--accent</code> with medium weight. Icon + label pair always <code>gap-2</code>.</p>
-              <ul class="ds-component-card__specs" style="margin-top:8px;">
-                <li><span class="ds-spec-key">Height</span><span class="ds-spec-val">40px</span></li>
-                <li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 12px</span></li>
-                <li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius (10px)</span></li>
-                <li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">Lucide 16px</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card" style="background:var(--surface-1,#1e1e1e);border-color:var(--border);">
-              <div class="ds-component-card__name" style="margin-bottom:8px;color:var(--foreground);">Sidebar Container</div>
-              <p class="ds-component-card__desc" style="color:var(--muted-foreground);">Background: <code>--sidebar</code> token (slightly darker than <code>--background</code>). Width: 240px. Contains grouped nav sections with section labels in uppercase 11px.</p>
-              <ul class="ds-component-card__specs" style="margin-top:8px;">
-                <li><span class="ds-spec-key">Bg</span><span class="ds-spec-val">--sidebar token</span></li>
-                <li><span class="ds-spec-key">Width</span><span class="ds-spec-val">240px</span></li>
-                <li><span class="ds-spec-key">Label</span><span class="ds-spec-val">11px · ALL CAPS · --muted-foreground</span></li>
-              </ul>
-            </div>
-          </div>
         </div>
       </div>
     </div>
 
-    <!-- DESIGN: Voice ───────────────────────────────────────────── -->
-    <div class="page" data-page="design-system-voice">
+    <!-- DS: Foundations — Typography ──────────────────────────────── -->
+    <div class="page" data-page="ds-foundations-typography">
       <div class="content">
-        <div class="breadcrumb">
-          <a href="#" data-page="home">Monstarlab Design Hub</a>
-          <span class="breadcrumb__sep">›</span>
-          Design System
-          <span class="breadcrumb__sep">›</span>
-          Voice, Tone &amp; UX Writing
-        </div>
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Foundations</div>
         <div class="page-header">
-          <div class="page-header__eyebrow">Design System</div>
-          <h1 class="page-header__title">Voice, Tone &amp; UX Writing</h1>
-          <p class="page-header__desc">Product personality, grammar rules, capitalization standards, and standard error messages.</p>
+          <div class="page-header__eyebrow">Foundations</div>
+          <h1 class="page-header__title">Typography</h1>
+          <p class="page-header__desc">Base font size 16px, two weights only. HTML elements are styled automatically — don't override unless specifically required.</p>
         </div>
-        <!-- BRAND PERSONALITY ────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Brand Personality</h2>
-          <p class="ds-section-desc">Monstarlab's voice expresses four core personality traits. Every piece of UI copy should feel consistent with these.</p>
+          <h2 class="ds-section-title">Type scale</h2>
+          <p class="ds-section-desc">The system uses a condensed scale — no display sizes. Everything resolves to 5 distinct sizes, all at line-height 1.5.</p>
+          <div class="ds-type-specimen">
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">H1</div><div class="ds-type-meta-spec">Medium 500 · 24px · lh 1.5</div></div><div class="ds-type-sample" style="font-size:24px;font-weight:500;line-height:1.5;">Page title</div></div>
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">H2</div><div class="ds-type-meta-spec">Medium 500 · 20px · lh 1.5</div></div><div class="ds-type-sample" style="font-size:20px;font-weight:500;line-height:1.5;">Section heading</div></div>
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">H3</div><div class="ds-type-meta-spec">Medium 500 · 18px · lh 1.5</div></div><div class="ds-type-sample" style="font-size:18px;font-weight:500;line-height:1.5;">Subsection heading</div></div>
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">H4 / Label</div><div class="ds-type-meta-spec">Medium 500 · 16px · lh 1.5</div></div><div class="ds-type-sample" style="font-size:16px;font-weight:500;line-height:1.5;">Card title or field label</div></div>
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">Body</div><div class="ds-type-meta-spec">Normal 400 · 16px · lh 1.5</div></div><div class="ds-type-sample" style="font-size:16px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Primary reading text for paragraphs and descriptions.</div></div>
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">Small / Caption</div><div class="ds-type-meta-spec">Normal 400 · 14px · lh 1.5</div></div><div class="ds-type-sample" style="font-size:14px;font-weight:400;line-height:1.5;color:var(--muted-foreground);">Helper text, captions, metadata</div></div>
+            <div class="ds-type-row"><div class="ds-type-meta"><div class="ds-type-meta-label">Overline</div><div class="ds-type-meta-spec">Medium 500 · 11px · ALL CAPS · ls 0.6px</div></div><div class="ds-type-sample" style="font-size:11px;font-weight:500;line-height:1.5;text-transform:uppercase;letter-spacing:0.6px;color:var(--muted-foreground);">Section label</div></div>
+          </div>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Rule:</strong> Only two weights — 400 (Normal) for body/inputs, 500 (Medium) for headings/labels/buttons. Never use 600, 700, or above.</div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Tailwind classes</h2>
+          <table class="ds-token-table">
+            <thead><tr><th>Utility</th><th>Value</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ds-token-name">text-2xl font-medium</span></td><td style="font-size:13px;color:var(--muted-foreground);">24px 500</td><td style="font-size:13px;color:var(--muted-foreground);">H1 — page title</td></tr>
+              <tr><td><span class="ds-token-name">text-xl font-medium</span></td><td style="font-size:13px;color:var(--muted-foreground);">20px 500</td><td style="font-size:13px;color:var(--muted-foreground);">H2 — section heading</td></tr>
+              <tr><td><span class="ds-token-name">text-lg font-medium</span></td><td style="font-size:13px;color:var(--muted-foreground);">18px 500</td><td style="font-size:13px;color:var(--muted-foreground);">H3 — subsection</td></tr>
+              <tr><td><span class="ds-token-name">text-base font-medium</span></td><td style="font-size:13px;color:var(--muted-foreground);">16px 500</td><td style="font-size:13px;color:var(--muted-foreground);">Labels, buttons, H4</td></tr>
+              <tr><td><span class="ds-token-name">text-base</span></td><td style="font-size:13px;color:var(--muted-foreground);">16px 400</td><td style="font-size:13px;color:var(--muted-foreground);">Body copy, input values</td></tr>
+              <tr><td><span class="ds-token-name">text-sm</span></td><td style="font-size:13px;color:var(--muted-foreground);">14px 400</td><td style="font-size:13px;color:var(--muted-foreground);">Helper text, captions</td></tr>
+              <tr><td><span class="ds-token-name">text-xs font-medium uppercase tracking-wide</span></td><td style="font-size:13px;color:var(--muted-foreground);">11px 500 caps</td><td style="font-size:13px;color:var(--muted-foreground);">Overlines, section labels</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Don't override base elements</strong> with Tailwind <code>text-*</code> unless you need a one-off size. Native <code>h1–h4</code>, <code>p</code>, and <code>label</code> elements receive correct sizing automatically from the design system stylesheet.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Foundations — Spacing & Layout ─────────────────────────── -->
+    <div class="page" data-page="ds-foundations-spacing">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Foundations</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Foundations</div>
+          <h1 class="page-header__title">Spacing &amp; Layout</h1>
+          <p class="page-header__desc">8-step spacing scale via Tailwind utilities. Four canonical layout patterns govern all internal spacing.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Spacing scale</h2>
+          <p class="ds-section-desc">All spacing uses Tailwind's 4px base unit. Never use arbitrary pixel values.</p>
+          <table class="ds-token-table" style="margin-bottom:32px;">
+            <thead><tr><th>Class</th><th>Value</th><th>Visual</th><th>Typical use</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ds-token-name">p-0.5 / gap-0.5</span></td><td style="color:var(--muted-foreground);font-size:13px;">2px</td><td><span class="ds-spacing-bar" style="width:2px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Icon-label micro gap</td></tr>
+              <tr><td><span class="ds-token-name">p-1 / gap-1</span></td><td style="color:var(--muted-foreground);font-size:13px;">4px</td><td><span class="ds-spacing-bar" style="width:4px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badge padding, tight clusters</td></tr>
+              <tr><td><span class="ds-token-name">p-1.5 / gap-1.5</span></td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-spacing-bar" style="width:6px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Sibling cluster gap</td></tr>
+              <tr><td><span class="ds-token-name">p-2 / gap-2</span></td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-spacing-bar" style="width:8px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Form field stacking (<code>space-y-2</code>)</td></tr>
+              <tr><td><span class="ds-token-name">p-3 / gap-3</span></td><td style="color:var(--muted-foreground);font-size:13px;">12px</td><td><span class="ds-spacing-bar" style="width:12px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Compact component padding</td></tr>
+              <tr><td><span class="ds-token-name">p-4 / gap-4</span></td><td style="color:var(--muted-foreground);font-size:13px;">16px</td><td><span class="ds-spacing-bar" style="width:16px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Default element gap (<code>space-y-4</code>)</td></tr>
+              <tr><td><span class="ds-token-name">p-5 / gap-5</span></td><td style="color:var(--muted-foreground);font-size:13px;">20px</td><td><span class="ds-spacing-bar" style="width:20px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card content padding</td></tr>
+              <tr><td><span class="ds-token-name">p-6 / gap-6</span></td><td style="color:var(--muted-foreground);font-size:13px;">24px</td><td><span class="ds-spacing-bar" style="width:24px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Card interior, form sections (<code>space-y-6</code>)</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-info-box"><strong>Layout patterns:</strong> <code>sections: space-y-8</code> (32px) · <code>forms: space-y-6</code> (24px) · <code>fields: space-y-2</code> (8px) · <code>elements: space-y-4</code> (16px)</div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Border radii</h2>
+          <p class="ds-section-desc">Four radius tokens cover every component size. All derive from the base <code>--radius</code> variable (0.625rem / 10px).</p>
+          <table class="ds-token-table">
+            <thead><tr><th>Token</th><th>CSS</th><th>px</th><th>Preview</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ds-token-name">--radius-sm</span></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">calc(0.625rem - 4px)</td><td style="color:var(--muted-foreground);font-size:13px;">6px</td><td><span class="ds-radius-preview" style="border-radius:6px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Badges, tags, chips</td></tr>
+              <tr><td><span class="ds-token-name">--radius-md</span></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">calc(0.625rem - 2px)</td><td style="color:var(--muted-foreground);font-size:13px;">8px</td><td><span class="ds-radius-preview" style="border-radius:8px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Inputs, buttons</td></tr>
+              <tr><td><span class="ds-token-name">--radius</span></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">0.625rem</td><td style="color:var(--muted-foreground);font-size:13px;">10px</td><td><span class="ds-radius-preview" style="border-radius:10px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Cards, popovers, modals</td></tr>
+              <tr><td><span class="ds-token-name">--radius-xl</span></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">calc(0.625rem + 4px)</td><td style="color:var(--muted-foreground);font-size:13px;">14px</td><td><span class="ds-radius-preview" style="border-radius:14px;width:32px;height:32px;"></span></td><td style="color:var(--muted-foreground);font-size:13px;">Large panels, sheets</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Grid &amp; breakpoints</h2>
+          <p class="ds-section-desc">The layout system uses Tailwind's default breakpoints. No custom breakpoints are defined.</p>
+          <table class="ds-token-table">
+            <thead><tr><th>Breakpoint</th><th>Width</th><th>Layout behaviour</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;">sm</td><td style="font-size:13px;color:var(--muted-foreground);">≥ 640px</td><td style="font-size:13px;color:var(--muted-foreground);">2-col grids become available</td></tr>
+              <tr><td style="font-weight:500;">md</td><td style="font-size:13px;color:var(--muted-foreground);">≥ 768px</td><td style="font-size:13px;color:var(--muted-foreground);">Sidebar visible, main content shifts</td></tr>
+              <tr><td style="font-weight:500;">lg</td><td style="font-size:13px;color:var(--muted-foreground);">≥ 1024px</td><td style="font-size:13px;color:var(--muted-foreground);">Full 3-col dashboard grids</td></tr>
+              <tr><td style="font-weight:500;">xl</td><td style="font-size:13px;color:var(--muted-foreground);">≥ 1280px</td><td style="font-size:13px;color:var(--muted-foreground);">Max-width content container</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Content max-width:</strong> <code>max-w-5xl</code> (1024px) for article-style content, <code>max-w-7xl</code> (1280px) for dashboard/app layouts. Always use <code>mx-auto px-4</code> for horizontal centering.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Foundations — Content ──────────────────────────────────── -->
+    <div class="page" data-page="ds-foundations-content">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Foundations</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Foundations</div>
+          <h1 class="page-header__title">Content</h1>
+          <p class="page-header__desc">Voice, tone, grammar rules, and reusable UX copy patterns for product interfaces.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Voice &amp; personality</h2>
+          <p class="ds-section-desc">Four core traits define how we speak across every surface. Every piece of UI copy should feel consistent with these.</p>
           <div class="ds-trait-grid">
-            <div class="ds-trait-card">
-              <div class="ds-trait-card__icon">🚀</div>
-              <div class="ds-trait-card__name">Ambitious</div>
-              <div class="ds-trait-card__desc">We think big and push for what's possible. Copy is energetic, forward-looking, and inspires action. Avoid passive, hedging language.</div>
-            </div>
-            <div class="ds-trait-card">
-              <div class="ds-trait-card__icon">🎯</div>
-              <div class="ds-trait-card__name">Expert</div>
-              <div class="ds-trait-card__desc">We know our craft. Use precise, confident language. Demonstrate depth without being academic or condescending. Skip filler phrases.</div>
-            </div>
-            <div class="ds-trait-card">
-              <div class="ds-trait-card__icon">⚡</div>
-              <div class="ds-trait-card__name">Direct</div>
-              <div class="ds-trait-card__desc">We say what we mean, clearly and briefly. No corporate speak, no jargon walls. Use active voice. Lead with the action or benefit.</div>
-            </div>
-            <div class="ds-trait-card">
-              <div class="ds-trait-card__icon">🤝</div>
-              <div class="ds-trait-card__name">Human</div>
-              <div class="ds-trait-card__desc">We're collaborative partners, not vendors. Write conversationally — approachable and warm, without being casual or losing professionalism.</div>
-            </div>
+            <div class="ds-trait-card"><div class="ds-trait-card__icon">🚀</div><div class="ds-trait-card__name">Ambitious</div><div class="ds-trait-card__desc">We think big and push for what's possible. Copy is energetic, forward-looking, and inspires action. Avoid passive, hedging language.</div></div>
+            <div class="ds-trait-card"><div class="ds-trait-card__icon">🎯</div><div class="ds-trait-card__name">Expert</div><div class="ds-trait-card__desc">We know our craft. Use precise, confident language. Demonstrate depth without being academic or condescending. Skip filler phrases.</div></div>
+            <div class="ds-trait-card"><div class="ds-trait-card__icon">⚡</div><div class="ds-trait-card__name">Direct</div><div class="ds-trait-card__desc">We say what we mean, clearly and briefly. No corporate speak, no jargon walls. Use active voice. Lead with the action or benefit.</div></div>
+            <div class="ds-trait-card"><div class="ds-trait-card__icon">🤝</div><div class="ds-trait-card__name">Human</div><div class="ds-trait-card__desc">We're collaborative partners, not vendors. Write conversationally — approachable and warm, without losing professionalism.</div></div>
           </div>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- TONE OF VOICE ────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Tone of Voice</h2>
-          <p class="ds-section-desc">Tone shifts based on context while the underlying voice stays consistent. Think of it as the same person speaking differently in different situations.</p>
-          <table class="ds-token-table" style="margin-bottom:24px;">
+          <h2 class="ds-section-title">Tone by context</h2>
+          <p class="ds-section-desc">The voice stays consistent — tone shifts based on the situation.</p>
+          <table class="ds-token-table">
             <thead><tr><th>Context</th><th>Tone</th><th>Example</th></tr></thead>
             <tbody>
-              <tr>
-                <td style="font-weight:500;">Success / Celebration</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">Warm, brief, positive</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">"Request submitted. We'll be in touch within 2 business days."</td>
-              </tr>
-              <tr>
-                <td style="font-weight:500;">Error / Failure</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">Calm, clear, solution-focused</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">"Something went wrong. Check your connection and try again."</td>
-              </tr>
-              <tr>
-                <td style="font-weight:500;">Empty States</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">Helpful, encouraging</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">"Nothing here yet. Start by submitting your first design request."</td>
-              </tr>
-              <tr>
-                <td style="font-weight:500;">Destructive Actions</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">Neutral, clear, no alarm</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">"Delete this file? This can't be undone."</td>
-              </tr>
-              <tr>
-                <td style="font-weight:500;">Onboarding / Instructions</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">Friendly, concise, guiding</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">"Tell us about your project so we can get the right team on it."</td>
-              </tr>
-              <tr>
-                <td style="font-weight:500;">Loading / Processing</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">Neutral, reassuring</td>
-                <td style="font-size:13px;color:var(--muted-foreground);">"Loading…" or "Saving your changes"</td>
-              </tr>
+              <tr><td style="font-weight:500;">Success</td><td style="font-size:13px;color:var(--muted-foreground);">Warm, brief, positive</td><td style="font-size:13px;color:var(--muted-foreground);">"Request submitted. We'll be in touch within 2 business days."</td></tr>
+              <tr><td style="font-weight:500;">Error / Failure</td><td style="font-size:13px;color:var(--muted-foreground);">Calm, clear, solution-focused</td><td style="font-size:13px;color:var(--muted-foreground);">"Something went wrong. Check your connection and try again."</td></tr>
+              <tr><td style="font-weight:500;">Empty states</td><td style="font-size:13px;color:var(--muted-foreground);">Helpful, encouraging</td><td style="font-size:13px;color:var(--muted-foreground);">"Nothing here yet. Start by submitting your first design request."</td></tr>
+              <tr><td style="font-weight:500;">Destructive actions</td><td style="font-size:13px;color:var(--muted-foreground);">Neutral, clear, no alarm</td><td style="font-size:13px;color:var(--muted-foreground);">"Delete this file? This can't be undone."</td></tr>
+              <tr><td style="font-weight:500;">Onboarding</td><td style="font-size:13px;color:var(--muted-foreground);">Friendly, concise, guiding</td><td style="font-size:13px;color:var(--muted-foreground);">"Tell us about your project so we can get the right team on it."</td></tr>
+              <tr><td style="font-weight:500;">Loading / processing</td><td style="font-size:13px;color:var(--muted-foreground);">Neutral, reassuring</td><td style="font-size:13px;color:var(--muted-foreground);">"Saving your changes…"</td></tr>
             </tbody>
           </table>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- GRAMMAR & CAPITALIZATION ──────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Grammar &amp; Capitalization</h2>
-          <p class="ds-section-desc">Consistent grammar rules keep the UI feeling polished and coherent across all surfaces.</p>
-
+          <h2 class="ds-section-title">Grammar &amp; capitalization</h2>
           <div class="ds-do-dont-grid">
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Use sentence case for all UI labels, headings, and button text.</p>
-              <p>"Submit request" · "Save changes" · "Design system"</p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Use title case or ALL CAPS for general UI text.</p>
-              <p>"Submit Request" · "SAVE CHANGES" · "Design System"</p>
-            </div>
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Use active voice and lead with the verb in CTAs.</p>
-              <p>"Download the brief" · "View all components"</p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Use passive voice or vague labels.</p>
-              <p>"The brief can be downloaded here" · "Click here"</p>
-            </div>
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Use plain language. Write for a smart non-specialist.</p>
-              <p>"Your file is ready to download."</p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Use jargon, acronyms, or over-qualified phrases.</p>
-              <p>"The artifact has been successfully synced to the repository."</p>
-            </div>
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Keep punctuation consistent. End tooltips and helper text without a period. End full sentences with one.</p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Mix punctuation styles — some labels with periods, some without.</p>
-            </div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Sentence case for all UI labels, headings, and button text.</p><p>"Submit request" · "Save changes"</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Title case or ALL CAPS for general UI text.</p><p>"Submit Request" · "SAVE CHANGES"</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Active voice, verb-first CTAs.</p><p>"Download the brief" · "View all components"</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Passive voice or vague labels.</p><p>"The brief can be downloaded here" · "Click here"</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Plain language for a smart non-specialist.</p><p>"Your file is ready to download."</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Jargon, acronyms, or over-qualified phrases.</p><p>"The artifact has been successfully synced."</p></div>
           </div>
-
-          <table class="ds-token-table">
+          <table class="ds-token-table" style="margin-top:24px;">
             <thead><tr><th>Element</th><th>Case</th><th>Example</th></tr></thead>
             <tbody>
               <tr><td>Page titles / H1</td><td style="font-size:13px;color:var(--muted-foreground);">Sentence case</td><td style="font-size:13px;color:var(--muted-foreground);">"Brand &amp; assets"</td></tr>
               <tr><td>Button labels</td><td style="font-size:13px;color:var(--muted-foreground);">Sentence case</td><td style="font-size:13px;color:var(--muted-foreground);">"Submit request"</td></tr>
               <tr><td>Navigation items</td><td style="font-size:13px;color:var(--muted-foreground);">Title case</td><td style="font-size:13px;color:var(--muted-foreground);">"The Handoff Process"</td></tr>
               <tr><td>Form labels</td><td style="font-size:13px;color:var(--muted-foreground);">Sentence case</td><td style="font-size:13px;color:var(--muted-foreground);">"Project name"</td></tr>
-              <tr><td>Error messages</td><td style="font-size:13px;color:var(--muted-foreground);">Sentence case, no exclamation</td><td style="font-size:13px;color:var(--muted-foreground);">"This field is required."</td></tr>
-              <tr><td>Section metadata / labels</td><td style="font-size:13px;color:var(--muted-foreground);">ALL CAPS + 2px letter-spacing</td><td style="font-size:13px;color:var(--muted-foreground);">"DESIGN SYSTEM"</td></tr>
+              <tr><td>Section overlines</td><td style="font-size:13px;color:var(--muted-foreground);">ALL CAPS + 2px letter-spacing</td><td style="font-size:13px;color:var(--muted-foreground);">"DESIGN SYSTEM"</td></tr>
             </tbody>
           </table>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- UX COPY PATTERNS ─────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">UX Copy Patterns</h2>
-          <p class="ds-section-desc">Reusable copy patterns for the most common UI states. Copy these templates and adapt as needed.</p>
+          <h2 class="ds-section-title">UX copy patterns</h2>
           <div class="ds-component-grid">
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">Error Messages</div>
-              <p class="ds-component-card__desc">Always explain what went wrong and what to do next. Avoid blaming the user.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Required</span><span class="ds-spec-val">"This field is required."</span></li>
-                <li><span class="ds-spec-key">Format</span><span class="ds-spec-val">"Enter a valid email address."</span></li>
-                <li><span class="ds-spec-key">Network</span><span class="ds-spec-val">"Check your connection and try again."</span></li>
-                <li><span class="ds-spec-key">Limit</span><span class="ds-spec-val">"Maximum 500 characters."</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">Empty States</div>
-              <p class="ds-component-card__desc">Always provide a clear next action. Don't just say "nothing here".</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">No data</span><span class="ds-spec-val">"No results yet. [Action]"</span></li>
-                <li><span class="ds-spec-key">No search</span><span class="ds-spec-val">"No results for '[term]'. Try a different search."</span></li>
-                <li><span class="ds-spec-key">First use</span><span class="ds-spec-val">"Get started by [action]."</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">Confirmations</div>
-              <p class="ds-component-card__desc">Destructive confirmations must clearly state the consequence.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Title</span><span class="ds-spec-val">"Delete [item name]?"</span></li>
-                <li><span class="ds-spec-key">Body</span><span class="ds-spec-val">"This action can't be undone."</span></li>
-                <li><span class="ds-spec-key">CTA</span><span class="ds-spec-val">"Delete" (not "Yes, delete it!")</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">Tooltips &amp; Helper Text</div>
-              <p class="ds-component-card__desc">Concise, no periods at the end. Explain what, not why.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Tooltip</span><span class="ds-spec-val">Max 12 words</span></li>
-                <li><span class="ds-spec-key">Helper</span><span class="ds-spec-val">"e.g., 'Homepage redesign — Q3'"</span></li>
-                <li><span class="ds-spec-key">Char limit</span><span class="ds-spec-val">"150 characters remaining"</span></li>
-              </ul>
-            </div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">Error messages</div><p class="ds-component-card__desc">Explain what went wrong and what to do next. Never blame the user.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Required</span><span class="ds-spec-val">"This field is required."</span></li><li><span class="ds-spec-key">Format</span><span class="ds-spec-val">"Enter a valid email address."</span></li><li><span class="ds-spec-key">Network</span><span class="ds-spec-val">"Check your connection and try again."</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">Empty states</div><p class="ds-component-card__desc">Always provide a clear next action. Don't just say "nothing here".</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">No data</span><span class="ds-spec-val">"No results yet. [Action]"</span></li><li><span class="ds-spec-key">No search</span><span class="ds-spec-val">"No results for '[term]'. Try a different search."</span></li><li><span class="ds-spec-key">First use</span><span class="ds-spec-val">"Get started by [action]."</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">Confirmations</div><p class="ds-component-card__desc">Destructive actions must clearly state the consequence.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Title</span><span class="ds-spec-val">"Delete [item name]?"</span></li><li><span class="ds-spec-key">Body</span><span class="ds-spec-val">"This action can't be undone."</span></li><li><span class="ds-spec-key">CTA</span><span class="ds-spec-val">"Delete" (not "Yes, delete it!")</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">Tooltips &amp; helper text</div><p class="ds-component-card__desc">Concise, no period at the end. Explain what, not why.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Tooltip</span><span class="ds-spec-val">Max 12 words</span></li><li><span class="ds-spec-key">Helper</span><span class="ds-spec-val">"e.g., 'Homepage redesign — Q3'"</span></li><li><span class="ds-spec-key">Char count</span><span class="ds-spec-val">"150 characters remaining"</span></li></ul></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- DESIGN: Accessibility ───────────────────────────────────── -->
-    <div class="page" data-page="design-system-a11y">
+    <!-- DS: Foundations — Data Visualization ───────────────────────── -->
+    <div class="page" data-page="ds-foundations-dataviz">
       <div class="content">
-        <div class="breadcrumb">
-          <a href="#" data-page="home">Monstarlab Design Hub</a>
-          <span class="breadcrumb__sep">›</span>
-          Design System
-          <span class="breadcrumb__sep">›</span>
-          Accessibility
-        </div>
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Foundations</div>
         <div class="page-header">
-          <div class="page-header__eyebrow">Design System</div>
-          <h1 class="page-header__title">Accessibility (a11y)</h1>
-          <p class="page-header__desc">WCAG compliance standards, color contrast rules, and screen reader best practices.</p>
+          <div class="page-header__eyebrow">Foundations</div>
+          <h1 class="page-header__title">Data Visualization</h1>
+          <p class="page-header__desc">Chart types, color palettes, and principles for communicating data clearly and accessibly.</p>
         </div>
-        <div class="ds-callout">
-          <span class="ds-callout-icon">♿</span>
-          <span>The design system targets <strong>WCAG 2.1 Level AA</strong> as the minimum standard for all product work. Accessibility is a design requirement, not a post-launch audit. All token-pair contrast values are verified against Claude.ai's extracted hex equivalents.</span>
-        </div>
-
-        <!-- WCAG STANDARD ────────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">WCAG 2.1 AA Standard</h2>
-          <p class="ds-section-desc">The four principles of WCAG — Perceivable, Operable, Understandable, Robust (POUR) — guide every design decision.</p>
+          <h2 class="ds-section-title">Principles</h2>
           <div class="ds-component-grid">
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">👁 Perceivable</div>
-              <p class="ds-component-card__desc">Information must be presentable in ways all users can perceive. Visual content needs text alternatives.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Images</span><span class="ds-spec-val">alt text required</span></li>
-                <li><span class="ds-spec-key">Icons</span><span class="ds-spec-val">aria-label if standalone</span></li>
-                <li><span class="ds-spec-key">Color</span><span class="ds-spec-val">never sole indicator</span></li>
-                <li><span class="ds-spec-key">Video</span><span class="ds-spec-val">captions required</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">⌨️ Operable</div>
-              <p class="ds-component-card__desc">All functionality must be keyboard-accessible. Users must have enough time and no physical barriers.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Keyboard</span><span class="ds-spec-val">all flows navigable</span></li>
-                <li><span class="ds-spec-key">Focus</span><span class="ds-spec-val">visible at all times</span></li>
-                <li><span class="ds-spec-key">Target</span><span class="ds-spec-val">min 44×44px</span></li>
-                <li><span class="ds-spec-key">Skip nav</span><span class="ds-spec-val">on page load</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">💡 Understandable</div>
-              <p class="ds-component-card__desc">Content and UI operation must be clear. Errors are identified and users know how to fix them.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">Lang</span><span class="ds-spec-val">html[lang] set</span></li>
-                <li><span class="ds-spec-key">Labels</span><span class="ds-spec-val">all inputs labelled</span></li>
-                <li><span class="ds-spec-key">Errors</span><span class="ds-spec-val">described in text</span></li>
-                <li><span class="ds-spec-key">Predictable</span><span class="ds-spec-val">consistent nav</span></li>
-              </ul>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">🔧 Robust</div>
-              <p class="ds-component-card__desc">Content must be reliably interpreted by assistive technologies now and in the future.</p>
-              <ul class="ds-component-card__specs">
-                <li><span class="ds-spec-key">HTML</span><span class="ds-spec-val">valid, semantic</span></li>
-                <li><span class="ds-spec-key">ARIA</span><span class="ds-spec-val">roles + states set</span></li>
-                <li><span class="ds-spec-key">Status</span><span class="ds-spec-val">aria-live regions</span></li>
-              </ul>
-            </div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">📊 Show the data</div><p class="ds-component-card__desc">Every chart element must earn its place. Remove gridlines, borders, and labels that don't help the reader understand the data faster. Less decoration = clearer signal.</p></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🎯 One insight per chart</div><p class="ds-component-card__desc">A chart should answer one question. If you need to compare multiple dimensions, use small multiples or linked charts — not a single overloaded visual.</p></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">♿ Accessible by default</div><p class="ds-component-card__desc">Never rely on color alone to encode meaning. Always pair color with shape, texture, or direct labels. Minimum contrast 3:1 for chart elements against background.</p></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">📱 Responsive-first</div><p class="ds-component-card__desc">Charts must degrade gracefully at small sizes. Prioritize the key value/trend at mobile widths — use summary numbers when a full chart can't fit.</p></div>
           </div>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- COLOR CONTRAST ───────────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Color Contrast</h2>
-          <p class="ds-section-desc">WCAG AA requires 4.5:1 for normal text and 3:1 for large text (&gt;18px Bold or &gt;24px Regular) and UI components. All ratios below use Claude.ai token hex equivalents.</p>
-          <table class="ds-contrast-table">
-            <thead>
-              <tr><th>Foreground token</th><th>Background token</th><th>Ratio</th><th>Normal text</th><th>Large / UI</th></tr>
-            </thead>
+          <h2 class="ds-section-title">Chart type selector</h2>
+          <p class="ds-section-desc">Choose the chart type that best matches the relationship you're communicating.</p>
+          <table class="ds-token-table">
+            <thead><tr><th>Chart type</th><th>Best for</th><th>Avoid when</th></tr></thead>
             <tbody>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">A</div> --foreground (#1A1A1A)</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #e6e6e6;color:#000;">·</div> --background (#FFF)</div></td>
-                <td style="font-weight:500;">17.0:1</td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-              </tr>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#717182;color:#fff;">A</div> --muted-foreground (#717182)</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #e6e6e6;color:#000;">·</div> --background (#FFF)</div></td>
-                <td style="font-weight:500;">4.6:1</td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-              </tr>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">A</div> --foreground (#1A1A1A)</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#ececf0;color:#000;">·</div> --muted (#ECECF0)</div></td>
-                <td style="font-weight:500;">14.5:1</td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-              </tr>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FAFAFA;color:#000;border:1px solid #ccc;">A</div> --primary-foreground (#FAFAFA)</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#030213;color:#fff;">·</div> --primary (#030213)</div></td>
-                <td style="font-weight:500;">19.9:1</td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-              </tr>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FAFAFA;color:#000;border:1px solid #ccc;">A</div> dark --foreground (#FAFAFA)</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">·</div> dark --background (#1A1A1A)</div></td>
-                <td style="font-weight:500;">17.0:1</td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-              </tr>
-              <tr>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#AAAAAA;color:#000;">A</div> dark --muted-fg (#AAAAAA)</div></td>
-                <td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">·</div> dark --background (#1A1A1A)</div></td>
-                <td style="font-weight:500;">5.1:1</td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-                <td><span class="ds-pass-badge">PASS</span></td>
-              </tr>
+              <tr><td style="font-weight:500;">Bar / Column</td><td style="font-size:13px;color:var(--muted-foreground);">Comparing discrete categories or time periods</td><td style="font-size:13px;color:var(--muted-foreground);">You have &gt; 12 categories — use a table instead</td></tr>
+              <tr><td style="font-weight:500;">Line</td><td style="font-size:13px;color:var(--muted-foreground);">Trends over continuous time</td><td style="font-size:13px;color:var(--muted-foreground);">Data isn't sequential or has large gaps</td></tr>
+              <tr><td style="font-weight:500;">Area</td><td style="font-size:13px;color:var(--muted-foreground);">Volume over time, part-to-whole with 2–3 series</td><td style="font-size:13px;color:var(--muted-foreground);">More than 3 overlapping series — lines are clearer</td></tr>
+              <tr><td style="font-weight:500;">Donut</td><td style="font-size:13px;color:var(--muted-foreground);">Part-to-whole with 2–4 slices, single metric highlight</td><td style="font-size:13px;color:var(--muted-foreground);">More than 5 slices or when precise comparison matters</td></tr>
+              <tr><td style="font-weight:500;">Scatter</td><td style="font-size:13px;color:var(--muted-foreground);">Correlation between two continuous variables</td><td style="font-size:13px;color:var(--muted-foreground);">Non-technical audiences expecting clear categories</td></tr>
+              <tr><td style="font-weight:500;">Heat map</td><td style="font-size:13px;color:var(--muted-foreground);">Density patterns across two categorical axes</td><td style="font-size:13px;color:var(--muted-foreground);">You need exact values — use a table</td></tr>
+              <tr><td style="font-weight:500;">Metric tile</td><td style="font-size:13px;color:var(--muted-foreground);">Single KPI with trend indicator (up/down vs. previous period)</td><td style="font-size:13px;color:var(--muted-foreground);">Presenting more than one variable at once</td></tr>
             </tbody>
           </table>
-          <div class="ds-info-box">
-            <strong>Key rule:</strong> Never use <code>--muted</code> or <code>--accent</code> as text color directly — they are background-only tokens. Always pair text with <code>--foreground</code> or <code>--muted-foreground</code> against their respective backgrounds.
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Color palette</h2>
+          <p class="ds-section-desc">Use the sequential palette for ordered/quantitative data, and the categorical palette for nominal data. Never use more than 6 colors in a single chart.</p>
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 12px;">Categorical (up to 6)</h3>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
+            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#2563eb;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Blue</div></div>
+            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#16a34a;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Green</div></div>
+            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#dc2626;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Red</div></div>
+            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#d97706;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Amber</div></div>
+            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#7c3aed;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Violet</div></div>
+            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#0891b2;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Cyan</div></div>
+          </div>
+          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 12px;">Sequential (low → high)</h3>
+          <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:24px;">
+            <div style="width:40px;height:32px;border-radius:4px;background:#dbeafe;"></div>
+            <div style="width:40px;height:32px;border-radius:4px;background:#93c5fd;"></div>
+            <div style="width:40px;height:32px;border-radius:4px;background:#60a5fa;"></div>
+            <div style="width:40px;height:32px;border-radius:4px;background:#3b82f6;"></div>
+            <div style="width:40px;height:32px;border-radius:4px;background:#2563eb;"></div>
+            <div style="width:40px;height:32px;border-radius:4px;background:#1d4ed8;"></div>
+          </div>
+          <div class="ds-info-box"><strong>Accessibility check:</strong> Run all chart color pairings through a contrast checker at 3:1 minimum. For diverging data (negative/positive), use blue–grey–red. Never use red/green alone as the only signal.</div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Anatomy &amp; labeling</h2>
+          <table class="ds-token-table">
+            <thead><tr><th>Element</th><th>Rule</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;">Chart title</td><td style="font-size:13px;color:var(--muted-foreground);">State the insight, not just the data. "Revenue grew 34% in Q3" beats "Revenue by Quarter".</td></tr>
+              <tr><td style="font-weight:500;">Axis labels</td><td style="font-size:13px;color:var(--muted-foreground);">Always label axes with unit (e.g., "Sessions (thousands)"). Use <code>--muted-foreground</code> at 12px.</td></tr>
+              <tr><td style="font-weight:500;">Data labels</td><td style="font-size:13px;color:var(--muted-foreground);">Show direct labels on the data points when &lt; 6 series. Remove axis when direct labels are present.</td></tr>
+              <tr><td style="font-weight:500;">Legend</td><td style="font-size:13px;color:var(--muted-foreground);">Place legend adjacent to the relevant data series when possible, not in a separate box.</td></tr>
+              <tr><td style="font-weight:500;">Gridlines</td><td style="font-size:13px;color:var(--muted-foreground);">Use only horizontal gridlines, light <code>--border</code> color, and only 3–5 total.</td></tr>
+              <tr><td style="font-weight:500;">Zero baseline</td><td style="font-size:13px;color:var(--muted-foreground);">Bar charts must always start at zero. Line charts may start at a non-zero value if labeled clearly.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Tokens ──────────────────────────────────────────────────── -->
+    <div class="page" data-page="ds-tokens">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Tokens</h1>
+          <p class="page-header__desc">How the token system is structured, where it lives, and how to use it correctly in code.</p>
+        </div>
+        <div class="ds-callout"><span class="ds-callout-icon">📄</span><span><strong>Source of truth:</strong> All token definitions live in <code>globals.css</code> — light mode under <code>:root</code>, dark mode under <code>.dark</code>. Never add raw hex values to component files.</span></div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Architecture</h2>
+          <div class="ds-two-col">
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🎨 Semantic tokens only</div><p class="ds-component-card__desc">All colors are expressed as semantic roles (<code>--background</code>, <code>--foreground</code>, <code>--muted</code>) — not raw values. Components reference roles, so both light and dark mode work automatically without conditional logic.</p></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🌗 Dual-mode by default</div><p class="ds-component-card__desc">Every semantic token has a light value in <code>:root</code> and a dark value in <code>.dark</code>. Toggle dark mode with <code>document.documentElement.classList.toggle('dark')</code>. No per-component theming needed.</p></div>
           </div>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- INTERACTIVE ELEMENTS ─────────── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Interactive Elements</h2>
-          <p class="ds-section-desc">All interactive components must meet these requirements without exception.</p>
+          <h2 class="ds-section-title">Token naming convention</h2>
+          <p class="ds-section-desc">All tokens follow the Claude.ai semantic naming pattern defined in globals.css.</p>
+          <table class="ds-token-table">
+            <thead><tr><th>Type</th><th>Pattern</th><th>Examples</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;">Color — surface</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--{role}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--background, --muted, --accent, --card</td></tr>
+              <tr><td style="font-weight:500;">Color — text</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--{role}-foreground</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--foreground, --muted-foreground, --primary-foreground</td></tr>
+              <tr><td style="font-weight:500;">Color — border</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--border, --input</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--border, --input-background</td></tr>
+              <tr><td style="font-weight:500;">Color — status</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--{status}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--destructive, --destructive-foreground</td></tr>
+              <tr><td style="font-weight:500;">Radius</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--radius[-{size}]</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--radius (10px), --radius-sm (6px), --radius-md (8px), --radius-xl (14px)</td></tr>
+              <tr><td style="font-weight:500;">Component variant</td><td style="font-size:12px;color:var(--muted-foreground);">lowercase kebab</td><td style="font-size:12px;color:var(--muted-foreground);">default, outline, ghost, destructive</td></tr>
+              <tr><td style="font-weight:500;">Component size</td><td style="font-size:12px;color:var(--muted-foreground);">sm / default / lg / icon</td><td style="font-size:12px;color:var(--muted-foreground);">Button size="sm", Badge size="default"</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Token reference</h2>
+          <p class="ds-section-desc">Complete list of all semantic tokens with their light and dark mode values.</p>
+          <table class="ds-token-table">
+            <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Role</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ds-token-name">--background</span></td><td style="font-size:12px;font-family:monospace;">#FFFFFF</td><td style="font-size:12px;font-family:monospace;">#1A1A1A</td><td style="font-size:12px;color:var(--muted-foreground);">Page / container background</td></tr>
+              <tr><td><span class="ds-token-name">--foreground</span></td><td style="font-size:12px;font-family:monospace;">#1A1A1A</td><td style="font-size:12px;font-family:monospace;">#FAFAFA</td><td style="font-size:12px;color:var(--muted-foreground);">Primary text &amp; icons</td></tr>
+              <tr><td><span class="ds-token-name">--primary</span></td><td style="font-size:12px;font-family:monospace;">#030213</td><td style="font-size:12px;font-family:monospace;">#FAFAFA</td><td style="font-size:12px;color:var(--muted-foreground);">Brand / CTA button bg</td></tr>
+              <tr><td><span class="ds-token-name">--primary-foreground</span></td><td style="font-size:12px;font-family:monospace;">#FFFFFF</td><td style="font-size:12px;font-family:monospace;">#030213</td><td style="font-size:12px;color:var(--muted-foreground);">Text on --primary bg</td></tr>
+              <tr><td><span class="ds-token-name">--secondary</span></td><td style="font-size:12px;font-family:monospace;">#EFF0F9</td><td style="font-size:12px;font-family:monospace;">#383838</td><td style="font-size:12px;color:var(--muted-foreground);">Secondary surface</td></tr>
+              <tr><td><span class="ds-token-name">--muted</span></td><td style="font-size:12px;font-family:monospace;">#ECECF0</td><td style="font-size:12px;font-family:monospace;">#383838</td><td style="font-size:12px;color:var(--muted-foreground);">Muted / disabled surface</td></tr>
+              <tr><td><span class="ds-token-name">--muted-foreground</span></td><td style="font-size:12px;font-family:monospace;">#717182</td><td style="font-size:12px;font-family:monospace;">#AAAAAA</td><td style="font-size:12px;color:var(--muted-foreground);">Secondary / placeholder text</td></tr>
+              <tr><td><span class="ds-token-name">--accent</span></td><td style="font-size:12px;font-family:monospace;">#E9EBEF</td><td style="font-size:12px;font-family:monospace;">#383838</td><td style="font-size:12px;color:var(--muted-foreground);">Hover &amp; selected item bg</td></tr>
+              <tr><td><span class="ds-token-name">--border</span></td><td style="font-size:12px;font-family:monospace;">rgba(0,0,0,0.1)</td><td style="font-size:12px;font-family:monospace;">#383838</td><td style="font-size:12px;color:var(--muted-foreground);">Dividers, card borders</td></tr>
+              <tr><td><span class="ds-token-name">--input-background</span></td><td style="font-size:12px;font-family:monospace;">#F3F3F5</td><td style="font-size:12px;font-family:monospace;">#383838</td><td style="font-size:12px;color:var(--muted-foreground);">Input / textarea fill</td></tr>
+              <tr><td><span class="ds-token-name">--destructive</span></td><td style="font-size:12px;font-family:monospace;">#D4183D</td><td style="font-size:12px;font-family:monospace;">oklch(0.396 0.141 25.7)</td><td style="font-size:12px;color:var(--muted-foreground);">Error / danger states</td></tr>
+              <tr><td><span class="ds-token-name">--sidebar</span></td><td style="font-size:12px;font-family:monospace;">–</td><td style="font-size:12px;font-family:monospace;">#282828</td><td style="font-size:12px;color:var(--muted-foreground);">Sidebar / nav panel bg (dark only)</td></tr>
+              <tr><td><span class="ds-token-name">--radius</span></td><td colspan="2" style="font-size:12px;font-family:monospace;">0.625rem (10px)</td><td style="font-size:12px;color:var(--muted-foreground);">Base radius variable</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Governance</h2>
+          <div class="ds-two-col">
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🎯 Core team</div><p class="ds-component-card__desc">The DS core team owns the token layer (<code>globals.css</code>), component library, and release process. They approve all breaking changes.</p><p style="font-size:12px;color:var(--muted-foreground);margin-top:8px;">Reach them on <strong>#design-system-help</strong> on Slack.</p></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">📋 Adding a token</div><p class="ds-component-card__desc">Propose new tokens in <strong>#design-system-help</strong> with the semantic role, usage context, and both light/dark values. The core team reviews within 5 business days. Token names must follow the <code>--{role}</code> pattern — no scale tokens.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Components — Button ─────────────────────────────────────── -->
+    <div class="page" data-page="ds-components-button">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Components</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Components</div>
+          <h1 class="page-header__title">Button</h1>
+          <p class="page-header__desc">Four variants, three sizes, and an icon-only size. Radius <code>--radius-md</code> (8px), weight Medium 500.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Variants</h2>
+          <div class="ds-btn-grid">
+            <div style="text-align:center"><div class="ds-btn ds-btn-primary">Default</div><div class="ds-btn-label"><code>--primary</code> bg · <code>--primary-foreground</code> text</div></div>
+            <div style="text-align:center"><div class="ds-btn ds-btn-outline">Outline</div><div class="ds-btn-label">Transparent · <code>--border/30</code> · <code>--foreground</code></div></div>
+            <div style="text-align:center"><div class="ds-btn ds-btn-ghost">Ghost</div><div class="ds-btn-label">Transparent · <code>--accent</code> hover · no border</div></div>
+            <div style="text-align:center"><div class="ds-btn" style="background:#d4183d;color:#fff;border-radius:8px;padding:0 16px;height:36px;display:inline-flex;align-items:center;font-size:14px;font-weight:500;">Destructive</div><div class="ds-btn-label"><code>--destructive</code> bg · white text</div></div>
+          </div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Spec</h2>
+          <table class="ds-token-table">
+            <thead><tr><th>Variant</th><th>When to use</th><th>Key tokens</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Default</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Primary CTA — one per view</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--primary / --primary-foreground</td></tr>
+              <tr><td><strong>Outline</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Secondary action, Cancel, paired with Default</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">border-border/30 · --foreground</td></tr>
+              <tr><td><strong>Ghost</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Tertiary / inline action, icon triggers</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--accent hover · no border</td></tr>
+              <tr><td><strong>Destructive</strong></td><td style="font-size:13px;color:var(--muted-foreground);">Irreversible delete / remove actions</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--destructive · white</td></tr>
+            </tbody>
+          </table>
+          <table class="ds-token-table" style="margin-top:16px;">
+            <thead><tr><th>Size</th><th>Height</th><th>Padding</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ds-token-name">sm</span></td><td style="font-size:13px;color:var(--muted-foreground);">32px</td><td style="font-size:13px;color:var(--muted-foreground);">0 12px</td><td style="font-size:13px;color:var(--muted-foreground);">Dense UIs, table row actions</td></tr>
+              <tr><td><span class="ds-token-name">default</span></td><td style="font-size:13px;color:var(--muted-foreground);">36px</td><td style="font-size:13px;color:var(--muted-foreground);">0 16px</td><td style="font-size:13px;color:var(--muted-foreground);">Standard — use by default</td></tr>
+              <tr><td><span class="ds-token-name">lg</span></td><td style="font-size:13px;color:var(--muted-foreground);">40px</td><td style="font-size:13px;color:var(--muted-foreground);">0 24px</td><td style="font-size:13px;color:var(--muted-foreground);">Primary CTAs in hero / empty states</td></tr>
+              <tr><td><span class="ds-token-name">icon</span></td><td style="font-size:13px;color:var(--muted-foreground);">36×36px</td><td style="font-size:13px;color:var(--muted-foreground);">–</td><td style="font-size:13px;color:var(--muted-foreground);">Toolbar, inline icon-only action</td></tr>
+            </tbody>
+          </table>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Always:</strong> Radius <code>--radius-md</code> (8px) · Weight 500 · Disabled = 50% opacity + <code>pointer-events:none</code> · Leading Lucide icon at 16px when used.</div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Do / Don't</h2>
+          <div class="ds-do-dont-grid">
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use one Default button per section. Pair it with Ghost or Outline for secondary actions.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use more than one Default button side-by-side — it creates visual ambiguity about hierarchy.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use Destructive only for truly irreversible actions (delete, remove, revoke).</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Destructive for warnings or cautionary steps that can be undone.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Components — Input ──────────────────────────────────────── -->
+    <div class="page" data-page="ds-components-input">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Components</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Components</div>
+          <h1 class="page-header__title">Input</h1>
+          <p class="page-header__desc">Text inputs, text areas, and select dropdowns. Always wrap in <code>space-y-2</code> with a visible label.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Types</h2>
+          <div class="ds-component-grid">
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Text Input</span><span class="ds-component-card__badge">3 states</span></div><p class="ds-component-card__desc">Single-line. For names, emails, search. Label always above in <code>space-y-2</code>.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Height</span><span class="ds-spec-val">36px</span></li><li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 12px</span></li><li><span class="ds-spec-key">Border</span><span class="ds-spec-val">border-border/30</span></li><li><span class="ds-spec-key">Bg</span><span class="ds-spec-val">--input-background</span></li><li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-md (8px)</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Text Area</span><span class="ds-component-card__badge">3 states</span></div><p class="ds-component-card__desc">Multi-line. For descriptions, notes. Resize vertical only.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Min-height</span><span class="ds-spec-val">80px</span></li><li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">8px 12px</span></li><li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-md (8px)</span></li><li><span class="ds-spec-key">Resize</span><span class="ds-spec-val">vertical only</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Select</span><span class="ds-component-card__badge">3 states</span></div><p class="ds-component-card__desc">Trigger + popover. Never use a native <code>&lt;select&gt;</code> in product UI.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Trigger</span><span class="ds-spec-val">Same as text input</span></li><li><span class="ds-spec-key">Popover</span><span class="ds-spec-val">--card · shadow-md</span></li><li><span class="ds-spec-key">Item hover</span><span class="ds-spec-val">--accent bg</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Error state</span><span class="ds-component-card__badge">All types</span></div><p class="ds-component-card__desc">Applied when validation fails. Color + icon + text — never color alone.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Border</span><span class="ds-spec-val">--destructive</span></li><li><span class="ds-spec-key">Message</span><span class="ds-spec-val">14px · --destructive</span></li><li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">circle-x Lucide 16px</span></li></ul></div>
+          </div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Required pattern</h2>
+          <div class="ds-do-dont-grid">
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always wrap label + input in <code>space-y-2</code>. Group fields in <code>space-y-6</code>.</p><p><code>&lt;div class="space-y-2"&gt;&lt;label&gt;…&lt;/label&gt;&lt;input&gt;…&lt;/div&gt;</code></p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use placeholder as the only label. It disappears on focus and fails accessibility.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use <code>ring-2 ring-ring ring-offset-2</code> for focus state. Visible at all times.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use outline:none or suppress the focus ring. It's an accessibility requirement.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Components — Card ───────────────────────────────────────── -->
+    <div class="page" data-page="ds-components-card">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Components</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Components</div>
+          <h1 class="page-header__title">Card</h1>
+          <p class="page-header__desc">The primary container pattern. <code>border-border/30 shadow-sm</code>, radius <code>--radius</code> (10px). Structure is always CardHeader + CardContent.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Variants</h2>
+          <div class="ds-component-grid">
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Default Card</span></div><p class="ds-component-card__desc">CardHeader with <code>border-b border-border/30</code> + CardContent <code>p-6</code>. For forms, info panels, settings.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius (10px)</span></li><li><span class="ds-spec-key">Border</span><span class="ds-spec-val">border-border/30</span></li><li><span class="ds-spec-key">Shadow</span><span class="ds-spec-val">shadow-sm</span></li><li><span class="ds-spec-key">Content p</span><span class="ds-spec-val">p-6 (24px)</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Card with actions</span></div><p class="ds-component-card__desc">Adds CardFooter <code>justify-end gap-2</code>. For confirmation flows and form submission.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Footer</span><span class="ds-spec-val">justify-end · gap-2</span></li><li><span class="ds-spec-key">Actions</span><span class="ds-spec-val">Ghost + Default</span></li><li><span class="ds-spec-key">Border-top</span><span class="ds-spec-val">border-border/30</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Flat card (no header)</span></div><p class="ds-component-card__desc">CardContent only. For compact data blocks, metric tiles, quick summaries.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">p-6</span></li><li><span class="ds-spec-key">Interior</span><span class="ds-spec-val">space-y-4</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Interactive card</span></div><p class="ds-component-card__desc">Adds <code>cursor-pointer hover:bg-accent transition-colors</code>. For nav cards and selection grids.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Hover</span><span class="ds-spec-val">--accent bg</span></li><li><span class="ds-spec-key">Focus</span><span class="ds-spec-val">ring-2 ring-ring</span></li></ul></div>
+          </div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Do / Don't</h2>
+          <div class="ds-do-dont-grid">
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always use the CardHeader + CardContent structure. Don't flatten to a plain <code>&lt;div&gt;</code> with custom padding.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Nest cards inside cards more than one level deep. Flatten the hierarchy instead.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use <code>border-border/30</code> consistently. Do not increase opacity or use a solid hex border.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Add custom box-shadow values. <code>shadow-sm</code> is the only shadow allowed on cards.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Components — Badge & Status ─────────────────────────────── -->
+    <div class="page" data-page="ds-components-badge">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Components</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Components</div>
+          <h1 class="page-header__title">Badge &amp; Status</h1>
+          <p class="page-header__desc">Badges, alerts, and status indicators. Color is semantic — never use status colors for decoration.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Badge variants</h2>
+          <p class="ds-section-desc">Four semantic variants. Radius <code>--radius-sm</code> (6px), height 22px, 8px horizontal padding, 12px Medium text.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 24px;">
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--muted,#ececf0);color:var(--foreground);">Default</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:var(--secondary,#EFF0F9);color:var(--foreground);">Secondary</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;border:1px solid var(--border);color:var(--muted-foreground);">Outline</span>
+            <span style="height:22px;padding:0 8px;border-radius:6px;font-size:12px;font-weight:500;display:inline-flex;align-items:center;background:#d4183d;color:#fff;">Destructive</span>
+          </div>
+          <table class="ds-token-table">
+            <thead><tr><th>Variant</th><th>Tokens</th><th>Use</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Default</strong></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--muted bg · --foreground text</td><td style="font-size:13px;color:var(--muted-foreground);">Neutral labels, category tags</td></tr>
+              <tr><td><strong>Secondary</strong></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--secondary bg · --foreground text</td><td style="font-size:13px;color:var(--muted-foreground);">Status indicators, type labels</td></tr>
+              <tr><td><strong>Outline</strong></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--border · --muted-foreground text</td><td style="font-size:13px;color:var(--muted-foreground);">De-emphasized metadata, counts</td></tr>
+              <tr><td><strong>Destructive</strong></td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--destructive bg · white text</td><td style="font-size:13px;color:var(--muted-foreground);">Error state, overdue, blocked</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Alert</h2>
+          <p class="ds-section-desc">Two alert variants. Always include icon + title + optional description. Radius <code>--radius</code> (10px).</p>
+          <div style="display:flex;flex-direction:column;gap:8px;margin:16px 0 24px;">
+            <div style="background:var(--muted,#ececf0);border:1px solid var(--border);border-radius:10px;padding:12px 16px;font-size:14px;color:var(--foreground);display:flex;gap:10px;align-items:flex-start;">ℹ&nbsp;<span><strong>Default</strong> — Neutral informational. <code>--muted</code> background + <code>--border</code>.</span></div>
+            <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:12px 16px;font-size:14px;color:#b91c1c;display:flex;gap:10px;align-items:flex-start;">⚠&nbsp;<span><strong>Destructive</strong> — Error or critical failure. <code>--destructive</code> foreground.</span></div>
+          </div>
+          <div class="ds-info-box">Never use alert colors for non-alert purposes. Alerts are not decorative — they communicate a state change that requires user attention.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Components — Form Controls ──────────────────────────────── -->
+    <div class="page" data-page="ds-components-form">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Components</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Components</div>
+          <h1 class="page-header__title">Form Controls</h1>
+          <p class="page-header__desc">Checkbox, radio, and switch. Active/checked color is always <code>--primary</code>. All require a visible label.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Controls</h2>
+          <div class="ds-component-grid">
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Checkbox</span><span class="ds-component-card__badge">2 states</span></div><p class="ds-component-card__desc">Multi-select. Use when 0–n options can be chosen independently.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Size</span><span class="ds-spec-val">16×16px</span></li><li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius-sm (6px)</span></li><li><span class="ds-spec-key">Checked</span><span class="ds-spec-val">--primary bg + check icon</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Radio</span><span class="ds-component-card__badge">2 states</span></div><p class="ds-component-card__desc">Single-select. Exactly one option from a group.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Size</span><span class="ds-spec-val">16×16px</span></li><li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">full (circle)</span></li><li><span class="ds-spec-key">Selected</span><span class="ds-spec-val">--primary filled dot</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__head"><span class="ds-component-card__name">Switch</span><span class="ds-component-card__badge">On / Off</span></div><p class="ds-component-card__desc">Boolean toggle. Settings that apply immediately — no Save needed.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Track</span><span class="ds-spec-val">36×20px · pill</span></li><li><span class="ds-spec-key">On</span><span class="ds-spec-val">--primary bg</span></li><li><span class="ds-spec-key">Off</span><span class="ds-spec-val">--switch-background</span></li><li><span class="ds-spec-key">Thumb</span><span class="ds-spec-val">white · shadow-sm</span></li></ul></div>
+          </div>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>All form controls:</strong> Label always required (<code>space-y-2</code> wrapper) · Focus: <code>ring-2 ring-ring ring-offset-2</code> · Disabled = 50% opacity</div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Grouping &amp; layout</h2>
+          <table class="ds-token-table">
+            <thead><tr><th>Pattern</th><th>Spacing</th><th>Use when</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;">Vertical list</td><td style="font-size:13px;color:var(--muted-foreground);"><code>space-y-3</code></td><td style="font-size:13px;color:var(--muted-foreground);">Default — for 2–6 options in a settings panel</td></tr>
+              <tr><td style="font-weight:500;">Inline group</td><td style="font-size:13px;color:var(--muted-foreground);"><code>flex gap-4</code></td><td style="font-size:13px;color:var(--muted-foreground);">2–3 mutually exclusive short-label options</td></tr>
+              <tr><td style="font-weight:500;">Card group</td><td style="font-size:13px;color:var(--muted-foreground);"><code>grid gap-2</code></td><td style="font-size:13px;color:var(--muted-foreground);">Rich options with descriptions — wrap each in a Card</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Components — Navigation ─────────────────────────────────── -->
+    <div class="page" data-page="ds-components-nav">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System<span class="breadcrumb__sep">›</span>Components</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Components</div>
+          <h1 class="page-header__title">Navigation</h1>
+          <p class="page-header__desc">Sidebar, nav items, tabs, and breadcrumbs. Icons are always Lucide React at 16px.</p>
+        </div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">Sidebar</h2>
+          <div class="ds-two-col">
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">Container</div><p class="ds-component-card__desc">Background: <code>--sidebar</code> token. Width: 240px fixed. Contains grouped sections with 11px ALL CAPS overline labels.</p><ul class="ds-component-card__specs" style="margin-top:8px;"><li><span class="ds-spec-key">Bg</span><span class="ds-spec-val">--sidebar token</span></li><li><span class="ds-spec-key">Width</span><span class="ds-spec-val">240px</span></li><li><span class="ds-spec-key">Label</span><span class="ds-spec-val">11px 500 · ALL CAPS · --muted-foreground</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">Nav item</div><p class="ds-component-card__desc">40px tall · <code>--radius</code> (10px) · Icon + label with <code>gap-2</code>. Default: transparent. Hover: <code>--accent</code>. Active: <code>--accent</code> + Medium weight.</p><ul class="ds-component-card__specs" style="margin-top:8px;"><li><span class="ds-spec-key">Height</span><span class="ds-spec-val">40px</span></li><li><span class="ds-spec-key">Padding</span><span class="ds-spec-val">0 12px</span></li><li><span class="ds-spec-key">Radius</span><span class="ds-spec-val">--radius (10px)</span></li><li><span class="ds-spec-key">Icon</span><span class="ds-spec-val">Lucide 16px · gap-2</span></li></ul></div>
+          </div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Tabs</h2>
+          <table class="ds-token-table">
+            <thead><tr><th>State</th><th>Style</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;">Default</td><td style="font-size:13px;color:var(--muted-foreground);">--muted-foreground text · no bg · 400 weight</td></tr>
+              <tr><td style="font-weight:500;">Hover</td><td style="font-size:13px;color:var(--muted-foreground);">--foreground text · transparent</td></tr>
+              <tr><td style="font-weight:500;">Active</td><td style="font-size:13px;color:var(--muted-foreground);">--foreground text · 500 weight · 2px bottom border in --foreground</td></tr>
+              <tr><td style="font-weight:500;">Disabled</td><td style="font-size:13px;color:var(--muted-foreground);">50% opacity · pointer-events: none</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Breadcrumb</h2>
+          <p class="ds-section-desc">Flat, text-only. Separator is <code>›</code> at <code>--muted-foreground</code> color. Links use <code>--muted-foreground</code>, current page uses <code>--foreground</code> at Medium weight.</p>
+          <div class="ds-info-box" style="margin-top:12px;">Always show breadcrumbs on pages deeper than 2 levels. Keep to a max of 4 segments — truncate middle segments on mobile with an ellipsis.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DS: Accessibility ───────────────────────────────────────────── -->
+    <div class="page" data-page="ds-accessibility">
+      <div class="content">
+        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System</div>
+        <div class="page-header">
+          <div class="page-header__eyebrow">Design System</div>
+          <h1 class="page-header__title">Accessibility</h1>
+          <p class="page-header__desc">WCAG 2.1 AA standards, color contrast ratios, and screen reader requirements for all components.</p>
+        </div>
+        <div class="ds-callout"><span class="ds-callout-icon">♿</span><span>The design system targets <strong>WCAG 2.1 Level AA</strong> as the minimum standard. Accessibility is a design requirement — not a post-launch audit. All contrast ratios use Claude.ai token hex equivalents.</span></div>
+        <div class="ds-section">
+          <h2 class="ds-section-title">WCAG 2.1 — POUR principles</h2>
+          <div class="ds-component-grid">
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">👁 Perceivable</div><p class="ds-component-card__desc">Information must be presentable in ways all users can perceive.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Images</span><span class="ds-spec-val">alt text required</span></li><li><span class="ds-spec-key">Icons</span><span class="ds-spec-val">aria-label if standalone</span></li><li><span class="ds-spec-key">Color</span><span class="ds-spec-val">never sole indicator</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">⌨️ Operable</div><p class="ds-component-card__desc">All functionality must be keyboard-accessible.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Keyboard</span><span class="ds-spec-val">all flows navigable</span></li><li><span class="ds-spec-key">Focus</span><span class="ds-spec-val">visible at all times</span></li><li><span class="ds-spec-key">Target</span><span class="ds-spec-val">min 44×44px</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">💡 Understandable</div><p class="ds-component-card__desc">Content and UI operation must be clear and predictable.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Lang</span><span class="ds-spec-val">html[lang] set</span></li><li><span class="ds-spec-key">Labels</span><span class="ds-spec-val">all inputs labelled</span></li><li><span class="ds-spec-key">Errors</span><span class="ds-spec-val">described in text</span></li></ul></div>
+            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🔧 Robust</div><p class="ds-component-card__desc">Content must be reliably interpreted by assistive technologies.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">HTML</span><span class="ds-spec-val">valid, semantic</span></li><li><span class="ds-spec-key">ARIA</span><span class="ds-spec-val">roles + states set</span></li><li><span class="ds-spec-key">Live</span><span class="ds-spec-val">aria-live regions</span></li></ul></div>
+          </div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Color contrast</h2>
+          <p class="ds-section-desc">WCAG AA: 4.5:1 for normal text, 3:1 for large text (&gt;18px Bold or &gt;24px) and UI components.</p>
+          <table class="ds-contrast-table">
+            <thead><tr><th>Foreground token</th><th>Background token</th><th>Ratio</th><th>Normal text</th><th>Large / UI</th></tr></thead>
+            <tbody>
+              <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">A</div> --foreground (#1A1A1A)</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #e6e6e6;color:#000;">·</div> --background (#FFF)</div></td><td style="font-weight:500;">17.0:1</td><td><span class="ds-pass-badge">PASS</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
+              <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#717182;color:#fff;">A</div> --muted-fg (#717182)</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #e6e6e6;color:#000;">·</div> --background (#FFF)</div></td><td style="font-weight:500;">4.6:1</td><td><span class="ds-pass-badge">PASS</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
+              <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">A</div> --foreground</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#ececf0;color:#000;">·</div> --muted (#ECECF0)</div></td><td style="font-weight:500;">14.5:1</td><td><span class="ds-pass-badge">PASS</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
+              <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FAFAFA;color:#000;border:1px solid #ccc;">A</div> --primary-fg (#FAFAFA)</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#030213;color:#fff;">·</div> --primary (#030213)</div></td><td style="font-weight:500;">19.9:1</td><td><span class="ds-pass-badge">PASS</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
+              <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FAFAFA;color:#000;border:1px solid #ccc;">A</div> dark --foreground (#FAFAFA)</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">·</div> dark --background</div></td><td style="font-weight:500;">17.0:1</td><td><span class="ds-pass-badge">PASS</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
+              <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#AAAAAA;color:#000;">A</div> dark --muted-fg (#AAAAAA)</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#1A1A1A;color:#fff;">·</div> dark --background</div></td><td style="font-weight:500;">5.1:1</td><td><span class="ds-pass-badge">PASS</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
+            </tbody>
+          </table>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Key rule:</strong> Never use <code>--muted</code> or <code>--accent</code> as text color — they are background-only tokens. Always pair text with <code>--foreground</code> or <code>--muted-foreground</code>.</div>
+        </div>
+        <hr class="ds-divider">
+        <div class="ds-section">
+          <h2 class="ds-section-title">Interactive elements</h2>
           <table class="ds-token-table">
             <thead><tr><th>Requirement</th><th>Rule</th><th>Applies to</th></tr></thead>
             <tbody>
-              <tr><td style="font-weight:500;">Touch target size</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 44×44px</td><td style="font-size:13px;color:var(--muted-foreground);">All buttons, links, form controls</td></tr>
-              <tr><td style="font-weight:500;">Focus indicator</td><td style="font-size:13px;color:var(--muted-foreground);"><code>ring-2 ring-ring ring-offset-2</code> — 2px outline, 2px offset</td><td style="font-size:13px;color:var(--muted-foreground);">All focusable elements</td></tr>
-              <tr><td style="font-weight:500;">Keyboard access</td><td style="font-size:13px;color:var(--muted-foreground);">Tab / Shift+Tab, Enter/Space to activate</td><td style="font-size:13px;color:var(--muted-foreground);">All interactive UI</td></tr>
+              <tr><td style="font-weight:500;">Touch target</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 44×44px</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, links, form controls</td></tr>
+              <tr><td style="font-weight:500;">Focus indicator</td><td style="font-size:13px;color:var(--muted-foreground);"><code>ring-2 ring-ring ring-offset-2</code></td><td style="font-size:13px;color:var(--muted-foreground);">All focusable elements</td></tr>
+              <tr><td style="font-weight:500;">Keyboard access</td><td style="font-size:13px;color:var(--muted-foreground);">Tab / Shift+Tab · Enter/Space to activate</td><td style="font-size:13px;color:var(--muted-foreground);">All interactive UI</td></tr>
               <tr><td style="font-weight:500;">Disabled state</td><td style="font-size:13px;color:var(--muted-foreground);">50% opacity + aria-disabled="true"</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, inputs</td></tr>
               <tr><td style="font-weight:500;">Error identification</td><td style="font-size:13px;color:var(--muted-foreground);">Color + icon + text — never color alone</td><td style="font-size:13px;color:var(--muted-foreground);">Form inputs, alerts</td></tr>
-              <tr><td style="font-weight:500;">Motion / animation</td><td style="font-size:13px;color:var(--muted-foreground);">Respect prefers-reduced-motion</td><td style="font-size:13px;color:var(--muted-foreground);">Transitions, loading states</td></tr>
+              <tr><td style="font-weight:500;">Motion</td><td style="font-size:13px;color:var(--muted-foreground);">Respect <code>prefers-reduced-motion</code></td><td style="font-size:13px;color:var(--muted-foreground);">Transitions, loading states</td></tr>
             </tbody>
           </table>
         </div>
-
         <hr class="ds-divider">
-
-        <!-- SEMANTIC HTML & SCREEN READERS ── -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Semantic HTML &amp; Screen Readers</h2>
-          <p class="ds-section-desc">Correct HTML semantics are the foundation of screen reader accessibility. Prioritise semantic elements over ARIA roles.</p>
+          <h2 class="ds-section-title">Semantic HTML &amp; screen readers</h2>
           <div class="ds-do-dont-grid">
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Use native HTML elements: <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;h1–h6&gt;</code></p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Use <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> for interactive elements and rely on ARIA to patch semantics.</p>
-            </div>
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Associate labels with inputs using <code>&lt;label for="id"&gt;</code> or <code>aria-labelledby</code>. Every input must have a visible or programmatic label.</p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Use placeholder text as the only label — placeholder disappears on focus and is not reliably announced by screen readers.</p>
-            </div>
-            <div class="ds-do-card">
-              <div class="ds-do-card__label">✓ Do</div>
-              <p>Use <code>aria-live="polite"</code> for status updates (e.g., "Form submitted", loading complete). Use <code>aria-live="assertive"</code> only for critical errors.</p>
-            </div>
-            <div class="ds-dont-card">
-              <div class="ds-dont-card__label">✕ Don't</div>
-              <p>Use <code>aria-live="assertive"</code> for non-critical updates — it interrupts the screen reader immediately and can disorient users.</p>
-            </div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use native elements: <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;h1–h6&gt;</code></p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> for interactive elements and rely on ARIA to patch semantics.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Associate labels with inputs via <code>&lt;label for="id"&gt;</code> or <code>aria-labelledby</code>.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use placeholder as the only label — it disappears on focus and isn't reliably announced by screen readers.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use <code>aria-live="polite"</code> for status updates. Use <code>aria-live="assertive"</code> only for critical errors.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use <code>aria-live="assertive"</code> for non-critical updates — it interrupts screen readers immediately.</p></div>
           </div>
-          <div class="ds-info-box">
-            <strong>Testing tip:</strong> Use VoiceOver (Mac/iOS), NVDA (Windows), or TalkBack (Android) to test screen reader flows during design QA. Navigate your flows using keyboard only before marking anything as done.
-          </div>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>Testing:</strong> VoiceOver (Mac/iOS) · NVDA (Windows) · TalkBack (Android). Navigate all flows with keyboard only before marking any design as done.</div>
         </div>
       </div>
     </div>
 
-    <!-- DESIGN: Governance ──────────────────────────────────────── -->
-    <div class="page" data-page="design-system-governance">
-      <div class="content">
-        <div class="breadcrumb">
-          <a href="#" data-page="home">Monstarlab Design Hub</a>
-          <span class="breadcrumb__sep">›</span>
-          Design System
-          <span class="breadcrumb__sep">›</span>
-          Governance &amp; Contribution
-        </div>
-        <div class="page-header">
-          <div class="page-header__eyebrow">Design System</div>
-          <h1 class="page-header__title">Governance &amp; Contribution</h1>
-          <p class="page-header__desc">How to propose new components and report bugs in the design system.</p>
-        </div>
-        <!-- OWNERSHIP ────────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Design System Ownership</h2>
-          <p class="ds-section-desc">The design system is a shared product built on Claude.ai's token architecture. Everyone can contribute — but changes are reviewed before they ship.</p>
-          <div class="ds-two-col">
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">🎯 Core Team</div>
-              <p class="ds-component-card__desc">The DS core team owns the token layer (<code>globals.css</code>), component library, and release process. They approve all breaking changes and set standards.</p>
-              <p style="font-size:12px;color:var(--muted-foreground);margin-top:8px;">Reach them on <strong>#design-system-help</strong> on Slack.</p>
-            </div>
-            <div class="ds-component-card">
-              <div class="ds-component-card__name" style="margin-bottom:8px;">🤝 Contributors</div>
-              <p class="ds-component-card__desc">All designers and engineers are encouraged to propose new components, flag token inconsistencies, and contribute improvements through the process below.</p>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- PROPOSE A COMPONENT ──────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Proposing a New Component</h2>
-          <p class="ds-section-desc">Before building custom components, check if one already exists. If not, follow this process to get it into the system properly.</p>
-          <ul class="ds-step-list">
-            <li>
-              <div class="ds-step-num">1</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Search the library first</div>
-                <div class="ds-step-desc">Check the Figma component library and the token documentation. Many requirements are already covered by composing existing components with the right token variants. Avoid creating duplicates.</div>
-              </div>
-            </li>
-            <li>
-              <div class="ds-step-num">2</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Document the need</div>
-                <div class="ds-step-desc">Fill out a component proposal: what problem does it solve, where is it used (minimum 2 different product surfaces), and why no existing component works. Use the proposal template in the DS Figma file.</div>
-              </div>
-            </li>
-            <li>
-              <div class="ds-step-num">3</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Post in #design-system-help</div>
-                <div class="ds-step-desc">Share your proposal in Slack with the context, a link to your Figma explorations, and the use-case examples. The core team will review within 5 business days.</div>
-              </div>
-            </li>
-            <li>
-              <div class="ds-step-num">4</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Design review</div>
-                <div class="ds-step-desc">If approved, work with the DS team to spec the component: all states (default, hover, focus, disabled, error), tokens used, responsive behaviour, and accessibility requirements.</div>
-              </div>
-            </li>
-            <li>
-              <div class="ds-step-num">5</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Build, document, and publish</div>
-                <div class="ds-step-desc">The DS team adds the component to the Figma library, documents its token usage and states, and includes it in the next release. You'll be credited as the contributor.</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- BUG REPORTING ────────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Reporting a Bug</h2>
-          <p class="ds-section-desc">If you find a discrepancy between the documented spec and the actual component behaviour, report it as a bug.</p>
-          <div class="ds-callout">
-            <span class="ds-callout-icon">🐛</span>
-            <span>Report all design system bugs in <strong>#design-system-help</strong>. Include: the component name, the affected state, a screenshot, and what the correct behaviour should be.</span>
-          </div>
-          <table class="ds-token-table">
-            <thead><tr><th>Severity</th><th>Definition</th><th>SLA</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:500;">Critical</td><td style="font-size:13px;color:var(--muted-foreground);">Accessibility failure, broken layout in production</td><td style="font-size:13px;color:var(--muted-foreground);">Fix within 2 business days</td></tr>
-              <tr><td style="font-weight:500;">High</td><td style="font-size:13px;color:var(--muted-foreground);">Wrong token applied, missing state, incorrect spec</td><td style="font-size:13px;color:var(--muted-foreground);">Fix in next sprint</td></tr>
-              <tr><td style="font-weight:500;">Low</td><td style="font-size:13px;color:var(--muted-foreground);">Minor visual inconsistency, documentation error</td><td style="font-size:13px;color:var(--muted-foreground);">Batch fix in monthly release</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- BREAKING CHANGES ─────────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Breaking Changes &amp; Versioning</h2>
-          <p class="ds-section-desc">Changes that affect existing implementations require a migration path and advance notice.</p>
-          <div class="ds-info-box">
-            <strong>Breaking change = any change that requires existing users to update their implementation.</strong> This includes token renames, component prop changes, and the removal of any variant.
-          </div>
-          <ul class="ds-step-list">
-            <li>
-              <div class="ds-step-num">📣</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">30-day advance notice</div>
-                <div class="ds-step-desc">Breaking changes are announced in #design-system-help at least 30 days before the release with a migration guide.</div>
-              </div>
-            </li>
-            <li>
-              <div class="ds-step-num">📋</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Migration guide required</div>
-                <div class="ds-step-desc">Every breaking change ships with a step-by-step migration guide. Old tokens or components stay deprecated (not removed) for one full release cycle.</div>
-              </div>
-            </li>
-            <li>
-              <div class="ds-step-num">🏷</div>
-              <div class="ds-step-content">
-                <div class="ds-step-title">Semantic versioning</div>
-                <div class="ds-step-desc">Major version = breaking changes. Minor version = new components or tokens. Patch = bug fixes and documentation corrections.</div>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <hr class="ds-divider">
-
-        <!-- NAMING CONVENTIONS ───────────── -->
-        <div class="ds-section">
-          <h2 class="ds-section-title">Naming Conventions</h2>
-          <p class="ds-section-desc">Consistent naming keeps the token system searchable and the codebase clean. All tokens follow the Claude.ai semantic naming pattern.</p>
-          <table class="ds-token-table">
-            <thead><tr><th>Type</th><th>Convention</th><th>Example</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:500;">Semantic color tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--{role}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--foreground, --primary, --muted-foreground</td></tr>
-              <tr><td style="font-weight:500;">Foreground pairs</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--{role}-foreground</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--primary-foreground, --secondary-foreground</td></tr>
-              <tr><td style="font-weight:500;">Radius tokens</td><td style="font-size:13px;color:var(--muted-foreground);font-family:monospace;">--radius[-{size}]</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--radius (10px), --radius-sm (6px), --radius-md (8px), --radius-xl (14px)</td></tr>
-              <tr><td style="font-weight:500;">Spacing (Tailwind)</td><td style="font-size:13px;color:var(--muted-foreground);">Tailwind scale, no custom vars</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">p-6 (24px), space-y-4 (16px), gap-2 (8px)</td></tr>
-              <tr><td style="font-weight:500;">Component variants</td><td style="font-size:13px;color:var(--muted-foreground);">lowercase kebab</td><td style="font-size:12px;color:var(--muted-foreground);">default, outline, ghost, destructive</td></tr>
-              <tr><td style="font-weight:500;">Component sizes</td><td style="font-size:13px;color:var(--muted-foreground);">sm / default / lg / icon</td><td style="font-size:12px;color:var(--muted-foreground);">Button size="sm", Badge size="default"</td></tr>
-            </tbody>
-          </table>
-          <div class="ds-info-box" style="margin-top:16px;"><strong>Source of truth:</strong> All token definitions live in <code>globals.css</code> — the light-mode values under <code>:root</code> and dark-mode values under <code>.dark</code>. Never add raw hex values to components.</div>
-        </div>
-      </div>
-    </div>
 
     <!-- PROCESS: Research ───────────────────────────────────────── -->
     <div class="page" data-page="process-research">
@@ -3832,6 +3452,9 @@
 
 <script>
   /* ─── Navigation ───────────────────────────────────────────────── */
+  const DS_FOUNDATIONS_PAGES = ['ds-foundations-colors','ds-foundations-typography','ds-foundations-spacing','ds-foundations-content','ds-foundations-dataviz'];
+  const DS_COMPONENTS_PAGES  = ['ds-components-button','ds-components-input','ds-components-card','ds-components-badge','ds-components-form','ds-components-nav'];
+
   function navigate(pageId) {
     // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -3839,17 +3462,37 @@
     const target = document.querySelector(`.page[data-page="${pageId}"]`);
     if (target) target.classList.add('active');
 
-    // Update sidebar active link
-    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-    const activeLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-      // Auto-open parent group
-      const group = activeLink.closest('.nav-group');
-      if (group && !group.classList.contains('open')) {
-        group.classList.add('open');
-      }
+    // Update sidebar nav-link active states (clear all first)
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active', 'active-parent'));
+    document.querySelectorAll('.nav-sublink').forEach(l => l.classList.remove('active'));
+
+    // Mark the matching nav-link OR nav-sublink as active
+    const directLink = document.querySelector(`.nav-link[data-page="${pageId}"]`);
+    if (directLink) {
+      directLink.classList.add('active');
+      const group = directLink.closest('.nav-group');
+      if (group && !group.classList.contains('open')) group.classList.add('open');
     }
+    const subLink = document.querySelector(`.nav-sublink[data-page="${pageId}"]`);
+    if (subLink) {
+      subLink.classList.add('active');
+      const group = subLink.closest('.nav-group');
+      if (group && !group.classList.contains('open')) group.classList.add('open');
+    }
+
+    // Foundations parent highlight + sub-nav visibility
+    const foundationsParent = document.getElementById('nav-foundations');
+    const foundationsSubnav = document.getElementById('ds-foundations-subnav');
+    const isFoundations = DS_FOUNDATIONS_PAGES.includes(pageId);
+    if (foundationsSubnav) foundationsSubnav.classList.toggle('visible', isFoundations);
+    if (foundationsParent && isFoundations) foundationsParent.classList.add('active-parent');
+
+    // Components parent highlight + sub-nav visibility
+    const componentsParent = document.getElementById('nav-components');
+    const componentsSubnav = document.getElementById('ds-components-subnav');
+    const isComponents = DS_COMPONENTS_PAGES.includes(pageId);
+    if (componentsSubnav) componentsSubnav.classList.toggle('visible', isComponents);
+    if (componentsParent && isComponents) componentsParent.classList.add('active-parent');
 
     // Show/hide handoff section submenu
     const handoffSubnav = document.getElementById('handoff-subnav');
