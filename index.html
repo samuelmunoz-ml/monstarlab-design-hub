@@ -3494,6 +3494,68 @@
           <p class="page-header__desc">The primary container pattern for grouping related content. 1px border, radius 8px, 24px internal padding, no shadow by default.</p>
         </div>
 
+        <!-- Card context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:40px 32px;margin-bottom:32px;display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;justify-content:center;">
+
+          <!-- Project summary card -->
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;padding:24px;width:280px;flex-shrink:0;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid #DAD9D6;">
+              <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:#000F1E;">Project Summary</span>
+              <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;background:#EFF0F0;border-radius:999px;padding:2px 10px;">Active</span>
+            </div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:22px;font-weight:700;color:#000F1E;margin-bottom:4px;">Brand Hub v2</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#464A4D;margin-bottom:20px;">Last updated 2 hours ago</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
+              <div style="background:#F7F7F7;border-radius:6px;padding:12px;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Tasks</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#000F1E;">24</div>
+              </div>
+              <div style="background:#F7F7F7;border-radius:6px;padding:12px;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;">Done</div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:20px;font-weight:700;color:#000F1E;">17</div>
+              </div>
+            </div>
+            <div style="background:#EFF0F0;border-radius:999px;height:6px;overflow:hidden;margin-bottom:8px;">
+              <div style="background:#000F1E;height:100%;width:71%;border-radius:999px;"></div>
+            </div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;">71% complete</div>
+          </div>
+
+          <!-- Activity card with footer -->
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;width:280px;flex-shrink:0;display:flex;flex-direction:column;">
+            <div style="padding:24px 24px 16px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:#000F1E;margin-bottom:16px;">Recent Activity</div>
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;border-radius:999px;background:#FFFF00;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#000F1E;flex-shrink:0;">SM</div>
+                  <div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Samuel updated the <strong>Button</strong> spec</div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-top:2px;">10 min ago</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;border-radius:999px;background:#234474;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#ffffff;flex-shrink:0;">JU</div>
+                  <div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Joey commented on <strong>Avatar</strong></div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-top:2px;">1 hour ago</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;border-radius:999px;background:#000F1E;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#ffffff;flex-shrink:0;">JK</div>
+                  <div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Janelle added <strong>Alert</strong> variants</div>
+                    <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-top:2px;">3 hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:auto;border-top:1px solid #DAD9D6;padding:14px 24px;display:flex;justify-content:flex-end;">
+              <button style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:#000F1E;background:none;border:none;cursor:pointer;padding:0;">View all activity →</button>
+            </div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Cards are the foundation container in Monstarlab product layouts. They group related content — forms, data summaries, settings panels, image galleries — into a visually bounded unit with consistent padding and border treatment. Four structural variants cover the full range of use cases: a default card with a header section, a card with a footer action row, a highlighted card for emphasized content, and a card with a top image area. Cards do not use box-shadow by default; elevation is reserved for overlays and popovers.</p>
