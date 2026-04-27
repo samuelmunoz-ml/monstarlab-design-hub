@@ -4281,6 +4281,35 @@
           <p class="page-header__desc">Full-width inline messages that communicate system feedback states — Success, Warning, Error, and Info. Always include icon + title + optional description.</p>
         </div>
 
+        <!-- Context banner -->
+        <div style="background:#0D1E35;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:40px;margin-bottom:40px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+
+          <!-- Success alert -->
+          <div style="width:480px;max-width:100%;background:#E8F5E9;border:1px solid #C8E6C9;border-radius:4px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+            <div><div style="font-size:14px;font-weight:600;color:#2E7D32;margin-bottom:2px;">Changes saved successfully</div><div style="font-size:13px;color:#2E7D32;opacity:0.85;">Your profile has been updated and will be visible to your team.</div></div>
+          </div>
+
+          <!-- Warning alert -->
+          <div style="width:480px;max-width:100%;background:#FFF3E0;border:1px solid #FFE0B2;border-radius:4px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E65100" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div><div style="font-size:14px;font-weight:600;color:#E65100;margin-bottom:2px;">Your session expires in 5 minutes</div><div style="font-size:13px;color:#E65100;opacity:0.85;">Save your work to avoid losing unsaved changes.</div></div>
+          </div>
+
+          <!-- Error alert -->
+          <div style="width:480px;max-width:100%;background:#FFEBEE;border:1px solid #FFCDD2;border-radius:4px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C62828" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div><div style="font-size:14px;font-weight:600;color:#C62828;margin-bottom:2px;">Unable to submit the form</div><div style="font-size:13px;color:#C62828;opacity:0.85;">3 required fields are missing. Review the highlighted fields and try again.</div></div>
+          </div>
+
+          <!-- Info alert -->
+          <div style="width:480px;max-width:100%;background:#E3F2FD;border:1px solid #BBDEFB;border-radius:4px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div><div style="font-size:14px;font-weight:600;color:#1565C0;margin-bottom:2px;">Scheduled maintenance on Friday</div><div style="font-size:13px;color:#1565C0;opacity:0.85;">The platform will be unavailable from 11 PM – 2 AM UTC. Plan accordingly.</div></div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Alerts communicate important system feedback to the user — the result of an action they took, an error they must address, or information they need to proceed. Each of the four variants maps to a specific semantic state and uses color, an icon, and text together to ensure the message is accessible to users with color vision deficiencies. The Dismissable variant adds a close button for non-critical messages; non-dismissable alerts remain visible until the underlying condition changes.</p>
