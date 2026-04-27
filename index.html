@@ -5624,6 +5624,80 @@
           <p class="page-header__desc">A floating overlay triggered by click. Three variants — Simple, WithActions, and Menu. Used for contextual menus, confirmation prompts, and inline help.</p>
         </div>
 
+        <!-- Popover context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:48px 32px;margin-bottom:32px;display:flex;gap:24px;align-items:flex-start;justify-content:center;flex-wrap:wrap;">
+
+          <!-- Simple popover — info -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+            <!-- Trigger -->
+            <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:4px;height:32px;padding:0 14px;display:flex;align-items:center;gap:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="#464A4D" stroke-width="1.2"/><line x1="6.5" y1="5.5" x2="6.5" y2="9" stroke="#464A4D" stroke-width="1.2" stroke-linecap="round"/><circle cx="6.5" cy="4" r=".5" fill="#464A4D"/></svg>
+              API key
+            </div>
+            <!-- Arrow -->
+            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #000F1E;"></div>
+            <!-- Simple popover panel -->
+            <div style="background:#000F1E;border-radius:8px;padding:14px 16px;width:220px;box-shadow:0 4px 16px rgba(0,0,0,.2);">
+              <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:#ffffff;margin-bottom:4px;">What is an API key?</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(255,255,255,0.65);line-height:1.5;">A secret token used to authenticate requests to the API. Treat it like a password — never share it publicly.</div>
+            </div>
+          </div>
+
+          <!-- WithActions popover — confirm -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+            <!-- Trigger -->
+            <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:4px;height:32px;padding:0 14px;display:flex;align-items:center;gap:6px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;color:#C62828;">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 11L6.5 2L11 11H2z" stroke="#C62828" stroke-width="1.2" stroke-linejoin="round"/><line x1="6.5" y1="5.5" x2="6.5" y2="8" stroke="#C62828" stroke-width="1.2" stroke-linecap="round"/><circle cx="6.5" cy="9.5" r=".5" fill="#C62828"/></svg>
+              Remove member
+            </div>
+            <!-- Arrow -->
+            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #ffffff;filter:drop-shadow(0 -1px 0 #DAD9D6);"></div>
+            <!-- WithActions panel -->
+            <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;padding:16px;width:240px;box-shadow:0 4px 16px rgba(0,0,0,.1);">
+              <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#000F1E;margin-bottom:6px;">Remove Alex Rivera?</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;line-height:1.5;margin-bottom:14px;">They will lose access to all projects in this workspace immediately.</div>
+              <div style="display:flex;gap:8px;justify-content:flex-end;">
+                <button style="font-family:'DM Sans',sans-serif;font-size:12px;color:#000F1E;background:none;border:1px solid #DAD9D6;border-radius:4px;height:30px;padding:0 12px;cursor:pointer;">Cancel</button>
+                <button style="font-family:'DM Sans',sans-serif;font-size:12px;color:#ffffff;background:#C62828;border:none;border-radius:4px;height:30px;padding:0 12px;cursor:pointer;">Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Menu popover -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+            <!-- Trigger -->
+            <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:4px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="3" cy="7" r="1" fill="#000F1E"/><circle cx="7" cy="7" r="1" fill="#000F1E"/><circle cx="11" cy="7" r="1" fill="#000F1E"/></svg>
+            </div>
+            <!-- Arrow -->
+            <div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #ffffff;filter:drop-shadow(0 -1px 0 #DAD9D6);"></div>
+            <!-- Menu panel -->
+            <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;width:200px;box-shadow:0 4px 16px rgba(0,0,0,.1);overflow:hidden;">
+              <div style="padding:6px;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;padding:8px 10px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:8px;">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5l4 4 6-7" stroke="#000F1E" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Rename
+                </div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;padding:8px 10px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:8px;">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="1.5" y="3.5" width="10" height="8" rx="1" stroke="#000F1E" stroke-width="1.2"/><path d="M4 3.5V2.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1" stroke="#000F1E" stroke-width="1.2"/></svg>
+                  Duplicate
+                </div>
+                <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;padding:8px 10px;border-radius:4px;cursor:pointer;background:#EFF0F0;display:flex;align-items:center;gap:8px;">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 2l9 9M11 2l-9 9" stroke="#464A4D" stroke-width="1.3" stroke-linecap="round"/></svg>
+                  Archive
+                </div>
+              </div>
+              <div style="border-top:1px solid #DAD9D6;padding:6px;">
+                <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#C62828;padding:8px 10px;border-radius:4px;cursor:pointer;display:flex;align-items:center;gap:8px;">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><polyline points="1,3.5 12,3.5" stroke="#C62828" stroke-width="1.2" stroke-linecap="round"/><path d="M4 3.5V2.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1M5 6v3.5M8 6v3.5" stroke="#C62828" stroke-width="1.2" stroke-linecap="round"/><rect x="2.5" y="3.5" width="8" height="8" rx="1" stroke="#C62828" stroke-width="1.2"/></svg>
+                  Delete project
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Popovers are floating panels anchored to a trigger element and opened by click. They are richer than Tooltips — they can contain text, action buttons, and lists — but are focused and contextual, not full modal dialogs. Three structural variants cover the range of use cases: Simple for read-only contextual information, WithActions for confirmation prompts, and Menu for action lists. Popovers close on Escape key or clicking outside the panel.</p>
