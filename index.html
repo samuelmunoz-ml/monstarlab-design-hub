@@ -3845,6 +3845,100 @@
           <p class="page-header__desc">Checkbox, radio button, and toggle switch for binary and multi-select decisions in forms and settings panels. All require a visible label.</p>
         </div>
 
+        <!-- Form Controls context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:40px 32px;margin-bottom:32px;display:flex;align-items:flex-start;justify-content:center;gap:20px;flex-wrap:wrap;">
+
+          <!-- Checkboxes — project permissions -->
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;padding:24px;width:236px;flex-shrink:0;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#464A4D;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;">Permissions</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:3px;background:#000F1E;border:1.5px solid #000F1E;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#FFFF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">View project</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:3px;background:#000F1E;border:1.5px solid #000F1E;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#FFFF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Edit tasks</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:3px;border:1.5px solid #DAD9D6;flex-shrink:0;"></div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Manage members</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:3px;border:1.5px solid #DAD9D6;flex-shrink:0;"></div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Delete project</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Radio buttons — notification frequency -->
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;padding:24px;width:236px;flex-shrink:0;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#464A4D;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;">Digest frequency</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:999px;border:2px solid #DAD9D6;flex-shrink:0;display:flex;align-items:center;justify-content:center;"></div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Real-time</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:999px;border:2px solid #000F1E;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                  <div style="width:7px;height:7px;border-radius:999px;background:#000F1E;"></div>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Daily digest</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:999px;border:2px solid #DAD9D6;flex-shrink:0;display:flex;align-items:center;justify-content:center;"></div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Weekly digest</span>
+              </label>
+              <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                <div style="width:16px;height:16px;border-radius:999px;border:2px solid #DAD9D6;flex-shrink:0;display:flex;align-items:center;justify-content:center;"></div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Never</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Toggle switches — feature flags -->
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;padding:24px;width:236px;flex-shrink:0;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#464A4D;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;">Features</div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Dark mode</div>
+                  <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-top:2px;">Apply dark theme globally</div>
+                </div>
+                <!-- toggle ON -->
+                <div style="width:36px;height:20px;border-radius:999px;background:#000F1E;flex-shrink:0;position:relative;">
+                  <div style="width:14px;height:14px;border-radius:999px;background:#FFFF00;position:absolute;top:3px;right:3px;"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Beta features</div>
+                  <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-top:2px;">Opt in to early access</div>
+                </div>
+                <!-- toggle OFF -->
+                <div style="width:36px;height:20px;border-radius:999px;background:#DAD9D6;flex-shrink:0;position:relative;">
+                  <div style="width:14px;height:14px;border-radius:999px;background:#ffffff;position:absolute;top:3px;left:3px;box-shadow:0 1px 3px rgba(0,0,0,.2);"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Analytics tracking</div>
+                  <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;margin-top:2px;">Share usage data</div>
+                </div>
+                <!-- toggle ON -->
+                <div style="width:36px;height:20px;border-radius:999px;background:#000F1E;flex-shrink:0;position:relative;">
+                  <div style="width:14px;height:14px;border-radius:999px;background:#FFFF00;position:absolute;top:3px;right:3px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Form controls are the selection primitives of the design system. Checkboxes handle multi-select scenarios where zero or more options can be chosen simultaneously. Radio buttons handle single-select scenarios where exactly one option from a group is valid. Toggle switches handle boolean on/off settings that take effect immediately without requiring a Save action. All three controls share the same active/checked color — <code>#000F1E</code> — and all require a visible label for accessibility.</p>
