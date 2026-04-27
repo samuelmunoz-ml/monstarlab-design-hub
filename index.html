@@ -286,6 +286,22 @@
       border-left-color: var(--yellow-500);
     }
 
+    /* Nav link with expandable subnav */
+    .nav-link--has-subnav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-link__chevron {
+      flex-shrink: 0;
+      color: var(--grey-700);
+      transition: transform 0.2s ease, color var(--transition);
+    }
+    .nav-link--has-subnav:hover .nav-link__chevron { color: var(--grey-400); }
+    .nav-link--has-subnav.subnav-open .nav-link__chevron { transform: rotate(90deg); }
+    .nav-link--has-subnav.active-parent .nav-link__chevron,
+    .nav-link--has-subnav.active .nav-link__chevron { color: rgba(255,255,255,0.6); }
+
     /* External link variant */
     .nav-link--external {
       display: flex;
@@ -1434,7 +1450,7 @@
         </div>
         <div class="nav-group__items">
           <a href="#" class="nav-link" data-page="working-request">Submit a Design Request</a>
-          <a href="#" class="nav-link" data-page="working-handoff">The Handoff Process</a>
+          <a href="#" class="nav-link nav-link--has-subnav" data-page="working-handoff">The Handoff Process<svg class="nav-link__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2.5L8.5 6L4 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="nav-sublinks" id="handoff-subnav">
             <a class="nav-sublink" href="#s-nomenclature">File Nomenclature</a>
             <a class="nav-sublink" href="#s-dod">Definition of Done</a>
@@ -1458,7 +1474,7 @@
           </svg>
         </div>
         <div class="nav-group__items">
-          <a href="#" class="nav-link" data-page="ds-foundations-colors" id="nav-foundations">Foundations</a>
+          <a href="#" class="nav-link nav-link--has-subnav" data-page="ds-foundations-colors" id="nav-foundations">Foundations<svg class="nav-link__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2.5L8.5 6L4 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="nav-sublinks" id="ds-foundations-subnav">
             <a class="nav-sublink" href="#" data-page="ds-foundations-colors">Colors</a>
             <a class="nav-sublink" href="#" data-page="ds-foundations-typography">Typography</a>
@@ -1467,7 +1483,7 @@
             <a class="nav-sublink" href="#" data-page="ds-foundations-dataviz">Data Visualization</a>
           </div>
           <a href="#" class="nav-link" data-page="ds-tokens">Tokens</a>
-          <a href="#" class="nav-link" data-page="ds-components-button" id="nav-components">Components</a>
+          <a href="#" class="nav-link nav-link--has-subnav" data-page="ds-components-button" id="nav-components">Components<svg class="nav-link__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2.5L8.5 6L4 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <div class="nav-sublinks" id="ds-components-subnav">
             <a class="nav-sublink" href="#" data-page="ds-components-alert">Alert</a>
             <a class="nav-sublink" href="#" data-page="ds-components-avatar">Avatar</a>
@@ -6230,18 +6246,27 @@
     const foundationsSubnav = document.getElementById('ds-foundations-subnav');
     const isFoundations = DS_FOUNDATIONS_PAGES.includes(pageId);
     if (foundationsSubnav) foundationsSubnav.classList.toggle('visible', isFoundations);
-    if (foundationsParent && isFoundations) foundationsParent.classList.add('active-parent');
+    if (foundationsParent) {
+      if (isFoundations) foundationsParent.classList.add('active-parent');
+      foundationsParent.classList.toggle('subnav-open', isFoundations);
+    }
 
     // Components parent highlight + sub-nav visibility
     const componentsParent = document.getElementById('nav-components');
     const componentsSubnav = document.getElementById('ds-components-subnav');
     const isComponents = DS_COMPONENTS_PAGES.includes(pageId);
     if (componentsSubnav) componentsSubnav.classList.toggle('visible', isComponents);
-    if (componentsParent && isComponents) componentsParent.classList.add('active-parent');
+    if (componentsParent) {
+      if (isComponents) componentsParent.classList.add('active-parent');
+      componentsParent.classList.toggle('subnav-open', isComponents);
+    }
 
     // Show/hide handoff section submenu
     const handoffSubnav = document.getElementById('handoff-subnav');
-    if (handoffSubnav) handoffSubnav.classList.toggle('visible', pageId === 'working-handoff');
+    const isHandoff = pageId === 'working-handoff';
+    if (handoffSubnav) handoffSubnav.classList.toggle('visible', isHandoff);
+    const handoffParent = document.querySelector('.nav-link[data-page="working-handoff"]');
+    if (handoffParent) handoffParent.classList.toggle('subnav-open', isHandoff);
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'instant' });
