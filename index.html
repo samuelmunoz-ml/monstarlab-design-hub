@@ -3146,6 +3146,39 @@
           <p class="page-header__desc">Buttons initiate actions and submit forms. Four variants, three sizes, and an icon-only variant give you the full range of action hierarchy in the design system.</p>
         </div>
 
+        <!-- Context banner -->
+        <div style="background:#0D1E35;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:40px;margin-bottom:40px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+
+          <!-- Modal dialog showing button hierarchy -->
+          <div style="width:480px;max-width:100%;background:#ffffff;border-radius:10px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.28);">
+            <div style="padding:24px 24px 0;">
+              <div style="font-size:16px;font-weight:600;color:#000F1E;margin-bottom:8px;">Delete project</div>
+              <p style="font-size:14px;color:#464A4D;line-height:1.6;margin:0 0 24px;">This will permanently delete <strong style="color:#000F1E;">Brand Hub v2</strong> and all its assets. This action cannot be undone.</p>
+            </div>
+            <div style="padding:16px 24px 24px;display:flex;justify-content:flex-end;gap:8px;border-top:1px solid #DAD9D6;">
+              <!-- Ghost -->
+              <div style="height:44px;padding:0 24px;border-radius:4px;background:transparent;color:#939598;font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:default;">Cancel</div>
+              <!-- Outline -->
+              <div style="height:44px;padding:0 24px;border-radius:4px;background:transparent;border:1px solid #000F1E;color:#000F1E;font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:default;">Keep project</div>
+              <!-- Primary destructive -->
+              <div style="height:44px;padding:0 24px;border-radius:4px;background:#C62828;color:#ffffff;font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:default;">Delete</div>
+            </div>
+          </div>
+
+          <!-- CTA row showing Primary + Secondary -->
+          <div style="width:480px;max-width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <div style="font-size:14px;font-weight:600;color:#ffffff;margin-bottom:4px;">Design request ready for review</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.45);">Onboarding flow · Updated 2h ago</div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <div style="height:44px;padding:0 24px;border-radius:4px;background:transparent;border:1px solid #000F1E;color:#ffffff;border-color:rgba(255,255,255,0.2);font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:default;">Reject</div>
+              <div style="height:44px;padding:0 24px;border-radius:4px;background:#FFFF00;color:#000F1E;font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:default;">Approve</div>
+            </div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">The Button is the primary interactive element for triggering actions — submitting forms, opening dialogs, deleting records, and navigating within a flow. It is distinct from the Link component, which is reserved for navigational changes that result in a URL change. Buttons come in four variants that map to a clear visual hierarchy: Primary carries the highest visual weight and should appear once per logical section, while Ghost carries the least and is used for low-emphasis inline actions.</p>
