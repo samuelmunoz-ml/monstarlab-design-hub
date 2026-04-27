@@ -4645,6 +4645,41 @@
           <p class="page-header__desc">Circular representations of users or entities. Three sizes, initials or image, and a group stacking variant for team displays.</p>
         </div>
 
+        <!-- Context banner -->
+        <div style="background:#0D1E35;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:32px 40px;margin-bottom:40px;display:flex;flex-direction:column;gap:24px;overflow:hidden;">
+
+          <!-- Card — Comment thread -->
+          <div style="background:#ffffff;border-radius:10px;padding:20px 24px;max-width:480px;box-shadow:0 8px 32px rgba(0,0,0,0.28);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid #DAD9D6;">
+              <div style="width:40px;height:40px;border-radius:999px;background:#FFFF00;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#000F1E;flex-shrink:0;">JU</div>
+              <div>
+                <div style="font-size:14px;font-weight:600;color:#000F1E;">Joey Unnold</div>
+                <div style="font-size:12px;color:#939598;">Design Lead · 2h ago</div>
+              </div>
+            </div>
+            <p style="font-size:14px;color:#464A4D;line-height:1.6;margin:0 0 16px;">"Approved the revised component specs. Let's move forward with the handoff — tagging the team below."</p>
+            <div style="display:flex;align-items:center;gap:12px;">
+              <div style="display:flex;">
+                <div style="width:32px;height:32px;border-radius:999px;background:#000F1E;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;border:2px solid #fff;">JK</div>
+                <div style="width:32px;height:32px;border-radius:999px;background:#234474;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;border:2px solid #fff;margin-left:-8px;">SM</div>
+                <div style="width:32px;height:32px;border-radius:999px;background:#939598;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;border:2px solid #fff;margin-left:-8px;">AL</div>
+                <div style="width:32px;height:32px;border-radius:999px;background:#EFF0F0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#939598;border:2px solid #fff;margin-left:-8px;">+4</div>
+              </div>
+              <span style="font-size:12px;color:#939598;">7 people tagged</span>
+            </div>
+          </div>
+
+          <!-- Row — Assigned to field -->
+          <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:14px 20px;max-width:480px;display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.45);">Assigned to</span>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div style="width:28px;height:28px;border-radius:999px;background:#FFFF00;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#000F1E;">SM</div>
+              <span style="font-size:14px;color:#ffffff;font-weight:500;">Samuel Muñoz</span>
+            </div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Avatars identify users and entities in the UI — in navigation headers, comment threads, assignment fields, and team member lists. They display either a user's profile image or a two-character initials fallback when no image is available. The three sizes — Large (56px), Medium (40px), and Small (32px) — map to specific use contexts: Large for profile headers, Medium for inline assignments, Small for dense data rows. The Group variant stacks up to 5 avatars with overlapping margins.</p>
