@@ -5474,6 +5474,74 @@
           <p class="page-header__desc">A step indicator for multi-step flows. Two orientations — horizontal and vertical. Three step states: Completed, Active, and Upcoming.</p>
         </div>
 
+        <!-- Progress Steps context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:40px 32px;margin-bottom:32px;display:flex;gap:24px;align-items:flex-start;justify-content:center;flex-wrap:wrap;">
+
+          <!-- Horizontal — checkout flow -->
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;padding:28px 32px;width:460px;max-width:100%;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:#000F1E;margin-bottom:24px;">Create workspace</div>
+
+            <!-- Horizontal steps -->
+            <div style="display:flex;align-items:center;margin-bottom:28px;">
+
+              <!-- Step 1 — Completed -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
+                <div style="width:28px;height:28px;border-radius:999px;background:#234474;display:flex;align-items:center;justify-content:center;">
+                  <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#234474;font-weight:500;white-space:nowrap;">Workspace</span>
+              </div>
+              <!-- Connector filled -->
+              <div style="flex:1;height:2px;background:#234474;margin:0 6px;margin-bottom:18px;"></div>
+
+              <!-- Step 2 — Completed -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
+                <div style="width:28px;height:28px;border-radius:999px;background:#234474;display:flex;align-items:center;justify-content:center;">
+                  <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#234474;font-weight:500;white-space:nowrap;">Invite team</span>
+              </div>
+              <!-- Connector filled -->
+              <div style="flex:1;height:2px;background:#234474;margin:0 6px;margin-bottom:18px;"></div>
+
+              <!-- Step 3 — Active -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
+                <div style="width:28px;height:28px;border-radius:999px;border:2px solid #234474;background:#ffffff;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;color:#234474;">3</span>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;font-weight:600;white-space:nowrap;">Billing</span>
+              </div>
+              <!-- Connector grey -->
+              <div style="flex:1;height:2px;background:#DAD9D6;margin:0 6px;margin-bottom:18px;"></div>
+
+              <!-- Step 4 — Upcoming -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
+                <div style="width:28px;height:28px;border-radius:999px;border:2px solid #DAD9D6;background:#ffffff;display:flex;align-items:center;justify-content:center;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;color:#464A4D;">4</span>
+                </div>
+                <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#464A4D;white-space:nowrap;">Review</span>
+              </div>
+
+            </div>
+
+            <!-- Active step content -->
+            <div style="background:#F7F7F7;border-radius:6px;padding:16px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;color:#464A4D;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;">Step 3 — Billing</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div style="height:32px;background:#ffffff;border:1px solid #DAD9D6;border-radius:4px;padding:0 10px;display:flex;align-items:center;justify-content:space-between;">
+                  <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;">Card number</span>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#DAD9D6;">•••• •••• •••• ••••</span>
+                </div>
+                <div style="display:flex;gap:8px;">
+                  <div style="flex:1;height:32px;background:#ffffff;border:1px solid #DAD9D6;border-radius:4px;padding:0 10px;display:flex;align-items:center;"><span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;">MM / YY</span></div>
+                  <div style="flex:1;height:32px;background:#ffffff;border:1px solid #DAD9D6;border-radius:4px;padding:0 10px;display:flex;align-items:center;"><span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;">CVC</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Progress Steps communicate a user's position within a multi-step process and show how many steps remain. They appear in multi-step forms, onboarding flows, checkout processes, and any other sequential task that benefits from visible progress. The component uses three step states — Completed (filled blue with checkmark), Active (outlined blue, bold label), and Upcoming (outlined grey, muted label) — connected by horizontal or vertical lines that fill progressively as steps are completed.</p>
