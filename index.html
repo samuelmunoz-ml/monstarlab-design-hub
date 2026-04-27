@@ -1363,6 +1363,144 @@
     @media (max-width: 480px) {
       .card-grid { grid-template-columns: 1fr; }
     }
+
+    /* ─── Component Playground ──────────────────────────────────── */
+    .cp-block { border:1px solid var(--border); border-radius:var(--radius-m); overflow:hidden; margin-bottom:40px; }
+    .cp-toolbar { background:var(--surface-1); border-bottom:1px solid var(--border); padding:0 16px; display:flex; align-items:center; justify-content:space-between; height:44px; gap:12px; }
+    .cp-tabs { display:flex; gap:2px; }
+    .cp-tab { background:none; border:none; border-bottom:2px solid transparent; padding:0 12px; height:44px; font-family:var(--font-primary); font-size:13px; font-weight:500; color:var(--muted-foreground); cursor:pointer; transition:color var(--transition); }
+    .cp-tab:hover { color:var(--white); }
+    .cp-tab.cp-tab--active { color:var(--white); border-bottom-color:var(--yellow-500); }
+    .cp-theme-btn { background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-s); padding:5px 10px; font-family:var(--font-primary); font-size:12px; font-weight:500; color:var(--grey-400); cursor:pointer; display:flex; align-items:center; gap:5px; flex-shrink:0; transition:background var(--transition),color var(--transition); white-space:nowrap; }
+    .cp-theme-btn:hover { background:var(--surface-hover); color:var(--white); }
+    .cp-canvas { padding:40px 32px; min-height:140px; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:12px; transition:background 200ms ease; }
+    .cp-canvas--light { background:#F7F7F6; }
+    .cp-canvas--dark  { background:#000F1E; }
+    /* Light theme tokens */
+    .cp-canvas--light { --cp-text:#000F1E; --cp-text-muted:#939598; --cp-text-ph:#B7B8B9; --cp-border:#DAD9D6; --cp-surface:#ffffff; --cp-btn-p-bg:#000F1E; --cp-btn-p-fg:#ffffff; --cp-btn-o-border:#000F1E; --cp-btn-o-fg:#000F1E; --cp-badge-ok-bg:#D4EDDA; --cp-badge-ok-fg:#155724; --cp-badge-warn-bg:#FFF3CD; --cp-badge-warn-fg:#856404; --cp-badge-err-bg:#F8D7DA; --cp-badge-err-fg:#842029; --cp-badge-neu-bg:#E2E3E5; --cp-badge-neu-fg:#464A4D; --cp-alert-info-bg:#D1ECF1; --cp-alert-info-fg:#0C5460; --cp-alert-ok-bg:#D4EDDA; --cp-alert-ok-fg:#155724; --cp-step-done:#234474; --cp-step-done-fg:#fff; --cp-step-active-b:#234474; --cp-step-active-fg:#234474; --cp-step-up-b:#DAD9D6; --cp-step-up-fg:#939598; --cp-link:#234474; --cp-tag-bg:#EFF0F0; --cp-tag-fg:#000F1E; --cp-tag-act-bg:#234474; --cp-tag-act-fg:#fff; --cp-tip-bg:#000F1E; --cp-tip-fg:#fff; --cp-pop-bg:#ffffff; --cp-pop-fg:#000F1E; }
+    /* Dark theme tokens */
+    .cp-canvas--dark  { --cp-text:#ffffff; --cp-text-muted:#939598; --cp-text-ph:#6E7073; --cp-border:#1A2C47; --cp-surface:#0D1E35; --cp-btn-p-bg:#FFFF00; --cp-btn-p-fg:#000F1E; --cp-btn-o-border:rgba(255,255,255,0.25); --cp-btn-o-fg:#ffffff; --cp-badge-ok-bg:rgba(21,87,36,0.35); --cp-badge-ok-fg:#75dd93; --cp-badge-warn-bg:rgba(133,100,4,0.3); --cp-badge-warn-fg:#ffd166; --cp-badge-err-bg:rgba(132,32,41,0.3); --cp-badge-err-fg:#f07c82; --cp-badge-neu-bg:rgba(255,255,255,0.08); --cp-badge-neu-fg:#939598; --cp-alert-info-bg:rgba(12,84,96,0.35); --cp-alert-info-fg:#7ee8f7; --cp-alert-ok-bg:rgba(21,87,36,0.35); --cp-alert-ok-fg:#75dd93; --cp-step-done:#234474; --cp-step-done-fg:#fff; --cp-step-active-b:#4a7fcb; --cp-step-active-fg:#4a7fcb; --cp-step-up-b:#1A2C47; --cp-step-up-fg:#6E7073; --cp-link:#6ea3e8; --cp-tag-bg:rgba(255,255,255,0.08); --cp-tag-fg:#ffffff; --cp-tag-act-bg:#234474; --cp-tag-act-fg:#fff; --cp-tip-bg:#1A2C47; --cp-tip-fg:#ffffff; --cp-pop-bg:#0D1E35; --cp-pop-fg:#ffffff; }
+    /* Component atoms */
+    .cp-btn { height:44px; padding:0 24px; border-radius:4px; font-size:14px; font-weight:500; font-family:var(--font-primary); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; border:none; gap:8px; white-space:nowrap; transition:background 120ms ease,opacity 120ms ease,border-color 120ms ease; }
+    .cp-btn--p  { background:var(--cp-btn-p-bg);  color:var(--cp-btn-p-fg); }
+    .cp-btn--s  { background:#FFFF00; color:#000F1E; }
+    .cp-btn--o  { background:transparent; border:1px solid var(--cp-btn-o-border); color:var(--cp-btn-o-fg); }
+    .cp-btn--g  { background:transparent; color:var(--cp-text-muted); border:none; }
+    .cp-btn--sm { height:36px; padding:0 16px; font-size:13px; }
+    .cp-btn--lg { height:52px; padding:0 32px; }
+    .cp-badge { display:inline-flex; align-items:center; height:20px; padding:0 8px; border-radius:999px; font-size:11px; font-weight:600; font-family:var(--font-primary); white-space:nowrap; }
+    .cp-badge--ok   { background:var(--cp-badge-ok-bg);   color:var(--cp-badge-ok-fg);   }
+    .cp-badge--warn { background:var(--cp-badge-warn-bg); color:var(--cp-badge-warn-fg); }
+    .cp-badge--err  { background:var(--cp-badge-err-bg);  color:var(--cp-badge-err-fg);  }
+    .cp-badge--neu  { background:var(--cp-badge-neu-bg);  color:var(--cp-badge-neu-fg);  }
+    .cp-input-group { display:flex; flex-direction:column; gap:6px; }
+    .cp-label { font-size:12px; font-weight:500; color:var(--cp-text); font-family:var(--font-primary); }
+    .cp-input { height:40px; padding:0 12px; border:1px solid var(--cp-border); border-radius:4px; background:var(--cp-surface); color:var(--cp-text); font-size:14px; font-family:var(--font-primary); display:flex; align-items:center; min-width:0; }
+    .cp-input--focus { border-color:#234474; box-shadow:0 0 0 2px rgba(35,68,116,0.2); }
+    .cp-input--err   { border-color:#C62828; }
+    .cp-input-ph { color:var(--cp-text-ph); }
+    .cp-card { background:var(--cp-surface); border:1px solid var(--cp-border); border-radius:8px; overflow:hidden; width:280px; }
+    .cp-card__head { padding:16px 20px; border-bottom:1px solid var(--cp-border); }
+    .cp-card__title { font-size:14px; font-weight:600; color:var(--cp-text); font-family:var(--font-primary); margin-bottom:2px; }
+    .cp-card__sub   { font-size:12px; color:var(--cp-text-muted); font-family:var(--font-primary); }
+    .cp-card__body  { padding:16px 20px; font-size:13px; color:var(--cp-text-muted); font-family:var(--font-primary); line-height:1.5; }
+    .cp-card__foot  { padding:12px 20px; border-top:1px solid var(--cp-border); display:flex; justify-content:flex-end; gap:8px; }
+    .cp-alert { display:flex; align-items:flex-start; gap:10px; padding:12px 16px; border-radius:4px; font-size:13px; font-family:var(--font-primary); line-height:1.5; width:320px; max-width:100%; }
+    .cp-alert--info { background:var(--cp-alert-info-bg); color:var(--cp-alert-info-fg); }
+    .cp-alert--ok   { background:var(--cp-alert-ok-bg);   color:var(--cp-alert-ok-fg);   }
+    .cp-tag { display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 10px; border-radius:4px; font-size:12px; font-weight:500; font-family:var(--font-primary); cursor:default; }
+    .cp-tag--d { background:var(--cp-tag-bg);     color:var(--cp-tag-fg);     }
+    .cp-tag--a { background:var(--cp-tag-act-bg); color:var(--cp-tag-act-fg); }
+    .cp-link  { color:var(--cp-link); text-decoration:underline; font-size:14px; font-family:var(--font-primary); cursor:default; }
+    .cp-avatar { border-radius:50%; background:#234474; color:#fff; font-weight:600; font-family:var(--font-primary); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .cp-avatar--lg { width:56px; height:56px; font-size:18px; }
+    .cp-avatar--md { width:40px; height:40px; font-size:14px; }
+    .cp-avatar--sm { width:32px; height:32px; font-size:12px; }
+    .cp-disc { border:1px solid var(--cp-border); border-radius:4px; overflow:hidden; background:var(--cp-surface); width:320px; max-width:100%; }
+    .cp-disc__trigger { width:100%; padding:13px 16px; display:flex; align-items:center; justify-content:space-between; font-size:14px; font-weight:500; font-family:var(--font-primary); color:var(--cp-text); background:var(--cp-surface); border:none; cursor:default; }
+    .cp-disc__body { padding:12px 16px 16px; font-size:13px; color:var(--cp-text-muted); font-family:var(--font-primary); line-height:1.5; border-top:1px solid var(--cp-border); }
+    .cp-steps { display:flex; align-items:center; }
+    .cp-step  { display:flex; flex-direction:column; align-items:center; gap:6px; }
+    .cp-step__c { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; font-family:var(--font-primary); }
+    .cp-step__c--done { background:var(--cp-step-done); color:var(--cp-step-done-fg); }
+    .cp-step__c--act  { background:transparent; border:2px solid var(--cp-step-active-b); color:var(--cp-step-active-fg); }
+    .cp-step__c--up   { background:transparent; border:2px solid var(--cp-step-up-b);     color:var(--cp-step-up-fg);     }
+    .cp-step__l { font-size:11px; font-family:var(--font-primary); white-space:nowrap; }
+    .cp-step__l--done { color:var(--cp-step-done);     font-weight:500; }
+    .cp-step__l--act  { color:var(--cp-step-active-fg); font-weight:600; }
+    .cp-step__l--up   { color:var(--cp-step-up-fg);     }
+    .cp-step-line { flex:1; height:2px; background:var(--cp-step-up-b);   min-width:28px; margin-bottom:22px; }
+    .cp-step-line--done { background:var(--cp-step-done); }
+    .cp-tip-wrap { display:inline-flex; flex-direction:column; align-items:center; gap:8px; position:relative; }
+    .cp-tip { background:var(--cp-tip-bg); color:var(--cp-tip-fg); font-size:12px; font-family:var(--font-primary); padding:6px 10px; border-radius:4px; white-space:nowrap; }
+    .cp-tip::after { content:''; position:absolute; top:calc(100% - 5px); left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--cp-tip-bg); pointer-events:none; }
+    .cp-pop-wrap { display:inline-flex; flex-direction:column; align-items:flex-start; gap:8px; }
+    .cp-pop { background:var(--cp-pop-bg); color:var(--cp-pop-fg); border:1px solid var(--cp-border); border-radius:8px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,0.2); width:240px; }
+    .cp-pop__title { font-size:13px; font-weight:600; font-family:var(--font-primary); color:var(--cp-text); margin-bottom:8px; }
+    .cp-pop__body  { font-size:12px; color:var(--cp-text-muted); font-family:var(--font-primary); line-height:1.5; }
+    .cp-nav-tabs { display:flex; border-bottom:1px solid var(--cp-border); }
+    .cp-nav-tab { padding:0 16px; height:40px; font-size:13px; font-weight:500; font-family:var(--font-primary); color:var(--cp-text-muted); border-bottom:2px solid transparent; display:flex; align-items:center; cursor:default; }
+    .cp-nav-tab--act { color:var(--cp-text); border-bottom-color:#234474; }
+    .cp-form-row { display:flex; align-items:center; gap:10px; font-size:13px; font-family:var(--font-primary); color:var(--cp-text); }
+    .cp-cb { width:18px; height:18px; border-radius:3px; border:1.5px solid var(--cp-border); background:var(--cp-surface); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .cp-cb--on { background:#234474; border-color:#234474; }
+    .cp-rb { width:18px; height:18px; border-radius:50%; border:2px solid var(--cp-border); background:var(--cp-surface); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .cp-rb--on { border-color:#234474; }
+    .cp-rb__dot { width:8px; height:8px; border-radius:50%; background:#234474; }
+    .cp-toggle { width:38px; height:22px; border-radius:11px; padding:2px; display:flex; align-items:center; flex-shrink:0; }
+    .cp-toggle--off { background:var(--cp-border); justify-content:flex-start; }
+    .cp-toggle--on  { background:#234474;           justify-content:flex-end;   }
+    .cp-toggle__thumb { width:18px; height:18px; border-radius:50%; background:#ffffff; }
+    .cp-icon-btn { width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border:none; background:transparent; color:var(--cp-text-muted); border-radius:4px; cursor:pointer; transition:background 120ms ease,color 120ms ease; }
+    .cp-code-panel { position:relative; }
+    .cp-pre { background:#0A1628; padding:24px; overflow-x:auto; margin:0; font-size:12.5px; line-height:1.65; color:#a8b4cf; tab-size:2; }
+    .cp-pre code { font-family:'SF Mono','Fira Code',Consolas,monospace; }
+    .cp-copy-btn { position:absolute; top:12px; right:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-s); padding:4px 10px; font-family:var(--font-primary); font-size:11px; font-weight:500; color:var(--grey-400); cursor:pointer; transition:background var(--transition),color var(--transition); }
+    .cp-copy-btn:hover { background:var(--surface-hover); color:var(--white); }
+
+    /* ── Playground interactivity ──────────────────────────────────── */
+    /* Button hovers */
+    .cp-canvas--light .cp-btn--p:hover { background:#0D1E35; }
+    .cp-canvas--dark  .cp-btn--p:hover { background:#E6E600; }
+    .cp-btn--s:hover  { background:#E6E600; }
+    .cp-canvas--light .cp-btn--o:hover { background:rgba(0,0,0,0.05); }
+    .cp-canvas--dark  .cp-btn--o:hover { background:rgba(255,255,255,0.07); }
+    .cp-canvas--light .cp-btn--g:hover { background:rgba(0,0,0,0.05); }
+    .cp-canvas--dark  .cp-btn--g:hover { background:rgba(255,255,255,0.07); }
+    .cp-btn:active { opacity:0.75; transform:scale(0.98); }
+    /* Icon button hover */
+    .cp-canvas--light .cp-icon-btn:hover { background:rgba(0,0,0,0.07); color:var(--cp-text); }
+    .cp-canvas--dark  .cp-icon-btn:hover { background:rgba(255,255,255,0.1); color:var(--cp-text); }
+    .cp-icon-btn:active { opacity:0.7; }
+    /* Tag */
+    .cp-tag { cursor:pointer; transition:background 120ms ease; }
+    .cp-canvas--light .cp-tag--d:hover { background:#DAD9D6; }
+    .cp-canvas--dark  .cp-tag--d:hover { background:rgba(255,255,255,0.15); }
+    .cp-canvas--light .cp-tag--a:hover { background:#1A3362; }
+    .cp-canvas--dark  .cp-tag--a:hover { background:#1A3362; }
+    /* Nav tab */
+    .cp-nav-tab { cursor:pointer; transition:color 120ms ease; }
+    .cp-nav-tab:hover { color:var(--cp-text); }
+    /* Link */
+    .cp-link { transition:opacity 120ms ease; }
+    .cp-link:hover { opacity:0.65; }
+    /* Form controls */
+    .cp-cb, .cp-rb, .cp-toggle { cursor:pointer; transition:background 120ms ease,border-color 120ms ease; }
+    /* Disclosure */
+    .cp-disc__trigger { cursor:pointer; transition:background 120ms ease; }
+    .cp-canvas--light .cp-disc__trigger:hover { background:rgba(0,0,0,0.03); }
+    .cp-canvas--dark  .cp-disc__trigger:hover { background:rgba(255,255,255,0.04); }
+    .cp-disc__trigger svg { transition:transform 200ms ease; }
+    /* Tooltip – hidden by default, revealed on hover of wrapper */
+    .cp-tip-wrap .cp-tip { opacity:0; transform:translateY(6px); transition:opacity 150ms ease,transform 150ms ease; pointer-events:none; }
+    .cp-tip-wrap:hover .cp-tip,
+    .cp-tip-wrap.cp-tip-visible .cp-tip { opacity:1; transform:translateY(0); pointer-events:auto; }
+    /* Progress step circles */
+    .cp-step__c { cursor:pointer; transition:background 150ms ease,border-color 150ms ease; }
+    .cp-step__c:hover { opacity:0.8; }
+    /* Popover toggle */
+    .cp-pop { transition:opacity 150ms ease,transform 150ms ease; }
+    .cp-pop.cp-pop--hidden { opacity:0; transform:translateY(-6px); pointer-events:none; }
   </style>
 </head>
 <body>
@@ -3214,6 +3352,37 @@
           <div class="ds-callout"><span class="ds-callout-icon">★</span><span><strong>Semantic rule:</strong> Use <code>&lt;button&gt;</code> for actions (submit, delete, open modal). Use <code>&lt;a&gt;</code> for navigation that changes the URL. Never use a <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> as a button.</span></div>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light">
+            <button class="cp-btn cp-btn--p">Primary</button>
+            <button class="cp-btn cp-btn--s">Secondary</button>
+            <button class="cp-btn cp-btn--o">Outline</button>
+            <button class="cp-btn cp-btn--g">Ghost</button>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Primary --&gt;
+&lt;button class="btn btn--primary"&gt;Save changes&lt;/button&gt;
+
+&lt;!-- Secondary --&gt;
+&lt;button class="btn btn--secondary"&gt;Get started&lt;/button&gt;
+
+&lt;!-- Outline --&gt;
+&lt;button class="btn btn--outline"&gt;Cancel&lt;/button&gt;
+
+&lt;!-- Ghost --&gt;
+&lt;button class="btn btn--ghost"&gt;Clear all&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -3471,6 +3640,51 @@
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span><strong>Never use placeholder as the sole label.</strong> Placeholder text disappears on focus and is not reliably announced by screen readers. Always pair inputs with a visible <code>&lt;label&gt;</code> element.</span></div>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="gap:24px;align-items:flex-start;">
+            <div class="cp-input-group" style="width:200px;">
+              <span class="cp-label">Email address</span>
+              <div class="cp-input"><span class="cp-input-ph">e.g. name@company.com</span></div>
+            </div>
+            <div class="cp-input-group" style="width:200px;">
+              <span class="cp-label">Full name</span>
+              <div class="cp-input cp-input--focus" style="color:var(--cp-text);">Alex Rivera</div>
+            </div>
+            <div class="cp-input-group" style="width:200px;">
+              <span class="cp-label" style="color:#C62828;">Password <span style="font-weight:400;">— Too short</span></span>
+              <div class="cp-input cp-input--err"><span style="color:var(--cp-text);">••••</span></div>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Default --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label"&gt;Email address&lt;/label&gt;
+  &lt;input type="email" class="input" placeholder="e.g. name@company.com" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Focused --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label"&gt;Full name&lt;/label&gt;
+  &lt;input type="text" class="input input--focus" value="Alex Rivera" /&gt;
+&lt;/div&gt;
+
+&lt;!-- Error state --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label input-label--error"&gt;Password — Too short&lt;/label&gt;
+  &lt;input type="password" class="input input--error" value="1234" /&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -3665,6 +3879,46 @@
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span>Never nest cards more than one level deep. If you find yourself nesting cards, restructure the information architecture to flatten the hierarchy instead.</span></div>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light">
+            <div class="cp-card">
+              <div class="cp-card__head">
+                <div class="cp-card__title">Project metrics</div>
+                <div class="cp-card__sub">Updated 2 hours ago</div>
+              </div>
+              <div class="cp-card__body">Design system components are ready for handoff this sprint.</div>
+              <div class="cp-card__foot">
+                <button class="cp-btn cp-btn--g cp-btn--sm">Dismiss</button>
+                <button class="cp-btn cp-btn--p cp-btn--sm">Review</button>
+              </div>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;div class="card"&gt;
+  &lt;div class="card__header"&gt;
+    &lt;h3 class="card__title"&gt;Project metrics&lt;/h3&gt;
+    &lt;p class="card__subtitle"&gt;Updated 2 hours ago&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card__body"&gt;
+    Design system components are ready for handoff this sprint.
+  &lt;/div&gt;
+  &lt;div class="card__footer"&gt;
+    &lt;button class="btn btn--ghost btn--sm"&gt;Dismiss&lt;/button&gt;
+    &lt;button class="btn btn--primary btn--sm"&gt;Review&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -3850,6 +4104,30 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Badges are small, inline status indicators attached to items in tables, lists, cards, and headers. They communicate a semantic state — success, warning, error, or neutral — using color and text together. Each badge variant maps to a specific meaning in the system: use them consistently so users can learn their meaning at a glance. Badges are non-interactive by default and do not respond to click or hover events unless explicitly composed into an interactive element.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span><strong>Never use badge colors decoratively.</strong> Each variant carries a semantic meaning that users learn over time. Using Success green for a non-success state, for example, breaks the semantic contract and misleads users.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light">
+            <span class="cp-badge cp-badge--ok">Active</span>
+            <span class="cp-badge cp-badge--warn">Pending</span>
+            <span class="cp-badge cp-badge--err">Failed</span>
+            <span class="cp-badge cp-badge--neu">Draft</span>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;span class="badge badge--success"&gt;Active&lt;/span&gt;
+&lt;span class="badge badge--warning"&gt;Pending&lt;/span&gt;
+&lt;span class="badge badge--error"&gt;Failed&lt;/span&gt;
+&lt;span class="badge badge--neutral"&gt;Draft&lt;/span&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -4046,6 +4324,51 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Form controls are the selection primitives of the design system. Checkboxes handle multi-select scenarios where zero or more options can be chosen simultaneously. Radio buttons handle single-select scenarios where exactly one option from a group is valid. Toggle switches handle boolean on/off settings that take effect immediately without requiring a Save action. All three controls share the same active/checked color — <code>#000F1E</code> — and all require a visible label for accessibility.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span><strong>A visible label is always required.</strong> Never use a form control without an associated label element. A placeholder or tooltip is not a substitute for a persistent visible label.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="gap:20px;flex-direction:column;">
+            <div class="cp-form-row">
+              <div class="cp-cb cp-cb--on"><svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <span>Enable email notifications</span>
+            </div>
+            <div class="cp-form-row">
+              <div class="cp-rb cp-rb--on"><div class="cp-rb__dot"></div></div>
+              <span>Monthly billing</span>
+            </div>
+            <div class="cp-form-row">
+              <div class="cp-toggle cp-toggle--on"><div class="cp-toggle__thumb"></div></div>
+              <span>Dark mode</span>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Checkbox --&gt;
+&lt;label class="form-control"&gt;
+  &lt;input type="checkbox" checked /&gt;
+  Enable email notifications
+&lt;/label&gt;
+
+&lt;!-- Radio --&gt;
+&lt;label class="form-control"&gt;
+  &lt;input type="radio" name="billing" checked /&gt;
+  Monthly billing
+&lt;/label&gt;
+
+&lt;!-- Toggle --&gt;
+&lt;label class="form-control"&gt;
+  &lt;button role="switch" aria-checked="true" class="toggle toggle--on"&gt;&lt;/button&gt;
+  Dark mode
+&lt;/label&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -4269,6 +4592,34 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">The design system provides three navigation patterns: a Sidebar for primary app-level navigation, Tabs for secondary content switching within a page or section, and a Breadcrumb for hierarchical wayfinding in deep page structures. Each serves a distinct level of the information hierarchy and should not be substituted for one another. Nav items in the Sidebar use Material Symbols Rounded icons at 18px weight-400, while Tabs use text-only labels.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span>Navigation patterns communicate structure. Mixing Tab and Sidebar patterns in the same visual region or using Breadcrumbs as primary navigation creates confusion about the information architecture.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:32px;">
+            <div class="cp-nav-tabs" style="width:100%;max-width:400px;margin:0 auto;">
+              <div class="cp-nav-tab cp-nav-tab--act">Overview</div>
+              <div class="cp-nav-tab">Assets</div>
+              <div class="cp-nav-tab">Comments</div>
+              <div class="cp-nav-tab">History</div>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;nav class="tabs" role="tablist"&gt;
+  &lt;button class="tab tab--active" role="tab" aria-selected="true"&gt;Overview&lt;/button&gt;
+  &lt;button class="tab" role="tab" aria-selected="false"&gt;Assets&lt;/button&gt;
+  &lt;button class="tab" role="tab" aria-selected="false"&gt;Comments&lt;/button&gt;
+  &lt;button class="tab" role="tab" aria-selected="false"&gt;History&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -4541,6 +4892,45 @@
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span><strong>Never use an Icon Button without a tooltip or <code>aria-label</code>.</strong> An icon alone conveys nothing to screen reader users and may be ambiguous to sighted users unfamiliar with the icon's meaning.</span></div>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="gap:4px;">
+            <div class="cp-icon-btn" title="Edit">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            </div>
+            <div class="cp-icon-btn" title="Copy">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </div>
+            <div class="cp-icon-btn" title="Delete">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            </div>
+            <div class="cp-icon-btn" title="More options">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;button class="icon-btn" aria-label="Edit" title="Edit"&gt;
+  &lt;svg ...&gt;&lt;!-- edit icon --&gt;&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;button class="icon-btn" aria-label="Copy" title="Copy"&gt;
+  &lt;svg ...&gt;&lt;!-- copy icon --&gt;&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;button class="icon-btn" aria-label="Delete" title="Delete"&gt;
+  &lt;svg ...&gt;&lt;!-- trash icon --&gt;&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -4740,6 +5130,37 @@
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span>Do not use Tags as status indicators. Tags are for categorization and selection. Use the Badge component for communicating record status (Active, Pending, Error).</span></div>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light">
+            <div class="cp-tag cp-tag--d">Design</div>
+            <div class="cp-tag cp-tag--a">UX Research</div>
+            <div class="cp-tag cp-tag--d">Accessibility</div>
+            <div class="cp-tag cp-tag--d">Mobile<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="margin-left:2px;flex-shrink:0;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Default --&gt;
+&lt;span class="tag"&gt;Design&lt;/span&gt;
+
+&lt;!-- Active / selected --&gt;
+&lt;span class="tag tag--active"&gt;UX Research&lt;/span&gt;
+
+&lt;!-- Dismissable --&gt;
+&lt;span class="tag tag--dismissable"&gt;
+  Mobile
+  &lt;button class="tag__dismiss" aria-label="Remove Mobile"&gt;×&lt;/button&gt;
+&lt;/span&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -4873,6 +5294,41 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Alerts communicate important system feedback to the user — the result of an action they took, an error they must address, or information they need to proceed. Each of the four variants maps to a specific semantic state and uses color, an icon, and text together to ensure the message is accessible to users with color vision deficiencies. The Dismissable variant adds a close button for non-critical messages; non-dismissable alerts remain visible until the underlying condition changes.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span><strong>Never use color alone.</strong> Every Alert must include a Lucide React icon (18px) alongside the colored background and text. Color + icon + text together meet WCAG's requirement that information is not communicated by color alone.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;gap:10px;">
+            <div class="cp-alert cp-alert--info">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span>Your file is being processed. This may take a few minutes.</span>
+            </div>
+            <div class="cp-alert cp-alert--ok">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Changes saved successfully. All team members will be notified.</span>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Info --&gt;
+&lt;div class="alert alert--info" role="status"&gt;
+  &lt;svg ...&gt;&lt;!-- info icon --&gt;&lt;/svg&gt;
+  Your file is being processed. This may take a few minutes.
+&lt;/div&gt;
+
+&lt;!-- Success --&gt;
+&lt;div class="alert alert--success" role="status"&gt;
+  &lt;svg ...&gt;&lt;!-- check icon --&gt;&lt;/svg&gt;
+  Changes saved successfully. All team members will be notified.
+&lt;/div&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -5059,6 +5515,40 @@
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span>Never put interactive content (links, buttons, form controls) inside a Tooltip. Interactive Tooltip content belongs in a Popover instead.</span></div>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="padding:60px 32px;">
+            <div class="cp-tip-wrap">
+              <div class="cp-tip">Export as CSV</div>
+              <button class="cp-btn cp-btn--o cp-btn--sm" style="display:inline-flex;align-items:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export
+              </button>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;div class="tooltip-wrapper"&gt;
+  &lt;button
+    class="btn btn--outline btn--sm"
+    aria-describedby="tooltip-export"
+  &gt;Export&lt;/button&gt;
+  &lt;div
+    role="tooltip"
+    id="tooltip-export"
+    class="tooltip"
+  &gt;Export as CSV&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -5219,6 +5709,45 @@
           <p class="ds-section-desc">Avatars identify users and entities in the UI — in navigation headers, comment threads, assignment fields, and team member lists. They display either a user's profile image or a two-character initials fallback when no image is available. The three sizes — Large (56px), Medium (40px), and Small (32px) — map to specific use contexts: Large for profile headers, Medium for inline assignments, Small for dense data rows. The Group variant stacks up to 5 avatars with overlapping margins.</p>
         </div>
 
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="gap:24px;align-items:center;">
+            <div class="cp-avatar cp-avatar--lg">AR</div>
+            <div class="cp-avatar cp-avatar--md">JD</div>
+            <div class="cp-avatar cp-avatar--sm">MK</div>
+            <div style="display:flex;">
+              <div class="cp-avatar cp-avatar--md" style="background:#1A6B35;margin-right:-10px;border:2px solid var(--cp-surface);">TS</div>
+              <div class="cp-avatar cp-avatar--md" style="background:#856404;margin-right:-10px;border:2px solid var(--cp-surface);">LR</div>
+              <div class="cp-avatar cp-avatar--md" style="background:#842029;border:2px solid var(--cp-surface);">KP</div>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Large --&gt;
+&lt;div class="avatar avatar--lg"&gt;AR&lt;/div&gt;
+
+&lt;!-- Medium --&gt;
+&lt;div class="avatar avatar--md"&gt;JD&lt;/div&gt;
+
+&lt;!-- Small --&gt;
+&lt;div class="avatar avatar--sm"&gt;MK&lt;/div&gt;
+
+&lt;!-- Group (stacked) --&gt;
+&lt;div class="avatar-group"&gt;
+  &lt;div class="avatar avatar--md"&gt;TS&lt;/div&gt;
+  &lt;div class="avatar avatar--md"&gt;LR&lt;/div&gt;
+  &lt;div class="avatar avatar--md"&gt;KP&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+
         <hr class="ds-divider">
 
         <div class="ds-section">
@@ -5357,6 +5886,37 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">The Link component is the semantic anchor element for navigating to a new URL — whether within the app or to an external resource. It is visually distinct from the Button component and communicates a specific affordance: clicking it will change the user's location. Links appear in body text, navigation breadcrumbs, data tables, and footers. The optional trailing arrow-up-right icon at 14px signals that the link opens in a new tab or navigates outside the current application.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span><strong>Semantic rule:</strong> Use <code>&lt;a href="…"&gt;</code> for navigation (URL change). Use <code>&lt;button&gt;</code> for actions (submit, open modal, delete). Never swap these roles.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light">
+            <p style="font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cp-text);line-height:1.9;max-width:320px;text-align:left;">
+              Review the <a class="cp-link" href="#">accessibility guidelines</a> before submitting your design for handoff. See also the <a class="cp-link" href="#">WCAG 2.1 AA criteria <svg style="display:inline;vertical-align:middle;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a> for reference.
+            </p>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;!-- Inline link --&gt;
+&lt;a href="/guidelines" class="link"&gt;accessibility guidelines&lt;/a&gt;
+
+&lt;!-- External link (opens new tab) --&gt;
+&lt;a
+  href="https://wcag.example.com"
+  class="link"
+  target="_blank"
+  rel="noopener noreferrer"
+&gt;WCAG 2.1 AA criteria
+  &lt;svg ...&gt;&lt;!-- arrow-up-right icon --&gt;&lt;/svg&gt;
+&lt;/a&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -5529,6 +6089,49 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">The Disclosure component (also called Accordion) implements the progressive disclosure pattern — showing only the most essential information by default and allowing users to expand sections on demand. This reduces cognitive load in content-heavy interfaces by hiding secondary or advanced content until needed. The Group variant enforces single-open behavior where opening one Disclosure collapses the previously open one, keeping the overall page height predictable.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span>Do not hide critical or required information inside a Disclosure. Content that every user needs to complete a task must be permanently visible, not collapsed behind a toggle.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;gap:8px;">
+            <div class="cp-disc">
+              <div class="cp-disc__trigger">
+                <span>What file formats are supported?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transform:rotate(180deg);flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="cp-disc__body">We support PNG, JPG, SVG, PDF, and Figma files. Files up to 50 MB can be uploaded.</div>
+            </div>
+            <div class="cp-disc">
+              <div class="cp-disc__trigger">
+                <span>How do I invite team members?</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+              <div class="cp-disc__body" style="display:none;">Go to Settings → Team and enter the email address of each person you'd like to invite. They'll receive a link to join the workspace.</div>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;div class="disclosure"&gt;
+  &lt;button
+    class="disclosure__trigger"
+    aria-expanded="true"
+    aria-controls="panel-1"
+  &gt;
+    What file formats are supported?
+    &lt;svg ...&gt;&lt;!-- chevron icon --&gt;&lt;/svg&gt;
+  &lt;/button&gt;
+  &lt;div id="panel-1" class="disclosure__panel"&gt;
+    We support PNG, JPG, SVG, PDF, and Figma files.
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -5721,6 +6324,61 @@
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Progress Steps communicate a user's position within a multi-step process and show how many steps remain. They appear in multi-step forms, onboarding flows, checkout processes, and any other sequential task that benefits from visible progress. The component uses three step states — Completed (filled blue with checkmark), Active (outlined blue, bold label), and Upcoming (outlined grey, muted label) — connected by horizontal or vertical lines that fill progressively as steps are completed.</p>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light">
+            <div class="cp-steps">
+              <div class="cp-step">
+                <div class="cp-step__c cp-step__c--done"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                <span class="cp-step__l cp-step__l--done">Account</span>
+              </div>
+              <div class="cp-step-line cp-step-line--done"></div>
+              <div class="cp-step">
+                <div class="cp-step__c cp-step__c--act">2</div>
+                <span class="cp-step__l cp-step__l--act">Details</span>
+              </div>
+              <div class="cp-step-line"></div>
+              <div class="cp-step">
+                <div class="cp-step__c cp-step__c--up">3</div>
+                <span class="cp-step__l cp-step__l--up">Review</span>
+              </div>
+              <div class="cp-step-line"></div>
+              <div class="cp-step">
+                <div class="cp-step__c cp-step__c--up">4</div>
+                <span class="cp-step__l cp-step__l--up">Confirm</span>
+              </div>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;ol class="progress-steps"&gt;
+  &lt;li class="step step--completed"&gt;
+    &lt;div class="step__circle"&gt;&lt;svg ...&gt;&lt;/svg&gt;&lt;/div&gt;
+    &lt;span class="step__label"&gt;Account&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="step step--active"&gt;
+    &lt;div class="step__circle"&gt;2&lt;/div&gt;
+    &lt;span class="step__label"&gt;Details&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="step step--upcoming"&gt;
+    &lt;div class="step__circle"&gt;3&lt;/div&gt;
+    &lt;span class="step__label"&gt;Review&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class="step step--upcoming"&gt;
+    &lt;div class="step__circle"&gt;4&lt;/div&gt;
+    &lt;span class="step__label"&gt;Confirm&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -5946,6 +6604,54 @@
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Popovers are floating panels anchored to a trigger element and opened by click. They are richer than Tooltips — they can contain text, action buttons, and lists — but are focused and contextual, not full modal dialogs. Three structural variants cover the range of use cases: Simple for read-only contextual information, WithActions for confirmation prompts, and Menu for action lists. Popovers close on Escape key or clicking outside the panel.</p>
           <div class="ds-callout"><span class="ds-callout-icon">!</span><span>Popovers are triggered by <strong>click</strong>, not hover. If content should appear on hover, use a Tooltip. If content requires the user's full attention and cannot be dismissed by clicking outside, use a Modal Dialog instead.</span></div>
+        </div>
+
+        <!-- Component Playground -->
+        <div class="cp-block">
+          <div class="cp-toolbar">
+            <div class="cp-tabs">
+              <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
+              <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
+            </div>
+            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+          </div>
+          <div class="cp-canvas cp-canvas--light" style="padding:40px 32px 48px;">
+            <div class="cp-pop-wrap">
+              <div class="cp-pop cp-pop--hidden">
+                <div class="cp-pop__title">Share with team</div>
+                <div class="cp-pop__body">Anyone with the link can view this file. Change permission settings to restrict access.</div>
+                <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px;">
+                  <button class="cp-btn cp-btn--g cp-btn--sm">Cancel</button>
+                  <button class="cp-btn cp-btn--p cp-btn--sm">Copy link</button>
+                </div>
+              </div>
+              <button class="cp-btn cp-btn--o cp-btn--sm" style="display:inline-flex;align-items:center;gap:6px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                Share
+              </button>
+            </div>
+          </div>
+          <div class="cp-code-panel" hidden>
+            <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
+            <pre class="cp-pre"><code>&lt;div class="popover-wrapper"&gt;
+  &lt;button
+    class="btn btn--outline btn--sm"
+    aria-haspopup="dialog"
+    aria-expanded="true"
+  &gt;Share&lt;/button&gt;
+
+  &lt;div class="popover" role="dialog" aria-label="Share with team"&gt;
+    &lt;h4 class="popover__title"&gt;Share with team&lt;/h4&gt;
+    &lt;p class="popover__body"&gt;
+      Anyone with the link can view this file.
+    &lt;/p&gt;
+    &lt;div class="popover__actions"&gt;
+      &lt;button class="btn btn--ghost btn--sm"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn--primary btn--sm"&gt;Copy link&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
         </div>
 
         <hr class="ds-divider">
@@ -6385,6 +7091,149 @@
 
     sections.forEach(s => observer.observe(s));
   })();
+
+  /* ─── Component Playground ─────────────────────────────────────── */
+  const SUN_SVG  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+  const MOON_SVG = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  function cpTab(btn, panel) {
+    const block = btn.closest('.cp-block');
+    block.querySelectorAll('.cp-tab').forEach(t => t.classList.remove('cp-tab--active'));
+    btn.classList.add('cp-tab--active');
+    const canvas = block.querySelector('.cp-canvas');
+    const code   = block.querySelector('.cp-code-panel');
+    if (canvas) canvas.hidden = panel !== 'preview';
+    if (code)   code.hidden   = panel !== 'code';
+  }
+  function cpTheme(btn) {
+    const canvas = btn.closest('.cp-block').querySelector('.cp-canvas');
+    if (!canvas) return;
+    const dark = canvas.classList.toggle('cp-canvas--dark');
+    canvas.classList.toggle('cp-canvas--light', !dark);
+    btn.innerHTML = dark ? MOON_SVG + 'Dark' : SUN_SVG + 'Light';
+  }
+  function cpCopy(btn) {
+    const code = btn.closest('.cp-code-panel').querySelector('code');
+    if (!code) return;
+    navigator.clipboard.writeText(code.textContent.trim()).then(() => {
+      const orig = btn.textContent; btn.textContent = 'Copied!'; btn.style.color = '#75dd93';
+      setTimeout(() => { btn.textContent = orig; btn.style.color = ''; }, 2000);
+    });
+  }
+
+  /* ── Playground component interactivity (event delegation) ─────── */
+  document.addEventListener('click', function(e) {
+    const canvas = e.target.closest('.cp-canvas');
+    if (!canvas) return;
+
+    // ── Checkbox ──────────────────────────────────────────────────
+    const cb = e.target.closest('.cp-cb');
+    if (cb) {
+      const on = cb.classList.toggle('cp-cb--on');
+      cb.innerHTML = on
+        ? '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l2.5 2.5L9 1" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        : '';
+      return;
+    }
+
+    // ── Radio ──────────────────────────────────────────────────────
+    const rb = e.target.closest('.cp-rb');
+    if (rb) {
+      canvas.querySelectorAll('.cp-rb').forEach(r => {
+        r.classList.remove('cp-rb--on');
+        r.innerHTML = '';
+      });
+      rb.classList.add('cp-rb--on');
+      rb.innerHTML = '<div class="cp-rb__dot"></div>';
+      return;
+    }
+
+    // ── Toggle switch ─────────────────────────────────────────────
+    const tog = e.target.closest('.cp-toggle');
+    if (tog) {
+      tog.classList.toggle('cp-toggle--on');
+      tog.classList.toggle('cp-toggle--off');
+      return;
+    }
+
+    // ── Disclosure ────────────────────────────────────────────────
+    const discTrigger = e.target.closest('.cp-disc__trigger');
+    if (discTrigger) {
+      const disc = discTrigger.closest('.cp-disc');
+      const body   = disc.querySelector('.cp-disc__body');
+      const chevron = discTrigger.querySelector('svg');
+      if (!body) return;
+      const opening = body.style.display === 'none' || body.style.display === '';
+      // If opening is ambiguous, check computed
+      const isHidden = body.style.display === 'none';
+      body.style.display = isHidden ? '' : 'none';
+      if (chevron) chevron.style.transform = isHidden ? 'rotate(180deg)' : '';
+      return;
+    }
+
+    // ── Navigation tabs ───────────────────────────────────────────
+    const navTab = e.target.closest('.cp-nav-tab');
+    if (navTab) {
+      navTab.closest('.cp-nav-tabs').querySelectorAll('.cp-nav-tab')
+        .forEach(t => t.classList.remove('cp-nav-tab--act'));
+      navTab.classList.add('cp-nav-tab--act');
+      return;
+    }
+
+    // ── Tag dismiss (click on the × SVG) ─────────────────────────
+    const tagSvg = e.target.closest('.cp-tag svg');
+    if (tagSvg) {
+      tagSvg.closest('.cp-tag').style.opacity = '0';
+      setTimeout(() => { tagSvg.closest('.cp-tag').style.display = 'none'; }, 150);
+      return;
+    }
+
+    // ── Tag toggle active ─────────────────────────────────────────
+    const tag = e.target.closest('.cp-tag');
+    if (tag) {
+      const isActive = tag.classList.contains('cp-tag--a');
+      tag.classList.toggle('cp-tag--d', isActive);
+      tag.classList.toggle('cp-tag--a', !isActive);
+      return;
+    }
+
+    // ── Popover trigger (the button *after* .cp-pop inside .cp-pop-wrap) ──
+    const popTrigger = e.target.closest('.cp-pop-wrap > .cp-btn');
+    if (popTrigger) {
+      const pop = popTrigger.closest('.cp-pop-wrap').querySelector('.cp-pop');
+      if (pop) pop.classList.toggle('cp-pop--hidden');
+      return;
+    }
+
+    // ── Progress Steps ────────────────────────────────────────────
+    const stepCircle = e.target.closest('.cp-step__c');
+    if (stepCircle) {
+      const stepsEl = stepCircle.closest('.cp-steps');
+      const steps = [...stepsEl.querySelectorAll('.cp-step')];
+      const lines  = [...stepsEl.querySelectorAll('.cp-step-line')];
+      const idx    = steps.findIndex(s => s.contains(stepCircle));
+      steps.forEach((step, i) => {
+        const c = step.querySelector('.cp-step__c');
+        const l = step.querySelector('.cp-step__l');
+        if (i < idx) {
+          c.className = 'cp-step__c cp-step__c--done';
+          c.innerHTML = '<svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          l.className = 'cp-step__l cp-step__l--done';
+        } else if (i === idx) {
+          c.className = 'cp-step__c cp-step__c--act';
+          c.textContent = i + 1;
+          l.className = 'cp-step__l cp-step__l--act';
+        } else {
+          c.className = 'cp-step__c cp-step__c--up';
+          c.textContent = i + 1;
+          l.className = 'cp-step__l cp-step__l--up';
+        }
+      });
+      lines.forEach((line, i) => {
+        line.className = 'cp-step-line' + (i < idx ? ' cp-step-line--done' : '');
+      });
+      return;
+    }
+  });
 
   /* ─── Sidebar search filter ─────────────────────────────────────── */
   document.getElementById('sidebarSearch').addEventListener('input', function() {
