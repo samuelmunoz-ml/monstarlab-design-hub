@@ -4297,6 +4297,73 @@
           <p class="page-header__desc">A square 40×40px button that holds a single icon. Used for toolbar actions and compact interactive triggers where a text label would consume too much space.</p>
         </div>
 
+        <!-- Icon Button context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:40px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:center;">
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;width:560px;max-width:100%;overflow:hidden;">
+
+            <!-- Document toolbar -->
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid #DAD9D6;background:#FAFAFA;">
+              <div style="display:flex;align-items:center;gap:2px;">
+                <!-- Bold -->
+                <div title="Bold" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#EFF0F0;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2h4.5a2.5 2.5 0 0 1 0 5H3V2z" fill="#000F1E"/><path d="M3 7h5a2.5 2.5 0 0 1 0 5H3V7z" fill="#000F1E"/></svg>
+                </div>
+                <!-- Italic -->
+                <div title="Italic" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 2h5M3.5 12h5M8.5 2L5.5 12" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <!-- Underline -->
+                <div title="Underline" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 2v4.5a4 4 0 0 0 8 0V2" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="13" x2="12" y2="13" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <!-- divider -->
+                <div style="width:1px;height:20px;background:#DAD9D6;margin:0 6px;"></div>
+                <!-- Link -->
+                <div title="Insert link" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5.5 8.5a3.5 3.5 0 0 0 5 0l1.5-1.5a3.5 3.5 0 0 0-5-5L6 3" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/><path d="M8.5 5.5a3.5 3.5 0 0 0-5 0L2 7a3.5 3.5 0 0 0 5 5l1-1" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <!-- Image -->
+                <div title="Insert image" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="10" rx="1.5" stroke="#464A4D" stroke-width="1.5"/><circle cx="4.5" cy="5.5" r="1" fill="#464A4D"/><path d="M1 10l3-3 2.5 2.5L9 7l4 4" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <!-- divider -->
+                <div style="width:1px;height:20px;background:#DAD9D6;margin:0 6px;"></div>
+                <!-- Align left -->
+                <div title="Align left" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#EFF0F0;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="3" x2="13" y2="3" stroke="#000F1E" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="6.5" x2="9" y2="6.5" stroke="#000F1E" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="10" x2="13" y2="10" stroke="#000F1E" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <!-- Align center -->
+                <div title="Align center" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><line x1="1" y1="3" x2="13" y2="3" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="6.5" x2="11" y2="6.5" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/><line x1="1" y1="10" x2="13" y2="10" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+              </div>
+              <!-- Right actions -->
+              <div style="display:flex;align-items:center;gap:2px;">
+                <!-- Comment -->
+                <div title="Comment" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 2h10a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5l-3 2V3a1 1 0 0 1 1-1z" stroke="#464A4D" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </div>
+                <!-- History -->
+                <div title="Version history" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 7A5.5 5.5 0 1 0 3 3.5L1.5 2" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M1.5 5V2h3" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 4.5V7l1.5 1.5" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <!-- More -->
+                <div title="More options" style="width:32px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="3" cy="7" r="1" fill="#464A4D"/><circle cx="7" cy="7" r="1" fill="#464A4D"/><circle cx="11" cy="7" r="1" fill="#464A4D"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Document body -->
+            <div style="padding:24px 28px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:700;color:#000F1E;margin-bottom:8px;">Brand Hub — Component Spec</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#464A4D;margin-bottom:16px;">Last edited by Samuel · 5 min ago</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;line-height:1.6;">Icon buttons appear throughout this document editor toolbar above — Bold and Align Left are shown in their active (pressed) state with a filled background, while all others use the default transparent state.</div>
+            </div>
+
+          </div>
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">The Icon Button is a compact, icon-only interactive element for toolbar actions, list-row controls, and inline triggers where space is constrained and the action is visually self-evident from its icon. It differs from the standard Button's icon-only size in that it carries no background or border by default — it relies on the icon itself as the affordance. The Icon Button always requires either a visible tooltip or an <code>aria-label</code> to describe its action to all users.</p>
