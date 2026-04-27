@@ -3270,19 +3270,7 @@
           </div>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use one Primary button per logical section. Use Outline or Ghost alongside it to establish clear hierarchy without competing emphasis.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Place two Primary buttons side by side. This forces the user to determine priority themselves, which undermines the entire purpose of visual hierarchy.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always provide an <code>aria-label</code> for icon-only buttons. The label must describe the action ("Add item", "Delete row"), not the icon ("plus", "trash").</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use a Button to navigate the user to a different URL or page. That is the job of the Link component — using a button for navigation breaks expected keyboard and screen reader behavior.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Apply <code>disabled</code> with 50% opacity and <code>pointer-events:none</code> together. Show a tooltip or helper text explaining why the button is disabled when not obvious.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Remove or suppress the focus ring with <code>outline:none</code>. The 2px focus ring at 2px offset is a mandatory accessibility requirement — it must be visible for keyboard users.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -3424,19 +3412,7 @@
           <p class="ds-section-desc">All inputs must be wrapped with their label in a <code>space-y-2</code> container (8px gap). An optional helper text in 12px <code>#939598</code> appears below the input for contextual hints. For error states, the helper text is replaced by the error message in <code>#C62828</code> with a circle-x icon at 16px. Group multiple fields in a <code>space-y-6</code> (24px) wrapper to create visual separation between logical form sections.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always pair every input with a persistent visible label above the field. The label communicates the field's purpose at all times, including when the input has a value.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use placeholder text as the sole identifier for a field. It disappears when the user types, fails contrast requirements, and is unreliably read by screen readers.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Communicate errors with three simultaneous signals: red border, circle-x icon (16px), and red error message text below the field. Never rely on color alone.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Suppress the focus ring with <code>outline:none</code>. The visible focus state is mandatory — it is the only way keyboard users know which element is active.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Set Text Area to resize vertically only (<code>resize: vertical</code>). This keeps the layout predictable and prevents horizontal overflow in constrained containers.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Apply a fixed height to Text Area that truncates the user's content. Use min-height of 100px and allow the user to expand vertically as needed.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -3571,19 +3547,7 @@
           <p class="ds-section-desc">Cards consist of up to three structural zones: a header (title + optional description, separated from content by a 1px border), a content area with 24px padding, and an optional footer for action buttons. The WithImage variant places a 180px image area above the header. All zones use the same 24px horizontal padding for visual alignment. When using a card as an interactive element, add a visible focus ring (2px offset, <code>#234474</code>) for keyboard navigation.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Maintain consistent 24px internal padding and the 1px <code>#DAD9D6</code> border across all card instances. Uniformity in the container lets the content differentiate the cards, not the container styling.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Add box-shadow to standard cards. Shadow is reserved for overlays, modals, and popovers. Using shadow on cards dilutes the elevation hierarchy and makes the layout feel visually noisy.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use the Highlighted variant to signal a recommended or default option in a selection grid. The 4px left accent bar in <code>#234474</code> provides a clear, accessible indicator beyond color alone.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Nest cards inside cards more than one level. Deeply nested container patterns create confusion about hierarchy and are difficult to maintain consistently across viewports.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Place action buttons in the card footer right-aligned with Cancel (Ghost) on the left and Confirm (Primary) on the right. This matches the expected positional pattern across dialogs and forms.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Stack more than two action buttons in a card footer — use a single Primary action or a Primary + Ghost/Outline pairing. More than two buttons in a footer signals an overly complex interaction.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -3683,19 +3647,7 @@
           <p class="ds-section-desc">Badges are inline elements that can be placed after a text label, in a table cell, or in a card header. They should always appear at the same vertical alignment as adjacent text — use <code>align-items:center</code> in flex rows. When using badges in a table's status column, left-align all badges so the color signal is consistently scannable on the same visual axis.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use the exact semantic variants as defined — Success for completed/active, Warning for at-risk/pending, Error for failed/blocked, Brand for featured. Consistent meaning builds user trust.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use badge colors for non-status purposes like decorative category labels. Decorative use dilutes the semantic weight of the system's status vocabulary.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Keep badge text to 1–3 words. Short, consistent labels like "Active", "Pending", "Failed", "Archived" create a scannable vocabulary users quickly internalize.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Place more than two badges on the same list item or table row. If the record has more states than two badges can convey, reconsider the information architecture.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always pair color with text inside the badge. Color alone does not meet WCAG accessibility requirements and fails users with color vision deficiencies.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Create custom badge colors. All five variants are defined — any status that doesn't fit maps to Default (neutral). Never introduce ad-hoc colors outside the token system.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -3855,19 +3807,7 @@
           <p class="ds-section-desc">Wrap each control and its label in an 8px gap flex row. Group multiple controls in a vertical list with 12px gaps (space-y-3) for settings panels, or in a horizontal row with 16px gaps for 2–3 short-label radio options. For options with longer descriptions, wrap each in a Card container with the control at the top-left. An optional helper text or error message may appear below the entire group using the same 12px / <code>#939598</code> / error-red treatment as Input fields.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use Checkbox for independent multi-select, Radio for mutually exclusive single-select, and Toggle for immediate-effect binary settings. Match the control type to the interaction model.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use a Toggle in a form that requires a Save button to apply. Toggle communicates immediacy — it should never be used for settings that only take effect after a confirmation step.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always provide a visible label with every control. The label must describe what the control does or represents, not just the control type. "Enable notifications" is good; "Toggle" is not.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Suppress the focus ring. The 2px ring is mandatory for keyboard navigation and meets WCAG 2.1 AA requirement for visible focus (SC 2.4.7).</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use the indeterminate state for Checkboxes in "select all" parent rows when only some children are selected. Set <code>indeterminate=true</code> programmatically — it cannot be set via HTML alone.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use a Radio group when the option set exceeds 6 items. Switch to a Select component for larger option sets to avoid requiring the user to read a long vertical list before choosing.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4001,19 +3941,7 @@
           <p class="ds-section-desc">The Sidebar groups nav items under overline labels in ALL CAPS at 12px, 2px letter-spacing, <code>#939598</code> color. Each group is separated by 16px. The Sidebar container is fixed at 240px wide with 24px padding, <code>#000F1E</code> background, and 12px radius. For Tabs, always position them at the same level as the content they control and ensure the active indicator underline extends the full tab width. Breadcrumbs should always truncate the middle segments on mobile, showing the root and the current page with an ellipsis in between.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Show exactly one active nav item at a time in the Sidebar. The selected state must accurately reflect the user's current location in the app hierarchy.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Tabs as primary navigation. Tabs are for switching between views within a section, not for navigating between top-level areas. That is the Sidebar's role.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always show the Breadcrumb on pages 3 or more levels deep. Limit to 4 segments maximum and truncate middle segments on narrow viewports.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Include the current page as a clickable link in the Breadcrumb trail. The final segment is always plain text at <code>#000F1E</code> Medium weight — it indicates where you are, not where you can go.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use Material Symbols Rounded icons at 18px weight-400 for Sidebar nav items. Keep icon + label gap at 8px. Icons are optional but preferred for visual hierarchy in product navigation.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Mix icon styles in the Sidebar — don't use filled icons alongside outlined ones, or use icons from different libraries. Consistency in the icon treatment is critical for a cohesive navigation experience.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4198,19 +4126,7 @@
           <p class="ds-section-desc">The Icon Button is always composed with a Tooltip. The Tooltip is triggered on both hover and keyboard focus so that both sighted and keyboard users receive the label. In toolbar rows, group related Icon Buttons in a flex row with 4px gaps. For destructive actions, use a <code>#C62828</code> icon color rather than the default <code>#000F1E</code> to add a second signal beyond the icon shape alone.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always pair every Icon Button with a Tooltip or visible <code>aria-label</code>. The action must be discoverable and readable by all users regardless of their familiarity with the icon.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Rely on a title attribute as a substitute for a Tooltip. Title attributes are not reliably accessible on touch devices and have inconsistent screen reader support.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Maintain the 40×40px touch target even if the icon visually appears smaller. The invisible hit area ensures comfortable tapping on all pointer types.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Icon Buttons for primary or high-stakes actions. Destructive actions like permanent deletion should always include a confirmation dialog, not just an icon button tap.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use Lucide React icons consistently. Mixing icon libraries within the same toolbar creates visual inconsistency in stroke weight, optical size, and style.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Place destructive Icon Buttons (delete, remove) immediately adjacent to safe actions with no separation. Add a visual divider or spacing to prevent accidental activation.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4310,19 +4226,7 @@
           <p class="ds-section-desc">Tags appear in flex-wrap rows with 6px row gap and 8px column gap. In multi-select input fields, new Tags are appended to the right of the tag list and the text input follows. In filter panels, Tags are grouped by category with a section label above each group. The close icon in Dismissable Tags is 16px and uses the same color as the tag text with slightly reduced opacity until hovered.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Keep Tag labels to 1–3 words. Short, consistent vocabulary helps users scan and understand tags without reading carefully. "Design", "In progress", "High priority" are good examples.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Tags to communicate system status (Active/Pending/Error in the status sense). Use Badges for status — Tags are for categorization and selection, not state communication.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use the Dismissable variant when users have applied a filter or added an item to a selection. The visible close icon creates a clear path to remove the item without a separate "Clear" button.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Mix static and interactive Tags in the same row without clear visual distinction. Users will try to click static Tags expecting a filter response. Use different visual treatments or separate the groups.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Ensure the close icon hit target is at least 20×20px even though the icon renders at 16px. Expand the invisible clickable area with padding to meet touch target minimums.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Place interactive Tags inside non-interactive containers that also handle clicks. Nested click handlers create ambiguous interaction — clicking the Tag should not also activate the parent card.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4441,19 +4345,7 @@
           <p class="ds-section-desc">Alerts are full-width within their container. They consist of a leading icon (18px, same color as text), a title (14px Medium), and an optional description (13px Regular). The Dismissable variant places a close × button at the top-right of the alert, right-aligned. Use 12px gap between icon and content. Alerts appear at the top of the relevant form or section, not inline within body text.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always include an icon alongside the colored background. The icon provides a second channel for communicating severity beyond color — essential for users with color vision deficiencies.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Alert colors decoratively. Green, orange, red, and blue are reserved semantic colors. Using them for non-alert purposes (section highlights, decorative callouts) trains users to ignore real alerts.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use <code>role="alert"</code> for Error and Warning alerts to ensure they are announced immediately by screen readers. Use <code>role="status"</code> for Success and Info alerts which are less urgent.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Stack multiple alerts of the same variant. Consolidate related messages into a single alert with a brief bulleted list inside the description area.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Make Error and critical Warning alerts non-dismissable by default. The user should not be able to hide a blocking error until the underlying issue is resolved.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Place Alerts inside modals or dialogs for their own inline errors — the dialog's own error handling (inline field errors) is the appropriate pattern there.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4584,19 +4476,7 @@
           <p class="ds-section-desc">The Tooltip is always anchored to a specific trigger element. Its position (top, right, bottom, left) is chosen to avoid clipping against the viewport edge — prefer top by default, fall back to bottom if there is insufficient space above. The Tooltip is rendered in a portal at the top of the DOM to avoid z-index conflicts. Keep Tooltip text to 1–2 short sentences within the 240px max-width constraint.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Trigger Tooltips on both hover and keyboard focus. Keyboard users navigate using Tab — the Tooltip must appear when the trigger receives focus, not just when the mouse hovers.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Put interactive content (links, buttons) inside a Tooltip. Tooltips dismiss on pointer-out, making interactive content inside them impossible to click. Use a Popover instead.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Keep Tooltip text concise — 1 sentence, 5–10 words is ideal. The Tooltip should supplement context, not replace a complete description that belongs in the main UI.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Tooltips as the sole label for interactive controls on touch-first interfaces. Hover does not exist on touch devices — make the label permanently visible or accessible via an alternative pattern.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Position the Tooltip to avoid viewport clipping. Implement smart positioning that detects the trigger's proximity to the viewport edge and flips the Tooltip to the opposite side automatically.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Add a Tooltip to elements that already have a clearly visible text label nearby. Adding tooltips to labeled buttons or inputs creates redundant announcements for screen reader users.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4744,19 +4624,7 @@
           <p class="ds-section-desc">Avatars are almost always accompanied by a text label — user name, role, or action text — in a horizontal flex row with 8–12px gap depending on avatar size. In the Group variant, avatars stack with -8px margin-left on each subsequent avatar and a 2px white border to separate overlapping circles. An overflow count badge (+N) in the Default variant (<code>#EFF0F0</code> bg) follows the last visible avatar with the same size and -8px offset.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always provide an alt text or aria-label for image avatars. For initials avatars, ensure the full name is available as a Tooltip or adjacent visible label.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use more than two characters for initials. "JD" is correct for "Jane Doe". Using three characters crowds the circle and is no longer legible at Small (32px) size.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use the 2px white border in Group avatars to maintain visual separation between overlapping circles. Without the border, overlapping avatars of similar colors become indistinguishable.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use avatars for non-person entities. The circular pill shape is strongly associated with user identity — using it for organizations or files creates semantic confusion.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Limit Group stacks to 5 visible avatars plus an overflow count. Showing more than 5 avatars in a stack makes individual faces unrecognizable and clutters the layout.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Crop or distort profile images. Avatars must maintain a perfect circle crop. Use object-fit: cover to fill the circle without stretching the image.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -4870,19 +4738,7 @@
           <p class="ds-section-desc">Links appear inline within body text, in navigation breadcrumbs, in data table cells, and in footer areas. When used in a dense UI with small text, add <code>padding: 12px 0</code> to expand the touch target to 44px without affecting the visual layout. External links always include the trailing arrow-up-right icon at 14px in a flex row with 4px gap. Never use an underline for default state — underline is reserved for hover and focus to provide a state signal without visual noise at rest.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Write descriptive link text that makes sense out of context. "View user profile" is better than "click here". Screen reader users navigate by reading link text in isolation.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use a Link component for actions. If clicking it doesn't change the URL, it should be a Button. Misusing Links as action triggers breaks browser back/forward behavior and accessibility semantics.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Always mark external links with the arrow-up-right icon and <code>target="_blank" rel="noopener noreferrer"</code>. Users should know before clicking that they're leaving the current application.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use adjacent identical link text for different destinations (e.g., two "Learn more" links pointing to different pages). Screen readers list all links — identical text provides no destination context.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Maintain a minimum 44px touch target height for links in touch-heavy interfaces. Use padding rather than line-height to expand the hit area without affecting text alignment.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Underline links in their default resting state. Underline on hover is the signal that an element is a link — applying it at rest creates visual noise and reduces the impact of the hover signal.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -5004,19 +4860,7 @@
           <p class="ds-section-desc">The Disclosure header is always 52px tall with 16px horizontal padding. The chevron-right icon rotates to 90° (pointing down) when expanded using a CSS transition. Content padding is 16px on all sides. In the Group variant, each Disclosure uses 8px gap between items. A single Disclosure can be used standalone outside a Group when only one expandable section is needed.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use the chevron icon as the expand/collapse indicator consistently. The chevron-right rotating to chevron-down is a universally understood pattern that communicates the direction of motion.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Hide critical required information inside a Disclosure. Content that the user must read to complete a task must be permanently visible — not collapsed behind a toggle they may not interact with.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Animate the content expansion with a smooth height transition. The animation provides visual continuity and prevents layout jumps from feeling abrupt or disorienting.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Default all Group items to expanded. One item may be pre-expanded to highlight a recommended or relevant section, but all items expanded defeats the purpose of the pattern.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Make the entire header row (52px full width) the clickable trigger — not just the text or chevron. A large click target reduces errors and is more accessible on touch.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Nest Disclosures inside Disclosures. Deep accordion nesting creates a confusing navigation pattern and makes it difficult for keyboard users to understand their position in the content.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -5168,19 +5012,7 @@
           <p class="ds-section-desc">In horizontal orientation, step circles are connected by 2px lines that run between them, filling with <code>#234474</code> blue for completed segments and <code>#DAD9D6</code> grey for upcoming ones. Each circle is 28px in diameter with step labels centered beneath (horizontal) or to the right (vertical). In vertical orientation, the connector lines are drawn between the bottom of one circle and the top of the next. Step labels should be 1–3 words maximum to keep the indicator compact.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Show step labels beneath each circle in horizontal orientation and beside each circle in vertical orientation. Labels provide essential context — the numbered circle alone does not communicate the step's content.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Allow users to skip to future (Upcoming) steps by clicking the step indicator. Only Completed steps may be interactive — clicking them allows the user to review or edit previous entries.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Immediately update the step state when the user moves forward. When step 1 is completed and step 2 becomes active, the connector line between them should fill with blue simultaneously.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Progress Steps for processes with more than 6–7 steps in horizontal orientation. Horizontal lines become too narrow to be meaningful at that count — switch to Vertical or restructure into phases.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Make the Progress Steps component sticky at the top or side of the form so it remains visible as the user scrolls through long step content.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use Progress Steps for non-linear processes. The visual language communicates strict sequence — if users can complete steps in any order, use a task list or checklist pattern instead.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
@@ -5303,19 +5135,7 @@
           <p class="ds-section-desc">Popovers are always rendered in a portal at the top of the DOM to avoid z-index conflicts. They are anchored to their trigger element and positioned to avoid viewport clipping — auto-flipping between top/bottom and left/right as needed. Focus is trapped inside the Popover when it is open. When closed, focus returns to the trigger element. Menu items use 8px vertical padding at 14px font size for a comfortable click target.</p>
         </div>
 
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Do / Don't</h2>
-          <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Trap focus inside the open Popover. The user should be able to Tab between all interactive elements in the Popover without accidentally focusing elements behind it.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use a Popover for content the user must not be able to accidentally dismiss. Click-outside dismissal means any stray click closes the panel — use a Modal Dialog for critical interactions.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Place the destructive action last in a Menu Popover, separated from safe actions by a 1px divider. Position and visual separation create a spatial barrier that reduces accidental activation.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use hover to trigger a Popover. Popovers are click-triggered — hover is the domain of Tooltips. Hover-triggered Popovers are impossible to use on touch devices and create confusing interaction patterns.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Return focus to the trigger element when the Popover closes. This is critical for keyboard users — without it, focus is lost after dismissal and the user must navigate back from the start of the page.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Stack more than one level of Popovers. If a Popover action opens another floating panel, restructure the interaction — nested floating layers create unmanageable focus and z-index complexity.</p></div>
-          </div>
-        </div>
+        
 
         <hr class="ds-divider">
 
