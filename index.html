@@ -4624,6 +4624,87 @@
           <p class="page-header__desc">Compact filterable labels for categorization, multi-select selections, and attribute display. Five semantic variants plus a dismissable form.</p>
         </div>
 
+        <!-- Tag context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:40px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:center;">
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;width:540px;max-width:100%;overflow:hidden;">
+
+            <!-- Filter bar -->
+            <div style="padding:14px 20px;border-bottom:1px solid #DAD9D6;background:#FAFAFA;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#464A4D;margin-right:4px;">Filter:</span>
+              <!-- Active/selected tag -->
+              <div style="display:inline-flex;align-items:center;gap:5px;background:#000F1E;border:1px solid #000F1E;border-radius:999px;height:26px;padding:0 10px;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#ffffff;font-weight:500;">Design</span>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2L2 8" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <!-- Active/selected tag -->
+              <div style="display:inline-flex;align-items:center;gap:5px;background:#000F1E;border:1px solid #000F1E;border-radius:999px;height:26px;padding:0 10px;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#ffffff;font-weight:500;">Q2 2025</span>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2L2 8" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round"/></svg>
+              </div>
+              <!-- Unselected tags -->
+              <div style="display:inline-flex;align-items:center;background:#ffffff;border:1px solid #DAD9D6;border-radius:999px;height:26px;padding:0 10px;cursor:pointer;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#000F1E;">Engineering</span>
+              </div>
+              <div style="display:inline-flex;align-items:center;background:#ffffff;border:1px solid #DAD9D6;border-radius:999px;height:26px;padding:0 10px;cursor:pointer;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#000F1E;">Research</span>
+              </div>
+              <div style="display:inline-flex;align-items:center;background:#ffffff;border:1px solid #DAD9D6;border-radius:999px;height:26px;padding:0 10px;cursor:pointer;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:12px;color:#000F1E;">Marketing</span>
+              </div>
+            </div>
+
+            <!-- Issue rows -->
+            <div style="display:flex;flex-direction:column;">
+
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #EFF0F0;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                  <div style="width:6px;height:6px;border-radius:999px;background:#234474;flex-shrink:0;"></div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Redesign component library structure</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:inline-flex;align-items:center;background:#EFF0F0;border-radius:999px;height:22px;padding:0 8px;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;">Design</span>
+                  </div>
+                  <div style="display:inline-flex;align-items:center;background:#EFF0F0;border-radius:999px;height:22px;padding:0 8px;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;">Q2 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #EFF0F0;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                  <div style="width:6px;height:6px;border-radius:999px;background:#234474;flex-shrink:0;"></div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Token documentation update</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:inline-flex;align-items:center;background:#EFF0F0;border-radius:999px;height:22px;padding:0 8px;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;">Design</span>
+                  </div>
+                  <div style="display:inline-flex;align-items:center;background:#EFF0F0;border-radius:999px;height:22px;padding:0 8px;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;">Q2 2025</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;min-width:0;">
+                  <div style="width:6px;height:6px;border-radius:999px;background:#2E7D32;flex-shrink:0;"></div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Icon audit — Rounded vs Outlined pass</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <div style="display:inline-flex;align-items:center;background:#EFF0F0;border-radius:999px;height:22px;padding:0 8px;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;">Design</span>
+                  </div>
+                  <div style="display:inline-flex;align-items:center;background:#EFF0F0;border-radius:999px;height:22px;padding:0 8px;">
+                    <span style="font-family:'DM Sans',sans-serif;font-size:11px;color:#000F1E;">Q2 2025</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">Tags are interactive or static labels used to categorize, filter, and identify items with named attributes. Unlike Badges — which are static status indicators — Tags are designed to be selected (toggled active), filtered by, and dismissed. They appear in search filters, multi-select fields, taxonomy displays, and selected-item chips. The Dismissable variant adds a close icon that allows the user to remove the Tag from a selection.</p>
