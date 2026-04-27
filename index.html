@@ -4960,6 +4960,63 @@
           <p class="page-header__desc">An expandable section with a clickable header and hidden content. Used for FAQ sections, settings panels, and progressive disclosure of secondary content.</p>
         </div>
 
+        <!-- Disclosure context banner -->
+        <div style="background:#0D1E35;border-radius:12px;padding:40px 32px;margin-bottom:32px;display:flex;align-items:center;justify-content:center;">
+          <div style="background:#ffffff;border:1px solid #DAD9D6;border-radius:8px;width:520px;max-width:100%;overflow:hidden;">
+
+            <!-- Panel header -->
+            <div style="padding:16px 24px;border-bottom:1px solid #DAD9D6;">
+              <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:#000F1E;">Notification preferences</span>
+            </div>
+
+            <!-- Disclosure 1 — expanded -->
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;cursor:pointer;background:#FAFAFA;border-bottom:1px solid #DAD9D6;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#000F1E;">Email notifications</span>
+                <!-- chevron up -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10L8 6L12 10" stroke="#000F1E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div style="padding:16px 24px 20px;border-bottom:1px solid #DAD9D6;display:flex;flex-direction:column;gap:12px;">
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                  <div style="width:16px;height:16px;border-radius:3px;background:#000F1E;border:1.5px solid #000F1E;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#FFFF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Project updates and comments</span>
+                </label>
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                  <div style="width:16px;height:16px;border-radius:3px;background:#000F1E;border:1.5px solid #000F1E;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4L3.5 6.5L9 1" stroke="#FFFF00" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Weekly digest</span>
+                </label>
+                <label style="display:flex;align-items:center;gap:10px;cursor:pointer;">
+                  <div style="width:16px;height:16px;border-radius:3px;border:1.5px solid #DAD9D6;flex-shrink:0;"></div>
+                  <span style="font-family:'DM Sans',sans-serif;font-size:13px;color:#000F1E;">Marketing and product news</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Disclosure 2 — collapsed -->
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;cursor:pointer;border-bottom:1px solid #DAD9D6;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#000F1E;">Push notifications</span>
+                <!-- chevron down -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+            <!-- Disclosure 3 — collapsed -->
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;cursor:pointer;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:#000F1E;">Slack integration</span>
+                <!-- chevron down -->
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="#464A4D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <div class="ds-section">
           <h2 class="ds-section-title">About</h2>
           <p class="ds-section-desc">The Disclosure component (also called Accordion) implements the progressive disclosure pattern — showing only the most essential information by default and allowing users to expand sections on demand. This reduces cognitive load in content-heavy interfaces by hiding secondary or advanced content until needed. The Group variant enforces single-open behavior where opening one Disclosure collapses the previously open one, keeping the overall page height predictable.</p>
