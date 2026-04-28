@@ -1457,6 +1457,11 @@
     .cp-pre code { font-family:'SF Mono','Fira Code',Consolas,monospace; }
     .cp-copy-btn { position:absolute; top:12px; right:12px; background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-s); padding:4px 10px; font-family:var(--font-primary); font-size:11px; font-weight:500; color:var(--grey-400); cursor:pointer; transition:background var(--transition),color var(--transition); }
     .cp-copy-btn:hover { background:var(--surface-hover); color:var(--white); }
+    /* Segmented light/dark selector */
+    .cp-seg { display:flex; background:var(--deep-blue-800); border:1px solid var(--border); border-radius:var(--radius-s); padding:2px; gap:2px; flex-shrink:0; }
+    .cp-seg-btn { background:none; border:none; border-radius:2px; padding:4px 12px; font-family:var(--font-primary); font-size:12px; font-weight:500; color:var(--grey-600); cursor:pointer; transition:background var(--transition),color var(--transition); }
+    .cp-seg-btn.active { background:var(--surface-hover); color:var(--white); }
+    .cp-seg-btn:hover:not(.active) { color:var(--grey-300); }
 
     /* ── Playground interactivity ──────────────────────────────────── */
     /* Button hovers */
@@ -3359,7 +3364,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light">
             <button class="cp-btn cp-btn--p">Primary</button>
@@ -3647,7 +3652,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="gap:24px;align-items:flex-start;">
             <div class="cp-input-group" style="width:200px;">
@@ -3886,7 +3891,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light">
             <div class="cp-card">
@@ -4113,7 +4118,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light">
             <span class="cp-badge cp-badge--ok">Active</span>
@@ -4333,7 +4338,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="gap:20px;flex-direction:column;">
             <div class="cp-form-row">
@@ -4601,7 +4606,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:32px;">
             <div class="cp-nav-tabs" style="width:100%;max-width:400px;margin:0 auto;">
@@ -4899,7 +4904,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="gap:4px;">
             <div class="cp-icon-btn" title="Edit">
@@ -5137,7 +5142,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light">
             <div class="cp-tag cp-tag--d">Design</div>
@@ -5303,7 +5308,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="flex-direction:column;gap:10px;">
             <div class="cp-alert cp-alert--info">
@@ -5522,7 +5527,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="padding:60px 32px;">
             <div class="cp-tip-wrap">
@@ -5716,7 +5721,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="gap:24px;align-items:center;">
             <div class="cp-avatar cp-avatar--lg">AR</div>
@@ -5895,7 +5900,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light">
             <p style="font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cp-text);line-height:1.9;max-width:320px;text-align:left;">
@@ -6098,7 +6103,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="flex-direction:column;gap:8px;">
             <div class="cp-disc">
@@ -6333,7 +6338,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light">
             <div class="cp-steps">
@@ -6613,7 +6618,7 @@
               <button class="cp-tab cp-tab--active" onclick="cpTab(this,'preview')">Preview</button>
               <button class="cp-tab" onclick="cpTab(this,'code')">Code</button>
             </div>
-            <button class="cp-theme-btn" onclick="cpTheme(this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>Light</button>
+            <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
           <div class="cp-canvas cp-canvas--light" style="padding:40px 32px 48px;">
             <div class="cp-pop-wrap">
@@ -6986,6 +6991,7 @@
   document.addEventListener('click', e => {
     const el = e.target.closest('[data-page]');
     if (!el) return;
+    if (el.classList.contains('page')) return; // ignore .page wrappers — they have data-page for routing, not clicking
     e.preventDefault();
     navigate(el.dataset.page);
   });
@@ -7110,6 +7116,15 @@
     const dark = canvas.classList.toggle('cp-canvas--dark');
     canvas.classList.toggle('cp-canvas--light', !dark);
     btn.innerHTML = dark ? MOON_SVG + 'Dark' : SUN_SVG + 'Light';
+  }
+  function cpSetTheme(btn, theme) {
+    const block = btn.closest('.cp-block');
+    const canvas = block.querySelector('.cp-canvas');
+    if (!canvas) return;
+    canvas.classList.toggle('cp-canvas--dark',  theme === 'dark');
+    canvas.classList.toggle('cp-canvas--light', theme === 'light');
+    block.querySelectorAll('.cp-seg-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
   }
   function cpCopy(btn) {
     const code = btn.closest('.cp-code-panel').querySelector('code');
