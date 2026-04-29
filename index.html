@@ -6481,28 +6481,96 @@
             </div>
             <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
-          <div class="cp-canvas cp-canvas--light">
-            <div class="cp-steps">
-              <div class="cp-step">
-                <div class="cp-step__c cp-step__c--done"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <span class="cp-step__l cp-step__l--done">Account</span>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:28px 32px;gap:0;">
+
+            <div class="cp-alert-group-label">Orientation</div>
+            <div style="display:flex;flex-direction:column;gap:28px;margin-bottom:24px;">
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Horizontal</span>
+                <div class="cp-steps" style="flex:1;">
+                  <div class="cp-step">
+                    <div class="cp-step__c cp-step__c--done"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                    <span class="cp-step__l cp-step__l--done">Account</span>
+                  </div>
+                  <div class="cp-step-line cp-step-line--done"></div>
+                  <div class="cp-step">
+                    <div class="cp-step__c cp-step__c--act">2</div>
+                    <span class="cp-step__l cp-step__l--act">Details</span>
+                  </div>
+                  <div class="cp-step-line"></div>
+                  <div class="cp-step">
+                    <div class="cp-step__c cp-step__c--up">3</div>
+                    <span class="cp-step__l cp-step__l--up">Review</span>
+                  </div>
+                  <div class="cp-step-line"></div>
+                  <div class="cp-step">
+                    <div class="cp-step__c cp-step__c--up">4</div>
+                    <span class="cp-step__l cp-step__l--up">Confirm</span>
+                  </div>
+                </div>
               </div>
-              <div class="cp-step-line cp-step-line--done"></div>
-              <div class="cp-step">
-                <div class="cp-step__c cp-step__c--act">2</div>
-                <span class="cp-step__l cp-step__l--act">Details</span>
+
+              <div class="cp-alert-row" style="align-items:flex-start;">
+                <span class="cp-alert-row-label" style="padding-top:6px;">Vertical</span>
+                <div style="display:flex;flex-direction:column;">
+                  <div style="display:flex;align-items:flex-start;gap:10px;">
+                    <div style="display:flex;flex-direction:column;align-items:center;">
+                      <div class="cp-step__c cp-step__c--done"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                      <div style="width:2px;height:22px;background:var(--cp-step-done);"></div>
+                    </div>
+                    <span class="cp-step__l cp-step__l--done" style="padding-top:7px;">Account</span>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:10px;">
+                    <div style="display:flex;flex-direction:column;align-items:center;">
+                      <div class="cp-step__c cp-step__c--act">2</div>
+                      <div style="width:2px;height:22px;background:var(--cp-step-up-b);"></div>
+                    </div>
+                    <span class="cp-step__l cp-step__l--act" style="padding-top:7px;">Details</span>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:10px;">
+                    <div style="display:flex;flex-direction:column;align-items:center;">
+                      <div class="cp-step__c cp-step__c--up">3</div>
+                      <div style="width:2px;height:22px;background:var(--cp-step-up-b);"></div>
+                    </div>
+                    <span class="cp-step__l cp-step__l--up" style="padding-top:7px;">Review</span>
+                  </div>
+                  <div style="display:flex;align-items:flex-start;gap:10px;">
+                    <div class="cp-step__c cp-step__c--up">4</div>
+                    <span class="cp-step__l cp-step__l--up" style="padding-top:7px;">Confirm</span>
+                  </div>
+                </div>
               </div>
-              <div class="cp-step-line"></div>
-              <div class="cp-step">
-                <div class="cp-step__c cp-step__c--up">3</div>
-                <span class="cp-step__l cp-step__l--up">Review</span>
+
+            </div>
+
+            <div style="border-top:1px solid var(--cp-border);margin-bottom:20px;"></div>
+
+            <div class="cp-alert-group-label">Step states</div>
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Completed</span>
+                <div class="cp-step">
+                  <div class="cp-step__c cp-step__c--done"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4 7.5L10 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+                  <span class="cp-step__l cp-step__l--done">Account</span>
+                </div>
               </div>
-              <div class="cp-step-line"></div>
-              <div class="cp-step">
-                <div class="cp-step__c cp-step__c--up">4</div>
-                <span class="cp-step__l cp-step__l--up">Confirm</span>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Active</span>
+                <div class="cp-step">
+                  <div class="cp-step__c cp-step__c--act">2</div>
+                  <span class="cp-step__l cp-step__l--act">Details</span>
+                </div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Upcoming</span>
+                <div class="cp-step">
+                  <div class="cp-step__c cp-step__c--up">3</div>
+                  <span class="cp-step__l cp-step__l--up">Review</span>
+                </div>
               </div>
             </div>
+
           </div>
           <div class="cp-code-panel" hidden>
             <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
@@ -6541,80 +6609,6 @@
             <div class="ds-do-card"><div class="ds-do-card__label">✓ Do show</div><p>Step labels below (horizontal) or beside (vertical) each step indicator. Labels provide the semantic meaning of each step — the circle alone is not sufficient to communicate the step's purpose.</p></div>
             <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use progress steps for non-sequential processes where the user can complete steps in any order. The linear visual language implies strict sequence — use a checklist or task list instead.</p></div>
           </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Variants</h2>
-          <!-- Horizontal -->
-          <div style="font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">Horizontal</div>
-          <div style="display:flex;align-items:center;margin:0 0 24px;max-width:500px;">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
-              <div style="width:28px;height:28px;border-radius:50%;background:#234474;display:flex;align-items:center;justify-content:center;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <span style="font-size:12px;color:#939598;font-family:inherit;">Account</span>
-            </div>
-            <div style="flex:1;height:2px;background:#234474;margin:0 4px;margin-bottom:20px;"></div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
-              <div style="width:28px;height:28px;border-radius:50%;border:2px solid #234474;background:#FFF;display:flex;align-items:center;justify-content:center;">
-                <span style="font-size:12px;font-weight:600;color:#234474;font-family:inherit;">2</span>
-              </div>
-              <span style="font-size:12px;font-weight:500;color:#000F1E;font-family:inherit;">Payment</span>
-            </div>
-            <div style="flex:1;height:2px;background:#DAD9D6;margin:0 4px;margin-bottom:20px;"></div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0;">
-              <div style="width:28px;height:28px;border-radius:50%;border:1px solid #DAD9D6;background:#FFF;display:flex;align-items:center;justify-content:center;">
-                <span style="font-size:12px;font-weight:400;color:#939598;font-family:inherit;">3</span>
-              </div>
-              <span style="font-size:12px;color:#939598;font-family:inherit;">Review</span>
-            </div>
-          </div>
-          <!-- Vertical -->
-          <div style="font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;">Vertical</div>
-          <div style="display:flex;flex-direction:column;gap:0;margin:0 0 24px;max-width:220px;">
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div style="width:28px;height:28px;border-radius:50%;background:#234474;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-                <div style="width:2px;height:28px;background:#234474;"></div>
-              </div>
-              <span style="font-size:13px;color:#939598;font-family:inherit;padding-top:4px;">Personal Info</span>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div style="width:28px;height:28px;border-radius:50%;border:2px solid #234474;background:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <span style="font-size:12px;font-weight:600;color:#234474;font-family:inherit;">2</span>
-                </div>
-                <div style="width:2px;height:28px;background:#DAD9D6;"></div>
-              </div>
-              <span style="font-size:13px;font-weight:500;color:#000F1E;font-family:inherit;padding-top:4px;">Address</span>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
-                <div style="width:28px;height:28px;border-radius:50%;border:1px solid #DAD9D6;background:#FFF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <span style="font-size:12px;font-weight:400;color:#939598;font-family:inherit;">3</span>
-                </div>
-              </div>
-              <span style="font-size:13px;color:#939598;font-family:inherit;padding-top:4px;">Confirmation</span>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">States</h2>
-          <table class="ds-token-table">
-            <thead><tr><th>Step state</th><th>Circle</th><th>Connector</th><th>Label</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:500;">Completed</td><td style="font-size:13px;color:var(--muted-foreground);"><code>#234474</code> filled · white check icon</td><td style="font-size:13px;color:var(--muted-foreground);">2px solid <code>#234474</code></td><td style="font-size:13px;color:var(--muted-foreground);"><code>#939598</code> · Regular</td></tr>
-              <tr><td style="font-weight:500;">Active</td><td style="font-size:13px;color:var(--muted-foreground);">White bg · 2px <code>#234474</code> border · step number</td><td style="font-size:13px;color:var(--muted-foreground);">2px solid <code>#DAD9D6</code> (upcoming)</td><td style="font-size:13px;color:var(--muted-foreground);"><code>#000F1E</code> · Medium (bold)</td></tr>
-              <tr><td style="font-weight:500;">Upcoming</td><td style="font-size:13px;color:var(--muted-foreground);">White bg · 1px <code>#DAD9D6</code> border · step number</td><td style="font-size:13px;color:var(--muted-foreground);">2px solid <code>#DAD9D6</code></td><td style="font-size:13px;color:var(--muted-foreground);"><code>#939598</code> · Regular</td></tr>
-            </tbody>
-          </table>
         </div>
 
         <hr class="ds-divider">
