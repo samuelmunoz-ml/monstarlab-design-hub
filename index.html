@@ -595,21 +595,23 @@
     }
     .ds-color-semantic {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px; margin-bottom: 24px;
     }
     .ds-color-token {
       border-radius: var(--radius-m);
       overflow: hidden;
       border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
     }
-    .ds-color-token__swatch { height: 52px; }
-    .ds-color-token__info { padding: 10px 12px; background: var(--surface-1); }
+    .ds-color-token__swatch { height: 120px; flex-shrink: 0; }
+    .ds-color-token__info { padding: 12px 14px; background: var(--surface-1); flex: 1; }
     .ds-color-token__name {
-      font-size: 12px; font-weight: 500; color: var(--foreground);
-      margin-bottom: 2px;
+      font-size: 13px; font-weight: 600; color: var(--foreground);
+      margin-bottom: 4px;
     }
-    .ds-color-token__hex { font-size: 11px; color: var(--muted-foreground); font-family: monospace; }
+    .ds-color-token__hex { font-size: 11px; color: var(--muted-foreground); font-family: monospace; line-height: 1.5; }
 
     /* Typography specimens */
     .ds-type-specimen {
