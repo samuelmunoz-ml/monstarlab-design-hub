@@ -1637,7 +1637,6 @@
             <a class="nav-sublink" href="#" data-page="ds-foundations-content">Content</a>
             <a class="nav-sublink" href="#" data-page="ds-foundations-dataviz">Data Visualization</a>
           </div>
-          <a href="#" class="nav-link" data-page="ds-tokens">Tokens</a>
           <a href="#" class="nav-link nav-link--has-subnav" data-page="ds-components-alert" id="nav-components"><svg class="nav-link__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2.5L8.5 6L4 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Components</a>
           <div class="nav-sublinks" id="ds-components-subnav">
             <a class="nav-sublink" href="#" data-page="ds-components-alert">Alert</a>
@@ -3254,67 +3253,6 @@
               <tr><td style="font-weight:500;">Zero baseline</td><td style="font-size:13px;color:var(--muted-foreground);">Bar charts must always start at zero. Line charts may start at a non-zero value if labeled clearly.</td></tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- DS: Tokens ──────────────────────────────────────────────────── -->
-    <div class="page" data-page="ds-tokens">
-      <div class="content">
-        <div class="breadcrumb"><a href="#" data-page="home">Design Hub</a><span class="breadcrumb__sep">›</span>Design System</div>
-        <div class="page-header">
-          <div class="page-header__eyebrow">Design System</div>
-          <h1 class="page-header__title">Tokens</h1>
-          <p class="page-header__desc">How the token system is structured, where it lives, and how to use it correctly in code.</p>
-        </div>
-        <div class="ds-callout"><span class="ds-callout-icon">📄</span><span><strong>Source of truth:</strong> The Pencil library <code>ML_DS.lib.pen</code> for design, and CSS custom properties for code. Never add raw hex values to component files — reference tokens.</span></div>
-        <div class="ds-section">
-          <h2 class="ds-section-title">Architecture</h2>
-          <div class="ds-two-col">
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🎨 Three-layer token system</div><p class="ds-component-card__desc">Brand scale tokens (<code>--deep-blue-800</code>, <code>--yellow-500</code>, etc.) define the raw palette. Semantic tokens (<code>--foreground</code>, <code>--background</code>, etc.) map scale tokens to roles. Component tokens use semantic tokens — components never reference the brand scale directly.</p></div>
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🌞 Single light theme</div><p class="ds-component-card__desc">The Monstarlab design system has one theme only. There is no dark mode. All semantic tokens have a single value. Components never need conditional theming logic.</p></div>
-          </div>
-        </div>
-        <hr class="ds-divider">
-        <div class="ds-section">
-          <h2 class="ds-section-title">Token naming convention</h2>
-          <p class="ds-section-desc">Token names follow a consistent pattern across the Monstarlab design system.</p>
-          <table class="ds-token-table">
-            <thead><tr><th>Type</th><th>Pattern</th><th>Examples</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:500;">Brand scale</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--{color}-{step}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--deep-blue-800, --yellow-500, --grey-300</td></tr>
-              <tr><td style="font-weight:500;">Semantic role</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--{role}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--background, --foreground, --muted-foreground, --border</td></tr>
-              <tr><td style="font-weight:500;">Radius</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--radius-{size}</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">--radius-none, --radius-s, --radius-m, --radius-l, --radius-pill</td></tr>
-              <tr><td style="font-weight:500;">System status</td><td style="font-size:12px;color:var(--muted-foreground);">Explicit hex per state</td><td style="font-size:12px;color:var(--muted-foreground);">Success #E8F5E9 / #2E7D32 · Warning #FFF3E0 / #E65100 · Error #FFEBEE / #C62828</td></tr>
-              <tr><td style="font-weight:500;">Component variant</td><td style="font-size:12px;color:var(--muted-foreground);">lowercase kebab</td><td style="font-size:12px;color:var(--muted-foreground);">primary, secondary, outline, ghost</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <hr class="ds-divider">
-        <div class="ds-section">
-          <h2 class="ds-section-title">Token reference</h2>
-          <p class="ds-section-desc">Complete list of Monstarlab semantic tokens.</p>
-          <table class="ds-token-table">
-            <thead><tr><th>Token</th><th>Value</th><th>Role</th></tr></thead>
-            <tbody>
-              <tr><td><span class="ds-token-name">--background</span></td><td style="font-size:12px;font-family:monospace;">#FFFFFF</td><td style="font-size:12px;color:var(--muted-foreground);">Page / container background</td></tr>
-              <tr><td><span class="ds-token-name">--foreground</span></td><td style="font-size:12px;font-family:monospace;">#000F1E</td><td style="font-size:12px;color:var(--muted-foreground);">Primary text &amp; icons (deep-blue-800)</td></tr>
-              <tr><td><span class="ds-token-name">--muted-foreground</span></td><td style="font-size:12px;font-family:monospace;">#464A4D</td><td style="font-size:12px;color:var(--muted-foreground);">Secondary / placeholder text (grey-800)</td></tr>
-              <tr><td><span class="ds-token-name">--border</span></td><td style="font-size:12px;font-family:monospace;">#DAD9D6</td><td style="font-size:12px;color:var(--muted-foreground);">Dividers, card borders (grey-300)</td></tr>
-              <tr><td><span class="ds-token-name">--radius-s</span></td><td style="font-size:12px;font-family:monospace;">4px</td><td style="font-size:12px;color:var(--muted-foreground);">Buttons, inputs, tags, alerts, checkboxes</td></tr>
-              <tr><td><span class="ds-token-name">--radius-m</span></td><td style="font-size:12px;font-family:monospace;">8px</td><td style="font-size:12px;color:var(--muted-foreground);">Cards, disclosures, popovers</td></tr>
-              <tr><td><span class="ds-token-name">--radius-l</span></td><td style="font-size:12px;font-family:monospace;">12px</td><td style="font-size:12px;color:var(--muted-foreground);">Modal dialogs, panels, dark nav containers</td></tr>
-              <tr><td><span class="ds-token-name">--radius-pill</span></td><td style="font-size:12px;font-family:monospace;">999px</td><td style="font-size:12px;color:var(--muted-foreground);">Badges, avatars, toggles, radio buttons</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <hr class="ds-divider">
-        <div class="ds-section">
-          <h2 class="ds-section-title">Governance</h2>
-          <div class="ds-two-col">
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🎯 Core team</div><p class="ds-component-card__desc">The DS core team owns the token layer, component library (<code>ML_DS.lib.pen</code>), and release process. They approve all breaking changes.</p><p style="font-size:12px;color:var(--muted-foreground);margin-top:8px;">Reach them on <strong>#design-system-help</strong> on Slack.</p></div>
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">📋 Adding a token</div><p class="ds-component-card__desc">Propose new tokens in <strong>#design-system-help</strong> with the semantic role and usage context. The core team reviews within 5 business days. Token names must follow the three-layer pattern — no ad-hoc hex values.</p></div>
-          </div>
         </div>
       </div>
     </div>
