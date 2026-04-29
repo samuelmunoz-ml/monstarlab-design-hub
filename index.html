@@ -1419,9 +1419,9 @@
     .cp-alert-row-label { font-size:11px; color:var(--cp-text-muted); font-family:var(--font-primary); width:84px; flex-shrink:0; }
     .cp-alert-dismiss { position:absolute; top:8px; right:10px; background:none; border:none; cursor:pointer; color:currentColor; opacity:0.5; font-size:15px; line-height:1; padding:2px 4px; }
     .cp-alert-dismiss:hover { opacity:1; }
-    .cp-tag { display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 10px; border-radius:4px; font-size:12px; font-weight:500; font-family:var(--font-primary); cursor:default; }
-    .cp-tag--d { background:var(--cp-tag-bg);     color:var(--cp-tag-fg);     }
-    .cp-tag--a { background:var(--cp-tag-act-bg); color:var(--cp-tag-act-fg); }
+    .cp-tag { display:inline-flex; align-items:center; gap:6px; height:28px; padding:0 10px; border-radius:999px; font-size:12px; font-weight:500; font-family:var(--font-primary); cursor:default; }
+    .cp-tag--d { background:var(--cp-surface); color:var(--cp-tag-fg); border:1px solid var(--cp-border); }
+    .cp-tag--a { background:var(--cp-tag-act-bg); color:var(--cp-tag-act-fg); border:1px solid transparent; }
     .cp-link  { color:var(--cp-link); text-decoration:underline; font-size:14px; font-family:var(--font-primary); cursor:default; }
     .cp-avatar { border-radius:50%; background:#234474; color:#fff; font-weight:600; font-family:var(--font-primary); display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
     .cp-avatar--lg { width:56px; height:56px; font-size:18px; }
@@ -1490,8 +1490,8 @@
     .cp-icon-btn:active { opacity:0.7; }
     /* Tag */
     .cp-tag { cursor:pointer; transition:background 120ms ease; }
-    .cp-canvas--light .cp-tag--d:hover { background:#DAD9D6; }
-    .cp-canvas--dark  .cp-tag--d:hover { background:rgba(255,255,255,0.15); }
+    .cp-canvas--light .cp-tag--d:hover { background:#F0F0EF; border-color:#B7B8B9; }
+    .cp-canvas--dark  .cp-tag--d:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.25); }
     .cp-canvas--light .cp-tag--a:hover { background:#1A3362; }
     .cp-canvas--dark  .cp-tag--a:hover { background:#1A3362; }
     /* Nav tab */
@@ -5264,7 +5264,7 @@
               </div>
               <div class="cp-alert-row" style="align-items:center;">
                 <span class="cp-alert-row-label">Hover</span>
-                <div class="cp-tag cp-tag--d" style="background:#DAD9D6;">Accessibility</div>
+                <div class="cp-tag cp-tag--d" style="background:#F0F0EF;border-color:#B7B8B9;">Accessibility</div>
               </div>
               <div class="cp-alert-row" style="align-items:center;">
                 <span class="cp-alert-row-label">Selected</span>
