@@ -6761,21 +6761,44 @@
             </div>
             <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
-          <div class="cp-canvas cp-canvas--light" style="padding:40px 32px 48px;">
-            <div class="cp-pop-wrap">
-              <div class="cp-pop cp-pop--hidden">
-                <div class="cp-pop__title">Share with team</div>
-                <div class="cp-pop__body">Anyone with the link can view this file. Change permission settings to restrict access.</div>
-                <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px;">
-                  <button class="cp-btn cp-btn--g cp-btn--sm">Cancel</button>
-                  <button class="cp-btn cp-btn--p cp-btn--sm">Copy link</button>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:28px 32px;gap:0;">
+
+            <div class="cp-alert-group-label">Variants</div>
+            <div style="display:flex;flex-direction:column;gap:20px;margin-bottom:4px;">
+
+              <div class="cp-alert-row" style="align-items:flex-start;">
+                <span class="cp-alert-row-label" style="padding-top:4px;">Simple</span>
+                <div class="cp-pop" style="width:260px;">
+                  <div class="cp-pop__title">What is this field?</div>
+                  <div class="cp-pop__body">This field captures the unique identifier for your organisation. It cannot be changed after account creation.</div>
                 </div>
               </div>
-              <button class="cp-btn cp-btn--o cp-btn--sm" style="display:inline-flex;align-items:center;gap:6px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                Share
-              </button>
+
+              <div class="cp-alert-row" style="align-items:flex-start;">
+                <span class="cp-alert-row-label" style="padding-top:4px;">With actions</span>
+                <div class="cp-pop" style="width:280px;">
+                  <div class="cp-pop__title">Archive this item?</div>
+                  <div class="cp-pop__body">It will be moved to your archive and can be restored at any time.</div>
+                  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px;">
+                    <button class="cp-btn cp-btn--g cp-btn--sm">Cancel</button>
+                    <button class="cp-btn cp-btn--p cp-btn--sm">Archive</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="cp-alert-row" style="align-items:flex-start;">
+                <span class="cp-alert-row-label" style="padding-top:4px;">Menu</span>
+                <div class="cp-pop" style="width:200px;padding:4px 0;">
+                  <div style="padding:8px 14px;font-size:14px;color:var(--cp-text);font-family:'DM Sans',sans-serif;">Edit</div>
+                  <div style="padding:8px 14px;font-size:14px;color:var(--cp-text);font-family:'DM Sans',sans-serif;">Duplicate</div>
+                  <div style="padding:8px 14px;font-size:14px;color:var(--cp-text);font-family:'DM Sans',sans-serif;">Share</div>
+                  <div style="height:1px;background:var(--cp-border);margin:4px 0;"></div>
+                  <div style="padding:8px 14px;font-size:14px;color:#C62828;font-family:'DM Sans',sans-serif;">Delete</div>
+                </div>
+              </div>
+
             </div>
+
           </div>
           <div class="cp-code-panel" hidden>
             <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
@@ -6814,52 +6837,6 @@
             <div class="ds-do-card"><div class="ds-do-card__label">✓ Do close on</div><p>Escape key press and click outside the popover. Both dismissal mechanisms are required — keyboard users need Escape and pointer users expect click-outside to close overlay elements.</p></div>
             <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't nest</div><p>Popovers inside Popovers. Stacked floating panels create complex focus management problems and confusing z-index layering. Restructure the content to avoid nested floating layers.</p></div>
           </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Variants</h2>
-          <div style="display:flex;gap:16px;flex-wrap:wrap;margin:16px 0 24px;align-items:flex-start;">
-            <!-- Simple -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="width:280px;border:1px solid #DAD9D6;border-radius:8px;background:#FFF;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:16px;">
-                <div style="font-size:14px;font-weight:500;color:#000F1E;font-family:inherit;margin-bottom:6px;">What is this field?</div>
-                <div style="font-size:13px;color:#464A4D;font-family:inherit;line-height:1.5;">This field captures the unique identifier for your organization. It cannot be changed after account creation.</div>
-              </div>
-              <div style="font-size:11px;color:var(--muted-foreground);">Simple (280px)</div>
-            </div>
-            <!-- WithActions -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="width:300px;border:1px solid #DAD9D6;border-radius:8px;background:#FFF;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:16px;">
-                <div style="font-size:14px;font-weight:500;color:#000F1E;font-family:inherit;margin-bottom:6px;">Archive this item?</div>
-                <div style="font-size:13px;color:#464A4D;font-family:inherit;line-height:1.5;margin-bottom:12px;">It will be moved to your archive and can be restored at any time.</div>
-                <div style="display:flex;justify-content:flex-end;gap:8px;">
-                  <div style="color:#939598;font-size:13px;font-weight:500;padding:0 14px;height:34px;display:inline-flex;align-items:center;font-family:inherit;cursor:pointer;">Cancel</div>
-                  <div style="background:#000F1E;color:#FFF;font-size:13px;font-weight:500;border-radius:4px;padding:0 14px;height:34px;display:inline-flex;align-items:center;font-family:inherit;cursor:pointer;">Archive</div>
-                </div>
-              </div>
-              <div style="font-size:11px;color:var(--muted-foreground);">WithActions (300px)</div>
-            </div>
-            <!-- Menu -->
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="width:220px;border:1px solid #DAD9D6;border-radius:8px;background:#FFF;box-shadow:0 4px 16px rgba(0,0,0,0.08);padding:4px 0;">
-                <div style="padding:8px 14px;font-size:14px;color:#000F1E;font-family:inherit;cursor:pointer;">Edit</div>
-                <div style="padding:8px 14px;font-size:14px;color:#000F1E;font-family:inherit;cursor:pointer;">Duplicate</div>
-                <div style="padding:8px 14px;font-size:14px;color:#000F1E;font-family:inherit;cursor:pointer;">Share</div>
-                <div style="height:1px;background:#DAD9D6;margin:4px 0;"></div>
-                <div style="padding:8px 14px;font-size:14px;color:#C62828;font-family:inherit;cursor:pointer;">Delete</div>
-              </div>
-              <div style="font-size:11px;color:var(--muted-foreground);">Menu (220px)</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">States</h2>
-          <p class="ds-section-desc">Popovers have two states: closed (default, not rendered) and open (rendered, focused). When open, the trigger element may show an active/pressed style if it is a Button. Menu items within a Popover show a <code>#F7F7F6</code> hover background on mouse-over and a 2px focus ring when focused via keyboard. Destructive Menu items use <code>#C62828</code> text and maintain the same hover background.</p>
         </div>
 
         <hr class="ds-divider">
