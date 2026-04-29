@@ -4788,22 +4788,35 @@
         <div class="page-header">
           <div class="page-header__eyebrow">Design System</div>
           <h1 class="page-header__title">Accessibility</h1>
-          <p class="page-header__desc">WCAG 2.1 AA standards, color contrast ratios, and screen reader requirements for all components.</p>
+          <p class="page-header__desc">Monstarlab minimum accessibility standards. These are non-negotiable requirements enforced at design review — not optional guidelines audited after launch.</p>
         </div>
-        <div class="ds-callout"><span class="ds-callout-icon">♿</span><span>The design system targets <strong>WCAG 2.1 Level AA</strong> as the minimum standard. Accessibility is a design requirement — not a post-launch audit. All contrast ratios use Monstarlab design system token values.</span></div>
+
+        <!-- 1. Minimum Standard -->
+        <div class="ds-callout"><span class="ds-callout-icon">⚑</span><span><strong>WCAG 2.1 AA is the floor, not the ceiling.</strong> Every component, screen, and flow shipped by Monstarlab must meet or exceed this standard. Accessibility is verified at design review. Anything that fails review does not ship.</span></div>
         <div class="ds-section">
-          <h2 class="ds-section-title">WCAG 2.1 — POUR principles</h2>
-          <div class="ds-component-grid">
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">👁 Perceivable</div><p class="ds-component-card__desc">Information must be presentable in ways all users can perceive.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Images</span><span class="ds-spec-val">alt text required</span></li><li><span class="ds-spec-key">Icons</span><span class="ds-spec-val">aria-label if standalone</span></li><li><span class="ds-spec-key">Color</span><span class="ds-spec-val">never sole indicator</span></li></ul></div>
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">⌨️ Operable</div><p class="ds-component-card__desc">All functionality must be keyboard-accessible.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Keyboard</span><span class="ds-spec-val">all flows navigable</span></li><li><span class="ds-spec-key">Focus</span><span class="ds-spec-val">visible at all times</span></li><li><span class="ds-spec-key">Target</span><span class="ds-spec-val">min 44×44px</span></li></ul></div>
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">💡 Understandable</div><p class="ds-component-card__desc">Content and UI operation must be clear and predictable.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">Lang</span><span class="ds-spec-val">html[lang] set</span></li><li><span class="ds-spec-key">Labels</span><span class="ds-spec-val">all inputs labelled</span></li><li><span class="ds-spec-key">Errors</span><span class="ds-spec-val">described in text</span></li></ul></div>
-            <div class="ds-component-card"><div class="ds-component-card__name" style="margin-bottom:8px;">🔧 Robust</div><p class="ds-component-card__desc">Content must be reliably interpreted by assistive technologies.</p><ul class="ds-component-card__specs"><li><span class="ds-spec-key">HTML</span><span class="ds-spec-val">valid, semantic</span></li><li><span class="ds-spec-key">ARIA</span><span class="ds-spec-val">roles + states set</span></li><li><span class="ds-spec-key">Live</span><span class="ds-spec-val">aria-live regions</span></li></ul></div>
-          </div>
+          <h2 class="ds-section-title">Minimum standard</h2>
+          <p class="ds-section-desc">These requirements apply to all client work regardless of project size, timeline, or client request. There is no opt-out.</p>
+          <table class="ds-token-table">
+            <thead><tr><th>Requirement</th><th>Standard</th><th>Enforced at</th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:500;">Contrast — body text</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 4.5:1 against background</td><td style="font-size:13px;color:var(--muted-foreground);">Design review</td></tr>
+              <tr><td style="font-weight:500;">Contrast — large text &amp; UI</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 3:1 against background</td><td style="font-size:13px;color:var(--muted-foreground);">Design review</td></tr>
+              <tr><td style="font-weight:500;">Keyboard navigation</td><td style="font-size:13px;color:var(--muted-foreground);">All functionality reachable without a mouse</td><td style="font-size:13px;color:var(--muted-foreground);">Dev handoff</td></tr>
+              <tr><td style="font-weight:500;">Focus visible</td><td style="font-size:13px;color:var(--muted-foreground);">2px focus ring, 3:1 contrast, never suppressed</td><td style="font-size:13px;color:var(--muted-foreground);">Dev handoff</td></tr>
+              <tr><td style="font-weight:500;">Touch target size</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 44×44px for all interactive elements</td><td style="font-size:13px;color:var(--muted-foreground);">Design review</td></tr>
+              <tr><td style="font-weight:500;">Page language</td><td style="font-size:13px;color:var(--muted-foreground);"><code>html[lang]</code> attribute set correctly</td><td style="font-size:13px;color:var(--muted-foreground);">Dev handoff</td></tr>
+              <tr><td style="font-weight:500;">Error identification</td><td style="font-size:13px;color:var(--muted-foreground);">Color + icon + text — never color alone</td><td style="font-size:13px;color:var(--muted-foreground);">Design review</td></tr>
+              <tr><td style="font-weight:500;">Reduced motion</td><td style="font-size:13px;color:var(--muted-foreground);">All animations respect <code>prefers-reduced-motion: reduce</code></td><td style="font-size:13px;color:var(--muted-foreground);">Dev handoff</td></tr>
+            </tbody>
+          </table>
         </div>
+
         <hr class="ds-divider">
+
+        <!-- 2. Color & Contrast Rules -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Color contrast</h2>
-          <p class="ds-section-desc">WCAG AA: 4.5:1 for normal text, 3:1 for large text (&gt;18px Bold or &gt;24px) and UI components.</p>
+          <h2 class="ds-section-title">Color &amp; contrast rules</h2>
+          <p class="ds-section-desc">Use only approved token pairings for text. The table below reflects verified ratios for Monstarlab design system tokens.</p>
           <table class="ds-contrast-table">
             <thead><tr><th>Foreground token</th><th>Background token</th><th>Ratio</th><th>Normal text</th><th>Large / UI</th></tr></thead>
             <tbody>
@@ -4815,35 +4828,101 @@
               <tr><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#939598;color:#fff;">A</div> grey-600 (#939598)</div></td><td><div class="ds-contrast-swatch"><div class="ds-contrast-dot" style="background:#FFFFFF;border:1px solid #DAD9D6;color:#000;">·</div> --background (#FFF)</div></td><td style="font-weight:500;">2.9:1</td><td><span class="ds-fail-badge">FAIL</span></td><td><span class="ds-pass-badge">PASS</span></td></tr>
             </tbody>
           </table>
-          <div class="ds-info-box" style="margin-top:16px;"><strong>Key rules:</strong> Yellow (#FFFF00) must never be used for text — contrast ratio 1.1:1 fails all WCAG levels. Grey-600 (#939598) is only safe for large text or non-text UI elements (3:1 threshold). Always pair text with <code>--foreground</code> or <code>--muted-foreground</code>.</div>
+          <div class="ds-do-dont-grid" style="margin-top:20px;">
+            <div class="ds-do-card"><div class="ds-do-card__label">Allowed for text</div><p>Use <code>--foreground</code> or <code>--muted-foreground</code> for all body and UI text. Use white on <code>deep-blue-800</code> or any dark background with 4.5:1+ ratio.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">Never allowed for text</div><p><strong>yellow-500 (#FFFF00) must never be used as text</strong> — 1.1:1 ratio fails every WCAG level. <strong>grey-600 (#939598) must never be used for body text</strong> — 2.9:1 fails normal text. Restrict it to decorative or large-text-only contexts.</p></div>
+          </div>
+          <div class="ds-info-box" style="margin-top:16px;">Color must never be the sole means of conveying information. Always pair color with a text label, icon, or pattern. This applies to status indicators, charts, form validation, and alerts.</div>
         </div>
+
         <hr class="ds-divider">
+
+        <!-- 3. Keyboard & Focus Standards -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Interactive elements</h2>
+          <h2 class="ds-section-title">Keyboard &amp; focus standards</h2>
+          <p class="ds-section-desc">Every flow must be fully operable without a pointer device. These rules are binding for all interactive components.</p>
           <table class="ds-token-table">
-            <thead><tr><th>Requirement</th><th>Rule</th><th>Applies to</th></tr></thead>
+            <thead><tr><th>Standard</th><th>Requirement</th><th>Applies to</th></tr></thead>
             <tbody>
-              <tr><td style="font-weight:500;">Touch target</td><td style="font-size:13px;color:var(--muted-foreground);">Minimum 44×44px</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, links, form controls</td></tr>
-              <tr><td style="font-weight:500;">Focus indicator</td><td style="font-size:13px;color:var(--muted-foreground);">2px focus ring, minimum 3:1 contrast against adjacent color</td><td style="font-size:13px;color:var(--muted-foreground);">All focusable elements</td></tr>
-              <tr><td style="font-weight:500;">Keyboard access</td><td style="font-size:13px;color:var(--muted-foreground);">Tab / Shift+Tab · Enter/Space to activate</td><td style="font-size:13px;color:var(--muted-foreground);">All interactive UI</td></tr>
-              <tr><td style="font-weight:500;">Disabled state</td><td style="font-size:13px;color:var(--muted-foreground);">50% opacity + aria-disabled="true"</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, inputs</td></tr>
-              <tr><td style="font-weight:500;">Error identification</td><td style="font-size:13px;color:var(--muted-foreground);">Color + icon + text — never color alone</td><td style="font-size:13px;color:var(--muted-foreground);">Form inputs, alerts</td></tr>
-              <tr><td style="font-weight:500;">Motion</td><td style="font-size:13px;color:var(--muted-foreground);">Respect <code>prefers-reduced-motion</code></td><td style="font-size:13px;color:var(--muted-foreground);">Transitions, loading states</td></tr>
+              <tr><td style="font-weight:500;">Skip link</td><td style="font-size:13px;color:var(--muted-foreground);">A visible "Skip to main content" link must be the first focusable element on every page</td><td style="font-size:13px;color:var(--muted-foreground);">All pages</td></tr>
+              <tr><td style="font-weight:500;">Tab order</td><td style="font-size:13px;color:var(--muted-foreground);">Focus order must match the visual reading order. Never use <code>tabindex</code> values above 0</td><td style="font-size:13px;color:var(--muted-foreground);">All pages</td></tr>
+              <tr><td style="font-weight:500;">Focus indicator</td><td style="font-size:13px;color:var(--muted-foreground);">2px solid ring, offset 2px, minimum 3:1 contrast against adjacent color. Never use <code>outline: none</code> without a custom replacement</td><td style="font-size:13px;color:var(--muted-foreground);">All focusable elements</td></tr>
+              <tr><td style="font-weight:500;">Keyboard activation</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons activate on Enter and Space. Links activate on Enter. Menus open on Enter or Space, close on Escape</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, links, menus</td></tr>
+              <tr><td style="font-weight:500;">Focus trap</td><td style="font-size:13px;color:var(--muted-foreground);">Focus must be trapped inside modals, dialogs, and drawers while open. Tab must not reach content behind the overlay</td><td style="font-size:13px;color:var(--muted-foreground);">Modal, dialog, drawer, popover</td></tr>
+              <tr><td style="font-weight:500;">Focus return</td><td style="font-size:13px;color:var(--muted-foreground);">On close, focus must return to the element that triggered the overlay</td><td style="font-size:13px;color:var(--muted-foreground);">Modal, dialog, drawer, popover</td></tr>
+              <tr><td style="font-weight:500;">Focus on load</td><td style="font-size:13px;color:var(--muted-foreground);">When a modal or dynamic panel opens, move focus to the first interactive element or the panel heading</td><td style="font-size:13px;color:var(--muted-foreground);">Modal, dialog, inline panels</td></tr>
+              <tr><td style="font-weight:500;">Disabled state</td><td style="font-size:13px;color:var(--muted-foreground);">Use <code>aria-disabled="true"</code> rather than the HTML <code>disabled</code> attribute when the element must remain in tab order. Use <code>disabled</code> when it must be removed from tab order entirely</td><td style="font-size:13px;color:var(--muted-foreground);">Buttons, inputs</td></tr>
             </tbody>
           </table>
         </div>
+
         <hr class="ds-divider">
+
+        <!-- 4. Screen Reader Requirements -->
         <div class="ds-section">
-          <h2 class="ds-section-title">Semantic HTML &amp; screen readers</h2>
+          <h2 class="ds-section-title">Screen reader requirements</h2>
+          <p class="ds-section-desc">Semantic HTML is the first line of defence. ARIA is a last resort — it never overrides broken native semantics.</p>
           <div class="ds-do-dont-grid">
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use native elements: <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;h1–h6&gt;</code></p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> for interactive elements and rely on ARIA to patch semantics.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Associate labels with inputs via <code>&lt;label for="id"&gt;</code> or <code>aria-labelledby</code>.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use placeholder as the only label — it disappears on focus and isn't reliably announced by screen readers.</p></div>
-            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do</div><p>Use <code>aria-live="polite"</code> for status updates. Use <code>aria-live="assertive"</code> only for critical errors.</p></div>
-            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Use <code>aria-live="assertive"</code> for non-critical updates — it interrupts screen readers immediately.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do — landmarks</div><p>Every page must include <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, and <code>&lt;footer&gt;</code> landmarks. Use <code>&lt;aside&gt;</code> for supplementary panels. Label duplicate landmarks with <code>aria-label</code> (e.g. "Primary navigation" vs "Footer navigation").</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't — redundant roles</div><p>Never add <code>role="button"</code> to a <code>&lt;button&gt;</code> or <code>role="link"</code> to an <code>&lt;a&gt;</code>. Redundant roles create noise. Never add <code>role="presentation"</code> to elements that carry meaning.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do — native first</div><p>Always use native elements: <code>&lt;button&gt;</code>, <code>&lt;a href&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;textarea&gt;</code>. Native elements provide keyboard, role, and state for free.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't — ARIA on divs</div><p>Never use <code>&lt;div role="button"&gt;</code> or <code>&lt;span role="checkbox"&gt;</code>. You must then manually implement all keyboard behaviour, states, and focus. It is never simpler than using the native element.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do — labels &amp; descriptions</div><p>Every input must have a <code>&lt;label for="id"&gt;</code> or <code>aria-labelledby</code>. Icon-only buttons must have <code>aria-label</code>. Decorative images must have <code>alt=""</code>. Informative images must have descriptive <code>alt</code> text.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't — placeholder as label</div><p>Never use <code>placeholder</code> as the only label for an input. Placeholders disappear on focus and are not reliably announced by all screen readers. Placeholders may only supplement a visible label.</p></div>
+            <div class="ds-do-card"><div class="ds-do-card__label">✓ Do — live regions</div><p>Use <code>aria-live="polite"</code> for status messages, toast notifications, and async content updates. Set the live region in the DOM before content is injected.</p></div>
+            <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't — assertive overuse</div><p>Never use <code>aria-live="assertive"</code> for non-critical updates. It interrupts the screen reader immediately, regardless of what the user is doing. Reserve it for time-sensitive errors only.</p></div>
           </div>
-          <div class="ds-info-box" style="margin-top:16px;"><strong>Testing:</strong> VoiceOver (Mac/iOS) · NVDA (Windows) · TalkBack (Android). Navigate all flows with keyboard only before marking any design as done.</div>
+          <div class="ds-info-box" style="margin-top:16px;"><strong>First Rule of ARIA:</strong> If you can use a native HTML element with the semantics you need, use it. Only reach for ARIA when native HTML cannot achieve the required role, state, or property.</div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- 5. Testing Checklist -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Ship-gate testing checklist</h2>
+          <p class="ds-section-desc">Every designer and developer must complete all four checks before marking a feature ready to ship. A single failing check blocks release.</p>
+          <div class="ds-component-grid">
+            <div class="ds-component-card">
+              <div class="ds-component-card__name" style="margin-bottom:8px;">Keyboard</div>
+              <p class="ds-component-card__desc">Tool: browser only — unplug your mouse.</p>
+              <ul class="ds-component-card__specs">
+                <li><span class="ds-spec-key">Tab order</span><span class="ds-spec-val">logical, matches visual order</span></li>
+                <li><span class="ds-spec-key">Skip link</span><span class="ds-spec-val">visible on first Tab press</span></li>
+                <li><span class="ds-spec-key">Modals</span><span class="ds-spec-val">focus trapped, returns on close</span></li>
+                <li><span class="ds-spec-key">No trap</span><span class="ds-spec-val">can exit every component with Esc or Tab</span></li>
+              </ul>
+            </div>
+            <div class="ds-component-card">
+              <div class="ds-component-card__name" style="margin-bottom:8px;">Color &amp; contrast</div>
+              <p class="ds-component-card__desc">Tool: Stark (Figma) or browser DevTools contrast checker.</p>
+              <ul class="ds-component-card__specs">
+                <li><span class="ds-spec-key">Body text</span><span class="ds-spec-val">4.5:1 minimum — no exceptions</span></li>
+                <li><span class="ds-spec-key">UI components</span><span class="ds-spec-val">3:1 for borders and icons</span></li>
+                <li><span class="ds-spec-key">No yellow text</span><span class="ds-spec-val">yellow-500 never used for text</span></li>
+                <li><span class="ds-spec-key">Not color-only</span><span class="ds-spec-val">all states legible without color</span></li>
+              </ul>
+            </div>
+            <div class="ds-component-card">
+              <div class="ds-component-card__name" style="margin-bottom:8px;">Screen reader</div>
+              <p class="ds-component-card__desc">Tool: VoiceOver (Mac/iOS) · NVDA (Windows) · TalkBack (Android).</p>
+              <ul class="ds-component-card__specs">
+                <li><span class="ds-spec-key">Landmarks</span><span class="ds-spec-val">nav, main, footer present</span></li>
+                <li><span class="ds-spec-key">All labels</span><span class="ds-spec-val">every input and icon button named</span></li>
+                <li><span class="ds-spec-key">Dynamic content</span><span class="ds-spec-val">live regions announce updates</span></li>
+                <li><span class="ds-spec-key">Reading order</span><span class="ds-spec-val">SR reading order matches visual order</span></li>
+              </ul>
+            </div>
+            <div class="ds-component-card">
+              <div class="ds-component-card__name" style="margin-bottom:8px;">Motion</div>
+              <p class="ds-component-card__desc">Tool: OS accessibility settings — enable "Reduce Motion".</p>
+              <ul class="ds-component-card__specs">
+                <li><span class="ds-spec-key">Transitions</span><span class="ds-spec-val">all animations disabled or instant</span></li>
+                <li><span class="ds-spec-key">Looping</span><span class="ds-spec-val">no auto-playing animation over 5 seconds</span></li>
+                <li><span class="ds-spec-key">Loading states</span><span class="ds-spec-val">spinners replaced with static indicators</span></li>
+                <li><span class="ds-spec-key">Carousels</span><span class="ds-spec-val">auto-advance paused or removed</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
