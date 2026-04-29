@@ -5677,14 +5677,70 @@
             </div>
             <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
-          <div class="cp-canvas cp-canvas--light" style="padding:60px 32px;">
-            <div class="cp-tip-wrap">
-              <div class="cp-tip">Export as CSV</div>
-              <button class="cp-btn cp-btn--o cp-btn--sm" style="display:inline-flex;align-items:center;gap:6px;">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Export
-              </button>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:28px 32px;gap:0;">
+
+            <div class="cp-alert-group-label">Position</div>
+            <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:24px;">
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Top</span>
+                <div style="display:inline-flex;flex-direction:column;align-items:center;gap:4px;">
+                  <div class="cp-tip" style="white-space:nowrap;">Export as CSV</div>
+                  <div class="cp-icon-btn" title="Export"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+                </div>
+              </div>
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Right</span>
+                <div style="display:inline-flex;flex-direction:row;align-items:center;gap:6px;">
+                  <div class="cp-icon-btn" title="Share"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
+                  <div class="cp-tip" style="white-space:nowrap;">Share document</div>
+                </div>
+              </div>
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Bottom</span>
+                <div style="display:inline-flex;flex-direction:column;align-items:center;gap:4px;">
+                  <div class="cp-icon-btn" title="Info"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+                  <div class="cp-tip" style="white-space:nowrap;">Required for authentication</div>
+                </div>
+              </div>
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Left</span>
+                <div style="display:inline-flex;flex-direction:row;align-items:center;gap:6px;">
+                  <div class="cp-tip" style="white-space:nowrap;">Delete project</div>
+                  <div class="cp-icon-btn" title="Delete" style="color:#C62828;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
+                </div>
+              </div>
+
             </div>
+
+            <div style="border-top:1px solid var(--cp-border);margin-bottom:20px;"></div>
+
+            <div class="cp-alert-group-label">Content</div>
+            <div style="display:flex;flex-direction:column;gap:18px;">
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Single-line</span>
+                <div class="cp-tip" style="white-space:nowrap;">Export as CSV</div>
+              </div>
+
+              <div class="cp-alert-row" style="align-items:flex-start;">
+                <span class="cp-alert-row-label" style="padding-top:4px;">Multi-line</span>
+                <div class="cp-tip" style="white-space:normal;max-width:180px;line-height:1.5;">Required for workspace authentication before proceeding.</div>
+              </div>
+
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Destructive</span>
+                <div style="display:inline-flex;align-items:center;gap:6px;">
+                  <div class="cp-icon-btn" title="Delete" style="color:#C62828;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
+                  <div class="cp-tip" style="white-space:nowrap;">Delete project — cannot be undone</div>
+                </div>
+              </div>
+
+            </div>
+
           </div>
           <div class="cp-code-panel" hidden>
             <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
@@ -5716,54 +5772,6 @@
             <div class="ds-do-card"><div class="ds-do-card__label">✓ Trigger on both</div><p>Hover and keyboard focus. Triggering only on hover excludes keyboard users who navigate without a mouse. Both events must show the Tooltip.</p></div>
             <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't add</div><p>Interactive elements (links, buttons, checkboxes) inside a Tooltip. If the content requires interaction, use a Popover — Tooltips dismiss on pointer-out and cannot maintain focus.</p></div>
           </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Variants</h2>
-          <p class="ds-section-desc">One visual style, four position options. Position is chosen based on available space relative to the trigger element.</p>
-          <div style="display:flex;gap:32px;flex-wrap:wrap;margin:16px 0 24px;align-items:center;">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="background:#000F1E;color:#FFF;border-radius:4px;padding:8px 12px;font-size:12px;font-family:inherit;white-space:nowrap;max-width:240px;">Tooltip text here</div>
-              <div style="width:32px;height:32px;border:1px solid #DAD9D6;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#FFF;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000F1E" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              </div>
-              <div style="font-size:11px;color:var(--muted-foreground);">Top</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="width:32px;height:32px;border:1px solid #DAD9D6;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#FFF;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000F1E" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                </div>
-                <div style="background:#000F1E;color:#FFF;border-radius:4px;padding:8px 12px;font-size:12px;font-family:inherit;white-space:nowrap;">Tooltip text</div>
-              </div>
-              <div style="font-size:11px;color:var(--muted-foreground);">Right</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="width:32px;height:32px;border:1px solid #DAD9D6;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#FFF;">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000F1E" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              </div>
-              <div style="background:#000F1E;color:#FFF;border-radius:4px;padding:8px 12px;font-size:12px;font-family:inherit;white-space:nowrap;max-width:240px;">Tooltip text here</div>
-              <div style="font-size:11px;color:var(--muted-foreground);">Bottom</div>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-              <div style="display:flex;align-items:center;gap:8px;">
-                <div style="background:#000F1E;color:#FFF;border-radius:4px;padding:8px 12px;font-size:12px;font-family:inherit;white-space:nowrap;">Tooltip text</div>
-                <div style="width:32px;height:32px;border:1px solid #DAD9D6;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#FFF;">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000F1E" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                </div>
-              </div>
-              <div style="font-size:11px;color:var(--muted-foreground);">Left</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">States</h2>
-          <p class="ds-section-desc">Tooltips have two states: hidden (default) and visible (on hover / focus). There is no additional styling for the trigger element when the Tooltip is visible — only the Tooltip itself appears. A short delay of 300ms before appearing prevents accidental triggering during cursor movement. The Tooltip disappears immediately on pointer-leave or focus-out.</p>
         </div>
 
         <hr class="ds-divider">
