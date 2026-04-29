@@ -4686,13 +4686,90 @@
             </div>
             <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
-          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:32px;">
-            <div class="cp-nav-tabs" style="width:100%;max-width:400px;margin:0 auto;">
-              <div class="cp-nav-tab cp-nav-tab--act">Overview</div>
-              <div class="cp-nav-tab">Assets</div>
-              <div class="cp-nav-tab">Comments</div>
-              <div class="cp-nav-tab">History</div>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:28px 32px;gap:0;">
+
+            <div class="cp-alert-group-label">Sidebar</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Default</span>
+                <div style="background:var(--cp-btn-p-bg);border-radius:8px;padding:6px 8px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:400;color:#939598;font-family:'DM Sans',sans-serif;width:180px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  Members
+                </div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Hover</span>
+                <div style="background:var(--cp-btn-p-bg);border-radius:8px;padding:6px 8px;display:flex;align-items:center;gap:0;">
+                  <div style="border-radius:6px;background:rgba(255,255,255,0.07);padding:6px 10px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:400;color:#ffffff;font-family:'DM Sans',sans-serif;width:164px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    Members
+                  </div>
+                </div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Selected</span>
+                <div style="background:var(--cp-btn-p-bg);border-radius:8px;padding:6px 8px;display:flex;align-items:center;gap:0;">
+                  <div style="border-radius:6px;background:#EFF0F0;padding:6px 10px;display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#000F1E;font-family:'DM Sans',sans-serif;width:164px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#000F1E" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    Members
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div style="border-top:1px solid var(--cp-border);margin-bottom:20px;"></div>
+
+            <div class="cp-alert-group-label">Tabs</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Default</span>
+                <div style="border-bottom:1px solid var(--cp-border);padding:0 16px;height:40px;display:flex;align-items:center;font-size:13px;font-weight:400;color:var(--cp-text-muted);font-family:'DM Sans',sans-serif;">Overview</div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Active</span>
+                <div style="border-bottom:2px solid #234474;padding:0 16px;height:40px;display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--cp-text);font-family:'DM Sans',sans-serif;">Overview</div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Disabled</span>
+                <div style="border-bottom:1px solid var(--cp-border);padding:0 16px;height:40px;display:flex;align-items:center;font-size:13px;font-weight:400;color:var(--cp-text-muted);font-family:'DM Sans',sans-serif;opacity:0.4;pointer-events:none;">Overview</div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Full strip</span>
+                <div class="cp-nav-tabs" style="flex:1;">
+                  <div class="cp-nav-tab cp-nav-tab--act">Overview</div>
+                  <div class="cp-nav-tab">Assets</div>
+                  <div class="cp-nav-tab">Comments</div>
+                  <div class="cp-nav-tab" style="opacity:0.4;pointer-events:none;">History</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="border-top:1px solid var(--cp-border);margin-bottom:20px;"></div>
+
+            <div class="cp-alert-group-label">Breadcrumb</div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:4px;">
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Default</span>
+                <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-family:'DM Sans',sans-serif;">
+                  <span style="color:var(--cp-text-muted);">Design Hub</span>
+                  <span style="color:var(--cp-text-muted);">›</span>
+                  <span style="color:var(--cp-text-muted);">Design System</span>
+                  <span style="color:var(--cp-text-muted);">›</span>
+                  <span style="color:var(--cp-text);font-weight:500;">Navigation</span>
+                </div>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Truncated</span>
+                <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-family:'DM Sans',sans-serif;">
+                  <span style="color:var(--cp-text-muted);">Design Hub</span>
+                  <span style="color:var(--cp-text-muted);">›</span>
+                  <span style="color:var(--cp-text-muted);">…</span>
+                  <span style="color:var(--cp-text-muted);">›</span>
+                  <span style="color:var(--cp-text);font-weight:500;">Navigation</span>
+                </div>
+              </div>
+            </div>
+
           </div>
           <div class="cp-code-panel" hidden>
             <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
@@ -4719,64 +4796,6 @@
             <div class="ds-do-card"><div class="ds-do-card__label">✓ Do highlight</div><p>The active nav item with the Selected state (EFF0F0 bg + Medium weight) so users always know their current location in the app. The active state must persist as long as the user is in that section.</p></div>
             <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't</div><p>Highlight multiple nav items simultaneously. Only one nav item in the Sidebar can carry the Selected state at any given time — concurrent selection creates false ambiguity about the user's location.</p></div>
           </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Variants</h2>
-          <!-- Sidebar preview -->
-          <div style="font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">Sidebar</div>
-          <div style="display:flex;gap:16px;flex-wrap:wrap;margin:0 0 24px;align-items:flex-start;">
-            <div style="background:#000F1E;border-radius:12px;padding:16px;width:200px;">
-              <div style="font-size:11px;font-weight:400;color:#939598;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;padding:0 8px;">Main</div>
-              <div style="height:40px;border-radius:6px;background:#EFF0F0;display:flex;align-items:center;padding:0 10px;gap:8px;font-size:14px;font-weight:500;color:#000F1E;font-family:inherit;margin-bottom:2px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                Dashboard
-              </div>
-              <div style="height:40px;border-radius:6px;display:flex;align-items:center;padding:0 10px;gap:8px;font-size:14px;font-weight:400;color:#939598;font-family:inherit;margin-bottom:2px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                Users
-              </div>
-              <div style="height:40px;border-radius:6px;display:flex;align-items:center;padding:0 10px;gap:8px;font-size:14px;font-weight:400;color:#939598;font-family:inherit;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-                Settings
-              </div>
-            </div>
-          </div>
-          <!-- Tabs preview -->
-          <div style="font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">Tabs</div>
-          <div style="display:flex;gap:0;margin:0 0 24px;border-bottom:1px solid #DAD9D6;">
-            <div style="padding:10px 16px;font-size:14px;font-weight:500;color:#000F1E;border-bottom:2px solid #234474;margin-bottom:-1px;font-family:inherit;">Overview</div>
-            <div style="padding:10px 16px;font-size:14px;font-weight:400;color:#939598;font-family:inherit;">Activity</div>
-            <div style="padding:10px 16px;font-size:14px;font-weight:400;color:#939598;font-family:inherit;">Settings</div>
-          </div>
-          <!-- Breadcrumb preview -->
-          <div style="font-size:12px;font-weight:500;color:var(--muted-foreground);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;">Breadcrumb</div>
-          <div style="display:flex;align-items:center;gap:6px;font-size:13px;font-family:inherit;margin-bottom:24px;">
-            <span style="color:#939598;">Design Hub</span>
-            <span style="color:#939598;">›</span>
-            <span style="color:#939598;">Design System</span>
-            <span style="color:#939598;">›</span>
-            <span style="color:#000F1E;font-weight:500;">Navigation</span>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">States</h2>
-          <table class="ds-token-table">
-            <thead><tr><th>Pattern</th><th>State</th><th>Style</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:500;">Sidebar item</td><td>Default</td><td style="font-size:13px;color:var(--muted-foreground);">Transparent bg · <code>#939598</code> text · Regular weight</td></tr>
-              <tr><td style="font-weight:500;">Sidebar item</td><td>Hover</td><td style="font-size:13px;color:var(--muted-foreground);"><code>#F7F7F6</code> bg · foreground text</td></tr>
-              <tr><td style="font-weight:500;">Sidebar item</td><td>Selected</td><td style="font-size:13px;color:var(--muted-foreground);"><code>#EFF0F0</code> bg · <code>#000F1E</code> text · Medium weight</td></tr>
-              <tr><td style="font-weight:500;">Tab</td><td>Default</td><td style="font-size:13px;color:var(--muted-foreground);"><code>#939598</code> text · no border · Regular weight</td></tr>
-              <tr><td style="font-weight:500;">Tab</td><td>Active</td><td style="font-size:13px;color:var(--muted-foreground);"><code>#000F1E</code> text · 2px bottom border <code>#234474</code> · Medium weight</td></tr>
-              <tr><td style="font-weight:500;">Tab</td><td>Disabled</td><td style="font-size:13px;color:var(--muted-foreground);">50% opacity · pointer-events: none</td></tr>
-            </tbody>
-          </table>
         </div>
 
         <hr class="ds-divider">
