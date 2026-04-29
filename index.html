@@ -5995,10 +5995,42 @@
             </div>
             <div class="cp-seg"><button class="cp-seg-btn active" onclick="cpSetTheme(this,'light')">Light</button><button class="cp-seg-btn" onclick="cpSetTheme(this,'dark')">Dark</button></div>
           </div>
-          <div class="cp-canvas cp-canvas--light">
-            <p style="font-size:14px;font-family:'DM Sans',sans-serif;color:var(--cp-text);line-height:1.9;max-width:320px;text-align:left;">
-              Review the <a class="cp-link" href="#">accessibility guidelines</a> before submitting your design for handoff. See also the <a class="cp-link" href="#">WCAG 2.1 AA criteria <svg style="display:inline;vertical-align:middle;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a> for reference.
-            </p>
+          <div class="cp-canvas cp-canvas--light" style="flex-direction:column;align-items:stretch;padding:28px 32px;gap:0;">
+
+            <div class="cp-alert-group-label">Variants</div>
+            <div style="display:flex;flex-direction:column;gap:14px;margin-bottom:24px;">
+              <div class="cp-alert-row">
+                <span class="cp-alert-row-label">Internal</span>
+                <p style="font-size:14px;color:var(--cp-text);line-height:1.8;margin:0;">Navigate to the <a class="cp-link" href="#">component guidelines</a> for full usage details.</p>
+              </div>
+              <div class="cp-alert-row">
+                <span class="cp-alert-row-label">External</span>
+                <p style="font-size:14px;color:var(--cp-text);line-height:1.8;margin:0;">See the <a class="cp-link" href="#" style="display:inline-flex;align-items:center;gap:3px;">WCAG 2.1 AA criteria <svg style="flex-shrink:0;" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a> for reference.</p>
+              </div>
+            </div>
+
+            <div style="border-top:1px solid var(--cp-border);margin-bottom:20px;"></div>
+
+            <div class="cp-alert-group-label">States</div>
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Default</span>
+                <a class="cp-link" href="#" style="text-decoration:none;">Accessibility guidelines</a>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Hover</span>
+                <a class="cp-link" href="#" style="text-decoration:underline;opacity:0.65;">Accessibility guidelines</a>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Focus</span>
+                <a class="cp-link" href="#" style="text-decoration:underline;outline:2px solid var(--cp-focus-ring);outline-offset:2px;border-radius:2px;">Accessibility guidelines</a>
+              </div>
+              <div class="cp-alert-row" style="align-items:center;">
+                <span class="cp-alert-row-label">Disabled</span>
+                <span style="font-size:14px;color:var(--cp-text-muted);cursor:not-allowed;font-family:'DM Sans',sans-serif;">Accessibility guidelines</span>
+              </div>
+            </div>
+
           </div>
           <div class="cp-code-panel" hidden>
             <button class="cp-copy-btn" onclick="cpCopy(this)">Copy</button>
@@ -6031,45 +6063,6 @@
             <div class="ds-do-card"><div class="ds-do-card__label">✓ Do use Disabled for</div><p>Links that temporarily point to unavailable or not-yet-published destinations. The disabled state uses <code>#939598</code> text, removes the pointer cursor, and prevents pointer events.</p></div>
             <div class="ds-dont-card"><div class="ds-dont-card__label">✕ Don't use</div><p>The Link component as a navigation item in the Sidebar or Tabs — those use their own navigation patterns with states (hover, selected) specific to those components.</p></div>
           </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">Variants</h2>
-          <div style="display:flex;gap:24px;flex-wrap:wrap;margin:16px 0 24px;align-items:center;">
-            <div style="text-align:center">
-              <a href="#" style="color:#234474;font-size:14px;font-weight:500;text-decoration:none;font-family:inherit;" onclick="return false;">Internal link</a>
-              <div style="font-size:11px;color:var(--muted-foreground);margin-top:6px;">Default (no underline)</div>
-            </div>
-            <div style="text-align:center">
-              <a href="#" style="color:#234474;font-size:14px;font-weight:500;text-decoration:underline;font-family:inherit;" onclick="return false;">Hover state</a>
-              <div style="font-size:11px;color:var(--muted-foreground);margin-top:6px;">Hover (underline)</div>
-            </div>
-            <div style="text-align:center">
-              <a href="#" style="color:#234474;font-size:14px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:4px;font-family:inherit;" onclick="return false;">External link <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-              <div style="font-size:11px;color:var(--muted-foreground);margin-top:6px;">External (with icon)</div>
-            </div>
-            <div style="text-align:center">
-              <span style="color:#939598;font-size:14px;font-weight:500;font-family:inherit;cursor:not-allowed;">Disabled link</span>
-              <div style="font-size:11px;color:var(--muted-foreground);margin-top:6px;">Disabled</div>
-            </div>
-          </div>
-        </div>
-
-        <hr class="ds-divider">
-
-        <div class="ds-section">
-          <h2 class="ds-section-title">States</h2>
-          <table class="ds-token-table">
-            <thead><tr><th>State</th><th>Color</th><th>Decoration</th><th>Cursor</th></tr></thead>
-            <tbody>
-              <tr><td style="font-weight:500;">Default</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">#234474</td><td style="font-size:13px;color:var(--muted-foreground);">none</td><td style="font-size:13px;color:var(--muted-foreground);">pointer</td></tr>
-              <tr><td style="font-weight:500;">Hover</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">#1A2D45</td><td style="font-size:13px;color:var(--muted-foreground);">underline</td><td style="font-size:13px;color:var(--muted-foreground);">pointer</td></tr>
-              <tr><td style="font-weight:500;">Focus</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">#234474</td><td style="font-size:13px;color:var(--muted-foreground);">underline + 2px focus ring</td><td style="font-size:13px;color:var(--muted-foreground);">pointer</td></tr>
-              <tr><td style="font-weight:500;">Disabled</td><td style="font-size:12px;font-family:monospace;color:var(--muted-foreground);">#939598</td><td style="font-size:13px;color:var(--muted-foreground);">none</td><td style="font-size:13px;color:var(--muted-foreground);">not-allowed</td></tr>
-            </tbody>
-          </table>
         </div>
 
         <hr class="ds-divider">
