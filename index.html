@@ -1926,6 +1926,115 @@
       color: var(--muted-foreground);
       line-height: 1.6;
     }
+
+    /* ─── Metrics & QA Page ─────────────────────────────────────── */
+
+    /* HEART framework grid */
+    .heart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .heart-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .heart-card__definition {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      line-height: 1.55;
+    }
+    .heart-card__meta {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      line-height: 1.55;
+    }
+    .heart-card__meta strong {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    /* QA checklist grid */
+    .qa-checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .qa-checklist-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 20px;
+    }
+    .qa-checklist-card__header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .qa-checklist-card__icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .qa-checklist-card__title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--foreground);
+    }
+    .qa-checklist-card__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .qa-checklist-card__list li {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      line-height: 1.55;
+      padding: 5px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .qa-checklist-card__list li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+    .qa-checklist-card__list li::before {
+      content: '□';
+      font-size: 11px;
+      color: var(--yellow-500);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Token table muted cell variant */
+    .ds-token-table td.td-muted {
+      color: var(--muted-foreground);
+      font-size: 13px;
+    }
+    .ds-token-table td strong {
+      color: var(--foreground);
+      font-weight: 500;
+    }
+
+    @media (max-width: 700px) {
+      .heart-grid { grid-template-columns: 1fr 1fr; }
+      .qa-checklist-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .heart-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -7738,7 +7847,6 @@
             </div>
           </div>
 
-          <div class="ds-info-box"><strong>Research briefs are mandatory.</strong> Before any session is run, a brief must be written covering: objective, method, participant criteria, key questions, and how findings will be used. This protects scope, ensures alignment, and creates an audit trail for future teams.</div>
         </div>
 
         <hr class="ds-divider">
@@ -7886,7 +7994,303 @@
           <h1 class="page-header__title">Metrics &amp; Quality Assurance</h1>
           <p class="page-header__desc">Design review checklists and how we measure success.</p>
         </div>
-        <div class="placeholder-block"><p>Content coming soon — design review checklists (pre-launch QA), and how we measure success (NPS, Task Completion, OKRs).</p></div>
+        <!-- ── Philosophy callout ──────────────────────────────── -->
+        <div class="ds-callout">
+          <span class="ds-callout-icon">📐</span>
+          <span><strong>Quality is not a final gate — it's a standard maintained at every step.</strong> We measure what matters, review before we ship, and hold the bar regardless of timeline pressure. A design that ships broken is not a design that shipped — it's a liability.</span>
+        </div>
+
+        <!-- ── 1. What we measure: HEART ───────────────────────── -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">What we measure</h2>
+          <p class="ds-section-desc">We use Google's HEART framework as our north-star measurement model. Each dimension maps to a user outcome — not a team activity. Goals, Signals, and Metrics are defined per project at kickoff and tracked through launch and beyond.</p>
+
+          <div class="heart-grid">
+            <div class="heart-card">
+              <span class="dv-palette-type">Happiness</span>
+              <p class="heart-card__definition">How users feel about the product. Sentiment is a leading indicator — it surfaces problems before they show up in retention or churn numbers.</p>
+              <div class="heart-card__meta">
+                <strong>Signal:</strong> Satisfaction surveys, NPS, qualitative feedback sessions.<br>
+                <strong>Metric:</strong> CSAT score ≥ 4/5 · NPS &gt; 30
+              </div>
+            </div>
+            <div class="heart-card">
+              <span class="dv-palette-type">Engagement</span>
+              <p class="heart-card__definition">How often and how deeply users interact with the product. High engagement means the product is genuinely useful — not just visited.</p>
+              <div class="heart-card__meta">
+                <strong>Signal:</strong> Session frequency, feature adoption rate, return visits.<br>
+                <strong>Metric:</strong> DAU/MAU ratio · Feature activation rate
+              </div>
+            </div>
+            <div class="heart-card">
+              <span class="dv-palette-type">Adoption</span>
+              <p class="heart-card__definition">How many users try — and keep using — a new feature. Low adoption after launch usually points to an onboarding or discoverability failure, not a lack of demand.</p>
+              <div class="heart-card__meta">
+                <strong>Signal:</strong> New user onboarding, first-session completion, 7-day retention.<br>
+                <strong>Metric:</strong> Onboarding completion ≥ 70% · D7 retention ≥ 40%
+              </div>
+            </div>
+            <div class="heart-card">
+              <span class="dv-palette-type">Retention</span>
+              <p class="heart-card__definition">Whether users come back. Retention is the most honest signal of product-market fit. If they don't return, the core value proposition has a problem.</p>
+              <div class="heart-card__meta">
+                <strong>Signal:</strong> Churn rate, repeat usage patterns, cohort analysis.<br>
+                <strong>Metric:</strong> Monthly churn &lt; 5% · 30-day retention ≥ 60%
+              </div>
+            </div>
+            <div class="heart-card">
+              <span class="dv-palette-type">Task Success</span>
+              <p class="heart-card__definition">Whether users can complete their goals. This is the clearest measure of design quality — if users can't do the thing, the design has failed regardless of how it looks.</p>
+              <div class="heart-card__meta">
+                <strong>Signal:</strong> Task completion rate, error rate, time-on-task.<br>
+                <strong>Metric:</strong> Task completion ≥ 85% · Critical error rate &lt; 2%
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- ── 2. Design quality bar ────────────────────────────── -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Design quality bar</h2>
+          <p class="ds-section-desc">Before any design is handed off or shipped, it must clear this bar. These are non-negotiable minimums — not a ceiling. If a design can't meet these requirements, it does not ship.</p>
+
+          <table class="ds-token-table">
+            <thead>
+              <tr>
+                <th style="width:18%">Area</th>
+                <th style="width:46%">Requirement</th>
+                <th>How to verify</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Accessibility</strong></td>
+                <td class="td-muted">All interactive elements meet WCAG 2.1 AA. Minimum contrast 4.5:1 for text, 3:1 for UI components and graphical objects.</td>
+                <td class="td-muted">Run Figma A11y annotation plugin + axe DevTools on the implemented build before sign-off.</td>
+              </tr>
+              <tr>
+                <td><strong>Responsiveness</strong></td>
+                <td class="td-muted">Designs cover mobile (375px), tablet (768px), and desktop (1280px) breakpoints. No content hidden, clipped, or broken at any viewport size.</td>
+                <td class="td-muted">Review in-browser at each breakpoint before handoff. Use Chrome DevTools device emulation.</td>
+              </tr>
+              <tr>
+                <td><strong>States</strong></td>
+                <td class="td-muted">Every interactive element has all six states designed: default, hover, focus, active, disabled, and error/empty. No implicit states.</td>
+                <td class="td-muted">Cross-check the component spec against the states checklist. Missing states block handoff.</td>
+              </tr>
+              <tr>
+                <td><strong>Copy</strong></td>
+                <td class="td-muted">No placeholder text (Lorem ipsum, TBD, [Copy here]) in any shipped design. All microcopy reviewed and approved by the project lead.</td>
+                <td class="td-muted">Run a copy audit sweep in Figma before handoff. Flag every instance of non-final copy.</td>
+              </tr>
+              <tr>
+                <td><strong>Handoff completeness</strong></td>
+                <td class="td-muted">Figma file uses components from the ML library, auto-layout is applied throughout, and tokens are referenced — not raw hex values. No detached instances.</td>
+                <td class="td-muted">Inspect panel must show token names (e.g. <code>color/surface-1</code>), not raw hex values. Any red flags block handoff.</td>
+              </tr>
+              <tr>
+                <td><strong>Motion</strong></td>
+                <td class="td-muted">Any animation follows the motion spec (duration, easing curve). A reduced-motion variant is designed for every animated element.</td>
+                <td class="td-muted">Test with <code>prefers-reduced-motion: reduce</code> enabled in browser. Verify animations are suppressed.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- ── 3. Pre-launch QA checklist ───────────────────────── -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Pre-launch QA checklist</h2>
+          <p class="ds-section-desc">Run this checklist on every feature before it ships. Each phase is the responsibility of a named owner — not "the team". Unchecked items are open blockers, not suggestions.</p>
+
+          <div class="qa-checklist-grid">
+            <div class="qa-checklist-card">
+              <div class="qa-checklist-card__header">
+                <span class="qa-checklist-card__icon">🎨</span>
+                <span class="qa-checklist-card__title">Design review</span>
+              </div>
+              <ul class="qa-checklist-card__list">
+                <li>Component library used correctly — no ad-hoc component creation without justification</li>
+                <li>Spacing follows the 4px grid throughout all screens</li>
+                <li>Typography matches the established type scale — no rogue font sizes</li>
+                <li>Colour tokens referenced everywhere — no hardcoded hex values in any layer</li>
+                <li>Dark mode verified if applicable to the product</li>
+              </ul>
+            </div>
+            <div class="qa-checklist-card">
+              <div class="qa-checklist-card__header">
+                <span class="qa-checklist-card__icon">🖱️</span>
+                <span class="qa-checklist-card__title">Interaction &amp; states</span>
+              </div>
+              <ul class="qa-checklist-card__list">
+                <li>All interactive states designed: hover, focus, active, and disabled</li>
+                <li>Error and empty states covered for every data-dependent surface</li>
+                <li>Loading states defined for all async operations</li>
+                <li>Keyboard navigation tested in prototype — tab order verified</li>
+                <li>Focus order is logical, visible, and documented in the handoff</li>
+              </ul>
+            </div>
+            <div class="qa-checklist-card">
+              <div class="qa-checklist-card__header">
+                <span class="qa-checklist-card__icon">✍️</span>
+                <span class="qa-checklist-card__title">Content &amp; copy</span>
+              </div>
+              <ul class="qa-checklist-card__list">
+                <li>No placeholder text anywhere in the shipped design</li>
+                <li>CTAs are action-oriented verbs — not nouns or vague labels</li>
+                <li>Error messages are human, specific, and actionable</li>
+                <li>Tooltips and labels are consistent in tone and format</li>
+                <li>Legal and compliance copy reviewed and signed off</li>
+              </ul>
+            </div>
+            <div class="qa-checklist-card">
+              <div class="qa-checklist-card__header">
+                <span class="qa-checklist-card__icon">♿</span>
+                <span class="qa-checklist-card__title">Accessibility</span>
+              </div>
+              <ul class="qa-checklist-card__list">
+                <li>Colour contrast passes WCAG 2.1 AA minimum for all text and UI elements</li>
+                <li>Touch targets are ≥ 44×44px on all interactive elements</li>
+                <li>All images have alt text defined in the handoff spec</li>
+                <li>Form inputs have visible, persistent labels — not placeholder-only</li>
+                <li>Screen reader annotations added to Figma for complex interactions</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- ── 4. Success metrics by project phase ──────────────── -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Success metrics by project phase</h2>
+          <p class="ds-section-desc">Measurement doesn't start at launch — it starts at kickoff. Each phase has distinct success criteria. Define them before the work begins, not after you're looking for evidence that it went well.</p>
+
+          <div class="research-timeline">
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">01</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Phase 01</div>
+                <div class="research-flow-step__title">Discovery</div>
+                <p class="research-flow-step__desc">Problem clarity score from team alignment survey. Research coverage: percentage of target user segments spoken to. Assumption map completed and reviewed with stakeholders before moving forward.</p>
+              </div>
+            </div>
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">02</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Phase 02</div>
+                <div class="research-flow-step__title">Design</div>
+                <p class="research-flow-step__desc">Design iteration velocity: concepts explored per sprint. Stakeholder sign-off time. Usability test task success rate ≥ 75% before moving to build. No unresolved P0 usability issues.</p>
+              </div>
+            </div>
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">03</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Phase 03</div>
+                <div class="research-flow-step__title">Build</div>
+                <p class="research-flow-step__desc">Design-to-dev parity score from visual QA pass rate. Accessibility violation count = 0 before merge to main. Handoff clarity measured as dev questions per ticket — target &lt; 2.</p>
+              </div>
+            </div>
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">04</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Phase 04</div>
+                <div class="research-flow-step__title">Post-launch</div>
+                <p class="research-flow-step__desc">Full HEART framework scores measured at 30, 60, and 90 days. Feature adoption rate tracked by cohort. Support ticket volume attributable to UX confusion — target trending to zero over 90 days.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- ── 5. How to run a design review ────────────────────── -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">How to run a design review</h2>
+          <p class="ds-section-desc">A design review is not a presentation — it's a structured decision-making session. The facilitator owns the outcome. Follow this sequence to make every review efficient, honest, and actionable.</p>
+
+          <table class="ds-token-table">
+            <thead>
+              <tr>
+                <th style="width:22%">Step</th>
+                <th>What to do</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. Share context</strong></td>
+                <td class="td-muted">Send the brief, user stories, and research findings 24 hours before the review. Reviewers must arrive prepared, not cold. A reviewer reading the brief for the first time in the room is a waste of everyone's time.</td>
+              </tr>
+              <tr>
+                <td><strong>2. Present the problem first</strong></td>
+                <td class="td-muted">Start with the "why" before the "what". If reviewers don't understand the problem you're solving, they can't give useful feedback on the solution. Spend the first 5 minutes anchoring the room on the user need.</td>
+              </tr>
+              <tr>
+                <td><strong>3. Walk through user flows</strong></td>
+                <td class="td-muted">Show the end-to-end journey, not isolated screens. Use a prototype where possible. A screen without context is impossible to evaluate. Edge cases and errors should be in the flow, not mentioned in passing.</td>
+              </tr>
+              <tr>
+                <td><strong>4. Call out open questions</strong></td>
+                <td class="td-muted">Flag unresolved decisions explicitly before reviewers find them. Don't hide uncertainty — surface it for the room to help resolve. "I'm not sure about X" is more useful than hoping no one notices.</td>
+              </tr>
+              <tr>
+                <td><strong>5. Capture feedback in writing</strong></td>
+                <td class="td-muted">Designate a note-taker before the review starts. Verbal feedback that isn't written down does not exist. Use a shared doc, not Figma comments — comments get lost and have no thread of decisions attached to them.</td>
+              </tr>
+              <tr>
+                <td><strong>6. Close with decisions</strong></td>
+                <td class="td-muted">End the review with explicit next actions, named owners, and a deadline. No review ends with "let's circle back" or "something to think about." If the next step is unclear, that is the decision that needs to be made before the room breaks up.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- ── 6. Do / Don't — Quality mindset ─────────────────── -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Quality mindset</h2>
+          <p class="ds-section-desc">Quality is a culture, not a checklist. These principles reflect how high-performing design teams think about their work — and the patterns that quietly erode standards on teams that don't.</p>
+
+          <div class="ds-do-dont-grid">
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p>Set measurable success criteria before starting design work. "Users should complete checkout in fewer than 3 steps" beats "make it easy."</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p>Treat QA as a single event at the end of a project. By then, it's too late to fix anything without a fight — with the timeline, the budget, and the team's patience.</p>
+            </div>
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p>Run a self-QA pass before every design review. Check your own work against the quality bar first — don't use the review to catch things you could have caught yourself.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p>Ship with known accessibility violations because of time pressure. Log them, assign an owner, prioritise them, and fix them before the next release — not someday.</p>
+            </div>
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p>Include developers in design reviews. They spot implementation edge cases designers miss, and their buy-in makes for cleaner, faster builds with fewer surprises.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p>Let "we'll fix it post-launch" become a graveyard for quality debt. Define what "done" means before you start — and hold to it when the timeline compresses.</p>
+            </div>
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p>Track metrics before and after launch to prove impact. Without a baseline, you can't show improvement — and without proof of impact, design stays a cost centre.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p>Confuse activity metrics (screens designed, stories closed) with outcome metrics (task success, retention, NPS). Busy is not the same as effective.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
