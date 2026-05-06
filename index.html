@@ -1559,6 +1559,373 @@
     /* Popover toggle */
     .cp-pop { transition:opacity 150ms ease,transform 150ms ease; }
     .cp-pop.cp-pop--hidden { opacity:0; transform:translateY(-6px); pointer-events:none; }
+
+    /* ─── Research & Discovery Page ─────────────────────────────── */
+
+    /* Phase cards — "When to research" */
+    .research-phase-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 24px;
+    }
+    .research-phase-card__icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .research-phase-card__name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+    .research-phase-card__desc {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .research-phase-card__methods {
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .research-phase-card__methods-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--grey-600);
+      margin-bottom: 8px;
+    }
+    .research-phase-card__method-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .research-method-tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--foreground);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+
+    /* 2×2 Methods matrix */
+    .research-matrix-wrap {
+      margin-bottom: 24px;
+    }
+    .research-matrix-outer {
+      display: grid;
+      grid-template-columns: 40px 1fr 1fr;
+      grid-template-rows: auto 1fr 1fr;
+      gap: 0;
+    }
+    .research-matrix-axis-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--grey-600);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .research-matrix-axis-label--vert {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      grid-row: 2 / 4;
+      grid-column: 1;
+    }
+    .research-matrix-axis-label--top-left {
+      grid-row: 1;
+      grid-column: 2;
+      padding-bottom: 8px;
+    }
+    .research-matrix-axis-label--top-right {
+      grid-row: 1;
+      grid-column: 3;
+      padding-bottom: 8px;
+    }
+    .research-matrix-cell {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      padding: 28px 28px 32px;
+    }
+    .research-matrix-cell:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+    .research-matrix-cell:nth-child(4) { border-top: 1px solid var(--border); }
+    .research-matrix-cell:first-of-type { border-radius: var(--radius-m) 0 0 0; }
+    .research-matrix-cell--tl { border-radius: var(--radius-m) 0 0 0; }
+    .research-matrix-cell--tr { border-radius: 0 var(--radius-m) 0 0; border-left: none; }
+    .research-matrix-cell--bl { border-radius: 0 0 0 var(--radius-m); border-top: none; }
+    .research-matrix-cell--br { border-radius: 0 0 var(--radius-m) 0; border-left: none; border-top: none; }
+    .research-matrix-cell__quadrant {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--grey-600);
+      margin-bottom: 16px;
+    }
+    .research-matrix-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .research-matrix-pill {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--foreground);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+    .research-matrix-horiz-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--grey-600);
+      text-align: center;
+      padding-bottom: 8px;
+    }
+    /* Axis bar decorators */
+    .research-matrix-legend {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .research-matrix-legend-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--grey-600);
+    }
+    .research-matrix-legend-bar {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      margin: 0 12px;
+    }
+
+    /* Key methods cards */
+    .research-methods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 720px) {
+      .research-methods-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .research-methods-grid { grid-template-columns: 1fr; }
+    }
+    .research-method-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .research-method-card__head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .research-method-card__name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--foreground);
+      line-height: 1.3;
+    }
+    .research-method-badge {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: var(--radius-pill);
+      padding: 3px 9px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .research-method-badge--generative {
+      background: rgba(20,184,166,.12);
+      color: #2dd4bf;
+      border: 1px solid rgba(20,184,166,.25);
+    }
+    .research-method-badge--evaluative {
+      background: rgba(234,179,8,.1);
+      color: #fbbf24;
+      border: 1px solid rgba(234,179,8,.22);
+    }
+    .research-method-badge--both {
+      background: rgba(139,92,246,.1);
+      color: #a78bfa;
+      border: 1px solid rgba(139,92,246,.22);
+    }
+    .research-method-card__desc {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .research-method-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+    .research-method-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+    .research-method-stat__key {
+      color: var(--grey-600);
+      font-weight: 500;
+    }
+    .research-method-stat__val {
+      color: var(--foreground);
+      font-size: 11px;
+      font-family: monospace;
+    }
+
+    /* Discovery process flow */
+    /* Discovery process — timeline */
+    .research-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-bottom: 28px;
+      padding-top: 0;
+    }
+    /* Horizontal connector line */
+    .research-timeline::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow-500), rgba(255,255,255,0.12));
+      z-index: 0;
+    }
+    .research-flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    /* Circle node */
+    .research-flow-step__node {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--deep-blue-600);
+      border: 2px solid var(--yellow-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--yellow-500);
+      margin-bottom: 20px;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .research-flow-step:first-child .research-flow-step__node {
+      background: var(--yellow-500);
+      color: var(--deep-blue-800);
+    }
+    .research-flow-step__body {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 20px;
+      width: 100%;
+      flex: 1;
+    }
+    .research-flow-step__num {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--yellow-500);
+      margin-bottom: 6px;
+    }
+    .research-flow-step__title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--foreground);
+      margin-bottom: 8px;
+    }
+    .research-flow-step__desc {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      line-height: 1.65;
+    }
+    @media (max-width: 700px) {
+      .research-timeline { grid-template-columns: 1fr; gap: 16px; }
+      .research-timeline::before { display: none; }
+      .research-flow-step { align-items: flex-start; flex-direction: row; gap: 16px; padding: 0; }
+      .research-flow-step__node { margin-bottom: 0; flex-shrink: 0; }
+      .research-flow-step__body { flex: 1; }
+    }
+
+    /* Synthesis frameworks */
+    .research-synth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 560px) {
+      .research-synth-grid { grid-template-columns: 1fr; }
+    }
+    .research-synth-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 20px;
+    }
+    .research-synth-card__head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .research-synth-card__icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .research-synth-card__name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--foreground);
+    }
+    .research-synth-card__desc {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
@@ -3389,31 +3756,111 @@
           <div class="dv-palette-block">
             <div class="dv-palette-type">Sequential</div>
             <p class="dv-palette-subtitle">For ordered, quantitative data — e.g. intensity, density, magnitude. Runs light → dark on the Deep Blue scale.</p>
-            <div style="display:grid;grid-template-columns:repeat(7,1fr);border-radius:10px;overflow:hidden;margin-bottom:8px;">
-              <div><div style="height:56px;background:#E6E8EB;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">100</div></div>
-              <div><div style="height:56px;background:#C2C8D1;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">200</div></div>
-              <div><div style="height:56px;background:#8C98A8;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">300</div></div>
-              <div><div style="height:56px;background:#596880;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">400</div></div>
-              <div><div style="height:56px;background:#2E4460;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">500</div></div>
-              <div><div style="height:56px;background:#1A2C47;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">600</div></div>
-              <div><div style="height:56px;background:#000F1E;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">700</div></div>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:8px;">
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#E6E8EB;outline:1px solid rgba(0,0,0,0.1);outline-offset:-1px;">
+                  <span class="dv-swatch__seq" style="background:rgba(0,0,0,0.12);color:#000;">100</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#E6E8EB</div><div class="dv-swatch__token">--dv-seq-1</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#C2C8D1;">
+                  <span class="dv-swatch__seq" style="background:rgba(0,0,0,0.15);color:#000;">200</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#C2C8D1</div><div class="dv-swatch__token">--dv-seq-2</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#8C98A8;">
+                  <span class="dv-swatch__seq">300</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#8C98A8</div><div class="dv-swatch__token">--dv-seq-3</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#596880;">
+                  <span class="dv-swatch__seq">400</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#596880</div><div class="dv-swatch__token">--dv-seq-4</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#2E4460;">
+                  <span class="dv-swatch__seq">500</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#2E4460</div><div class="dv-swatch__token">--dv-seq-5</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#1A2C47;">
+                  <span class="dv-swatch__seq">600</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#1A2C47</div><div class="dv-swatch__token">--dv-seq-6</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#000F1E;">
+                  <span class="dv-swatch__seq">700</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#000F1E</div><div class="dv-swatch__token">--dv-seq-7</div></div>
+              </div>
             </div>
           </div>
 
           <!-- ── Diverging ──────────────────────────────────── -->
           <div class="dv-palette-block">
             <div class="dv-palette-type">Diverging</div>
-            <p class="dv-palette-subtitle">For data with a meaningful midpoint — e.g. profit/loss, above/below average, positive/negative sentiment. Blue signals high, red signals low, neutral grey anchors the centre.</p>
-            <div style="display:grid;grid-template-columns:repeat(9,1fr);border-radius:10px;overflow:hidden;margin-bottom:8px;">
-              <div><div style="height:56px;background:#1A2C47;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−−−</div></div>
-              <div><div style="height:56px;background:#2E5DA6;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−−</div></div>
-              <div><div style="height:56px;background:#5B8DD9;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−</div></div>
-              <div><div style="height:56px;background:#9DBDE8;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−</div></div>
-              <div><div style="height:56px;background:#C8C8C8;outline:2px solid rgba(255,255,255,0.15);outline-offset:-2px;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;font-weight:600;">0</div></div>
-              <div><div style="height:56px;background:#F4A58A;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">+</div></div>
-              <div><div style="height:56px;background:#E8614A;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">+</div></div>
-              <div><div style="height:56px;background:#C62828;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">++</div></div>
-              <div><div style="height:56px;background:#7F0000;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">+++</div></div>
+            <p class="dv-palette-subtitle">For data with a meaningful midpoint — e.g. profit/loss, above/below average, positive/negative sentiment. Blue signals low, red signals high, neutral grey anchors the centre.</p>
+            <div style="display:grid;grid-template-columns:repeat(9,1fr);gap:6px;margin-bottom:8px;">
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#1A2C47;">
+                  <span class="dv-swatch__seq" style="font-size:9px;">−−−</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#1A2C47</div><div class="dv-swatch__token">--dv-div-1</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#2E5DA6;">
+                  <span class="dv-swatch__seq" style="font-size:9px;">−−</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#2E5DA6</div><div class="dv-swatch__token">--dv-div-2</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#5B8DD9;">
+                  <span class="dv-swatch__seq" style="font-size:9px;">−</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#5B8DD9</div><div class="dv-swatch__token">--dv-div-3</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#9DBDE8;">
+                  <span class="dv-swatch__seq" style="background:rgba(0,0,0,0.15);color:#000;font-size:9px;">−</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#9DBDE8</div><div class="dv-swatch__token">--dv-div-4</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#C8C8C8;outline:2px solid rgba(255,255,255,0.2);outline-offset:-2px;">
+                  <span class="dv-swatch__seq" style="background:rgba(0,0,0,0.15);color:#000;font-weight:700;">0</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#C8C8C8</div><div class="dv-swatch__token">--dv-div-5</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#F4A58A;">
+                  <span class="dv-swatch__seq" style="background:rgba(0,0,0,0.15);color:#000;font-size:9px;">+</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#F4A58A</div><div class="dv-swatch__token">--dv-div-6</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#E8614A;">
+                  <span class="dv-swatch__seq" style="font-size:9px;">+</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#E8614A</div><div class="dv-swatch__token">--dv-div-7</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#C62828;">
+                  <span class="dv-swatch__seq" style="font-size:9px;">++</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#C62828</div><div class="dv-swatch__token">--dv-div-8</div></div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#7F0000;">
+                  <span class="dv-swatch__seq" style="font-size:9px;">+++</span>
+                </div>
+                <div class="dv-swatch__meta"><div class="dv-swatch__hex">#7F0000</div><div class="dv-swatch__token">--dv-div-9</div></div>
+              </div>
             </div>
           </div>
 
@@ -7129,7 +7576,298 @@
           <h1 class="page-header__title">Research &amp; Discovery</h1>
           <p class="page-header__desc">Guidelines for generative and evaluative research, user recruitment, and usability testing.</p>
         </div>
-        <div class="placeholder-block"><p>Content coming soon — guidelines for generative and evaluative research, how to recruit users, and how to run usability tests.</p></div>
+        <!-- 1. Philosophy callout -->
+        <div class="ds-callout">
+          <span class="ds-callout-icon">🔍</span>
+          <div><strong>Research is not a phase — it's a continuous practice.</strong> At Monstarlab, research is woven into every engagement from kickoff to post-launch. Good research reduces rework, de-risks decisions before a line of code is written, and builds shared empathy across the entire project team. When we skip it, we build on assumptions. When we invest in it, we ship with confidence.</div>
+        </div>
+
+        <!-- 2. When to research -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">When to research</h2>
+          <p class="ds-section-desc">Research isn't a single event. Each phase of a project calls for a different flavour of inquiry — from understanding the problem space to validating a solution under real conditions.</p>
+          <div class="ds-component-grid">
+
+            <div class="research-phase-card">
+              <span class="research-phase-card__icon">🌱</span>
+              <div class="research-phase-card__name">Discover</div>
+              <p class="research-phase-card__desc">Project kickoff. Frame the problem space. Understand users, context, and constraints <em>before</em> any solution exists. The goal is to learn what we don't know and challenge the brief.</p>
+              <div class="research-phase-card__methods">
+                <div class="research-phase-card__methods-label">Typical methods</div>
+                <div class="research-phase-card__method-tags">
+                  <span class="research-method-tag">User interviews</span>
+                  <span class="research-method-tag">Contextual inquiry</span>
+                  <span class="research-method-tag">Desk research</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="research-phase-card">
+              <span class="research-phase-card__icon">🔬</span>
+              <div class="research-phase-card__name">Validate</div>
+              <p class="research-phase-card__desc">Mid-design. Test hypotheses, prototypes, and concepts with real users before committing to build. This is where we catch expensive mistakes cheaply — a sketch session beats a sprint of development.</p>
+              <div class="research-phase-card__methods">
+                <div class="research-phase-card__methods-label">Typical methods</div>
+                <div class="research-phase-card__method-tags">
+                  <span class="research-method-tag">Usability testing</span>
+                  <span class="research-method-tag">Concept testing</span>
+                  <span class="research-method-tag">Card sorting</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="research-phase-card">
+              <span class="research-phase-card__icon">🔄</span>
+              <div class="research-phase-card__name">Iterate</div>
+              <p class="research-phase-card__desc">Post-launch and ongoing. Monitor real behaviour, identify friction, and surface improvement opportunities continuously. Live products are the most honest research environment we have.</p>
+              <div class="research-phase-card__methods">
+                <div class="research-phase-card__methods-label">Typical methods</div>
+                <div class="research-phase-card__method-tags">
+                  <span class="research-method-tag">Analytics review</span>
+                  <span class="research-method-tag">Session recordings</span>
+                  <span class="research-method-tag">A/B testing</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- 3. Methods at a glance — 2×2 matrix -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Methods at a glance</h2>
+          <p class="ds-section-desc">Every research method sits somewhere on two axes: <strong>attitudinal vs. behavioral</strong> (what people say vs. what they do) and <strong>qualitative vs. quantitative</strong> (why vs. how many). Choosing the right quadrant starts with the question you're trying to answer.</p>
+
+          <div class="research-matrix-wrap">
+            <!-- Horizontal axis label row -->
+            <div style="display:grid;grid-template-columns:40px 1fr 1fr;gap:0;margin-bottom:0;">
+              <div></div>
+              <div class="research-matrix-horiz-label">Qualitative</div>
+              <div class="research-matrix-horiz-label">Quantitative</div>
+            </div>
+            <!-- Matrix body -->
+            <div style="display:grid;grid-template-columns:40px 1fr 1fr;grid-template-rows:1fr 1fr;gap:0;">
+              <!-- Vertical axis label -->
+              <div class="research-matrix-axis-label--vert research-matrix-axis-label" style="grid-row:1/3;grid-column:1;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--grey-600);">Attitudinal ↕ Behavioral</div>
+              <!-- TL: Attitudinal + Qualitative -->
+              <div class="research-matrix-cell research-matrix-cell--tl" style="grid-row:1;grid-column:2;">
+                <div class="research-matrix-cell__quadrant">Attitudinal · Qualitative</div>
+                <div class="research-matrix-pills">
+                  <span class="research-matrix-pill">User Interviews</span>
+                  <span class="research-matrix-pill">Focus Groups</span>
+                  <span class="research-matrix-pill">Diary Studies</span>
+                  <span class="research-matrix-pill">Concept Testing</span>
+                </div>
+              </div>
+              <!-- TR: Attitudinal + Quantitative -->
+              <div class="research-matrix-cell research-matrix-cell--tr" style="grid-row:1;grid-column:3;">
+                <div class="research-matrix-cell__quadrant">Attitudinal · Quantitative</div>
+                <div class="research-matrix-pills">
+                  <span class="research-matrix-pill">Surveys</span>
+                  <span class="research-matrix-pill">Desirability Studies</span>
+                  <span class="research-matrix-pill">Card Sorting (closed)</span>
+                </div>
+              </div>
+              <!-- BL: Behavioral + Qualitative -->
+              <div class="research-matrix-cell research-matrix-cell--bl" style="grid-row:2;grid-column:2;">
+                <div class="research-matrix-cell__quadrant">Behavioral · Qualitative</div>
+                <div class="research-matrix-pills">
+                  <span class="research-matrix-pill">Usability Testing</span>
+                  <span class="research-matrix-pill">Contextual Inquiry</span>
+                  <span class="research-matrix-pill">Field Studies</span>
+                  <span class="research-matrix-pill">Think-Aloud Protocol</span>
+                </div>
+              </div>
+              <!-- BR: Behavioral + Quantitative -->
+              <div class="research-matrix-cell research-matrix-cell--br" style="grid-row:2;grid-column:3;">
+                <div class="research-matrix-cell__quadrant">Behavioral · Quantitative</div>
+                <div class="research-matrix-pills">
+                  <span class="research-matrix-pill">A/B Testing</span>
+                  <span class="research-matrix-pill">Analytics Review</span>
+                  <span class="research-matrix-pill">Eye Tracking</span>
+                  <span class="research-matrix-pill">Session Recordings</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-info-box"><strong>Rule of thumb:</strong> Start with qualitative to understand the <em>why</em>, then use quantitative to confirm the <em>how many</em>. Don't use a survey to discover a problem — use one to size it once you've found it.</div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- 5. The discovery process — 4-step flow -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">The discovery process</h2>
+          <p class="ds-section-desc">Regardless of method, all research at Monstarlab follows four steps. The steps are sequential by intent — but in practice you'll loop between Explore and Synthesize multiple times within a single study.</p>
+
+          <div class="research-timeline">
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">01</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Step 01</div>
+                <div class="research-flow-step__title">Define</div>
+                <p class="research-flow-step__desc">Write the research brief. Identify assumptions, knowledge gaps, and the key questions the study must answer. Align with stakeholders on what a good outcome looks like — before you recruit a single participant.</p>
+              </div>
+            </div>
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">02</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Step 02</div>
+                <div class="research-flow-step__title">Explore</div>
+                <p class="research-flow-step__desc">Recruit participants. Run sessions. Gather rich qualitative data and/or quantitative signals. Document everything — verbatim quotes, timestamps, screenshots. Resist the urge to interpret during data collection.</p>
+              </div>
+            </div>
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">03</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Step 03</div>
+                <div class="research-flow-step__title">Synthesize</div>
+                <p class="research-flow-step__desc">Cluster observations. Surface patterns. Generate insights that are distinct from raw data — an insight explains <em>why</em> a pattern exists, not just that it does. Challenge your own assumptions throughout.</p>
+              </div>
+            </div>
+            <div class="research-flow-step">
+              <div class="research-flow-step__node">04</div>
+              <div class="research-flow-step__body">
+                <div class="research-flow-step__num">Step 04</div>
+                <div class="research-flow-step__title">Act</div>
+                <p class="research-flow-step__desc">Translate insights into design decisions, opportunity areas, or backlog items. Present findings in a format stakeholders can act on — not a raw data dump. Make the recommendation explicit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-info-box"><strong>Research briefs are mandatory.</strong> Before any session is run, a brief must be written covering: objective, method, participant criteria, key questions, and how findings will be used. This protects scope, ensures alignment, and creates an audit trail for future teams.</div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- 6. Synthesis frameworks -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Synthesis frameworks</h2>
+          <p class="ds-section-desc">Data without synthesis is just noise. These four frameworks are the most commonly used at Monstarlab to turn raw observations into actionable design intelligence.</p>
+
+          <div class="research-synth-grid">
+
+            <div class="research-synth-card">
+              <div class="research-synth-card__head">
+                <span class="research-synth-card__icon">🗂️</span>
+                <div class="research-synth-card__name">Affinity Mapping</div>
+              </div>
+              <p class="research-synth-card__desc">Bottom-up clustering of observations into emergent themes. Write one observation per sticky note, then group by similarity — letting structure emerge from the data rather than imposing categories in advance. Best after interviews or usability sessions with many discrete data points. Run it as a team exercise to build shared understanding.</p>
+            </div>
+
+            <div class="research-synth-card">
+              <div class="research-synth-card__head">
+                <span class="research-synth-card__icon">🗺️</span>
+                <div class="research-synth-card__name">User Journey Map</div>
+              </div>
+              <p class="research-synth-card__desc">Visualises the end-to-end experience across touchpoints, exposing emotional highs and lows alongside the actions and thoughts at each stage. Most powerful when based on real participant data — not assumptions. Use it to identify unmet needs, points of drop-off, and moments where the experience could be meaningfully improved.</p>
+            </div>
+
+            <div class="research-synth-card">
+              <div class="research-synth-card__head">
+                <span class="research-synth-card__icon">⚙️</span>
+                <div class="research-synth-card__name">Jobs-to-be-Done</div>
+              </div>
+              <p class="research-synth-card__desc">Frames user needs as progress-oriented goals: <em>"When [situation], I want to [motivation], so I can [outcome]."</em> This lens avoids feature-anchored thinking and forces the team to focus on the underlying job the user is trying to accomplish. Particularly effective for product strategy and prioritisation conversations with stakeholders.</p>
+            </div>
+
+            <div class="research-synth-card">
+              <div class="research-synth-card__head">
+                <span class="research-synth-card__icon">💡</span>
+                <div class="research-synth-card__name">How Might We</div>
+              </div>
+              <p class="research-synth-card__desc">Reframes problems as open design opportunities: <em>"How might we help users find the right plan without feeling overwhelmed?"</em> Use HMW statements post-synthesis to bridge from insight to ideation — they should be specific enough to give direction but open enough to allow creative solutions. One HMW per insight is a useful starting discipline.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- 7. Research ethics -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Research ethics</h2>
+          <p class="ds-section-desc">Ethical research practice protects participants, preserves the integrity of findings, and upholds Monstarlab's reputation. These are non-negotiable standards — not guidelines.</p>
+
+          <div class="ds-do-dont-grid">
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p><strong>Obtain informed consent before recording.</strong> Explain the study purpose, how data will be used, and where it will be stored. Give participants the right to withdraw at any time without consequence.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p><strong>Lead the witness.</strong> Avoid questions that suggest a desired answer — "Did you find the button easy to use?" primes a positive response. Ask "What happened when you tried to submit the form?" instead.</p>
+            </div>
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p><strong>Compensate participants fairly.</strong> £50–£100/hour is typical for professional and specialist participants. Uncompensated research introduces self-selection bias and devalues people's time.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p><strong>Retain raw recordings longer than necessary.</strong> Agree a data retention policy before the study starts. Session recordings containing PII should be deleted once synthesis is complete, per your client's data governance requirements.</p>
+            </div>
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p><strong>Anonymise all data before sharing findings.</strong> Replace real names with participant codes (P1, P2…). Scrub identifying details from quotes and screenshots. Your readout deck should never name a real person.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p><strong>Over-recruit to chase false confidence.</strong> Five participants reveal ~85% of usability issues for a single task flow (Nielsen, 1993). More participants are justified for multiple user segments — not to feel more certain about findings you already have.</p>
+            </div>
+            <div class="ds-do-card">
+              <div class="ds-do-card__label">✓ Do</div>
+              <p><strong>Include underrepresented groups.</strong> Actively recruit across age, ability, geography, and digital literacy. Products built on research from a narrow demographic will fail the people they exclude. Accessibility cannot be an afterthought.</p>
+            </div>
+            <div class="ds-dont-card">
+              <div class="ds-dont-card__label">✕ Don't</div>
+              <p><strong>Present findings without caveats.</strong> Always note sample size, recruitment method, session format, and any limitations in your readout. Overstating confidence in small-sample qualitative data misleads stakeholders and damages research credibility.</p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <!-- 8. Communicating findings -->
+        <div class="ds-section">
+          <h2 class="ds-section-title">Communicating findings</h2>
+          <p class="ds-section-desc">A study is only as useful as the decisions it enables. Structure your research readout so that every stakeholder — from the product owner to the CEO — can find what they need and understand what to do next.</p>
+
+          <table class="ds-token-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Content</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:600;white-space:nowrap;">Executive summary</td>
+                <td style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">3–5 top insights in plain language. What changed, what we learned, what we recommend. Busy stakeholders should be able to read only this section and still make a decision.</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;white-space:nowrap;">Study context</td>
+                <td style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">Method, participant count, recruitment criteria, session dates, and any deviations from the original plan. Gives credibility, allows replication, and sets appropriate confidence levels for the findings.</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;white-space:nowrap;">Key findings</td>
+                <td style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">Insight → evidence → recommendation. Each finding gets its own section or slide. Quote participants directly. Pair quotes with observed behaviour — what they <em>said</em> alongside what they <em>did</em>.</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;white-space:nowrap;">Opportunity areas</td>
+                <td style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">How Might We statements or prioritised design directions that follow directly from the research. This is the bridge from "here's what we found" to "here's what to do about it." Include a severity or impact rating.</td>
+              </tr>
+              <tr>
+                <td style="font-weight:600;white-space:nowrap;">Appendix</td>
+                <td style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">Raw quotes, session recordings, affinity map, full data tables, and screener criteria. Stakeholders rarely read this — it's there for rigour, audit trails, and future researchers picking up the work.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="ds-info-box" style="margin-top:16px;"><strong>One finding, one recommendation.</strong> Every insight in your readout should connect to a clear, actionable recommendation. If you can't say what you'd do differently based on the finding, the insight needs more synthesis work before it's ready to share.</div>
+        </div>
       </div>
     </div>
 
