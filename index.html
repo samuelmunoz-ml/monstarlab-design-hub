@@ -817,6 +817,46 @@
     }
     .ds-info-box strong { color: var(--foreground); }
 
+    /* ─── Data Visualization Palette ───────────────────────────── */
+    .dv-palette-block { margin-bottom: 36px; }
+    .dv-palette-type {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--muted-foreground);
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 3px 10px; margin-bottom: 8px;
+    }
+    .dv-palette-subtitle {
+      font-size: 13px; color: var(--muted-foreground); margin-bottom: 16px; line-height: 1.5;
+    }
+    .dv-cat-grid {
+      display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; margin-bottom: 8px;
+    }
+    .dv-seq-grid {
+      display: grid; gap: 0; border-radius: 10px; overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .dv-seq-grid--h { grid-auto-flow: column; grid-template-rows: 64px; }
+    .dv-seq-grid--div { grid-template-columns: repeat(9, 1fr); height: 64px; border-radius: 10px; overflow:hidden; }
+    .dv-swatch { display: flex; flex-direction: column; }
+    .dv-swatch__color {
+      height: 72px; border-radius: 8px; position: relative;
+      display: flex; align-items: flex-start; justify-content: flex-start;
+      padding: 7px 8px;
+    }
+    .dv-swatch__seq {
+      font-size: 10px; font-weight: 700; line-height: 1;
+      background: rgba(0,0,0,0.22); color: #fff;
+      border-radius: 4px; padding: 2px 5px;
+    }
+    .dv-swatch__seq--dark {
+      background: rgba(255,255,255,0.22); color: #000;
+    }
+    .dv-swatch__meta { padding: 6px 2px 0; }
+    .dv-swatch__name { font-size: 11px; font-weight: 600; color: var(--foreground); line-height: 1.3; }
+    .dv-swatch__hex { font-size: 10px; font-family: monospace; color: var(--muted-foreground); margin-top: 2px; }
+    .dv-swatch__token { font-size: 10px; font-family: monospace; color: var(--muted-foreground); }
+
     .ds-two-col {
       display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
       margin-bottom: 24px;
@@ -2987,26 +3027,36 @@
           <h2 class="ds-section-title">System status colors</h2>
           <p class="ds-section-desc">Only for feedback states (success, warning, error, info). Never use these decoratively.</p>
           <table class="ds-token-table" style="margin-bottom:24px;">
-            <thead><tr><th>State</th><th>Background</th><th>Text</th><th>Border</th></tr></thead>
+            <thead><tr><th style="width:52px;"></th><th>State</th><th>Background</th><th>Text</th><th>Border</th></tr></thead>
             <tbody>
-              <tr><td><strong>Success</strong></td><td style="font-size:12px;font-family:monospace;">#E8F5E9</td><td style="font-size:12px;font-family:monospace;">#2E7D32</td><td style="font-size:12px;font-family:monospace;">#C8E6C9</td></tr>
-              <tr><td><strong>Warning</strong></td><td style="font-size:12px;font-family:monospace;">#FFF3E0</td><td style="font-size:12px;font-family:monospace;">#E65100</td><td style="font-size:12px;font-family:monospace;">#FFE0B2</td></tr>
-              <tr><td><strong>Error</strong></td><td style="font-size:12px;font-family:monospace;">#FFEBEE</td><td style="font-size:12px;font-family:monospace;">#C62828</td><td style="font-size:12px;font-family:monospace;">#FFCDD2</td></tr>
-              <tr><td><strong>Info</strong></td><td style="font-size:12px;font-family:monospace;">#E3F2FD</td><td style="font-size:12px;font-family:monospace;">#1565C0</td><td style="font-size:12px;font-family:monospace;">#BBDEFB</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <hr class="ds-divider">
-        <div class="ds-section">
-          <h2 class="ds-section-title">Usage rules</h2>
-          <table class="ds-token-table">
-            <thead><tr><th>Token</th><th>Use for</th><th>Never use for</th></tr></thead>
-            <tbody>
-              <tr><td><span class="ds-token-name">--foreground</span></td><td style="font-size:13px;color:var(--muted-foreground);">Primary headings, body text, icons</td><td style="font-size:13px;color:var(--muted-foreground);">Backgrounds</td></tr>
-              <tr><td><span class="ds-token-name">--muted-foreground</span></td><td style="font-size:13px;color:var(--muted-foreground);">Secondary text, placeholders, captions</td><td style="font-size:13px;color:var(--muted-foreground);">Primary headings</td></tr>
-              <tr><td><span class="ds-token-name">Yellow 500 (#FFFF00)</span></td><td style="font-size:13px;color:var(--muted-foreground);">Secondary button bg, brand accents</td><td style="font-size:13px;color:var(--muted-foreground);">Text color — fails contrast</td></tr>
-              <tr><td><span class="ds-token-name">--border</span></td><td style="font-size:13px;color:var(--muted-foreground);">Dividers, input outlines, card borders</td><td style="font-size:13px;color:var(--muted-foreground);">Text, backgrounds</td></tr>
-              <tr><td><span class="ds-token-name">System status colors</span></td><td style="font-size:13px;color:var(--muted-foreground);">Feedback states only (alerts, error messages)</td><td style="font-size:13px;color:var(--muted-foreground);">Decorative color, data viz</td></tr>
+              <tr>
+                <td><div style="width:36px;height:36px;border-radius:8px;background:#E8F5E9;border:1px solid #C8E6C9;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#2E7D32;font-family:var(--font-primary);">A</div></td>
+                <td><strong>Success</strong></td>
+                <td style="font-size:12px;font-family:monospace;">#E8F5E9</td>
+                <td style="font-size:12px;font-family:monospace;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#2E7D32;flex-shrink:0;"></span>#2E7D32</span></td>
+                <td style="font-size:12px;font-family:monospace;">#C8E6C9</td>
+              </tr>
+              <tr>
+                <td><div style="width:36px;height:36px;border-radius:8px;background:#FFF3E0;border:1px solid #FFE0B2;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#E65100;font-family:var(--font-primary);">A</div></td>
+                <td><strong>Warning</strong></td>
+                <td style="font-size:12px;font-family:monospace;">#FFF3E0</td>
+                <td style="font-size:12px;font-family:monospace;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E65100;flex-shrink:0;"></span>#E65100</span></td>
+                <td style="font-size:12px;font-family:monospace;">#FFE0B2</td>
+              </tr>
+              <tr>
+                <td><div style="width:36px;height:36px;border-radius:8px;background:#FFEBEE;border:1px solid #FFCDD2;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#C62828;font-family:var(--font-primary);">A</div></td>
+                <td><strong>Error</strong></td>
+                <td style="font-size:12px;font-family:monospace;">#FFEBEE</td>
+                <td style="font-size:12px;font-family:monospace;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#C62828;flex-shrink:0;"></span>#C62828</span></td>
+                <td style="font-size:12px;font-family:monospace;">#FFCDD2</td>
+              </tr>
+              <tr>
+                <td><div style="width:36px;height:36px;border-radius:8px;background:#E3F2FD;border:1px solid #BBDEFB;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#1565C0;font-family:var(--font-primary);">A</div></td>
+                <td><strong>Info</strong></td>
+                <td style="font-size:12px;font-family:monospace;">#E3F2FD</td>
+                <td style="font-size:12px;font-family:monospace;"><span style="display:inline-flex;align-items:center;gap:6px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1565C0;flex-shrink:0;"></span>#1565C0</span></td>
+                <td style="font-size:12px;font-family:monospace;">#BBDEFB</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -3020,7 +3070,7 @@
         <div class="page-header">
           <div class="page-header__eyebrow">Foundations</div>
           <h1 class="page-header__title">Typography</h1>
-          <p class="page-header__desc">DM Sans is the typeface for all UI. Helvetica Neue is used only in editorial contexts. Line heights: 1.2–1.3 for headings, 1.5–1.6 for body.</p>
+          <p class="page-header__desc">Monument Grotesk is the typeface for all UI. Helvetica Neue is used only in editorial contexts. Line heights: 1.2–1.3 for headings, 1.5–1.6 for body.</p>
         </div>
         <div class="ds-section">
           <h2 class="ds-section-title">Type scale</h2>
@@ -3053,8 +3103,7 @@
               <tr><td><span class="ds-token-name">text-xs tracking-[2px] uppercase</span></td><td style="font-size:13px;color:var(--muted-foreground);">12px 400 caps 2px ls</td><td style="font-size:13px;color:var(--muted-foreground);">Body 3 / Caption — overlines, labels</td></tr>
             </tbody>
           </table>
-          <div class="ds-info-box" style="margin-top:16px;"><strong>Font:</strong> DM Sans loaded from Google Fonts. Use <code>font-family: 'DM Sans', sans-serif</code>. Helvetica Neue only in editorial/marketing contexts.</div>
-        </div>
+                  </div>
       </div>
     </div>
 
@@ -3226,26 +3275,152 @@
         <hr class="ds-divider">
         <div class="ds-section">
           <h2 class="ds-section-title">Color palette</h2>
-          <p class="ds-section-desc">Use the sequential palette for ordered/quantitative data, and the categorical palette for nominal data. Never use more than 6 colors in a single chart.</p>
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 12px;">Categorical (up to 6)</h3>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;">
-            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#000F1E;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Deep Blue 800</div></div>
-            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#FFFF00;border:1px solid #DAD9D6;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Yellow 500</div></div>
-            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#1FA2D1;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Light Blue 500</div></div>
-            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#00A95C;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Green 700</div></div>
-            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#234474;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Blue 600</div></div>
-            <div style="text-align:center;"><div style="width:40px;height:40px;border-radius:8px;background:#939598;"></div><div style="font-size:11px;color:var(--muted-foreground);margin-top:4px;">Grey 600</div></div>
+          <p class="ds-section-desc">Three palette types cover every visualization need. Always apply colors in the numbered sequence — never skip or reorder. Colors 1 (Yellow) and 10 (Deep Blue) are Monstarlab brand anchors; the remaining eight are purpose-built for data clarity and contrast.</p>
+
+          <!-- ── Categorical ──────────────────────────────────── -->
+          <div class="dv-palette-block">
+            <div class="dv-palette-type">Categorical</div>
+            <p class="dv-palette-subtitle">For unrelated, nominal categories — e.g. product lines, regions, segments. Apply in numbered order. Maximum 6 per chart; if you need more, group smaller segments into "Other".</p>
+            <div class="dv-cat-grid">
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#FFFF00;outline:1px solid rgba(0,0,0,0.12);outline-offset:-1px;">
+                  <span class="dv-swatch__seq" style="background:rgba(0,0,0,0.18);color:#000;">01</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Yellow</div>
+                  <div class="dv-swatch__hex">#FFFF00</div>
+                  <div class="dv-swatch__token">--dv-1</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#3B82F6;">
+                  <span class="dv-swatch__seq">02</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Blue</div>
+                  <div class="dv-swatch__hex">#3B82F6</div>
+                  <div class="dv-swatch__token">--dv-2</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#F97316;">
+                  <span class="dv-swatch__seq">03</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Orange</div>
+                  <div class="dv-swatch__hex">#F97316</div>
+                  <div class="dv-swatch__token">--dv-3</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#10B981;">
+                  <span class="dv-swatch__seq">04</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Emerald</div>
+                  <div class="dv-swatch__hex">#10B981</div>
+                  <div class="dv-swatch__token">--dv-4</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#A855F7;">
+                  <span class="dv-swatch__seq">05</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Violet</div>
+                  <div class="dv-swatch__hex">#A855F7</div>
+                  <div class="dv-swatch__token">--dv-5</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#EC4899;">
+                  <span class="dv-swatch__seq">06</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Pink</div>
+                  <div class="dv-swatch__hex">#EC4899</div>
+                  <div class="dv-swatch__token">--dv-6</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#06B6D4;">
+                  <span class="dv-swatch__seq">07</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Cyan</div>
+                  <div class="dv-swatch__hex">#06B6D4</div>
+                  <div class="dv-swatch__token">--dv-7</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#EF4444;">
+                  <span class="dv-swatch__seq">08</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Red</div>
+                  <div class="dv-swatch__hex">#EF4444</div>
+                  <div class="dv-swatch__token">--dv-8</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#84CC16;">
+                  <span class="dv-swatch__seq">09</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Lime</div>
+                  <div class="dv-swatch__hex">#84CC16</div>
+                  <div class="dv-swatch__token">--dv-9</div>
+                </div>
+              </div>
+              <div class="dv-swatch">
+                <div class="dv-swatch__color" style="background:#1A2C47;">
+                  <span class="dv-swatch__seq">10</span>
+                </div>
+                <div class="dv-swatch__meta">
+                  <div class="dv-swatch__name">Deep Blue</div>
+                  <div class="dv-swatch__hex">#1A2C47</div>
+                  <div class="dv-swatch__token">--dv-10</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h3 style="font-size:16px;font-weight:500;color:var(--foreground);margin:0 0 12px;">Sequential (low → high) — Deep Blue scale</h3>
-          <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:24px;">
-            <div style="width:40px;height:32px;border-radius:4px;background:#E6E8EB;border:1px solid #DAD9D6;"></div>
-            <div style="width:40px;height:32px;border-radius:4px;background:#B3B9C2;"></div>
-            <div style="width:40px;height:32px;border-radius:4px;background:#808A99;"></div>
-            <div style="width:40px;height:32px;border-radius:4px;background:#4D5B70;"></div>
-            <div style="width:40px;height:32px;border-radius:4px;background:#1A2C47;"></div>
-            <div style="width:40px;height:32px;border-radius:4px;background:#000F1E;"></div>
+
+          <!-- ── Sequential ──────────────────────────────────── -->
+          <div class="dv-palette-block">
+            <div class="dv-palette-type">Sequential</div>
+            <p class="dv-palette-subtitle">For ordered, quantitative data — e.g. intensity, density, magnitude. Runs light → dark on the Deep Blue scale.</p>
+            <div style="display:grid;grid-template-columns:repeat(7,1fr);border-radius:10px;overflow:hidden;margin-bottom:8px;">
+              <div><div style="height:56px;background:#E6E8EB;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">100</div></div>
+              <div><div style="height:56px;background:#C2C8D1;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">200</div></div>
+              <div><div style="height:56px;background:#8C98A8;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">300</div></div>
+              <div><div style="height:56px;background:#596880;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">400</div></div>
+              <div><div style="height:56px;background:#2E4460;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">500</div></div>
+              <div><div style="height:56px;background:#1A2C47;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">600</div></div>
+              <div><div style="height:56px;background:#000F1E;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">700</div></div>
+            </div>
           </div>
-          <div class="ds-info-box"><strong>Accessibility check:</strong> Run all chart color pairings through a contrast checker at 3:1 minimum. For diverging data (negative/positive), use blue–grey–red. Never use red/green alone as the only signal.</div>
+
+          <!-- ── Diverging ──────────────────────────────────── -->
+          <div class="dv-palette-block">
+            <div class="dv-palette-type">Diverging</div>
+            <p class="dv-palette-subtitle">For data with a meaningful midpoint — e.g. profit/loss, above/below average, positive/negative sentiment. Blue signals high, red signals low, neutral grey anchors the centre.</p>
+            <div style="display:grid;grid-template-columns:repeat(9,1fr);border-radius:10px;overflow:hidden;margin-bottom:8px;">
+              <div><div style="height:56px;background:#1A2C47;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−−−</div></div>
+              <div><div style="height:56px;background:#2E5DA6;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−−</div></div>
+              <div><div style="height:56px;background:#5B8DD9;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−</div></div>
+              <div><div style="height:56px;background:#9DBDE8;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">−</div></div>
+              <div><div style="height:56px;background:#C8C8C8;outline:2px solid rgba(255,255,255,0.15);outline-offset:-2px;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;font-weight:600;">0</div></div>
+              <div><div style="height:56px;background:#F4A58A;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">+</div></div>
+              <div><div style="height:56px;background:#E8614A;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">+</div></div>
+              <div><div style="height:56px;background:#C62828;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">++</div></div>
+              <div><div style="height:56px;background:#7F0000;"></div><div style="font-size:10px;color:var(--muted-foreground);margin-top:5px;text-align:center;font-family:monospace;">+++</div></div>
+            </div>
+          </div>
+
+          <!-- ── Accessibility ──────────────────────────────── -->
+          <div class="ds-info-box" style="margin-top:4px;">
+            <strong>Accessibility rules:</strong> All chart colors must achieve ≥ 3:1 contrast against the chart background. Never rely on color alone — always pair with shape, pattern, or direct labels. Never use red and green as the only distinction (colorblind unsafe). Run pairings through a contrast checker before shipping.
+          </div>
         </div>
         <hr class="ds-divider">
         <div class="ds-section">
