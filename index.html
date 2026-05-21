@@ -2035,6 +2035,194 @@
       .heart-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── Philosophy & Principles page ─────────────────────────── */
+    .phil-part-banner {
+      background: linear-gradient(135deg, var(--surface-1) 0%, rgba(26,44,71,0.5) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 40px 48px;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .phil-part-banner::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: var(--yellow-500);
+    }
+    .phil-part-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--yellow-500);
+      margin-bottom: 14px;
+    }
+    .phil-hero-text {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--foreground);
+      line-height: 1.3;
+      max-width: 700px;
+    }
+    .phil-work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 680px) { .phil-work-grid { grid-template-columns: 1fr; } }
+    .phil-col-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted-foreground);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .phil-deliverable-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .phil-deliverable-list li {
+      font-size: 14px;
+      color: var(--muted-foreground);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .phil-deliverable-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--yellow-500);
+    }
+    .phil-hidden-items { display: flex; flex-direction: column; gap: 18px; }
+    .phil-hidden-item { display: flex; gap: 14px; align-items: flex-start; }
+    .phil-hidden-item__num {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--yellow-500);
+      background: rgba(255,255,0,0.07);
+      border: 1px solid rgba(255,255,0,0.15);
+      border-radius: 4px;
+      padding: 3px 7px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-family: monospace;
+      letter-spacing: 1px;
+    }
+    .phil-hidden-item__title { font-size: 13px; font-weight: 600; color: var(--foreground); margin-bottom: 3px; }
+    .phil-hidden-item__desc { font-size: 12px; color: var(--muted-foreground); line-height: 1.6; }
+    .phil-quality-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 720px) { .phil-quality-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .phil-quality-grid { grid-template-columns: 1fr; } }
+    .phil-quality-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 22px;
+    }
+    .phil-quality-card__title { font-size: 13px; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
+    .phil-quality-card__desc { font-size: 12px; color: var(--muted-foreground); line-height: 1.65; }
+    .phil-advantage-grid { display: flex; flex-direction: column; gap: 0; }
+    .phil-advantage-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .phil-advantage-item:last-child { border-bottom: none; }
+    .phil-advantage-item__dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--yellow-500);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .phil-advantage-item__text { font-size: 13px; color: var(--muted-foreground); line-height: 1.65; }
+    .phil-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+    }
+    @media (max-width: 680px) { .phil-principles-grid { grid-template-columns: 1fr; } }
+    .phil-principle {
+      background: var(--surface-1);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .phil-principle:nth-child(2n) { border-right: none; }
+    .phil-principle:nth-last-child(-n+2) { border-bottom: none; }
+    .phil-principle__num {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--yellow-500);
+      line-height: 1;
+      opacity: 0.85;
+    }
+    .phil-principle__title { font-size: 16px; font-weight: 700; color: var(--foreground); line-height: 1.3; margin-top: 4px; }
+    .phil-principle__points { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+    .phil-principle__point {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      line-height: 1.65;
+      padding-left: 14px;
+      position: relative;
+    }
+    .phil-principle__point::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,0,0.4); }
+    .phil-forward-grid {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      overflow: hidden;
+    }
+    .phil-forward-item {
+      background: var(--surface-1);
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 20px;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--border);
+    }
+    .phil-forward-item:last-child { border-bottom: none; }
+    .phil-forward-item:hover { background: rgba(26,44,71,0.7); }
+    .phil-forward-item__num {
+      font-size: 34px;
+      font-weight: 800;
+      color: rgba(255,255,0,0.18);
+      line-height: 1;
+      padding-top: 3px;
+    }
+    .phil-forward-item__title { font-size: 15px; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
+    .phil-forward-item__desc { font-size: 13px; color: var(--muted-foreground); line-height: 1.65; }
+    .phil-forward-item__bullets { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+    .phil-forward-item__bullet {
+      font-size: 12px;
+      color: var(--muted-foreground);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .phil-forward-item__bullet::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,0,0.35); }
+
   </style>
 </head>
 <body>
@@ -2301,7 +2489,261 @@
           <h1 class="page-header__title">Philosophy &amp; Principles</h1>
           <p class="page-header__desc">The mission, vision, and core design tenets that guide everything we create.</p>
         </div>
-        <div class="placeholder-block"><p>Content coming soon — mission and vision of the design team, and core design tenets (e.g., "User First," "Accessible by Default").</p></div>
+        <!-- Context callout -->
+        <div class="ds-callout">
+          <span class="ds-callout-icon">✦</span>
+          <div>These principles were built from two team sessions in April and May 2026, reflecting on strengths, quality standards, and where we're headed. They're meant to be referenced, challenged, and updated — not framed and forgotten.</div>
+        </div>
+
+        <!-- ── PART 1: WHAT WE BRING ─────────────────────────── -->
+        <div class="phil-part-banner">
+          <div class="phil-part-label">01 — What We Bring</div>
+          <div class="phil-hero-text">Clients come to us — or should come to us — for more than screens.</div>
+        </div>
+
+        <div class="ds-section">
+          <div class="phil-work-grid">
+            <div>
+              <div class="phil-col-label">The work people expect</div>
+              <ul class="phil-deliverable-list">
+                <li>Screens, comps, and visual design</li>
+                <li>Look and feel</li>
+                <li>Design systems and component libraries</li>
+                <li>Illustrations, imagery, and animation</li>
+                <li>User research and usability testing</li>
+                <li>Competitive and landscape research</li>
+                <li>Education and training</li>
+              </ul>
+            </div>
+            <div>
+              <div class="phil-col-label">The work people don't always see</div>
+              <div class="phil-hidden-items">
+                <div class="phil-hidden-item">
+                  <span class="phil-hidden-item__num">01</span>
+                  <div><div class="phil-hidden-item__title">Strategy behind every decision</div><div class="phil-hidden-item__desc">A well-considered strategy behind every design decision — not aesthetic preference dressed up as rationale.</div></div>
+                </div>
+                <div class="phil-hidden-item">
+                  <span class="phil-hidden-item__num">02</span>
+                  <div><div class="phil-hidden-item__title">Artifacts that survive handoff</div><div class="phil-hidden-item__desc">User flows, experience maps, and proof of usability that inform engineering handoff, not just client presentations.</div></div>
+                </div>
+                <div class="phil-hidden-item">
+                  <span class="phil-hidden-item__num">03</span>
+                  <div><div class="phil-hidden-item__title">Cross-platform thinking</div><div class="phil-hidden-item__desc">Thinking across apps, kiosks, kitchen display systems, and whatever surface the product lives on.</div></div>
+                </div>
+                <div class="phil-hidden-item">
+                  <span class="phil-hidden-item__num">04</span>
+                  <div><div class="phil-hidden-item__title">Alignment work</div><div class="phil-hidden-item__desc">Keeping design, engineering, and stakeholders aligned so projects don't go sideways mid-build.</div></div>
+                </div>
+                <div class="phil-hidden-item">
+                  <span class="phil-hidden-item__num">05</span>
+                  <div><div class="phil-hidden-item__title">Simplification</div><div class="phil-hidden-item__desc">Taking a month of requirements and complexity and producing something that feels invisible to the user.</div></div>
+                </div>
+                <div class="phil-hidden-item">
+                  <span class="phil-hidden-item__num">06</span>
+                  <div><div class="phil-hidden-item__title">Strategic through-line</div><div class="phil-hidden-item__desc">Serving as the connective thread from discovery through build. If it breaks at engineering handoff, everything before it is wasted.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <div class="ds-section">
+          <h2 class="ds-section-title">What separates good design from good-looking screens</h2>
+          <p class="ds-section-desc">Quality criteria the team holds for work that actually matters.</p>
+          <div class="phil-quality-grid">
+            <div class="phil-quality-card">
+              <div class="phil-quality-card__title">Brand-matched experience</div>
+              <div class="phil-quality-card__desc">Using the product feels like an extension of the brand's principles — not just its color palette.</div>
+            </div>
+            <div class="phil-quality-card">
+              <div class="phil-quality-card__title">Economic consideration</div>
+              <div class="phil-quality-card__desc">Every design decision accounts for the business impact it will have for the client.</div>
+            </div>
+            <div class="phil-quality-card">
+              <div class="phil-quality-card__title">Invisible complexity</div>
+              <div class="phil-quality-card__desc">Refined, simple experience where complexity is absorbed by design, not passed to the user.</div>
+            </div>
+            <div class="phil-quality-card">
+              <div class="phil-quality-card__title">Built for extensibility</div>
+              <div class="phil-quality-card__desc">Designed to accommodate future tech and product phases without a full rebuild.</div>
+            </div>
+            <div class="phil-quality-card">
+              <div class="phil-quality-card__title">User-first outcomes</div>
+              <div class="phil-quality-card__desc">Serves the user first — not just the business's conversion goals.</div>
+            </div>
+            <div class="phil-quality-card">
+              <div class="phil-quality-card__title">Tested and documented</div>
+              <div class="phil-quality-card__desc">Put through some form of testing and supported by artifacts that survive beyond the design phase.</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="ds-divider">
+
+        <div class="ds-section">
+          <h2 class="ds-section-title">The perspective we carry in</h2>
+          <p class="ds-section-desc">What we bring that an in-house team with more context often can't.</p>
+          <div class="phil-advantage-grid">
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">We come without the client's internal bias — fresh thinking, willingness to challenge assumptions.</div></div>
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">We bring context from many industries and project types, not siloed in one domain.</div></div>
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">We extend beyond a narrow lane of design expertise into strategy, process, tooling, and new territory.</div></div>
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">We have freedom to explore tools without narrow security restrictions that block usage.</div></div>
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">We're natively cross-platform — we don't just think in terms of one surface.</div></div>
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">We can be scrappier than in-house teams and many competitors.</div></div>
+            <div class="phil-advantage-item"><div class="phil-advantage-item__dot"></div><div class="phil-advantage-item__text">Show don't tell is becoming table stakes. We're already doing it and getting faster.</div></div>
+          </div>
+        </div>
+
+        <!-- ── PART 2: HOW WE WORK ────────────────────────────── -->
+        <div class="phil-part-banner" style="margin-top:48px;">
+          <div class="phil-part-label">02 — How We Work</div>
+          <div class="phil-hero-text">Eight principles drawn from how we already operate at our best — and a few corrections for where we don't.</div>
+        </div>
+
+        <div class="ds-section">
+          <div class="phil-principles-grid">
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">01</div>
+              <div class="phil-principle__title">Lead with kindness, operate with respect.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Assume best intentions in every interaction — with colleagues and clients alike.</div>
+                <div class="phil-principle__point">Respect perspectives, ideas, and time — even when we disagree.</div>
+                <div class="phil-principle__point">In a remote, distributed environment, trust is built through how we communicate, not where we sit.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">02</div>
+              <div class="phil-principle__title">Be honest about what's possible.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Deliver the best work within real constraints — and be upfront about what those constraints are.</div>
+                <div class="phil-principle__point">Don't promise what we can't deliver, and don't hide behind ambiguity when scope or timeline affects quality.</div>
+                <div class="phil-principle__point">Honesty earns more trust than over-promising. Every time.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">03</div>
+              <div class="phil-principle__title">Rely on evidence, not vibes alone.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Back decisions with research, data, and user insight — even when budget doesn't include a dedicated research stream.</div>
+                <div class="phil-principle__point">Bolster recommendations with what's available: analytics, competitive landscape, prior engagements.</div>
+                <div class="phil-principle__point">Instinct is valuable. Evidence makes it defensible.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">04</div>
+              <div class="phil-principle__title">Scale the process to the engagement.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Not every project gets the same playbook. Right-size the approach based on client maturity, budget, and timeline.</div>
+                <div class="phil-principle__point">Meet clients where they are and educate where possible.</div>
+                <div class="phil-principle__point">Don't force a heavyweight process onto a lightweight engagement or vice versa.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">05</div>
+              <div class="phil-principle__title">Show early, react fast.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Show work before it's precious. Attachment to unvalidated work is a project risk.</div>
+                <div class="phil-principle__point">Early visibility builds alignment and catches misinterpretation before it compounds.</div>
+                <div class="phil-principle__point">When feedback comes in, respond quickly. Clients consistently notice and value this.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">06</div>
+              <div class="phil-principle__title">Own the brief — or make one.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Don't execute without context. A brief that doesn't exist is a brief we build.</div>
+                <div class="phil-principle__point">If brought in late, ask the questions that should have been asked earlier — not after the work is done.</div>
+                <div class="phil-principle__point">Design receding into the background on engineering projects isn't acceptable. Advocate from kickoff.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">07</div>
+              <div class="phil-principle__title">Know our worth and account for it.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Stop under-estimating our time, our relevance, and our value.</div>
+                <div class="phil-principle__point">Over-delivering without tracking time creates unrealistic expectations and erodes our position.</div>
+                <div class="phil-principle__point">If the work takes longer than scoped, that's information — not a personal failing. Price and plan realistically.</div>
+              </div>
+            </div>
+
+            <div class="phil-principle">
+              <div class="phil-principle__num">08</div>
+              <div class="phil-principle__title">Design for what comes after us.</div>
+              <div class="phil-principle__points">
+                <div class="phil-principle__point">Build things clients can maintain, extend, and scale after we leave.</div>
+                <div class="phil-principle__point">Systems over one-offs, documentation over tribal knowledge, reusable patterns over bespoke solutions.</div>
+                <div class="phil-principle__point">The best engagement is one where the client is more capable at the end than they were at the start.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── PART 3: WHERE WE'RE HEADED ────────────────────── -->
+        <div class="phil-part-banner" style="margin-top:48px;">
+          <div class="phil-part-label">03 — Where We're Headed</div>
+          <div class="phil-hero-text">We don't treat design as a fixed job description. What this team does — and what we're capable of — is something we actively expand.</div>
+        </div>
+
+        <div class="ds-section">
+          <div class="phil-forward-grid">
+
+            <div class="phil-forward-item">
+              <div class="phil-forward-item__num">01</div>
+              <div>
+                <div class="phil-forward-item__title">Becoming AI-native</div>
+                <div class="phil-forward-item__desc">We're developing a clear point of view on how AI impacts design as a practice. We use it to enhance discovery, move faster, and deliver more value. The goal isn't efficiency for its own sake — it's maintaining the value of design while changing how we get there. The competitive advantage isn't the tool; it's the team that knows how to wield it without flattening the craft.</div>
+              </div>
+            </div>
+
+            <div class="phil-forward-item">
+              <div class="phil-forward-item__num">02</div>
+              <div>
+                <div class="phil-forward-item__title">Building repeatable process</div>
+                <div class="phil-forward-item__desc">Working toward standardized approaches for common engagement types — not reinventing the wheel every time, while keeping flexibility to go deep when a project demands it. Getting sharper about how much time different types of work actually take, and developing formulas that aren't right every time but are better than guessing.</div>
+              </div>
+            </div>
+
+            <div class="phil-forward-item">
+              <div class="phil-forward-item__num">03</div>
+              <div>
+                <div class="phil-forward-item__title">Measuring our impact</div>
+                <div class="phil-forward-item__desc">Connecting design work to outcomes clients care about — moving beyond "we delivered screens."</div>
+                <div class="phil-forward-item__bullets">
+                  <div class="phil-forward-item__bullet">Efficiency gains: connecting design decisions to measurable workflow improvements clients can report internally.</div>
+                  <div class="phil-forward-item__bullet">Revenue impact: articulating how UX choices affect conversion, retention, and revenue in terms the business understands.</div>
+                  <div class="phil-forward-item__bullet">Usability outcomes: here's what changed because of our work.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="phil-forward-item">
+              <div class="phil-forward-item__num">04</div>
+              <div>
+                <div class="phil-forward-item__title">Expanding the definition</div>
+                <div class="phil-forward-item__desc">We bring context from many industries and project types. We're comfortable extending beyond a narrow lane of design expertise into strategy, tooling, systems thinking, cross-platform work, and areas that don't have a clean label yet. Breadth is competitive advantage, not lack of specialization.</div>
+              </div>
+            </div>
+
+            <div class="phil-forward-item">
+              <div class="phil-forward-item__num">05</div>
+              <div>
+                <div class="phil-forward-item__title">Gaining efficiencies with our internal teams</div>
+                <div class="phil-forward-item__desc">Improving collaboration patterns across engineering, pre-sales, and delivery. AI-enhanced discovery processes and assets. Reducing the friction points that have historically caused project misalignment.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
 
