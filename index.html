@@ -2069,10 +2069,9 @@
     }
     .phil-work-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 40px;
     }
-    @media (max-width: 680px) { .phil-work-grid { grid-template-columns: 1fr; } }
     .phil-col-label {
       font-size: 11px;
       font-weight: 700;
@@ -2222,6 +2221,182 @@
       line-height: 1.55;
     }
     .phil-forward-item__bullet::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,0,0.35); }
+
+    /* ── Onboarding page ───────────────────────────────────────── */
+    .onboard-overview {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 680px) { .onboard-overview { grid-template-columns: 1fr; } }
+    .onboard-overview-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .onboard-overview-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow-500);
+    }
+    .onboard-overview-card__period {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--yellow-500);
+      margin-bottom: 6px;
+    }
+    .onboard-overview-card__title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--foreground);
+      margin-bottom: 10px;
+    }
+    .onboard-overview-card__desc {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      line-height: 1.6;
+    }
+    .onboard-phase-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .onboard-phase-badge {
+      background: var(--yellow-500);
+      color: var(--deep-blue-800);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+    .onboard-phase-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--foreground);
+    }
+    .onboard-steps { display: flex; flex-direction: column; gap: 16px; }
+    .onboard-step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .onboard-step__num {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface-1);
+      border: 1px solid var(--yellow-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--yellow-500);
+      flex-shrink: 0;
+      font-family: monospace;
+      margin-top: 2px;
+    }
+    .onboard-step__content {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 18px 20px;
+    }
+    .onboard-step__title { font-size: 14px; font-weight: 700; color: var(--foreground); margin-bottom: 12px; }
+    .onboard-checklist { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+    .onboard-checklist li {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .onboard-checklist li::before {
+      content: '□';
+      color: var(--yellow-500);
+      flex-shrink: 0;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .onboard-tip {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted-foreground);
+      background: rgba(255,255,0,0.04);
+      border-left: 2px solid rgba(255,255,0,0.25);
+      padding: 8px 12px;
+      border-radius: 0 4px 4px 0;
+      line-height: 1.55;
+    }
+    .onboard-tip strong { color: rgba(255,255,0,0.7); }
+    .onboard-values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .onboard-values-grid { grid-template-columns: 1fr; } }
+    .onboard-value-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 22px;
+    }
+    .onboard-value-card__title { font-size: 14px; font-weight: 700; color: var(--foreground); margin-bottom: 8px; }
+    .onboard-value-card__desc { font-size: 12px; color: var(--muted-foreground); line-height: 1.65; }
+    .onboard-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media (max-width: 600px) { .onboard-tools-grid { grid-template-columns: 1fr; } }
+    .onboard-tools-dept {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 18px 20px;
+    }
+    .onboard-tools-dept__name {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--yellow-500);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .onboard-tools-dept__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+    .onboard-tools-dept__list li { font-size: 13px; color: var(--muted-foreground); padding-left: 14px; position: relative; line-height: 1.4; }
+    .onboard-tools-dept__list li::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,0,0.35); }
+    .onboard-channels { display: flex; flex-direction: column; }
+    .onboard-channel {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .onboard-channel:last-child { border-bottom: none; }
+    .onboard-channel__name { font-size: 12px; font-weight: 700; color: var(--foreground); font-family: monospace; }
+    .onboard-channel__desc { font-size: 12px; color: var(--muted-foreground); line-height: 1.5; }
+    @media (max-width: 600px) { .onboard-channel { grid-template-columns: 1fr; gap: 4px; } }
 
   </style>
 </head>
@@ -2503,18 +2678,6 @@
 
         <div class="ds-section">
           <div class="phil-work-grid">
-            <div>
-              <div class="phil-col-label">The work people expect</div>
-              <ul class="phil-deliverable-list">
-                <li>Screens, comps, and visual design</li>
-                <li>Look and feel</li>
-                <li>Design systems and component libraries</li>
-                <li>Illustrations, imagery, and animation</li>
-                <li>User research and usability testing</li>
-                <li>Competitive and landscape research</li>
-                <li>Education and training</li>
-              </ul>
-            </div>
             <div>
               <div class="phil-col-label">The work people don't always see</div>
               <div class="phil-hidden-items">
@@ -2819,7 +2982,380 @@
           <h1 class="page-header__title">Onboarding</h1>
           <p class="page-header__desc">Everything a new design hire needs to hit the ground running.</p>
         </div>
-        <div class="placeholder-block"><p>Content coming soon — 30-60-90 day checklist for new design hires, IT setup checklist, and software access guide.</p></div>
+        <!-- Overview cards -->
+        <div class="onboard-overview" style="margin-bottom:40px;">
+          <div class="onboard-overview-card">
+            <div class="onboard-overview-card__period" style="font-size:11px;font-weight:700;color:var(--yellow-500);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Day 1</div>
+            <div class="onboard-overview-card__title" style="font-size:18px;font-weight:800;color:var(--foreground);margin-bottom:8px;">First Day</div>
+            <div class="onboard-overview-card__desc" style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">Get set up with the tools, accounts, and people you need to start contributing from day one.</div>
+          </div>
+          <div class="onboard-overview-card">
+            <div class="onboard-overview-card__period" style="font-size:11px;font-weight:700;color:var(--yellow-500);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Week 1</div>
+            <div class="onboard-overview-card__title" style="font-size:18px;font-weight:800;color:var(--foreground);margin-bottom:8px;">First Week</div>
+            <div class="onboard-overview-card__desc" style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">Understand our values, culture, and the people around you. Start mapping your skills and meeting your team.</div>
+          </div>
+          <div class="onboard-overview-card">
+            <div class="onboard-overview-card__period" style="font-size:11px;font-weight:700;color:var(--yellow-500);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Month 1</div>
+            <div class="onboard-overview-card__title" style="font-size:18px;font-weight:800;color:var(--foreground);margin-bottom:8px;">First Month</div>
+            <div class="onboard-overview-card__desc" style="font-size:13px;color:var(--muted-foreground);line-height:1.6;">Go deeper into the global agency, participate in DEI, explore resources, and learn the Monstarlab glossary.</div>
+          </div>
+        </div>
+
+        <!-- ── DAY 1 ── -->
+        <div class="onboard-phase-header" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+          <span class="onboard-phase-badge">Day 1</span>
+          <h2 class="onboard-phase-title" style="font-size:20px;font-weight:800;color:var(--foreground);margin:0;">Your first day</h2>
+        </div>
+        <div class="onboard-steps" style="margin-bottom:48px;">
+
+          <!-- Step 1 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">1</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">IT Setup</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Your IT setup is the foundation of everything. Make sure these are done before EOD.</p>
+              <ul class="onboard-checklist">
+                <li>Set up your company email and verify access</li>
+                <li>Join Slack and configure your profile (photo, title, time zone)</li>
+                <li>Log in to Jumpcloud and enroll your device for MDM</li>
+                <li>Install required programs from the approved software list</li>
+                <li>Confirm you received your hardware and that everything works</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">2</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">People &amp; Culture</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Familiarize yourself with the frameworks that govern your employee experience.</p>
+              <ul class="onboard-checklist">
+                <li>Read the employee handbook</li>
+                <li>Review your benefits package and enrollment deadlines</li>
+                <li>Confirm your pay schedule and payroll system access</li>
+                <li>Add key dates to your calendar (public holidays, all-hands, team rituals)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">3</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Meet Your Buddy</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Your onboarding buddy is your first port of call for any question, big or small.</p>
+              <div class="onboard-tip">
+                <strong>Tip:</strong> Schedule a 30-minute coffee chat with your buddy. Come with a list of questions — no question is too basic on day one.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">4</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Get on Slack</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:12px;">Join the channels below on day one. These are where the conversation happens.</p>
+              <div class="onboard-channels">
+                <div class="onboard-channel">
+                  <div class="onboard-channel__name">#announcements-amer</div>
+                  <div class="onboard-channel__desc">Official announcements for the Americas region — always check before asking "did you hear about…"</div>
+                </div>
+                <div class="onboard-channel">
+                  <div class="onboard-channel__name">#general-amer</div>
+                  <div class="onboard-channel__desc">Day-to-day conversation and culture for the Americas team.</div>
+                </div>
+                <div class="onboard-channel">
+                  <div class="onboard-channel__name">#general</div>
+                  <div class="onboard-channel__desc">Global Monstarlab channel — connect with colleagues worldwide.</div>
+                </div>
+                <div class="onboard-channel">
+                  <div class="onboard-channel__name">#helpdesk</div>
+                  <div class="onboard-channel__desc">IT support and tooling issues. Your go-to for access problems.</div>
+                </div>
+                <div class="onboard-channel">
+                  <div class="onboard-channel__name">#mlg_newcomers_intro</div>
+                  <div class="onboard-channel__desc">Introduce yourself to the whole company here. Say hi!</div>
+                </div>
+                <div class="onboard-channel">
+                  <div class="onboard-channel__name">#virtual-coffee</div>
+                  <div class="onboard-channel__desc">Random coffee pairing with someone new each week. Great for meeting people across offices.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">5</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Tools Everyone Uses</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Regardless of your discipline, these tools are used across the whole team. Request access early — approvals can take a day or two.</p>
+              <ul class="onboard-checklist">
+                <li>Slack — team communication</li>
+                <li>Google Workspace — email, Drive, Docs, Meet</li>
+                <li>Jumpcloud — device management and SSO</li>
+                <li>Harvest — time tracking</li>
+                <li>Greenhouse — HR and people platform</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">6</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Tools by Department</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:14px;">In addition to the shared stack, your discipline uses a set of specialist tools. Request licenses from your manager or via #helpdesk.</p>
+              <div class="onboard-tools-grid">
+                <div class="onboard-tools-dept">
+                  <div class="onboard-tools-dept__name">Design</div>
+                  <ul class="onboard-tools-dept__list">
+                    <li>Figma — primary design & prototyping tool</li>
+                    <li>Adobe Creative Cloud — production assets</li>
+                    <li>Sketch — legacy projects</li>
+                    <li>Dropbox — file storage and sharing</li>
+                    <li>InVision — stakeholder handoff</li>
+                    <li>Miro — remote whiteboarding and workshops</li>
+                  </ul>
+                </div>
+                <div class="onboard-tools-dept">
+                  <div class="onboard-tools-dept__name">Engineering</div>
+                  <ul class="onboard-tools-dept__list">
+                    <li>GitHub — version control and code review</li>
+                    <li>Postman — API testing and documentation</li>
+                  </ul>
+                </div>
+                <div class="onboard-tools-dept">
+                  <div class="onboard-tools-dept__name">Operations</div>
+                  <ul class="onboard-tools-dept__list">
+                    <li>Dropbox — file storage</li>
+                    <li>Office 365 — Word, Excel, PowerPoint</li>
+                    <li>Peackon — employee recognition</li>
+                  </ul>
+                </div>
+                <div class="onboard-tools-dept">
+                  <div class="onboard-tools-dept__name">Delivery</div>
+                  <ul class="onboard-tools-dept__list">
+                    <li>Adobe Creative Cloud — presentation assets</li>
+                    <li>Dropbox — shared project storage</li>
+                    <li>Office 365 — documents and reports</li>
+                    <li>Smartsheet — project tracking and planning</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ds-divider"></div>
+
+        <!-- ── WEEK 1 ── -->
+        <div class="onboard-phase-header" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;margin-top:40px;">
+          <span class="onboard-phase-badge">Week 1</span>
+          <h2 class="onboard-phase-title" style="font-size:20px;font-weight:800;color:var(--foreground);margin:0;">Your first week</h2>
+        </div>
+        <div class="onboard-steps" style="margin-bottom:48px;">
+
+          <!-- Step 1 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">1</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Set Up Your Calendar</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Make sure the recurring ceremonies that matter are on your radar from week one.</p>
+              <ul class="onboard-checklist">
+                <li>Add the company all-hands cadence to your calendar</li>
+                <li>Block weekly design team meeting (check with your manager for the time)</li>
+                <li>Add project kickoff process to your calendar when assigned to a project</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">2</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Learn Our Values</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:14px;">These four values are the lens through which we make decisions at Monstarlab.</p>
+              <div class="onboard-values-grid">
+                <div class="onboard-value-card">
+                  <div class="onboard-value-card__title">Do what's right</div>
+                  <div class="onboard-value-card__desc">Act with integrity in every interaction — with clients, colleagues, and the communities we serve.</div>
+                </div>
+                <div class="onboard-value-card">
+                  <div class="onboard-value-card__title">Create value</div>
+                  <div class="onboard-value-card__desc">Focus on outcomes that matter. Move beyond deliverables and ask what real impact your work creates.</div>
+                </div>
+                <div class="onboard-value-card">
+                  <div class="onboard-value-card__title">Amplify your impact</div>
+                  <div class="onboard-value-card__desc">Lift others as you rise. Mentor, share knowledge, and build systems that multiply your contribution.</div>
+                </div>
+                <div class="onboard-value-card">
+                  <div class="onboard-value-card__title">Be borderless</div>
+                  <div class="onboard-value-card__desc">We are a global team. Collaborate across geographies, disciplines, and cultures without barriers.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">3</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Fill Out Your Skill Map</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">The Skill Map helps leadership understand where you excel and where you want to grow. It informs project staffing and career conversations.</p>
+              <div class="onboard-tip">
+                <strong>Tip:</strong> Be honest — there are no wrong answers. Marking a skill as "learning" is just as valuable as marking it as "expert." Your manager will review it with you.
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">4</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Explore Culture</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">We invest in culture intentionally. Here's how to plug in from week one.</p>
+              <ul class="onboard-checklist">
+                <li>Browse culture Slack channels and find ones that resonate with you</li>
+                <li>Look out for upcoming social events (virtual and in-person)</li>
+                <li>Sign up for #virtual-coffee to get randomly matched with a colleague</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">5</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Meet People</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Relationships are how work actually gets done. Prioritize connection this week — it compounds fast.</p>
+              <ul class="onboard-checklist">
+                <li>Schedule 1:1s with your immediate teammates</li>
+                <li>Introduce yourself in #mlg_newcomers_intro</li>
+                <li>Ask your manager who you should know outside your direct team</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">6</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Learn About Current Projects</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Understanding the shape of our current work gives you context and helps you understand where you might contribute.</p>
+              <ul class="onboard-checklist">
+                <li>Ask your manager for a quick overview of active projects</li>
+                <li>Review any design work or briefs you've been given access to</li>
+                <li>Identify the key stakeholders for any project you'll be joining</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">7</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Create Your Figma Trading Card</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Every designer at Monstarlab has a Figma trading card — a one-pager that captures who you are, what you do, and how you work. It lives in our shared Figma workspace.</p>
+              <div class="onboard-tip">
+                <strong>Tip:</strong> Use the template in the Figma team library. Keep it human — your card is how people across offices get to know you at a glance.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ds-divider"></div>
+
+        <!-- ── MONTH 1 ── -->
+        <div class="onboard-phase-header" style="display:flex;align-items:center;gap:12px;margin-bottom:24px;margin-top:40px;">
+          <span class="onboard-phase-badge">Month 1</span>
+          <h2 class="onboard-phase-title" style="font-size:20px;font-weight:800;color:var(--foreground);margin:0;">Your first month</h2>
+        </div>
+        <div class="onboard-steps" style="margin-bottom:48px;">
+
+          <!-- Item 1 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">1</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Learn About the Global Agency</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Monstarlab operates across multiple regions and disciplines. Understanding the full picture helps you see how your work fits into something much bigger.</p>
+              <ul class="onboard-checklist">
+                <li>Read up on the global structure — ELG, EMEA, APAC, and Americas</li>
+                <li>Explore case studies from other regions on the internal knowledge base</li>
+                <li>Ask your manager for context on how the Americas team fits into the global org</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">2</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Participate in DEI</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">Diversity, equity, and inclusion are not sidecars at Monstarlab — they are part of how we work. Join the conversation.</p>
+              <ul class="onboard-checklist">
+                <li>Join the <span style="font-family:monospace;color:var(--foreground);">#dei-america</span> Slack channel</li>
+                <li>Attend a DEI event or discussion in your first month if one is happening</li>
+                <li>Read the DEI mission statement in the employee handbook</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">3</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Check Out Resources</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:10px;">We have a lot of shared knowledge. Here's where to look when you need it.</p>
+              <ul class="onboard-checklist">
+                <li>Explore the design template library in Figma and Drive</li>
+                <li>Review company policies in the employee handbook</li>
+                <li>Save the holiday calendar — it varies by region</li>
+                <li>Locate the Skill Map template and fill it in</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="onboard-step">
+            <div class="onboard-step__num">4</div>
+            <div class="onboard-step__content">
+              <div class="onboard-step__title">Learn the Glossary</div>
+              <p style="font-size:13px;color:var(--muted-foreground);line-height:1.65;margin-bottom:14px;">Monstarlab has its own vocabulary. These terms will come up in meetings — don't be caught off guard.</p>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;">
+                <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-s);padding:14px;">
+                  <div style="font-size:12px;font-weight:700;color:var(--yellow-500);font-family:monospace;margin-bottom:5px;">ELG</div>
+                  <div style="font-size:12px;color:var(--muted-foreground);line-height:1.5;">Executive Leadership Group — the top leadership team that sets global direction.</div>
+                </div>
+                <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-s);padding:14px;">
+                  <div style="font-size:12px;font-weight:700;color:var(--yellow-500);font-family:monospace;margin-bottom:5px;">EMEA</div>
+                  <div style="font-size:12px;color:var(--muted-foreground);line-height:1.5;">Europe, Middle East & Africa — one of our three main geographic regions.</div>
+                </div>
+                <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-s);padding:14px;">
+                  <div style="font-size:12px;font-weight:700;color:var(--yellow-500);font-family:monospace;margin-bottom:5px;">APAC</div>
+                  <div style="font-size:12px;color:var(--muted-foreground);line-height:1.5;">Asia-Pacific — the region including Japan (Monstarlab's founding home), Australia, and Southeast Asia.</div>
+                </div>
+                <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-s);padding:14px;">
+                  <div style="font-size:12px;font-weight:700;color:var(--yellow-500);font-family:monospace;margin-bottom:5px;">Fuzz</div>
+                  <div style="font-size:12px;color:var(--muted-foreground);line-height:1.5;">Monstarlab's innovation and ventures arm — where early-stage ideas get built and tested.</div>
+                </div>
+                <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-s);padding:14px;">
+                  <div style="font-size:12px;font-weight:700;color:var(--yellow-500);font-family:monospace;margin-bottom:5px;">Koala</div>
+                  <div style="font-size:12px;color:var(--muted-foreground);line-height:1.5;">Internal project management and resourcing platform used across regions.</div>
+                </div>
+                <div style="background:var(--surface-1);border:1px solid var(--border);border-radius:var(--radius-s);padding:14px;">
+                  <div style="font-size:12px;font-weight:700;color:var(--yellow-500);font-family:monospace;margin-bottom:5px;">Nodes</div>
+                  <div style="font-size:12px;color:var(--muted-foreground);line-height:1.5;">Monstarlab's internal knowledge-sharing and community platform — think of it as our internal blog/wiki.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
 
