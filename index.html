@@ -6,7 +6,7 @@
   <title>Monstarlab Design Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
   <style>
     /* ─── Reset ──────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,7 +16,7 @@
       /* Layout */
       --nav-h: 68px;
       --sidebar-w: 270px;
-      --transition: 160ms ease;
+      --transition: 220ms cubic-bezier(0.2, 0, 0, 1);
 
       /* Brand */
       --deep-blue-800: #000F1E;
@@ -53,13 +53,19 @@
       --surface-hover: #243656;
 
       /* Typography */
-      --font-primary: 'DM Sans', sans-serif;
+      --font-primary: 'Plus Jakarta Sans', sans-serif;
 
       /* Radii */
-      --radius-s: 4px;
-      --radius-m: 8px;
-      --radius-l: 12px;
+      --radius-s: 6px;
+      --radius-m: 10px;
+      --radius-l: 16px;
       --radius-pill: 999px;
+
+      /* Shadows — tinted to brand hue */
+      --shadow-card: 0 4px 24px rgba(0, 15, 30, 0.6), 0 1px 4px rgba(0, 0, 0, 0.3);
+      --shadow-card-hover: 0 8px 40px rgba(0, 15, 30, 0.8), 0 0 0 1px rgba(255,255,0,0.08), 0 2px 8px rgba(0,0,0,0.4);
+      --glow-yellow: 0 0 0 1px rgba(255,255,0,0.2), 0 0 16px rgba(255,255,0,0.06);
+      --shadow-nav: 0 1px 0 rgba(255,255,255,0.04);
     }
 
     html { scroll-behavior: smooth; }
@@ -78,8 +84,11 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       height: var(--nav-h);
-      background: var(--background);
-      border-bottom: 1px solid var(--border);
+      background: rgba(0, 15, 30, 0.82);
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      border-bottom: 1px solid rgba(26, 44, 71, 0.8);
+      box-shadow: var(--shadow-nav);
       display: flex;
       align-items: center;
       padding: 0 24px;
@@ -172,23 +181,26 @@
       gap: 8px;
       background: var(--yellow-500);
       color: var(--deep-blue-800);
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 700;
       font-family: var(--font-primary);
-      padding: 0 24px;
-      height: 44px;
-      border-radius: var(--radius-s);
+      letter-spacing: 0.01em;
+      padding: 0 20px;
+      height: 38px;
+      border-radius: var(--radius-m);
       text-decoration: none;
       white-space: nowrap;
       border: none;
       cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 0 0 0 rgba(255,255,0,0);
     }
     .topnav__cta:hover {
-      background: var(--yellow-600);
+      background: #fffb3d;
       transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(255,255,0,0.22), 0 1px 4px rgba(0,0,0,0.2);
     }
-    .topnav__cta:active { transform: translateY(0); }
+    .topnav__cta:active { transform: scale(0.97) translateY(0); box-shadow: none; }
     @media (max-width: 480px) { .topnav__cta span { display: none; } }
 
     /* ─── Layout Shell ───────────────────────────────────────────── */
@@ -281,9 +293,10 @@
     }
     .nav-link.active {
       color: var(--white);
-      font-weight: 500;
-      background: var(--blue-600);
+      font-weight: 600;
+      background: linear-gradient(90deg, rgba(35,68,116,0.9) 0%, rgba(26,44,71,0.5) 100%);
       border-left-color: var(--yellow-500);
+      box-shadow: inset 0 0 0 1px rgba(255,255,0,0.06);
     }
 
     /* Nav link with expandable subnav */
@@ -347,7 +360,14 @@
     }
 
     .page { display: none; }
-    .page.active { display: block; }
+    @keyframes pageEnter {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page.active {
+      display: block;
+      animation: pageEnter 280ms cubic-bezier(0.2, 0, 0, 1) both;
+    }
 
     .content {
       max-width: 860px;
@@ -380,20 +400,23 @@
       border-bottom: 1px solid var(--border);
     }
     .page-header__eyebrow {
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--grey-600);
-      margin-bottom: 12px;
+      color: var(--yellow-500);
+      opacity: 0.7;
+      margin-bottom: 14px;
     }
     .page-header__title {
       font-family: var(--font-primary);
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 1.2;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
       color: var(--white);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
+      text-wrap: balance;
     }
     .page-header__desc {
       font-size: 16px;
@@ -542,7 +565,8 @@
     .ds-section { margin-bottom: 56px; }
     .ds-section:last-child { margin-bottom: 0; }
     .ds-section-title {
-      font-size: 22px; font-weight: 500;
+      font-size: 22px; font-weight: 700;
+      letter-spacing: -0.015em;
       color: var(--foreground);
       margin-bottom: 6px;
     }
@@ -670,8 +694,14 @@
     .ds-component-card {
       background: var(--surface-1);
       border: 1px solid var(--border);
-      border-radius: var(--radius-m);
-      padding: 20px;
+      border-radius: var(--radius-l);
+      padding: 22px;
+      transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .ds-component-card:hover {
+      border-color: rgba(255,255,0,0.12);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-1px);
     }
     .ds-component-card__head {
       display: flex; justify-content: space-between; align-items: flex-start;
@@ -1328,35 +1358,50 @@
     .card {
       background: var(--surface-1);
       border: 1px solid var(--border);
-      border-radius: var(--radius-m);
-      padding: 24px;
+      border-radius: var(--radius-l);
+      padding: 28px;
       cursor: pointer;
       transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition), background var(--transition);
       text-decoration: none;
       display: block;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,0,0.03) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
     }
     .card:hover {
       background: var(--surface-2);
-      border-color: var(--surface-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255,255,0,0.15);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-card-hover);
     }
+    .card:hover::before { opacity: 1; }
+    .card:active { transform: translateY(0) scale(0.99); }
     .card__icon {
       font-size: 28px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       line-height: 1;
     }
     .card__title {
-      font-size: 18px;
-      font-weight: 500;
+      font-size: 17px;
+      font-weight: 700;
       color: var(--white);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
     }
     .card__desc {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--muted-foreground);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* TOC hint */
@@ -2397,6 +2442,222 @@
     .onboard-channel__name { font-size: 12px; font-weight: 700; color: var(--foreground); font-family: monospace; }
     .onboard-channel__desc { font-size: 12px; color: var(--muted-foreground); line-height: 1.5; }
     @media (max-width: 600px) { .onboard-channel { grid-template-columns: 1fr; gap: 4px; } }
+
+    /* ── Visual Redesign Upgrades ────────────────────────────────── */
+
+    /* Grain noise overlay — breaks digital flatness */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 128px 128px;
+    }
+
+    /* Ambient yellow radial glow on the background */
+    .main::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,255,0,0.028) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Improved body line-height for readability */
+    body { line-height: 1.6; }
+
+    /* Better search input focus ring */
+    .topnav__search-input:focus {
+      border-color: rgba(255,255,0,0.35);
+      box-shadow: 0 0 0 3px rgba(255,255,0,0.06);
+    }
+
+    /* Sidebar — subtle top-to-bottom gradient for depth */
+    .sidebar {
+      background: linear-gradient(180deg, #000F1E 0%, #000c18 100%);
+    }
+
+    /* Nav group header — better hover */
+    .nav-group__header {
+      transition: background var(--transition);
+    }
+    .nav-group__title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    /* Nav links — smoother, more refined */
+    .nav-link {
+      font-size: 13px;
+      border-radius: var(--radius-m);
+      transition: color var(--transition), background var(--transition), border-left-color var(--transition), box-shadow var(--transition);
+    }
+    .nav-link:hover {
+      color: var(--white);
+      background: rgba(26,44,71,0.6);
+    }
+    .nav-link.active {
+      font-weight: 600;
+    }
+
+    /* Page header border — softer */
+    .page-header {
+      border-bottom: 1px solid rgba(26,44,71,0.7);
+    }
+
+    /* Breadcrumb — lighter muted */
+    .breadcrumb { margin-bottom: 24px; }
+
+    /* ds-section-title — sentence cased already; add letter spacing */
+    .ds-section-title { text-wrap: balance; }
+
+    /* Surface cards — tinted shadow on hover */
+    .ds-trait-card,
+    .tool-card,
+    .sh-card,
+    .prefix-card,
+    .onboard-overview-card,
+    .onboard-value-card,
+    .onboard-tools-dept,
+    .phil-quality-card {
+      transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+      border-radius: var(--radius-l);
+    }
+    .ds-trait-card:hover,
+    .tool-card:hover,
+    .phil-quality-card:hover {
+      box-shadow: var(--shadow-card-hover);
+      border-color: rgba(255,255,0,0.1);
+      transform: translateY(-1px);
+    }
+
+    /* Philosophy part banners — more dramatic */
+    .phil-part-banner {
+      border-radius: var(--radius-l);
+    }
+
+    /* Onboarding phase badge — slightly larger */
+    .onboard-phase-badge {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 5px 14px;
+    }
+
+    /* Onboarding step numbers — more visual weight */
+    .onboard-step__num {
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* Research timeline node */
+    .research-flow-step__node {
+      box-shadow: 0 0 0 4px rgba(255,255,0,0.06), 0 0 20px rgba(255,255,0,0.04);
+    }
+    .research-flow-step:first-child .research-flow-step__node {
+      box-shadow: 0 0 0 4px rgba(255,255,0,0.15), 0 0 24px rgba(255,255,0,0.12);
+    }
+
+    /* Callout — slightly elevated */
+    .ds-callout {
+      border-radius: var(--radius-l);
+      background: linear-gradient(135deg, rgba(13,30,53,0.9) 0%, rgba(13,30,53,0.6) 100%);
+    }
+
+    /* Token tables — subtle row hover */
+    .ds-token-table tr:hover td {
+      background: rgba(26,44,71,0.4);
+    }
+
+    /* Info box — warmer feel */
+    .ds-info-box {
+      border-radius: var(--radius-l);
+    }
+
+    /* placeholder block */
+    .placeholder-block {
+      border-radius: var(--radius-l);
+    }
+
+    /* Form inputs — better focus states */
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: rgba(255,255,0,0.35) !important;
+      box-shadow: 0 0 0 3px rgba(255,255,0,0.06) !important;
+    }
+
+    /* Stagger card entry when page loads */
+    @keyframes cardStagger {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page.active .card {
+      animation: cardStagger 320ms cubic-bezier(0.2, 0, 0, 1) both;
+    }
+    .page.active .card:nth-child(1) { animation-delay: 30ms; }
+    .page.active .card:nth-child(2) { animation-delay: 70ms; }
+    .page.active .card:nth-child(3) { animation-delay: 110ms; }
+    .page.active .card:nth-child(4) { animation-delay: 140ms; }
+    .page.active .card:nth-child(5) { animation-delay: 170ms; }
+    .page.active .card:nth-child(6) { animation-delay: 200ms; }
+
+    /* TOC hint — more refined */
+    .toc-hint {
+      border-radius: var(--radius-l);
+      font-size: 11px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Top-level nav-link (section headers in sidebar) */
+    .nav-link--top {
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: var(--radius-m);
+    }
+    .nav-link--top.active {
+      background: linear-gradient(90deg, rgba(35,68,116,0.9) 0%, rgba(26,44,71,0.5) 100%);
+    }
+
+    /* Data viz swatches — rounded up */
+    .dv-swatch__color { border-radius: 10px; }
+
+    /* Onboarding overview card top strip */
+    .onboard-overview-card::before { border-radius: var(--radius-l) var(--radius-l) 0 0; }
+    .onboard-overview-card { border-radius: var(--radius-l); }
+
+    /* Prefix cards */
+    .prefix-card { border-radius: var(--radius-l); }
+
+    /* Response time pills */
+    .rt-pill { border-radius: var(--radius-l); }
+
+    /* checklist li checkboxes */
+    .onboard-checklist li::before {
+      color: rgba(255,255,0,0.6);
+    }
+
+    /* DS colour strip */
+    .ds-color-strip { border-radius: var(--radius-l); }
+
+    /* Scrollbar — subtle brand tint */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(26,44,71,0.9);
+      border-radius: 99px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(35,68,116,0.9);
+    }
 
   </style>
 </head>
