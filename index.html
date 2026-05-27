@@ -219,7 +219,7 @@
       left: 0;
       bottom: 0;
       background: var(--background);
-      border-right: 1px solid var(--border);
+      border-right: none;
       overflow-y: auto;
       overflow-x: hidden;
       z-index: 50;
@@ -2481,7 +2481,7 @@
 
     /* Sidebar — subtle top-to-bottom gradient for depth */
     .sidebar {
-      background: linear-gradient(180deg, #000F1E 0%, #000c18 100%);
+      background: var(--background);
     }
 
     /* Nav group header — better hover */
@@ -2986,8 +2986,8 @@
 
     /* 12. Sidebar — deep OLED */
     .sidebar {
-      background: rgba(2, 6, 14, 0.97) !important;
-      border-right: 1px solid rgba(255,255,255,0.04) !important;
+      background: var(--background) !important;
+      border-right: none !important;
     }
 
     /* 13. Surface cards — glass feel without blur */
