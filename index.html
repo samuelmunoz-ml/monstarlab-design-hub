@@ -2765,6 +2765,291 @@
       background: linear-gradient(90deg, rgba(35,68,116,0.9) 0%, rgba(26,44,71,0.5) 100%);
     }
 
+    /* ═══════════════════════════════════════════════════════════════
+       HIGH-END VIBE UPGRADE — Ethereal Glass × Monstarlab
+       Archetype: Ethereal Glass | Layout: existing structure enhanced
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* 1. Root depth + easing system */
+    :root {
+      --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --orb-x: 0px;
+      --orb-y: 0px;
+    }
+    html { background: #06101E; }
+    :root { --background: #06101E; }
+
+    /* 2. Global dot-grid — adds depth to dark background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.038) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 3. Ambient orb — breathes and follows mouse via CSS custom props */
+    .main::after {
+      content: '';
+      position: fixed;
+      width: 960px;
+      height: 960px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(255,255,0,0.05) 0%,
+        rgba(255,255,0,0.02) 35%,
+        transparent 65%);
+      bottom: -380px;
+      left: calc(var(--sidebar-w) + 60px);
+      pointer-events: none;
+      z-index: 0;
+      transform: translate(var(--orb-x), var(--orb-y));
+      transition: transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: orbBreath 18s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes orbBreath {
+      0%, 100% { opacity: 0.6; scale: 1; }
+      50% { opacity: 1; scale: 1.1; }
+    }
+
+    /* 4. Content container — enable orb positioning */
+    .content { position: relative; z-index: 1; }
+
+    /* Blue orb top-right of content */
+    .content::before {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(35,68,116,0.2) 0%, transparent 65%);
+      top: -160px;
+      right: -200px;
+      pointer-events: none;
+      z-index: -1;
+      transform: translate(calc(var(--orb-x) * -0.35), calc(var(--orb-y) * -0.35));
+      transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* 5. Home hero — second yellow accent orb */
+    .page[data-page="home"] .content::after {
+      content: '';
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(255,255,0,0.14) 0%,
+        rgba(255,255,0,0.05) 45%,
+        transparent 70%);
+      top: -100px;
+      right: -40px;
+      pointer-events: none;
+      z-index: -1;
+      animation: heroOrbPulse 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroOrbPulse {
+      from { transform: scale(1) translate(0, 0); opacity: 0.8; }
+      to   { transform: scale(1.25) translate(-30px, 20px); opacity: 1; }
+    }
+
+    /* 6. Page title — cinematic gradient text */
+    .page-header__title {
+      background: linear-gradient(135deg, #ffffff 15%, #c8daff 60%, rgba(230,230,0,0.8) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Home hero title — bolder gradient */
+    .page[data-page="home"] .page-header__title {
+      background: linear-gradient(135deg, #ffffff 20%, #d0deff 55%, rgba(255,255,0,0.65) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* 7. Section titles — cool white gradient */
+    .ds-section-title,
+    .comms-section-title,
+    .onboard-phase-title,
+    .research-section-title,
+    .qa-section-title {
+      background: linear-gradient(90deg, #ffffff 0%, #b8ccee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* 8. Cards — double-bezel glass treatment */
+    .card {
+      background: rgba(5, 13, 26, 0.82) !important;
+      border: 1px solid rgba(255,255,255,0.07) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        0 0 0 1px rgba(0,0,0,0.25),
+        0 12px 48px rgba(0,4,12,0.7),
+        0 2px 6px rgba(0,0,0,0.35) !important;
+      backdrop-filter: none; /* cards scroll — no blur per perf rules */
+    }
+    .card:hover {
+      background: rgba(8, 20, 40, 0.88) !important;
+      border-color: rgba(255,255,0,0.2) !important;
+      transform: translateY(-3px) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.1),
+        0 0 0 1px rgba(255,255,0,0.07),
+        0 20px 64px rgba(0,4,12,0.85),
+        0 0 100px rgba(255,255,0,0.04),
+        0 2px 8px rgba(0,0,0,0.5) !important;
+    }
+    .card::before {
+      background: linear-gradient(135deg, rgba(255,255,0,0.05) 0%, transparent 55%) !important;
+    }
+
+    /* 9. Research timeline — glowing, futuristic */
+    .research-timeline::before {
+      height: 1px !important;
+      background: linear-gradient(90deg,
+        var(--yellow-500) 0%,
+        rgba(255,255,0,0.4) 40%,
+        rgba(255,255,255,0.06) 100%) !important;
+      box-shadow: 0 0 14px rgba(255,255,0,0.35), 0 0 40px rgba(255,255,0,0.1);
+    }
+
+    .research-flow-step__node {
+      box-shadow:
+        0 0 0 5px rgba(255,255,0,0.1),
+        0 0 24px rgba(255,255,0,0.3),
+        0 0 64px rgba(255,255,0,0.1) !important;
+      transition: transform 350ms var(--ease-expo), box-shadow 350ms var(--ease-expo) !important;
+    }
+
+    .research-flow-step:hover .research-flow-step__node {
+      transform: scale(1.12);
+      box-shadow:
+        0 0 0 7px rgba(255,255,0,0.18),
+        0 0 36px rgba(255,255,0,0.5),
+        0 0 80px rgba(255,255,0,0.2) !important;
+    }
+
+    .research-flow-step:first-child .research-flow-step__node {
+      box-shadow:
+        0 0 0 6px rgba(255,255,0,0.22),
+        0 0 36px rgba(255,255,0,0.55),
+        0 0 80px rgba(255,255,0,0.22),
+        0 0 140px rgba(255,255,0,0.08) !important;
+    }
+
+    .research-flow-step__body {
+      background: rgba(5,13,26,0.75) !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 20px rgba(0,4,12,0.4) !important;
+      transition: border-color 300ms var(--ease-expo), transform 300ms var(--ease-expo) !important;
+    }
+
+    .research-flow-step:hover .research-flow-step__body {
+      border-color: rgba(255,255,0,0.14) !important;
+      transform: translateY(-2px);
+    }
+
+    /* 10. CTA button — pill with expanding glow ring */
+    .topnav__cta {
+      border-radius: 999px !important;
+      transition: all 350ms var(--ease-spring) !important;
+    }
+    .topnav__cta:hover {
+      transform: translateY(-1px) scale(1.03) !important;
+      box-shadow:
+        0 0 0 3px rgba(255,255,0,0.18),
+        0 6px 28px rgba(255,255,0,0.28) !important;
+    }
+    .topnav__cta:active { transform: scale(0.96) !important; box-shadow: none !important; }
+
+    /* 11. Topnav — deeper premium glass */
+    .topnav {
+      background: rgba(3, 8, 18, 0.88) !important;
+      border-bottom: 1px solid rgba(255,255,255,0.04) !important;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.03),
+        0 8px 32px rgba(0,0,0,0.4) !important;
+    }
+
+    /* 12. Sidebar — deep OLED */
+    .sidebar {
+      background: rgba(2, 6, 14, 0.97) !important;
+      border-right: 1px solid rgba(255,255,255,0.04) !important;
+    }
+
+    /* 13. Surface cards — glass feel without blur */
+    .ds-component-card,
+    .ds-trait-card,
+    .tool-card,
+    .phil-quality-card,
+    .onboard-overview-card,
+    .sh-card,
+    .prefix-card {
+      background: rgba(5,13,26,0.8) !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 4px 24px rgba(0,4,12,0.5) !important;
+    }
+
+    /* 14. Callout — amber glass */
+    .ds-callout {
+      background: rgba(20,16,3,0.7) !important;
+      border: 1px solid rgba(255,255,0,0.18) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,0,0.06) !important;
+    }
+
+    /* 15. Phil banners — deep glass */
+    .phil-part-banner {
+      background: rgba(5,13,26,0.85) !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 8px 48px rgba(0,4,12,0.6) !important;
+    }
+
+    /* 16. Onboarding phase badge — glow */
+    .onboard-phase-badge {
+      box-shadow:
+        0 0 12px rgba(255,255,0,0.35),
+        0 0 32px rgba(255,255,0,0.12) !important;
+    }
+
+    /* 17. Scroll reveal — entry animation */
+    .reveal-enter {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity  680ms var(--ease-expo),
+        transform 680ms var(--ease-expo);
+    }
+    .reveal-enter.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 18. Onboard step content glass */
+    .onboard-step__content {
+      background: rgba(5,13,26,0.75) !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04) !important;
+      border-radius: var(--radius-l) !important;
+    }
+
+    /* 19. Reduced motion overrides for new animations */
+    @media (prefers-reduced-motion: reduce) {
+      .main::after, .content::before, .page[data-page="home"] .content::after { animation: none !important; }
+      .reveal-enter { transition: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -10106,6 +10391,86 @@
       if (q) g.classList.add('open');
     });
   });
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     HIGH-END VIBE: Scroll Reveals + Mouse Parallax
+     ═══════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  // ── 1. Scroll-triggered reveals via IntersectionObserver ──────
+  const REVEAL_SELECTORS = [
+    '.card', '.ds-component-card', '.ds-trait-card', '.ds-section',
+    '.research-flow-step', '.onboard-step', '.onboard-overview-card',
+    '.phil-quality-card', '.phil-principle', '.phil-forward-item',
+    '.tool-card', '.prefix-card', '.sh-card', '.phil-hidden-item',
+    '.qa-checklist-card', '.phil-advantage-item'
+  ].join(', ');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -28px 0px' });
+
+  function initScrollReveals() {
+    const activePage = document.querySelector('.page.active');
+    if (!activePage) return;
+
+    activePage.querySelectorAll(REVEAL_SELECTORS).forEach((el, i) => {
+      // Reset so re-navigation gets a fresh reveal
+      el.classList.remove('is-visible');
+      el.classList.add('reveal-enter');
+      // Stagger: cap at 320ms so the page doesn't feel frozen
+      el.style.transitionDelay = Math.min(i * 45, 320) + 'ms';
+      // Two rAF ticks so the browser paints the hidden state before animating
+      requestAnimationFrame(() => requestAnimationFrame(() => revealObserver.observe(el)));
+    });
+  }
+
+  // ── 2. Observe page .active class changes (SPA page switches) ─
+  const pageObserver = new MutationObserver(mutations => {
+    mutations.forEach(m => {
+      if (m.target.classList.contains('active') && m.target.classList.contains('page')) {
+        // Small delay lets the page entry CSS animation start first
+        setTimeout(initScrollReveals, 60);
+      }
+    });
+  });
+
+  document.querySelectorAll('.page').forEach(p =>
+    pageObserver.observe(p, { attributes: true, attributeFilter: ['class'] })
+  );
+
+  // Run on initial load
+  setTimeout(initScrollReveals, 120);
+
+  // ── 3. Mouse parallax — lerp-smoothed, GPU-safe (transform only) ─
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    let tX = 0, tY = 0, cX = 0, cY = 0;
+
+    document.addEventListener('mousemove', e => {
+      tX = (e.clientX / window.innerWidth  - 0.5) * 44;
+      tY = (e.clientY / window.innerHeight - 0.5) * 26;
+    }, { passive: true });
+
+    function lerp(a, b, t) { return a + (b - a) * t; }
+
+    (function tick() {
+      cX = lerp(cX, tX, 0.038);
+      cY = lerp(cY, tY, 0.038);
+      document.documentElement.style.setProperty('--orb-x', cX.toFixed(2) + 'px');
+      document.documentElement.style.setProperty('--orb-y', cY.toFixed(2) + 'px');
+      requestAnimationFrame(tick);
+    })();
+  }
+
+})();
 </script>
 </body>
 </html>
