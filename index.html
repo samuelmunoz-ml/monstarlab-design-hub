@@ -397,6 +397,7 @@
       margin-bottom: 48px;
       padding-bottom: 32px;
       border-bottom: 1px solid var(--border);
+      overflow: visible;
     }
     .page-header__eyebrow {
       font-size: 11px;
@@ -2867,12 +2868,14 @@
       background-clip: text;
     }
 
-    /* Home hero title — bolder gradient */
+    /* Home hero title — bolder gradient, no descender clip */
     .page[data-page="home"] .page-header__title {
-      background: linear-gradient(135deg, #ffffff 20%, #d0deff 55%, rgba(255,255,0,0.65) 100%);
+      background: linear-gradient(140deg, #ffffff 25%, #c8d8ff 58%, rgba(255,255,0,0.7) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      overflow: visible;
+      display: block;
     }
 
     /* 7. Section titles — cool white gradient */
@@ -3252,7 +3255,7 @@
     <div class="page active" data-page="home">
       <div class="content">
         <div class="page-header">
-          <h1 class="page-header__title" style="font-size:64px; line-height:1.05; letter-spacing:-1px;">Monstarlab Design Hub</h1>
+          <h1 class="page-header__title" style="font-size:86px; line-height:1.12; letter-spacing:-3px; padding-bottom:0.08em;">Monstarlab Design Hub</h1>
           <p class="page-header__desc" style="font-size:20px; color: var(--grey-400); max-width: 640px; margin-top: 20px;">Build world-class, borderless customer experiences with Monstarlab's design foundations.</p>
         </div>
 
