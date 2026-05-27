@@ -276,27 +276,26 @@
     /* Nav links — dark theme */
     .nav-link {
       display: block;
-      padding: 8px 16px 8px 28px;
+      padding: 8px 16px 8px 26px;
       text-decoration: none;
       font-size: 14px;
       font-weight: 400;
       color: var(--grey-500);
-      transition: color var(--transition), background var(--transition);
-      border-left: 2px solid transparent;
+      transition: color var(--transition), background var(--transition), border-color var(--transition);
+      border: 1px solid transparent;
       line-height: 1.4;
       margin: 0 8px;
-      border-radius: var(--radius-s);
+      border-radius: var(--radius-m);
     }
     .nav-link:hover {
       color: var(--white);
-      background: var(--surface-2);
+      background: rgba(26,44,71,0.6);
     }
     .nav-link.active {
       color: var(--white);
       font-weight: 600;
       background: linear-gradient(90deg, rgba(35,68,116,0.9) 0%, rgba(26,44,71,0.5) 100%);
-      border-left-color: var(--yellow-500);
-      box-shadow: inset 0 0 0 1px rgba(255,255,0,0.06);
+      border-color: rgba(255,255,0,0.12);
     }
 
     /* Nav link with expandable subnav */
@@ -366,7 +365,7 @@
     }
     .page.active {
       display: block;
-      animation: pageEnter 280ms cubic-bezier(0.2, 0, 0, 1) both;
+      animation: pageEnter 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
     .content {
@@ -580,11 +579,10 @@
     }
     .ds-callout {
       display: flex; gap: 12px; align-items: flex-start;
-      background: var(--surface-1);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--yellow-500);
-      border-radius: var(--radius-m);
-      padding: 16px; margin-bottom: 24px;
+      background: rgba(255,255,0,0.04);
+      border: 1px solid rgba(255,255,0,0.2);
+      border-radius: var(--radius-l);
+      padding: 16px 18px; margin-bottom: 24px;
       font-size: 14px; line-height: 1.6;
       color: var(--muted-foreground);
     }
@@ -1338,7 +1336,7 @@
     .nav-sublink:hover { color: var(--foreground); background: var(--surface-hover); }
     .nav-sublink.toc-active { color: var(--yellow-500); font-weight: 500; }
     .nav-sublink.active { color: var(--white); font-weight: 500; background: rgba(255,255,255,0.08); }
-    .nav-link.active-parent { color: var(--white); font-weight: 500; background: var(--surface-2); border-left-color: var(--yellow-500); }
+    .nav-link.active-parent { color: var(--white); font-weight: 500; background: var(--surface-2); border-color: rgba(255,255,0,0.08); }
     .info-card {
       background: var(--surface-1);
       border: 1px solid var(--border);
@@ -1493,7 +1491,7 @@
     .cp-card__sub   { font-size:12px; color:var(--cp-text-muted); font-family:var(--font-primary); }
     .cp-card__body  { padding:16px 20px; font-size:13px; color:var(--cp-text-muted); font-family:var(--font-primary); line-height:1.5; }
     .cp-card__foot  { padding:12px 20px; border-top:1px solid var(--cp-border); display:flex; justify-content:flex-end; gap:8px; }
-    .cp-card--highlighted { border-left:4px solid #234474; }
+    .cp-card--highlighted { border-color: #234474; background: rgba(35,68,116,0.1); }
     .cp-card--interactive { cursor:pointer; transition:background 150ms ease; }
     .cp-card--interactive:hover { background:var(--cp-card-hover-bg); }
     .cp-alert { display:flex; align-items:flex-start; gap:10px; padding:12px 16px; border-radius:4px; font-size:13px; font-family:var(--font-primary); line-height:1.5; width:320px; max-width:100%; }
@@ -2093,9 +2091,9 @@
     .phil-part-banner::before {
       content: '';
       position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 4px;
-      background: var(--yellow-500);
+      left: 0; top: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--yellow-500) 0%, rgba(255,255,0,0.15) 60%, transparent 100%);
     }
     .phil-part-label {
       font-size: 11px;
@@ -2383,10 +2381,10 @@
       margin-top: 12px;
       font-size: 12px;
       color: var(--muted-foreground);
-      background: rgba(255,255,0,0.04);
-      border-left: 2px solid rgba(255,255,0,0.25);
+      background: rgba(255,255,0,0.05);
+      border: 1px solid rgba(255,255,0,0.14);
       padding: 8px 12px;
-      border-radius: 0 4px 4px 0;
+      border-radius: var(--radius-m);
       line-height: 1.55;
     }
     .onboard-tip strong { color: rgba(255,255,0,0.7); }
@@ -2499,7 +2497,7 @@
     .nav-link {
       font-size: 13px;
       border-radius: var(--radius-m);
-      transition: color var(--transition), background var(--transition), border-left-color var(--transition), box-shadow var(--transition);
+      transition: color var(--transition), background var(--transition), border-color var(--transition);
     }
     .nav-link:hover {
       color: var(--white);
@@ -2657,6 +2655,114 @@
     }
     ::-webkit-scrollbar-thumb:hover {
       background: rgba(35,68,116,0.9);
+    }
+
+    /* ── Impeccable Polish Pass ──────────────────────────────────── */
+
+    /* 1. Reduced motion — respect system preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* 2. Focus-visible — keyboard navigation clarity */
+    :focus-visible {
+      outline: 2px solid rgba(255,255,0,0.7);
+      outline-offset: 2px;
+      border-radius: var(--radius-s);
+    }
+    .topnav__cta:focus-visible {
+      outline-offset: 3px;
+    }
+    .nav-link:focus-visible,
+    .nav-group__header:focus-visible {
+      outline-offset: -2px;
+    }
+
+    /* 3. Easing — entry animations use ease-out-expo for deceleration */
+    @keyframes cardStagger {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page.active .card {
+      animation: cardStagger 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* 4. Typography — body max-width and balance */
+    .page-header__desc { max-width: 60ch; }
+    .ds-section-desc { max-width: 64ch; }
+
+    /* 5. Consistent section headers across all page types */
+    .comms-section-title,
+    .qa-section-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+    }
+
+    /* 6. Interactive states — missing hover on tool/prefix cards */
+    .tool-card,
+    .prefix-card {
+      transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .tool-card:hover,
+    .prefix-card:hover {
+      border-color: rgba(255,255,0,0.1);
+      box-shadow: var(--shadow-card-hover);
+      transform: translateY(-1px);
+    }
+
+    /* 7. Onboarding steps — hover feedback */
+    .onboard-step {
+      transition: opacity var(--transition);
+    }
+
+    /* 8. Research matrix cells — cleaner hover */
+    .research-matrix-cell {
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .research-matrix-cell:hover {
+      background: rgba(26,44,71,0.5);
+    }
+
+    /* 9. Token table — better hover */
+    .ds-token-table tr { transition: background var(--transition); }
+
+    /* 10. Callout icon alignment */
+    .ds-callout-icon { margin-top: 0; line-height: 1.6; }
+
+    /* 11. Nav link top — remove stale border-left */
+    .nav-link--top.active { border: 1px solid rgba(255,255,0,0.12); }
+
+    /* 12. Form SLA callout — fix side stripe */
+    .form-sla {
+      border-radius: var(--radius-l);
+    }
+
+    /* 13. Onboard overview card — top stripe via border-top, not ::before stripe */
+    .onboard-overview-card::before {
+      height: 2px;
+    }
+
+    /* 14. Phil principle grid — improve hover */
+    .phil-principle {
+      transition: background var(--transition);
+    }
+    .phil-principle:hover {
+      background: rgba(13,30,53,0.8);
+    }
+
+    /* 15. Consistent active state on top-level nav */
+    .nav-link--top {
+      border: 1px solid transparent;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+    }
+    .nav-link--top.active {
+      background: linear-gradient(90deg, rgba(35,68,116,0.9) 0%, rgba(26,44,71,0.5) 100%);
     }
 
   </style>
