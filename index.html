@@ -2752,6 +2752,32 @@
       .pb-card--wide, .pb-card--full { grid-column: span 1; }
     }
 
+    /* ── Pull Quote ─────────────────────────────────────────────── */
+    .pull-quote {
+      position: relative;
+      margin-top: 56px;
+      padding: 0 0 0 4px;
+    }
+    .pull-quote__mark {
+      display: block;
+      font-size: 96px;
+      line-height: 0.75;
+      color: var(--yellow-500);
+      font-family: Georgia, 'Times New Roman', serif;
+      margin-bottom: 12px;
+      opacity: 0.9;
+      user-select: none;
+    }
+    .pull-quote__text {
+      font-size: 26px;
+      font-weight: 500;
+      font-style: italic;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.45;
+      letter-spacing: -0.3px;
+      max-width: 740px;
+    }
+
     /* ── Onboarding page ───────────────────────────────────────── */
     .onboard-overview {
       display: grid;
@@ -4033,6 +4059,11 @@
 
         </div>
         <!-- ── End Principles Bento ────────────────────────────────── -->
+
+        <div class="pull-quote">
+          <span class="pull-quote__mark">"</span>
+          <p class="pull-quote__text">The best engagement is one where the client is more capable at the end than they were at the start.</p>
+        </div>
 
         <div class="ds-section" style="margin-top: 64px;">
           <div class="phil-col-label" style="margin-bottom:20px;">The work people don't always see</div>
