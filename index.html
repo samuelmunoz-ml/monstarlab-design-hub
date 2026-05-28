@@ -896,8 +896,58 @@
     }
 
     /* ─── Design Request Form ────────────────────────────────────── */
-    .form-wrap { max-width: 100%; }
+    /* ── Form: two-column wrap ───────────────────────────────────── */
+    .form-wrap {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 40px;
+    }
+    @media (min-width: 900px) {
+      .form-wrap { grid-template-columns: 7fr 5fr; gap: 56px; align-items: start; }
+    }
+    .form-main { min-width: 0; }
 
+    /* Sidebar */
+    .form-sidebar { display: flex; flex-direction: column; gap: 16px; }
+    @media (min-width: 900px) { .form-sidebar { position: sticky; top: 24px; } }
+    .form-sidebar-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .form-sidebar-card__title {
+      font-size: 14px; font-weight: 600;
+      color: var(--foreground); margin: 0 0 8px;
+    }
+    .form-sidebar-card__desc {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      line-height: 1.65; margin: 0 0 16px;
+    }
+    .form-sidebar-card__list { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
+    .form-sidebar-card__item {
+      display: flex; align-items: flex-start; gap: 9px;
+      font-size: 13px; color: rgba(255,255,255,0.75);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .form-sidebar-card__item:last-child { border-bottom: none; }
+    .form-sidebar-card__icon {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px;
+      color: var(--yellow-500);
+    }
+    .form-sidebar-card__sep {
+      height: 1px; background: rgba(255,255,255,0.07); margin: 16px 0;
+    }
+    .form-sidebar-card__link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 13px; color: var(--yellow-500);
+      text-decoration: none;
+    }
+    .form-sidebar-card__link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* SLA badge */
     .form-sla {
       display: flex;
       gap: 12px;
@@ -906,7 +956,6 @@
       border: 1px solid rgba(255,255,0,.18);
       border-radius: var(--radius-m);
       padding: 14px 16px;
-      margin-bottom: 40px;
       font-size: 13px;
       color: var(--grey-500);
       line-height: 1.6;
@@ -914,6 +963,7 @@
     .form-sla__icon { font-size: 15px; flex-shrink: 0; }
     .form-sla strong { color: var(--yellow-500); }
 
+    /* Sections */
     .form-section { margin-bottom: 48px; }
     .form-section__header {
       display: flex;
@@ -927,52 +977,26 @@
       width: 24px; height: 24px;
       background: var(--surface-2);
       border-radius: var(--radius-s);
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 11px; font-weight: 700;
       color: var(--grey-500);
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
     }
-    .form-section__title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--white);
-    }
-    .form-section__subtitle {
-      font-size: 12px;
-      color: var(--muted-foreground);
-      margin-top: 2px;
-    }
+    .form-section__title { font-size: 16px; font-weight: 600; color: var(--white); }
+    .form-section__subtitle { font-size: 12px; color: var(--muted-foreground); margin-top: 2px; }
 
     .form-row { margin-bottom: 20px; }
-    .form-row--2col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .form-row--2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 640px) { .form-row--2col { grid-template-columns: 1fr; } }
 
     .form-label {
-      display: block;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--foreground);
-      margin-bottom: 6px;
+      display: block; font-size: 13px; font-weight: 500;
+      color: var(--foreground); margin-bottom: 6px;
     }
-    .form-label span {
-      color: var(--yellow-500);
-      margin-left: 2px;
-    }
-    .form-hint {
-      font-size: 12px;
-      color: var(--muted-foreground);
-      margin-bottom: 6px;
-      line-height: 1.5;
-    }
+    .form-label span { color: var(--yellow-500); margin-left: 2px; }
+    .form-hint { font-size: 12px; color: var(--muted-foreground); margin-bottom: 6px; line-height: 1.5; }
 
-    .form-input,
-    .form-select,
-    .form-textarea {
+    .form-input, .form-select, .form-textarea {
       width: 100%;
       background: var(--surface-1);
       border: 1px solid var(--border);
@@ -985,11 +1009,8 @@
       box-sizing: border-box;
       outline: none;
     }
-    .form-input::placeholder,
-    .form-textarea::placeholder { color: var(--grey-700); }
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus {
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--grey-700); }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
       border-color: var(--yellow-500);
       background: var(--surface-2);
     }
@@ -1004,72 +1025,100 @@
     .form-select option { background: var(--deep-blue-600); color: var(--foreground); }
     .form-textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
 
-    .form-priority-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    @media (max-width: 640px) { .form-priority-grid { grid-template-columns: 1fr; } }
+    /* ── Priority radio cards ─────────────────────────────────────── */
+    .form-priority-grid { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
     .form-priority-option { display: none; }
     .form-priority-label {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-m);
+      display: block;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      overflow: hidden;
       cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      background: var(--surface-1);
+      background: rgba(255,255,255,0.02);
+      transition: border-color 200ms, box-shadow 200ms;
     }
-    .form-priority-label:hover { border-color: var(--grey-600); background: var(--surface-2); }
-    .form-priority-option:checked + .form-priority-label { border-color: var(--yellow-500); background: rgba(255,255,0,.06); }
-    .form-priority-label__title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--foreground);
+    .form-priority-label:hover { border-color: rgba(255,255,255,0.18); background: rgba(255,255,255,0.035); }
+    .form-priority-option:checked + .form-priority-label {
+      border-color: rgba(255,220,0,0.35);
+      box-shadow: 0 0 0 2px rgba(255,220,0,0.12);
     }
-    .form-priority-label__desc {
-      font-size: 11px;
-      color: var(--muted-foreground);
-      line-height: 1.4;
+    .form-priority-label__body {
+      display: flex; align-items: flex-start;
+      gap: 12px; padding: 14px 16px;
+    }
+    /* Custom radio circle */
+    .form-priority-label__radio {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color 200ms, background 200ms;
+    }
+    .form-priority-option:checked + .form-priority-label .form-priority-label__radio {
+      border-color: var(--yellow-500);
+      background: rgba(255,220,0,0.12);
+    }
+    .form-priority-label__radio::after {
+      content: '';
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--yellow-500);
+      opacity: 0; transform: scale(0);
+      transition: opacity 200ms, transform 200ms;
+    }
+    .form-priority-option:checked + .form-priority-label .form-priority-label__radio::after {
+      opacity: 1; transform: scale(1);
+    }
+    .form-priority-label__content { flex: 1; }
+    .form-priority-label__title { font-size: 14px; font-weight: 600; color: var(--foreground); }
+    .form-priority-label__desc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 3px; line-height: 1.45; }
+    /* Footer strip */
+    .form-priority-label__footer {
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 8px 16px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.02);
+      font-size: 11px; color: rgba(255,255,255,0.35);
+      letter-spacing: 0.2px;
+    }
+    .form-priority-option:checked + .form-priority-label .form-priority-label__footer {
+      color: rgba(255,220,0,0.55);
     }
     .p1 .form-priority-label__title { color: #f87171; }
     .p2 .form-priority-label__title { color: #fbbf24; }
     .p3 .form-priority-label__title { color: #4ade80; }
     .p4 .form-priority-label__title { color: var(--grey-500); }
 
+    /* ── Form actions ────────────────────────────────────────────── */
+    .form-separator { height: 1px; background: rgba(255,255,255,0.08); margin: 36px 0 28px; }
     .form-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding-top: 8px;
+      display: flex; align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
     }
+    .form-cancel {
+      background: transparent; border: none;
+      color: rgba(255,255,255,0.45);
+      font-family: var(--font-primary); font-size: 14px;
+      padding: 0 16px; height: 40px;
+      border-radius: var(--radius-s);
+      cursor: pointer;
+      transition: color 200ms, background 200ms;
+    }
+    .form-cancel:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); }
     .form-submit {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       background: var(--yellow-500);
       color: var(--deep-blue-800);
-      font-family: var(--font-primary);
-      font-size: 14px;
-      font-weight: 500;
-      padding: 0 24px;
-      height: 44px;
-      border-radius: var(--radius-s);
-      border: none;
-      cursor: pointer;
-      white-space: nowrap;
+      font-family: var(--font-primary); font-size: 14px; font-weight: 500;
+      padding: 0 24px; height: 40px;
+      border-radius: var(--radius-s); border: none;
+      cursor: pointer; white-space: nowrap;
       transition: background var(--transition), transform var(--transition);
     }
     .form-submit:hover { background: var(--yellow-600); transform: translateY(-1px); }
     .form-submit:active { transform: translateY(0); }
     .form-submit svg { flex-shrink: 0; }
-    .form-note {
-      font-size: 12px;
-      color: var(--muted-foreground);
-      line-height: 1.5;
-    }
+    .form-note { font-size: 12px; color: var(--muted-foreground); line-height: 1.5; }
 
     /* Handoff page components */
     .handoff-section { margin-bottom: 64px; }
@@ -4868,7 +4917,8 @@
         </div>
         <div class="form-wrap">
 
-          <form id="design-request-form" onsubmit="handleFormSubmit(event)">
+          <!-- ── Left: form ───────────────────────────────────────── -->
+          <form id="design-request-form" class="form-main" onsubmit="handleFormSubmit(event)">
 
             <!-- Section 1: The Essentials -->
             <div class="form-section">
@@ -5008,29 +5058,53 @@
                   <div class="p1">
                     <input class="form-priority-option" type="radio" name="priority" id="p1" value="P1" />
                     <label class="form-priority-label" for="p1">
-                      <span class="form-priority-label__title">P1 — Critical</span>
-                      <span class="form-priority-label__desc">Business blocker. Requires C-level or Head of Dept approval.</span>
+                      <div class="form-priority-label__body">
+                        <div class="form-priority-label__radio"></div>
+                        <div class="form-priority-label__content">
+                          <div class="form-priority-label__title">P1 — Critical</div>
+                          <div class="form-priority-label__desc">Business blocker. Requires C-level or Head of Dept approval before submission.</div>
+                        </div>
+                      </div>
+                      <div class="form-priority-label__footer">Turnaround: ASAP · C-level sign-off required</div>
                     </label>
                   </div>
                   <div class="p2">
                     <input class="form-priority-option" type="radio" name="priority" id="p2" value="P2" />
                     <label class="form-priority-label" for="p2">
-                      <span class="form-priority-label__title">P2 — High</span>
-                      <span class="form-priority-label__desc">Important for an upcoming launch or deadline. Min 48h.</span>
+                      <div class="form-priority-label__body">
+                        <div class="form-priority-label__radio"></div>
+                        <div class="form-priority-label__content">
+                          <div class="form-priority-label__title">P2 — High</div>
+                          <div class="form-priority-label__desc">Important for an upcoming launch or deadline. Minimum 48-hour lead time.</div>
+                        </div>
+                      </div>
+                      <div class="form-priority-label__footer">Turnaround: 48 hours minimum</div>
                     </label>
                   </div>
                   <div class="p3">
                     <input class="form-priority-option" type="radio" name="priority" id="p3" value="P3" />
                     <label class="form-priority-label" for="p3">
-                      <span class="form-priority-label__title">P3 — Standard</span>
-                      <span class="form-priority-label__desc">Business as usual. Standard 5 business day turnaround.</span>
+                      <div class="form-priority-label__body">
+                        <div class="form-priority-label__radio"></div>
+                        <div class="form-priority-label__content">
+                          <div class="form-priority-label__title">P3 — Standard</div>
+                          <div class="form-priority-label__desc">Business as usual. Enters the standard queue and is worked in sprint order.</div>
+                        </div>
+                      </div>
+                      <div class="form-priority-label__footer">Turnaround: 5 business days</div>
                     </label>
                   </div>
                   <div class="p4">
                     <input class="form-priority-option" type="radio" name="priority" id="p4" value="P4" />
                     <label class="form-priority-label" for="p4">
-                      <span class="form-priority-label__title">P4 — Low</span>
-                      <span class="form-priority-label__desc">Nice to have. Will be scheduled as capacity allows.</span>
+                      <div class="form-priority-label__body">
+                        <div class="form-priority-label__radio"></div>
+                        <div class="form-priority-label__content">
+                          <div class="form-priority-label__title">P4 — Low</div>
+                          <div class="form-priority-label__desc">Nice to have. Will be scheduled as capacity allows, no committed date.</div>
+                        </div>
+                      </div>
+                      <div class="form-priority-label__footer">Turnaround: As capacity allows</div>
                     </label>
                   </div>
                 </div>
@@ -5054,15 +5128,51 @@
               </div>
             </div>
 
+            <div class="form-separator"></div>
             <div class="form-actions">
+              <button type="button" class="form-cancel">Cancel</button>
               <button type="submit" class="form-submit">
                 Submit Request
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4M9.5 2.5V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
-              <p class="form-note">Fields marked <span style="color:var(--yellow-500)">*</span> are required. Incomplete submissions will be returned without action.</p>
             </div>
 
           </form>
+
+          <!-- ── Right: sidebar ───────────────────────────────────── -->
+          <div class="form-sidebar">
+            <div class="form-sidebar-card">
+              <h4 class="form-sidebar-card__title">Before you submit</h4>
+              <p class="form-sidebar-card__desc">A complete request means faster delivery. Make sure all required fields are filled and assets are ready before hitting submit.</p>
+              <ul class="form-sidebar-card__list">
+                <li class="form-sidebar-card__item">
+                  <svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  All copy and assets must be confirmed final before design begins
+                </li>
+                <li class="form-sidebar-card__item">
+                  <svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  P1 requests require C-level or Head of Dept sign-off
+                </li>
+                <li class="form-sidebar-card__item">
+                  <svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  Incomplete submissions will be returned without action
+                </li>
+                <li class="form-sidebar-card__item">
+                  <svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  You'll receive confirmation in <strong style="color:rgba(255,255,255,0.75)">#design-hub</strong> within 1 business day
+                </li>
+              </ul>
+              <div class="form-sidebar-card__sep"></div>
+              <h4 class="form-sidebar-card__title">SLA reference</h4>
+              <ul class="form-sidebar-card__list" style="margin-top:8px;">
+                <li class="form-sidebar-card__item"><svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><strong style="color:#f87171">P1</strong> &nbsp;— ASAP</span></li>
+                <li class="form-sidebar-card__item"><svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><strong style="color:#fbbf24">P2</strong> &nbsp;— 48 hours</span></li>
+                <li class="form-sidebar-card__item"><svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><strong style="color:#4ade80">P3</strong> &nbsp;— 5 business days</span></li>
+                <li class="form-sidebar-card__item"><svg class="form-sidebar-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><strong style="color:rgba(255,255,255,0.4)">P4</strong> &nbsp;— As capacity allows</span></li>
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
