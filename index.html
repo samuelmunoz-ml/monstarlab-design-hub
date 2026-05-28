@@ -2722,9 +2722,9 @@
     .pb-card:hover .pb-card__status { background: rgba(255,255,255,0.12); }
     .pb-card__body { display: flex; flex-direction: column; gap: 6px; }
     .pb-card__title {
-      font-size: 14px; font-weight: 600;
+      font-size: 16px; font-weight: 600;
       color: rgba(255,255,255,0.88);
-      letter-spacing: -0.15px; line-height: 1.35;
+      letter-spacing: -0.2px; line-height: 1.35;
     }
     .pb-card__desc {
       font-size: 13px; color: rgba(255,255,255,0.45);
@@ -2742,12 +2742,7 @@
       transition: background 200ms;
     }
     .pb-card:hover .pb-card__tag { background: rgba(255,255,255,0.09); }
-    .pb-card__cta {
-      font-size: 11px; color: rgba(255,255,255,0.3);
-      opacity: 0; transition: opacity 300ms;
-      white-space: nowrap;
-    }
-    .pb-card:hover .pb-card__cta { opacity: 1; }
+    .pb-card__cta { display: none; }
     @media (max-width: 900px) {
       .principles-bento { grid-template-columns: 1fr 1fr; }
       .pb-card--full { grid-column: span 2; }
@@ -4039,7 +4034,7 @@
         </div>
         <!-- ── End Principles Bento ────────────────────────────────── -->
 
-        <div class="ds-section">
+        <div class="ds-section" style="margin-top: 64px;">
           <div class="phil-col-label" style="margin-bottom:20px;">The work people don't always see</div>
           <div class="phil-work-2col">
             <div class="phil-work-entry">
