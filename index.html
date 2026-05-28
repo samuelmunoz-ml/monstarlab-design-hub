@@ -2648,6 +2648,115 @@
     .phil-forward-card__bullet::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,0,0.4); }
     @media (max-width: 680px) { .phil-forward-2col { grid-template-columns: 1fr; } }
 
+    /* ── Principles Bento Grid ──────────────────────────────────── */
+    .principles-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 36px;
+    }
+    .pb-card {
+      position: relative;
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 280ms cubic-bezier(0.32,0.72,0,1),
+                  box-shadow 280ms cubic-bezier(0.32,0.72,0,1),
+                  border-color 280ms;
+      cursor: default;
+      will-change: transform;
+    }
+    .pb-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      border-color: rgba(255,255,255,0.13);
+    }
+    .pb-card--wide { grid-column: span 2; }
+    .pb-card--full { grid-column: span 3; }
+    .pb-card--featured {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 16px rgba(255,255,255,0.03);
+    }
+    /* Dot pattern overlay */
+    .pb-card__dots {
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: 0; transition: opacity 300ms;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 4px 4px;
+    }
+    .pb-card:hover .pb-card__dots,
+    .pb-card--featured .pb-card__dots { opacity: 1; }
+    /* Gradient border shimmer */
+    .pb-card__glow {
+      position: absolute; inset: 0; border-radius: 12px; z-index: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+      opacity: 0; transition: opacity 300ms; pointer-events: none;
+    }
+    .pb-card:hover .pb-card__glow,
+    .pb-card--featured .pb-card__glow { opacity: 1; }
+    /* Card inner content — above overlays */
+    .pb-card__inner { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 14px; height: 100%; }
+    .pb-card__top {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .pb-card__icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 300ms;
+      flex-shrink: 0;
+    }
+    .pb-card:hover .pb-card__icon { background: rgba(255,255,255,0.12); }
+    .pb-card__status {
+      font-size: 11px; font-weight: 500;
+      padding: 3px 8px; border-radius: 6px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.55);
+      transition: background 300ms;
+    }
+    .pb-card:hover .pb-card__status { background: rgba(255,255,255,0.12); }
+    .pb-card__body { display: flex; flex-direction: column; gap: 6px; }
+    .pb-card__title {
+      font-size: 14px; font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      letter-spacing: -0.15px; line-height: 1.35;
+    }
+    .pb-card__desc {
+      font-size: 13px; color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+    }
+    .pb-card__footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto;
+    }
+    .pb-card__tags { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+    .pb-card__tag {
+      font-size: 10px; color: rgba(255,255,255,0.35);
+      padding: 2px 7px; border-radius: 5px;
+      background: rgba(255,255,255,0.05);
+      transition: background 200ms;
+    }
+    .pb-card:hover .pb-card__tag { background: rgba(255,255,255,0.09); }
+    .pb-card__cta {
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      opacity: 0; transition: opacity 300ms;
+      white-space: nowrap;
+    }
+    .pb-card:hover .pb-card__cta { opacity: 1; }
+    @media (max-width: 900px) {
+      .principles-bento { grid-template-columns: 1fr 1fr; }
+      .pb-card--full { grid-column: span 2; }
+    }
+    @media (max-width: 600px) {
+      .principles-bento { grid-template-columns: 1fr; }
+      .pb-card--wide, .pb-card--full { grid-column: span 1; }
+    }
+
     /* ── Onboarding page ───────────────────────────────────────── */
     .onboard-overview {
       display: grid;
@@ -3723,6 +3832,213 @@
         <!-- ── PART 1: WHAT WE BRING ─────────────────────────── -->
         <p class="phil-intro-statement">"We build refined, simple experiences where complexity is absorbed by design, not passed to the user."</p>
 
+        <!-- ── Principles Bento Grid ─────────────────────────────── -->
+        <div class="principles-bento">
+
+          <!-- Card 1: span-2, featured -->
+          <div class="pb-card pb-card--wide pb-card--featured">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,100,120,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <span class="pb-card__status">Culture</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Lead with kindness, operate with respect.</h3>
+                <p class="pb-card__desc">We assume good intent, respect every perspective, and build trust through communication — not proximity — in a remote, distributed team.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Trust</span>
+                  <span class="pb-card__tag">#Communication</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: span-1 -->
+          <div class="pb-card">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(100,180,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <span class="pb-card__status">Practice</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Be honest about what's possible.</h3>
+                <p class="pb-card__desc">Transparency about constraints earns more long-term trust than over-promising — every single time.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Transparency</span>
+                  <span class="pb-card__tag">#Delivery</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: span-1 -->
+          <div class="pb-card">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(80,210,130,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <span class="pb-card__status">Method</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Rely on evidence, not vibes alone.</h3>
+                <p class="pb-card__desc">Instinct is valuable — but every recommendation is grounded in research, data, or user insight that makes it defensible.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Research</span>
+                  <span class="pb-card__tag">#Data</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: span-1 -->
+          <div class="pb-card">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(190,130,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                </div>
+                <span class="pb-card__status">Process</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Scale the process to the engagement.</h3>
+                <p class="pb-card__desc">Right-size the approach to each client's maturity, budget, and timeline — not every project gets the same playbook.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Strategy</span>
+                  <span class="pb-card__tag">#Flexibility</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: span-1 -->
+          <div class="pb-card">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,220,0,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <span class="pb-card__status">Practice</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Show early, react fast.</h3>
+                <p class="pb-card__desc">Share work before it's precious, build alignment through visibility, and respond to feedback with urgency — clients always notice.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Speed</span>
+                  <span class="pb-card__tag">#Collaboration</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: span-2 -->
+          <div class="pb-card pb-card--wide">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,160,70,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </div>
+                <span class="pb-card__status">Ownership</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Own the brief — or make one.</h3>
+                <p class="pb-card__desc">Never execute without context. If a brief doesn't exist, we build one — and advocate for design from the very first kickoff, not after the work is done.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Ownership</span>
+                  <span class="pb-card__tag">#Advocacy</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7: span-1 -->
+          <div class="pb-card">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,220,0,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <span class="pb-card__status">Value</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Know our worth and account for it.</h3>
+                <p class="pb-card__desc">Track time honestly, price realistically, and stop undervaluing the expertise we bring to every client engagement.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Value</span>
+                  <span class="pb-card__tag">#Estimation</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8: full-width -->
+          <div class="pb-card pb-card--full">
+            <div class="pb-card__dots"></div>
+            <div class="pb-card__glow"></div>
+            <div class="pb-card__inner">
+              <div class="pb-card__top">
+                <div class="pb-card__icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(100,180,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                </div>
+                <span class="pb-card__status">Mission</span>
+              </div>
+              <div class="pb-card__body">
+                <h3 class="pb-card__title">Design for what comes after us.</h3>
+                <p class="pb-card__desc">We build systems, documentation, and reusable patterns that leave clients more capable at the end of every engagement than they were at the start — systems over one-offs, always.</p>
+              </div>
+              <div class="pb-card__footer">
+                <div class="pb-card__tags">
+                  <span class="pb-card__tag">#Systems</span>
+                  <span class="pb-card__tag">#Legacy</span>
+                  <span class="pb-card__tag">#Sustainability</span>
+                </div>
+                <span class="pb-card__cta">Explore →</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- ── End Principles Bento ────────────────────────────────── -->
+
         <div class="ds-section">
           <div class="phil-col-label" style="margin-bottom:20px;">The work people don't always see</div>
           <div class="phil-work-2col">
@@ -3799,90 +4115,6 @@
             <span class="phil-tag">We're natively cross-platform — we don't just think in terms of one surface.</span>
             <span class="phil-tag">We can be scrappier than in-house teams and many competitors.</span>
             <span class="phil-tag">Show don't tell is becoming table stakes. We're already doing it and getting faster.</span>
-          </div>
-        </div>
-
-        <!-- ── PART 2: HOW WE WORK ────────────────────────────── -->
-        <div class="phil-part-banner" style="margin-top:48px;">
-          <div class="phil-part-label">02 — How We Work</div>
-          <div class="phil-hero-text">Eight principles drawn from how we already operate at our best — and a few corrections for where we don't.</div>
-        </div>
-
-        <div class="ds-section">
-          <div class="phil-principles-editorial">
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Lead with kindness, operate with respect.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Assume best intentions in every interaction — with colleagues and clients alike.</div>
-                <div class="phil-principle-row__point">Respect perspectives, ideas, and time — even when we disagree.</div>
-                <div class="phil-principle-row__point">In a remote, distributed environment, trust is built through how we communicate, not where we sit.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Be honest about what's possible.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Deliver the best work within real constraints — and be upfront about what those constraints are.</div>
-                <div class="phil-principle-row__point">Don't promise what we can't deliver, and don't hide behind ambiguity when scope or timeline affects quality.</div>
-                <div class="phil-principle-row__point">Honesty earns more trust than over-promising. Every time.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Rely on evidence, not vibes alone.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Back decisions with research, data, and user insight — even when budget doesn't include a dedicated research stream.</div>
-                <div class="phil-principle-row__point">Bolster recommendations with what's available: analytics, competitive landscape, prior engagements.</div>
-                <div class="phil-principle-row__point">Instinct is valuable. Evidence makes it defensible.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Scale the process to the engagement.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Not every project gets the same playbook. Right-size the approach based on client maturity, budget, and timeline.</div>
-                <div class="phil-principle-row__point">Meet clients where they are and educate where possible.</div>
-                <div class="phil-principle-row__point">Don't force a heavyweight process onto a lightweight engagement or vice versa.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Show early, react fast.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Show work before it's precious. Attachment to unvalidated work is a project risk.</div>
-                <div class="phil-principle-row__point">Early visibility builds alignment and catches misinterpretation before it compounds.</div>
-                <div class="phil-principle-row__point">When feedback comes in, respond quickly. Clients consistently notice and value this.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Own the brief — or make one.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Don't execute without context. A brief that doesn't exist is a brief we build.</div>
-                <div class="phil-principle-row__point">If brought in late, ask the questions that should have been asked earlier — not after the work is done.</div>
-                <div class="phil-principle-row__point">Design receding into the background on engineering projects isn't acceptable. Advocate from kickoff.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Know our worth and account for it.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Stop under-estimating our time, our relevance, and our value.</div>
-                <div class="phil-principle-row__point">Over-delivering without tracking time creates unrealistic expectations and erodes our position.</div>
-                <div class="phil-principle-row__point">If the work takes longer than scoped, that's information — not a personal failing. Price and plan realistically.</div>
-              </div>
-            </div>
-
-            <div class="phil-principle-row">
-              <div class="phil-principle-row__title">Design for what comes after us.</div>
-              <div class="phil-principle-row__points">
-                <div class="phil-principle-row__point">Build things clients can maintain, extend, and scale after we leave.</div>
-                <div class="phil-principle-row__point">Systems over one-offs, documentation over tribal knowledge, reusable patterns over bespoke solutions.</div>
-                <div class="phil-principle-row__point">The best engagement is one where the client is more capable at the end than they were at the start.</div>
-              </div>
-            </div>
-
           </div>
         </div>
 
