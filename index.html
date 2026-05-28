@@ -2794,6 +2794,97 @@
       .pb-card--wide, .pb-card--full { grid-column: span 1; }
     }
 
+    /* ── Team Cards ─────────────────────────────────────────────── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .team-card {
+      background: var(--surface-1);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 240ms;
+    }
+    .team-card:hover { border-color: rgba(255,255,255,0.14); }
+    .team-card--featured {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .team-card__left  { display: flex; flex-direction: column; gap: 20px; }
+    .team-card__right { display: flex; flex-direction: column; gap: 22px; padding-left: 40px; border-left: 1px solid rgba(255,255,255,0.07); }
+    .team-card__avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700; letter-spacing: -1px;
+      flex-shrink: 0;
+    }
+    .team-card__identity { display: flex; flex-direction: column; gap: 4px; }
+    .team-card__handle {
+      font-size: 11px; font-weight: 500;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.3px;
+    }
+    .team-card__name {
+      font-size: 20px; font-weight: 700;
+      color: var(--foreground); margin: 0;
+      letter-spacing: -0.3px;
+    }
+    .team-card__nick {
+      font-size: 16px; font-weight: 400;
+      color: rgba(255,255,255,0.35);
+    }
+    .team-card__role {
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,220,0,0.75);
+      letter-spacing: 0.1px;
+    }
+    .team-card__bio {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      line-height: 1.7; margin: 0;
+    }
+    .team-card__section { display: flex; flex-direction: column; gap: 8px; }
+    .team-card__section-label {
+      font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 1.2px;
+      color: rgba(255,255,255,0.25);
+    }
+    .team-card__pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .team-card__pill {
+      font-size: 12px; font-weight: 500;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .team-card__pill--dim { color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.03); }
+    .team-card__items { display: flex; flex-direction: column; gap: 6px; }
+    .team-card__item {
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      padding-left: 14px; position: relative; line-height: 1.5;
+    }
+    .team-card__item::before {
+      content: '–'; position: absolute; left: 0;
+      color: rgba(255,220,0,0.4);
+    }
+    .team-card__item--dim { color: rgba(255,255,255,0.2); }
+    .team-card__item--dim::before { color: rgba(255,255,255,0.15); }
+    .team-card__items--ask .team-card__item { color: rgba(255,255,255,0.65); }
+    @media (max-width: 860px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .team-card--featured { grid-column: span 1; grid-template-columns: 1fr; }
+      .team-card__right { padding-left: 0; border-left: none; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 22px; }
+    }
+
     /* ── Pull Quote ─────────────────────────────────────────────── */
     .pull-quote {
       position: relative;
@@ -4166,47 +4257,113 @@
         <div class="page-header">
           <div class="page-header__eyebrow">About Us</div>
           <h1 class="page-header__title">Meet the Team</h1>
+          <p class="page-header__desc">The designers building and maintaining this hub.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:8px;">
 
-          <!-- Joey Unnold -->
-          <div style="background:var(--surface-2,#1a2035);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;">
-            <div style="width:100%;aspect-ratio:1/1;max-height:220px;background:linear-gradient(135deg,#0D1E35 0%,#1A2C47 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-              <div style="width:80px;height:80px;border-radius:999px;background:#234474;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#ffffff;letter-spacing:-1px;">JU</div>
+        <div class="team-grid">
+
+          <!-- ── Samuel Muñoz (featured) ───────────────────────── -->
+          <div class="team-card team-card--featured">
+            <div class="team-card__left">
+              <div class="team-card__avatar" style="background:#FFFF00;color:#000F1E;">SM</div>
+              <div class="team-card__identity">
+                <span class="team-card__handle">@samuel.munoz</span>
+                <h3 class="team-card__name">Samuel Muñoz <span class="team-card__nick">· Sam</span></h3>
+                <div class="team-card__role">Lead UX/UI Designer</div>
+              </div>
+              <p class="team-card__bio">Samuel is a Lead UX/UI Designer at Monstarlab with 6+ years of professional experience spanning Product Design, Design Systems, and Customer Experience. He also serves as an Adjunct Professor teaching Customer Experience Management & Product Design. Previously at Twilio, Locallogic, Talent.com and Terdex. Based in Medellín, Colombia.</p>
+              <div class="team-card__section">
+                <div class="team-card__section-label">Interests</div>
+                <div class="team-card__pills">
+                  <span class="team-card__pill">Film photography</span>
+                  <span class="team-card__pill">Travelling</span>
+                  <span class="team-card__pill">Interior Design</span>
+                  <span class="team-card__pill">Great coffee</span>
+                </div>
+              </div>
             </div>
-            <div style="padding:20px 24px 24px;">
-              <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.25);margin-bottom:6px;">Role coming soon</div>
-              <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 10px;">Joey Unnold</h3>
-              <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;">Brief description coming soon — areas of ownership, background, and expertise within the Monstarlab Americas design team.</p>
+            <div class="team-card__right">
+              <div class="team-card__section">
+                <div class="team-card__section-label">Skills</div>
+                <div class="team-card__pills">
+                  <span class="team-card__pill">UX/UI Design</span>
+                  <span class="team-card__pill">Design Systems</span>
+                  <span class="team-card__pill">Customer Research</span>
+                  <span class="team-card__pill">AI-Assisted Workflows</span>
+                  <span class="team-card__pill">Conversational AI</span>
+                  <span class="team-card__pill">CX Management</span>
+                </div>
+              </div>
+              <div class="team-card__section">
+                <div class="team-card__section-label">Projects at Monstarlab</div>
+                <div class="team-card__items">
+                  <div class="team-card__item">Sushiro — Payment System Design</div>
+                  <div class="team-card__item">USSSA — Cart &amp; Checkout experiences</div>
+                </div>
+              </div>
+              <div class="team-card__section">
+                <div class="team-card__section-label">Previous Projects</div>
+                <div class="team-card__items">
+                  <div class="team-card__item">Twilio Conversational AI Assistant</div>
+                  <div class="team-card__item">Twilio Trust &amp; Engagement Insights</div>
+                  <div class="team-card__item">Twilio Voice Platform</div>
+                  <div class="team-card__item">Dokid mobile app — gamification for family goal management</div>
+                  <div class="team-card__item">Talent.com Search Engine Results Page</div>
+                  <div class="team-card__item">Talent.com Mobile Application</div>
+                </div>
+              </div>
+              <div class="team-card__section">
+                <div class="team-card__section-label">Ask me about…</div>
+                <div class="team-card__items team-card__items--ask">
+                  <div class="team-card__item">Advanced AI workflows for Design Systems</div>
+                  <div class="team-card__item">Everything about Figma usage and management</div>
+                  <div class="team-card__item">User-first Research and design processes</div>
+                  <div class="team-card__item">Mobile Applications</div>
+                  <div class="team-card__item">Scaling and management for Design Systems</div>
+                  <div class="team-card__item">Integration of AI tools for Design acceleration</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Janelle Kelly -->
-          <div style="background:var(--surface-2,#1a2035);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;">
-            <div style="width:100%;aspect-ratio:1/1;max-height:220px;background:linear-gradient(135deg,#1A2C47 0%,#304A6F 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-              <div style="width:80px;height:80px;border-radius:999px;background:#000F1E;border:2px solid #234474;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#ffffff;letter-spacing:-1px;">JK</div>
+          <!-- ── Joey Unnold ────────────────────────────────────── -->
+          <div class="team-card">
+            <div class="team-card__avatar" style="background:#234474;color:#ffffff;">JU</div>
+            <div class="team-card__identity">
+              <h3 class="team-card__name">Joey Unnold</h3>
+              <div class="team-card__role">Role coming soon</div>
             </div>
-            <div style="padding:20px 24px 24px;">
-              <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.25);margin-bottom:6px;">Role coming soon</div>
-              <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 10px;">Janelle Kelly</h3>
-              <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;">Brief description coming soon — areas of ownership, background, and expertise within the Monstarlab Americas design team.</p>
+            <p class="team-card__bio">Bio and profile coming soon.</p>
+            <div class="team-card__section">
+              <div class="team-card__section-label">Skills</div>
+              <div class="team-card__pills"><span class="team-card__pill team-card__pill--dim">Coming soon</span></div>
+            </div>
+            <div class="team-card__section">
+              <div class="team-card__section-label">Ask me about…</div>
+              <div class="team-card__items"><div class="team-card__item team-card__item--dim">Coming soon</div></div>
             </div>
           </div>
 
-          <!-- Samuel Muñoz -->
-          <div style="background:var(--surface-2,#1a2035);border:1px solid rgba(255,255,255,0.08);border-radius:12px;overflow:hidden;">
-            <div style="width:100%;aspect-ratio:1/1;max-height:220px;background:linear-gradient(135deg,#0A1729 0%,#0D1E35 100%);display:flex;align-items:center;justify-content:center;overflow:hidden;">
-              <div style="width:80px;height:80px;border-radius:999px;background:#FFFF00;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#000F1E;letter-spacing:-1px;">SM</div>
+          <!-- ── Janelle Kelly ──────────────────────────────────── -->
+          <div class="team-card">
+            <div class="team-card__avatar" style="background:#0D1E35;border:2px solid #234474;color:#ffffff;">JK</div>
+            <div class="team-card__identity">
+              <h3 class="team-card__name">Janelle Kelly</h3>
+              <div class="team-card__role">Role coming soon</div>
             </div>
-            <div style="padding:20px 24px 24px;">
-              <div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,0.25);margin-bottom:6px;">Role coming soon</div>
-              <h3 style="font-size:18px;font-weight:600;color:#ffffff;margin:0 0 10px;">Samuel Muñoz</h3>
-              <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6;margin:0;">Brief description coming soon — areas of ownership, background, and expertise within the Monstarlab Americas design team.</p>
+            <p class="team-card__bio">Bio and profile coming soon.</p>
+            <div class="team-card__section">
+              <div class="team-card__section-label">Skills</div>
+              <div class="team-card__pills"><span class="team-card__pill team-card__pill--dim">Coming soon</span></div>
+            </div>
+            <div class="team-card__section">
+              <div class="team-card__section-label">Ask me about…</div>
+              <div class="team-card__items"><div class="team-card__item team-card__item--dim">Coming soon</div></div>
             </div>
           </div>
 
         </div>
-        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:20px;">Photos and bios coming soon. To update your card, reach out on <strong style="color:rgba(255,255,255,0.45);">#design-hub</strong>.</p>
+        <p style="font-size:13px;color:rgba(255,255,255,0.3);margin-top:24px;">To update your card, reach out on <strong style="color:rgba(255,255,255,0.45);">#design-hub</strong>.</p>
       </div>
     </div>
 
