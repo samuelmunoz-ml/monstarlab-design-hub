@@ -3100,24 +3100,6 @@
       transition: transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* 5. Home hero — second yellow accent orb */
-    .page[data-page="home"] .content::after {
-      content: '';
-      position: absolute;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      background: radial-gradient(circle,
-        rgba(255,255,0,0.14) 0%,
-        rgba(255,255,0,0.05) 45%,
-        transparent 70%);
-      top: -100px;
-      right: -40px;
-      pointer-events: none;
-      z-index: -1;
-      animation: heroOrbPulse 12s ease-in-out infinite alternate;
-    }
-
     @keyframes heroOrbPulse {
       from { transform: scale(1) translate(0, 0); opacity: 0.8; }
       to   { transform: scale(1.25) translate(-30px, 20px); opacity: 1; }
@@ -3133,7 +3115,7 @@
 
     /* Home hero title — bolder gradient, no descender clip */
     .page[data-page="home"] .page-header__title {
-      background: linear-gradient(105deg, #ffffff 0%, #d4e2ff 38%, rgba(255,255,0,0.85) 68%, rgba(255,255,0,0.4) 85%);
+      background: linear-gradient(90deg, #ffffff 0%, #d4e2ff 40%, rgba(255,220,0,0.75) 75%, #FFFF00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
