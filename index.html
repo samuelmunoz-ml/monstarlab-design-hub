@@ -2646,6 +2646,40 @@
       line-height: 1.6;
     }
     .phil-forward-card__bullet::before { content: '–'; position: absolute; left: 0; color: rgba(255,255,0,0.4); }
+
+    /* ── Timeline Heading Section ────────────────────────────────── */
+    .tl-section { margin-top: 48px; }
+    .tl-heading {
+      font-size: 36px; font-weight: 600; color: var(--foreground);
+      line-height: 1.35; letter-spacing: -0.5px;
+    }
+    @keyframes tlChunkReveal {
+      from { opacity: 0; filter: blur(8px); transform: translateY(16px); }
+      to   { opacity: 1; filter: blur(0px); transform: translateY(0); }
+    }
+    .tl-chunk { opacity: 0; display: inline; }
+    .tl-section.is-visible .tl-chunk {
+      animation: tlChunkReveal 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation-delay: calc(var(--i, 0) * 0.42s);
+    }
+    .tl-highlight {
+      display: inline-block;
+      padding: 1px 8px 2px;
+      border-radius: 6px;
+      border: 2px dotted currentColor;
+      line-height: inherit;
+    }
+    .tl-highlight--yellow  { color: rgba(255,220,0,0.95);   border-color: rgba(255,220,0,0.4); }
+    .tl-highlight--blue    { color: rgba(110,170,255,0.95); border-color: rgba(110,170,255,0.4); }
+    .tl-highlight--emerald { color: rgba(80,200,140,0.95);  border-color: rgba(80,200,140,0.4); }
+    .tl-sub {
+      opacity: 0; margin-top: 28px; max-width: 680px;
+      font-size: 15px; color: var(--muted-foreground); line-height: 1.75;
+    }
+    .tl-section.is-visible .tl-sub {
+      animation: tlChunkReveal 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation-delay: calc(var(--i, 6) * 0.42s);
+    }
     @media (max-width: 680px) { .phil-forward-2col { grid-template-columns: 1fr; } }
 
     /* ── Principles Bento Grid ──────────────────────────────────── */
@@ -4141,42 +4175,9 @@
         </div>
 
         <!-- ── PART 3: WHERE WE'RE HEADED ────────────────────── -->
-        <div class="phil-part-banner" style="margin-top:48px;">
-          <div class="phil-part-label">03 — Where We're Headed</div>
-          <div class="phil-hero-text">We don't treat design as a fixed job description. What this team does — and what we're capable of — is something we actively expand.</div>
-        </div>
-
-        <div class="ds-section">
-          <!-- Featured: item 1 -->
-          <div class="phil-forward-hero">
-            <div class="phil-forward-hero__label">Becoming AI-native</div>
-            <div class="phil-forward-hero__title">The competitive advantage isn't the tool; it's the team that knows how to wield it without flattening the craft.</div>
-            <div class="phil-forward-hero__desc">We're developing a clear point of view on how AI impacts design as a practice. We use it to enhance discovery, move faster, and deliver more value. The goal isn't efficiency for its own sake — it's maintaining the value of design while changing how we get there.</div>
-          </div>
-          <!-- 2-col grid: items 2–5 -->
-          <div class="phil-forward-2col">
-            <div class="phil-forward-card">
-              <div class="phil-forward-card__title">Building repeatable process</div>
-              <div class="phil-forward-card__desc">Working toward standardized approaches for common engagement types — not reinventing the wheel every time, while keeping flexibility to go deep when a project demands it. Getting sharper about how much time different types of work actually take, and developing formulas that aren't right every time but are better than guessing.</div>
-            </div>
-            <div class="phil-forward-card">
-              <div class="phil-forward-card__title">Measuring our impact</div>
-              <div class="phil-forward-card__desc">Connecting design work to outcomes clients care about — moving beyond "we delivered screens."</div>
-              <div class="phil-forward-card__bullets">
-                <div class="phil-forward-card__bullet">Efficiency gains: connecting design decisions to measurable workflow improvements clients can report internally.</div>
-                <div class="phil-forward-card__bullet">Revenue impact: articulating how UX choices affect conversion, retention, and revenue in terms the business understands.</div>
-                <div class="phil-forward-card__bullet">Usability outcomes: here's what changed because of our work.</div>
-              </div>
-            </div>
-            <div class="phil-forward-card">
-              <div class="phil-forward-card__title">Expanding the definition</div>
-              <div class="phil-forward-card__desc">We bring context from many industries and project types. We're comfortable extending beyond a narrow lane of design expertise into strategy, tooling, systems thinking, cross-platform work, and areas that don't have a clean label yet. Breadth is competitive advantage, not lack of specialization.</div>
-            </div>
-            <div class="phil-forward-card">
-              <div class="phil-forward-card__title">Gaining efficiencies with our internal teams</div>
-              <div class="phil-forward-card__desc">Improving collaboration patterns across engineering, pre-sales, and delivery. AI-enhanced discovery processes and assets. Reducing the friction points that have historically caused project misalignment.</div>
-            </div>
-          </div>
+        <div class="tl-section">
+          <p class="tl-heading"><span class="tl-chunk" style="--i:0">We don't treat design as a fixed job description. We're becoming </span><span class="tl-chunk tl-highlight tl-highlight--yellow" style="--i:1">AI-native</span><span class="tl-chunk" style="--i:2"> — building the team that knows how to </span><span class="tl-chunk tl-highlight tl-highlight--blue" style="--i:3">wield it</span><span class="tl-chunk" style="--i:4"> without ever </span><span class="tl-chunk tl-highlight tl-highlight--emerald" style="--i:5">flattening the craft.</span></p>
+          <p class="tl-sub" style="--i:6">Building repeatable processes, measuring our real impact, and expanding the definition of what design can do — all while maintaining the value of craft while changing how we get there.</p>
         </div>
 
       </div>
@@ -11026,7 +11027,7 @@
     '.research-flow-step', '.onboard-step', '.onboard-overview-card',
     '.phil-quality-card', '.phil-principle', '.phil-forward-item',
     '.tool-card', '.prefix-card', '.sh-card', '.phil-hidden-item',
-    '.qa-checklist-card', '.phil-advantage-item'
+    '.qa-checklist-card', '.phil-advantage-item', '.tl-section'
   ].join(', ');
 
   const revealObserver = new IntersectionObserver((entries) => {
